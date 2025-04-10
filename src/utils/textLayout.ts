@@ -1,4 +1,4 @@
-import { getChordLength, polarToCartesian } from '../utils/math';
+import { getChordLength, polarToCartesian } from './geometry';
 
 const MIN_FONT_SIZE = 14;
 const FONT_FAMILY = 'monospace';

@@ -1,5 +1,5 @@
 // Utils:
-import { maxInscribedRectangle, evaluateRectangleInSector } from './math';
+import { maxInscribedRectangle, evaluateRectangleInSector } from './geometry';
 
 /**
  * Measures text dimensions accounting for precise font metrics
@@ -13,7 +13,7 @@ function measureTextBox(
   text: string,
   fontSize: string,
   fontFamily: string,
-  fontWeight: number
+  fontWeight: string
 ): { width: number; height: number } {
   const canvas = document.createElement('canvas');
   const ctx = canvas.getContext('2d')!;
@@ -51,7 +51,7 @@ export function truncateTextWithEllipsis(
   text: string,
   fontSize: string,
   fontFamily: string,
-  fontWeight: number = 600,
+  fontWeight: string = '600',
   availableWidth: number,
   options: {
     ellipsis?: string;
@@ -138,17 +138,57 @@ export function truncateTextWithEllipsis(
   return bestResult || '';
 }
 
+/**
+ * Calculates optimal text layout parameters for rendering text within a circular sector.
+ *
+ * @param label - The text content to be rendered
+ * @param fontFamily - CSS font-family string
+ * @param fontWeight - CSS font-weight string/number
+ * @param radius - Radius of the circular sector in pixels
+ * @param sectorAngleDeg - Angle of the sector in degrees (0-360)
+ *
+ * @returns An object containing:
+ *   - `text`: The final text (possibly truncated)
+ *   - `fontSize`: The optimal font size in pixels
+ *   - `distanceFromApex`: Distance from sector apex to text center along central radius
+ *
+ * @remarks
+ * The function performs the following steps:
+ * 1. Picks a minimum font size.
+ * 2. Checks if text fits at minimum font size (considering both height and width constraints)
+ * 3. If not, truncates text to fit while maintaining minimum font size
+ * 4. If text fits, calculates maximum possible font size using sector geometry
+ * 5. Determines optimal text position along the central radius
+ *
+ * @example
+ * ```ts
+ * const layout = calculateTextLayout(
+ *   "Sample Text",
+ *   "Arial",
+ *   "bold",
+ *   100,
+ *   45
+ * );
+ * ```
+ *
+ * @see {@link measureTextBox} for text measurement
+ * @see {@link evaluateRectangleInSector} for sector fitting logic
+ * @see {@link maxInscribedRectangle} for maximum rectangle calculation
+ * @see {@link truncateTextWithEllipsis} for text truncation
+ */
 const fontSizeCache = new Map<string, number>();
-
 export function calculateTextLayout(
   label: string,
   fontFamily: string,
-  fontWeight: number,
-  minFontSize: number,
+  fontWeight: string,
   radius: number,
   sectorAngleDeg: number
 ): { text: string; fontSize: number; distanceFromApex: number } {
-  // Step 1: Test fit at minFontSize
+  // Pick reasonable minimal font size
+  const FontRadiusRatio = 0.035;
+  const minFontSize = Math.max(12, Math.ceil(radius * FontRadiusRatio));
+
+  // Test fit at minFontSize
   const minMetrics = measureTextBox(
     label,
     `${minFontSize}px`,
@@ -171,7 +211,7 @@ export function calculateTextLayout(
   //     minFitEvaluation: ${JSON.stringify(minFitEvaluation)}`
   // );
 
-  // Step 2: Handle cases where text doesn't fit at minFontSize
+  // Handle cases where text doesn't fit at minFontSize
   if (!minFitEvaluation.validHeight || minFitEvaluation.arcOvershoot > 0) {
     // Calculate available width (original width minus overshoot)
     const availableWidth =
@@ -201,7 +241,7 @@ export function calculateTextLayout(
       truncatedMetrics.width
     );
     if (!truncatedFit.validHeight) {
-      console.log(`[calculateTextLayout] NO fit`);
+      // console.log(`[calculateTextLayout] NO fit`);
       return { text: '', fontSize: 0, distanceFromApex: 0 };
     }
 
@@ -221,11 +261,11 @@ export function calculateTextLayout(
     return {
       text: truncated,
       fontSize: minFontSize,
-      distanceFromApex: truncatedFit.distanceFromApex, // truncated width is already as wide as possible
+      distanceFromApex: truncatedFit.distanceFromApex, // truncated width is already as wide as possible, there's no space between in and the arc
     };
   }
 
-  // Step 3: Calculate maximum possible size (existing optimal scaling logic)
+  // Calculate maximum possible size (existing optimal scaling logic)
   const aspectRatio = minMetrics.width / minMetrics.height;
   const maxRect = maxInscribedRectangle(sectorAngleDeg, radius, aspectRatio);
 
@@ -233,10 +273,10 @@ export function calculateTextLayout(
   const fontKey = `${maxRect.maxHeight}-${fontFamily}-${fontWeight}`;
   const cachedFontSize = fontSizeCache.get(fontKey);
   if (cachedFontSize) {
-    console.log(
-      `[calculateTextLayout] NORMAL FIT angle: ${sectorAngleDeg},
-    cachedFontSize: ${cachedFontSize}`
-    );
+    // console.log(
+    //   `[calculateTextLayout] NORMAL FIT angle: ${sectorAngleDeg},
+    // cachedFontSize: ${cachedFontSize}`
+    // );
     maxFontSize = cachedFontSize;
   } else {
     maxFontSize = Math.floor(
@@ -261,7 +301,7 @@ export function calculateTextLayout(
     fontWeight
   );
 
-  // Step 4: Final positioning with arcOvershoot awareness
+  // Final positioning with arcOvershoot awareness
   const maxFitEvaluation = evaluateRectangleInSector(
     sectorAngleDeg,
     radius,
@@ -278,12 +318,15 @@ export function calculateTextLayout(
   //   maxFitEvaluation:${JSON.stringify(maxFitEvaluation)}`
   // );
 
+  const arcPadding = Math.min(5, -maxFitEvaluation.arcOvershoot / 2); // Apply small padding, if space allows for it.
+  const distanceFromApex =
+    maxFitEvaluation.distanceFromApex -
+    maxFitEvaluation.arcOvershoot -
+    arcPadding;
+
   return {
     text: label,
     fontSize: maxFontSize,
-    distanceFromApex:
-      maxFitEvaluation.distanceFromApex -
-      maxFitEvaluation.arcOvershoot +
-      Math.max(-5, maxFitEvaluation.arcOvershoot / 2), // Apply small padding, if space allows for it.
+    distanceFromApex,
   };
 }

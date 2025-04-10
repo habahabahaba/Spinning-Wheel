@@ -1,14 +1,36 @@
-// Angle 0 is at 3:00, positive clockwise
+/**
+ * Converts an angle in degrees into angle in radians
+ * @param degrees - Angle in degrees
+ * @returns number
+ */
+export function degreesToRadians(degrees: number): number {
+  return (degrees * Math.PI) / 180;
+}
+
+/**
+ * Converts polar coordinates to Cartesian (x, y) coordinates.
+ *
+ * @param cx - X-coordinate of the center point (origin of polar system)
+ * @param cy - Y-coordinate of the center point (origin of polar system)
+ * @param radius - Distance from the center (magnitude of the vector)
+ * @param angleDeg - Angle in degrees (0° is upward, increases clockwise)
+ * @returns Cartesian coordinates { x, y } corresponding to the polar input
+ *
+ * Note:
+ * - 0° points to 12:00 (upward direction), increasing clockwise like a clock.
+ * - This is commonly used in graphics (e.g., pie charts, circular dials).
+ */
 export function polarToCartesian(
   cx: number,
   cy: number,
-  r: number,
+  radius: number,
   angleDeg: number
 ): { x: number; y: number } {
-  const angleRad = (angleDeg - 90) * (Math.PI / 180); // rotate so 0° = 12:00
+  // Angle 0 is at 3:00, positive clockwise
+  const angleRad = degreesToRadians(angleDeg - 90); // rotate so 0° = 12:00
   return {
-    x: cx + r * Math.cos(angleRad),
-    y: cy + r * Math.sin(angleRad),
+    x: cx + radius * Math.cos(angleRad),
+    y: cy + radius * Math.sin(angleRad),
   };
 }
 
@@ -48,16 +70,16 @@ export function maxInscribedRectangle(
 }
 
 /**
- * Evaluates if a given rectangle fits inside a circular sector, and computes fit metrics.
+ * Evaluates if a given rectangle fits inside a circular sector, (placed on top of the central radius of the sector and parallel to it,) and computes fit metrics.
  *
  * @param angleDeg - Sector angle in degrees
  * @param radius - Sector radius
  * @param height - Rectangle height (perpendicular to central radius)
  * @param width - Rectangle width (parallel to central radius)
  * @returns {
- *   validHeight: boolean;           // whether rectangle is short enough to fit
- *   distanceFromApex: number;       // distance from apex to center of rectangle height
- *   arcOvershoot: number;           // how much width needs to change for perfect arc contact
+ *   validHeight: boolean;           // whether rectangle is short enough to fit inside the sector
+ *   distanceFromApex: number;       // distance from apex to center of rectangle side, closest to the apex, with its corners touching radii
+ *   arcOvershoot: number;           // how much width needs to change for the rectangle to be perfectly inscribed
  * }
  */
 export function evaluateRectangleInSector(
@@ -66,7 +88,7 @@ export function evaluateRectangleInSector(
   height: number,
   width: number
 ): { validHeight: boolean; distanceFromApex: number; arcOvershoot: number } {
-  const angleRad = (angleDeg * Math.PI) / 180;
+  const angleRad = degreesToRadians(angleDeg);
   const halfAngleRad = angleRad / 2;
   const halfHeight = height / 2;
 
@@ -90,10 +112,10 @@ export function evaluateRectangleInSector(
   }
 
   // If the rectangle had the width to be perfectly inscribed, what would be the distance between the apex and its arc-facing side:
-  const fromApexToPerfectFitArcSide = Math.sqrt(radius ** 2 - halfHeight ** 2);
+  const apexToHeightOnArcDistance = Math.sqrt(radius ** 2 - halfHeight ** 2);
   // To find arc-side overshoot:
   const getArcOvershoot = (distanceFromApex: number) =>
-    width + distanceFromApex - fromApexToPerfectFitArcSide;
+    width + distanceFromApex - apexToHeightOnArcDistance;
 
   if (angleDeg >= 180) {
     // For wide sectors, rectangle's back side touches apex

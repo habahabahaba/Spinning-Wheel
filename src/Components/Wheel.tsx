@@ -3,9 +3,10 @@
 // Store:
 // React Router:
 // React:
-import { useMemo } from 'react';
+import { useMemo, useRef, useState } from 'react';
 // Context:
 // Hooks:
+import { useSpinAnimation } from '../hooks/useSpinAnimation';
 // Components:
 import Sector from './Sector';
 // CSS:
@@ -24,11 +25,26 @@ interface WheelProps {
 }
 
 const Wheel: FC<WheelProps> = ({ radius, options, fillColors }) => {
+  // State:
+  const [currentOption, setCurrentOption] = useState<number>(0);
+  // Refs:
+  const wheelRef = useRef<SVGSVGElement>(null);
+
+  const { spin, isSpinning } = useSpinAnimation(wheelRef);
+
   const center = useMemo(() => ({ x: radius, y: radius }), [radius]);
 
   const diameter = 2 * radius;
 
   const anglePerSector = 360 / options.length;
+
+  // Handlers
+  const handleClick = () => {
+    const random = +(Math.random() * 2 + 1).toFixed(2);
+    const accumulatedTurns = spin(random); // 👈 numberOfTurns is passed here
+    console.log(`accumulatedTurns: ${accumulatedTurns}`);
+    setCurrentOption(() => Math.floor(options.length * (1 - accumulatedTurns)));
+  };
 
   // JSX:
   const sectors = useMemo(
@@ -48,7 +64,6 @@ const Wheel: FC<WheelProps> = ({ radius, options, fillColors }) => {
             endAngle={endAngle}
             label={option.label}
             fillColor={option.fillColor || fillColors[i % fillColors.length]}
-            // fillColor='green'
           />
         );
       }),
@@ -56,21 +71,60 @@ const Wheel: FC<WheelProps> = ({ radius, options, fillColors }) => {
   );
 
   return (
-    <div
-      style={{
-        border: 'solid black',
-        borderRadius: '50%',
-        padding: '0',
-        height: `${diameter}px`,
-      }}
-    >
-      <svg
-        width={diameter}
-        height={diameter}
-        viewBox={`0 0 ${diameter} ${diameter}`}
+    <div>
+      <div
+        style={{
+          border: 'solid black',
+          borderRadius: '50%',
+          padding: '0',
+          height: `${diameter}px`,
+          position: 'relative',
+          display: 'inline-block',
+        }}
       >
-        {sectors}
-      </svg>
+        <svg
+          ref={wheelRef}
+          style={{ zIndex: 0, position: 'relative' }}
+          width={diameter}
+          height={diameter}
+          viewBox={`0 0 ${diameter} ${diameter}`}
+        >
+          {sectors}
+        </svg>
+
+        <div
+          style={{
+            position: 'absolute',
+            right: 0,
+            top: 'calc(50% + 1px)',
+            transform: 'translate(50%, -50%)',
+            width: '15px',
+            height: '2px',
+            backgroundColor: 'red',
+            // borderRadius: '50%',
+          }}
+        />
+      </div>
+
+      <div>
+        <button
+          onClick={handleClick}
+          disabled={isSpinning}
+          style={{
+            width: '8rem',
+            position: 'relative',
+            textAlign: 'center',
+            zIndex: 5,
+          }}
+        >
+          {isSpinning ? 'Spinning...' : 'Spin!'}
+        </button>
+
+        <span style={{ width: '15rem', marginLeft: '1rem' }}>
+          Result:
+          {isSpinning ? ' Spinning...' : ` ${currentOption + 1}`}
+        </span>
+      </div>
     </div>
   );
 };

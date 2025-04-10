@@ -1,5 +1,5 @@
 // Utils:
-import { polarToCartesian } from '../utils/math';
+import { polarToCartesian } from '../utils/geometry';
 import { calculateTextLayout } from '../utils/text';
 // 3rd party:
 // Redux RTK:
@@ -25,8 +25,7 @@ interface SectorProps {
   textColor?: string;
   label?: string;
   fontFamily?: string;
-  fontWeight?: number;
-  minFontSize?: number;
+  fontWeight?: string;
 }
 
 // Constants for scaling font and truncation
@@ -44,8 +43,7 @@ const Sector: FC<SectorProps> = ({
   textColor = '#000',
   label = '',
   fontFamily = 'sans-serif',
-  fontWeight = 600,
-  minFontSize = 14,
+  fontWeight = '600',
 }) => {
   const sectorAngle = endAngle - startAngle;
   const midAngle = (startAngle + endAngle) / 2;
@@ -64,23 +62,17 @@ const Sector: FC<SectorProps> = ({
   }, [startAngle, endAngle, radius, center.x, center.y, sectorAngle]);
 
   // Calculate sector geometry
-  //   const chordLength = getChordLength(radius, sectorAngle);
-
-  const { text, fontSize, distanceFromApex } = calculateTextLayout(
-    label,
-    fontFamily,
-    fontWeight,
-    minFontSize,
-    radius,
-    sectorAngle
+  const { text, fontSize, distanceFromApex } = useMemo(
+    () =>
+      calculateTextLayout(label, fontFamily, fontWeight, radius, sectorAngle),
+    [label, fontFamily, fontWeight, radius, sectorAngle]
   );
+
   // console.log(`[Sector.tsx] distanceFromApex: ${distanceFromApex}`);
 
-  const textPos = polarToCartesian(
-    center.x,
-    center.y,
-    distanceFromApex,
-    midAngle
+  const textPos = useMemo(
+    () => polarToCartesian(center.x, center.y, distanceFromApex, midAngle),
+    [center, distanceFromApex, midAngle]
   );
 
   return (
@@ -91,24 +83,21 @@ const Sector: FC<SectorProps> = ({
         stroke='black'
         strokeWidth={1}
       />
-
-      {label && fontSize >= minFontSize && (
-        //  null
-        <text
-          x={textPos.x}
-          y={textPos.y}
-          textAnchor='start'
-          dominantBaseline='central'
-          fontFamily={fontFamily}
-          fontWeight={fontWeight}
-          fontSize={`${fontSize}px`}
-          fill={textColor}
-          style={{ willChange: 'transform' }}
-          transform={`rotate(${midAngle - 90} ${textPos.x} ${textPos.y})`}
-        >
-          {text}
-        </text>
-      )}
+      // null
+      <text
+        x={textPos.x}
+        y={textPos.y}
+        textAnchor='start'
+        dominantBaseline='central'
+        fontFamily={fontFamily}
+        fontWeight={fontWeight}
+        fontSize={`${fontSize}px`}
+        fill={textColor}
+        style={{ willChange: 'transform' }}
+        transform={`rotate(${midAngle - 90} ${textPos.x} ${textPos.y})`}
+      >
+        {text}
+      </text>
     </g>
   );
 };

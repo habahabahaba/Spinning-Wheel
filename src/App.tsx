@@ -35,12 +35,12 @@ function createOptions(
 function App() {
   return (
     <>
-      <Wheel radius={360} options={options1} fillColors={fillColors} />
+      {/* <Wheel radius={360} options={options1} fillColors={fillColors} /> */}
 
-      <Wheel radius={360} options={options2} fillColors={fillColors} />
-      <Wheel radius={360} options={options3} fillColors={fillColors} />
-      <Wheel radius={360} options={options4} fillColors={fillColors} />
-      <Wheel radius={360} options={options5} fillColors={fillColors} />
+      {/* <Wheel radius={360} options={options2} fillColors={fillColors} /> */}
+      {/* <Wheel radius={360} options={options3} fillColors={fillColors} /> */}
+      {/* <Wheel radius={360} options={options4} fillColors={fillColors} /> */}
+      {/* <Wheel radius={360} options={options5} fillColors={fillColors} /> */}
 
       <Wheel radius={360} options={options6} fillColors={fillColors} />
     </>
