@@ -27,6 +27,7 @@ interface WheelProps {
 const Wheel: FC<WheelProps> = ({ radius, options, fillColors }) => {
   // State:
   const [currentOption, setCurrentOption] = useState<number>(0);
+  const [isActive, setIsActive] = useState(false);
   // Refs:
   const wheelRef = useRef<SVGSVGElement>(null);
 
@@ -40,11 +41,35 @@ const Wheel: FC<WheelProps> = ({ radius, options, fillColors }) => {
 
   // Handlers
   const handleClick = () => {
-    const random = +(Math.random() * 2 + 1).toFixed(2);
-    const accumulatedTurns = spin(random); // 👈 numberOfTurns is passed here
-    console.log(`accumulatedTurns: ${accumulatedTurns}`);
-    setCurrentOption(() => Math.floor(options.length * (1 - accumulatedTurns)));
+    if (isSpinning) return;
   };
+
+  const mouseDownTimeRef = useRef<number | null>(null);
+
+  function handleMouseDown() {
+    if (isSpinning) return;
+    mouseDownTimeRef.current = Date.now();
+    setIsActive(true);
+  }
+
+  function handleMouseUp() {
+    const startTime = mouseDownTimeRef.current;
+    if (startTime && !isSpinning) {
+      const heldSeconds = (Date.now() - startTime) / 1000;
+      const strength = Math.min(heldSeconds, 4) + 1;
+      mouseDownTimeRef.current = null;
+
+      const randomTurns = +(Math.random() * 2 + strength).toFixed(2);
+      // const randomTurns = 1;
+      console.log(`[Wheel] randomTurns: ${randomTurns}`);
+      const resultingTurn = spin(randomTurns);
+      console.log(`[Wheel] resultingTurn: ${resultingTurn}`);
+      setCurrentOption(
+        () => Math.floor(options.length * (1 - resultingTurn)) % options.length
+      );
+    }
+    setIsActive(false);
+  }
 
   // JSX:
   const sectors = useMemo(
@@ -56,18 +81,25 @@ const Wheel: FC<WheelProps> = ({ radius, options, fillColors }) => {
         return (
           <Sector
             key={i}
-            index={i}
-            totalSectors={options.length}
             center={center}
             radius={radius}
             startAngle={startAngle}
             endAngle={endAngle}
             label={option.label}
             fillColor={option.fillColor || fillColors[i % fillColors.length]}
+            isHighlighted={!isSpinning && i === currentOption}
           />
         );
       }),
-    [fillColors, options, center, radius, anglePerSector]
+    [
+      fillColors,
+      options,
+      center,
+      radius,
+      anglePerSector,
+      currentOption,
+      isSpinning,
+    ]
   );
 
   return (
@@ -101,7 +133,6 @@ const Wheel: FC<WheelProps> = ({ radius, options, fillColors }) => {
             width: '15px',
             height: '2px',
             backgroundColor: 'red',
-            // borderRadius: '50%',
           }}
         />
       </div>
@@ -109,12 +140,16 @@ const Wheel: FC<WheelProps> = ({ radius, options, fillColors }) => {
       <div>
         <button
           onClick={handleClick}
+          onMouseDown={handleMouseDown}
+          onMouseUp={handleMouseUp}
           disabled={isSpinning}
           style={{
             width: '8rem',
             position: 'relative',
             textAlign: 'center',
             zIndex: 5,
+            backgroundColor: isActive ? 'red' : 'white',
+            transition: 'background-color 4s',
           }}
         >
           {isSpinning ? 'Spinning...' : 'Spin!'}
