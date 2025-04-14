@@ -31,7 +31,7 @@ const Wheel: FC<WheelProps> = ({ radius, options, fillColors }) => {
   // Refs:
   const wheelRef = useRef<SVGSVGElement>(null);
 
-  const { windUp, cancelWindUp, spin, isSpinning } = useSpinAnimation(wheelRef);
+  const { windUp, cancelWindUp, spin, wheelState } = useSpinAnimation(wheelRef);
 
   const center = useMemo(() => ({ x: radius, y: radius }), [radius]);
 
@@ -41,27 +41,27 @@ const Wheel: FC<WheelProps> = ({ radius, options, fillColors }) => {
 
   // Handlers
   function handleClick() {
-    if (isSpinning) return;
+    if (wheelState !== 'idle') return;
   }
 
   const mouseDownTimeRef = useRef<number | null>(null);
 
   function handleMouseDown() {
-    if (isSpinning) return;
+    if (wheelState !== 'idle') return;
     mouseDownTimeRef.current = Date.now();
     setIsActive(true);
     windUp();
   }
 
   function handleMouseLeave() {
-    if (isSpinning) return;
+    if (wheelState !== 'windingUp') return;
     cancelWindUp();
     setIsActive(false);
   }
 
   function handleMouseUp() {
     const startTime = mouseDownTimeRef.current;
-    if (startTime && !isSpinning) {
+    if (startTime && wheelState === 'windingUp') {
       const heldSeconds = (Date.now() - startTime) / 1000;
       const strength = Math.min(heldSeconds, 4) + 1;
       mouseDownTimeRef.current = null;
@@ -94,7 +94,7 @@ const Wheel: FC<WheelProps> = ({ radius, options, fillColors }) => {
             endAngle={endAngle}
             label={option.label}
             fillColor={option.fillColor || fillColors[i % fillColors.length]}
-            isHighlighted={!isSpinning && i === currentOption}
+            isHighlighted={wheelState === 'idle' && i === currentOption}
           />
         );
       }),
@@ -105,7 +105,7 @@ const Wheel: FC<WheelProps> = ({ radius, options, fillColors }) => {
       radius,
       anglePerSector,
       currentOption,
-      isSpinning,
+      wheelState,
     ]
   );
 
@@ -150,22 +150,28 @@ const Wheel: FC<WheelProps> = ({ radius, options, fillColors }) => {
           onMouseDown={handleMouseDown}
           onMouseUp={handleMouseUp}
           onMouseLeave={handleMouseLeave}
-          disabled={isSpinning}
+          disabled={
+            wheelState === 'spinning' || wheelState === 'cancellingWindUp'
+          }
           style={{
             width: '8rem',
             position: 'relative',
             textAlign: 'center',
             zIndex: 5,
             backgroundColor: isActive ? 'red' : 'white',
-            transition: 'background-color 4s',
+            transition: 'background-color 5s',
           }}
         >
-          {isSpinning ? 'Spinning...' : 'Spin!'}
+          {wheelState === 'spinning'
+            ? 'Spinning...'
+            : wheelState === 'windingUp'
+            ? 'Winding...'
+            : 'Spin!'}
         </button>
 
         <span style={{ width: '15rem', marginLeft: '1rem' }}>
           Result:
-          {isSpinning ? ' Spinning...' : ` ${currentOption + 1}`}
+          {wheelState === 'idle' ? ` ${currentOption + 1}` : '?'}
         </span>
       </div>
     </div>

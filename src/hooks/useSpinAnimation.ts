@@ -3,14 +3,18 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 
 // Types, interfaces and enumns:
 import type { RefObject } from 'react';
+type WheelState = 'idle' | 'windingUp' | 'cancellingWindUp' | 'spinning';
 
 export function useSpinAnimation(
   ref: RefObject<HTMLElement | SVGSVGElement | null>
 ) {
+  // Refs:
   const spinStyleTagRef = useRef<HTMLStyleElement | null>(null);
   const windUpStyleTagRef = useRef<HTMLStyleElement | null>(null);
-  const [isSpinning, setIsSpinning] = useState(false);
+  const windUpNameRef = useRef<string>('');
   const resultingTurnRef = useRef(0); // Persistent total turns
+  // State:
+  const [wheelState, setWheelState] = useState<WheelState>('idle');
 
   const spin = useCallback(
     (numberOfTurns: number) => {
@@ -28,25 +32,7 @@ export function useSpinAnimation(
       }
 
       const style = document.createElement('style');
-      // style.innerHTML = `
-      //   @keyframes ${animationName} {
-      //     0%{
-      //       transform: rotate(${resultingTurnRef.current}turn);
-      //       animation-timing-function: ease-out;
-      //     }
-      //     ${100 / duration}%{
-      //       transform: rotate(${resultingTurnRef.current - 0.2}turn);
-      //       animation-timing-function: cubic-bezier(0.01, 0.5, 0.4, 0.99);
-      //     }
-      //     100% {
-      //       transform: rotate(${resultingTurnRef.current + numberOfTurns}turn);
-      //     }
-      //   }
 
-      //   .${animationName} {
-      //     animation: ${animationName} ${duration}s forwards;
-      //   }
-      // `;
       style.innerHTML = `
         @keyframes ${animationName} {
   
@@ -62,7 +48,7 @@ export function useSpinAnimation(
       document.head.appendChild(style);
       spinStyleTagRef.current = style;
 
-      setIsSpinning(true);
+      setWheelState('spinning');
 
       // Apply animation class
       el.classList.add(animationName);
@@ -74,13 +60,21 @@ export function useSpinAnimation(
 
       setTimeout(() => {
         // Remove animation class & persist final transform
-        el.classList.remove(`windUp`);
+        if (el.classList.contains(windUpNameRef.current)) {
+          console.log(
+            `[useSpinAnimation][spin] el.classList.contains(windUpNameRef.current: ${el.classList.contains(
+              windUpNameRef.current
+            )}`
+          );
+          el.classList.remove(windUpNameRef.current);
+          windUpNameRef.current = '';
+        }
         el.classList.remove(animationName);
         resultingTurnRef.current = resultingTurn;
         el.style.transform = `rotate(${resultingTurn}turn)`;
 
         setTimeout(() => {
-          setIsSpinning(false);
+          setWheelState('idle');
         }, 5); // 5ms delay to ensure it's finished
       }, duration * 1000);
 
@@ -88,17 +82,26 @@ export function useSpinAnimation(
     },
     [ref]
   );
+
   const windUp = useCallback(() => {
-    console.log(`[useSpinAnimation][windUp] windUp: ${''}`);
-
     const el = ref.current;
-    if (!el) return;
-    const animationName = `windUp`;
-
+    if (!el || wheelState !== 'idle') return;
+    setWheelState('windingUp');
     // Clean up old style
     if (windUpStyleTagRef.current) {
       document.head.removeChild(windUpStyleTagRef.current);
+      windUpStyleTagRef.current = null;
     }
+    if (windUpNameRef.current) {
+      el.classList.remove(windUpNameRef.current);
+      windUpNameRef.current = '';
+    }
+
+    const animationName = `windUp-${Date.now()}`;
+    windUpNameRef.current = animationName;
+    console.log(
+      `[useSpinAnimation][windUp] windUpNameRef.current: ${windUpNameRef.current}`
+    );
 
     const style = document.createElement('style');
     style.innerHTML = `
@@ -109,7 +112,7 @@ export function useSpinAnimation(
         }
 
         .${animationName} {
-          animation: ${animationName} 5s ease-out forwards;
+          animation: ${animationName} 5s steps(25, end) forwards;
         }
       `;
 
@@ -120,22 +123,33 @@ export function useSpinAnimation(
 
     // Apply animation class
     el.classList.add(animationName);
-  }, [ref]);
-  const cancelWindUp = useCallback(() => {
-    console.log(`[useSpinAnimation][windUp] windUp: ${''}`);
+  }, [ref, wheelState]);
 
+  const cancelWindUp = useCallback(() => {
     const el = ref.current;
-    if (!el) return;
-    el.classList.remove(`windUp`);
-  }, [ref]);
+    if (!el || wheelState !== 'windingUp') return;
+    setWheelState('cancellingWindUp');
+    if (windUpStyleTagRef.current) {
+      document.head.removeChild(windUpStyleTagRef.current);
+      windUpStyleTagRef.current = null;
+    }
+    if (windUpNameRef.current) {
+      el.classList.remove(windUpNameRef.current);
+      windUpNameRef.current = '';
+    }
+    setWheelState('idle');
+  }, [ref, wheelState]);
 
   useEffect(() => {
     return () => {
       if (spinStyleTagRef.current) {
         document.head.removeChild(spinStyleTagRef.current);
       }
+      if (windUpStyleTagRef.current) {
+        document.head.removeChild(windUpStyleTagRef.current);
+      }
     };
   }, []);
 
-  return { windUp, cancelWindUp, spin, isSpinning };
+  return { windUp, cancelWindUp, spin, wheelState };
 }
