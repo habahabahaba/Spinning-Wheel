@@ -31,7 +31,7 @@ const Wheel: FC<WheelProps> = ({ radius, options, fillColors }) => {
   // Refs:
   const wheelRef = useRef<SVGSVGElement>(null);
 
-  const { spin, isSpinning } = useSpinAnimation(wheelRef);
+  const { windUp, cancelWindUp, spin, isSpinning } = useSpinAnimation(wheelRef);
 
   const center = useMemo(() => ({ x: radius, y: radius }), [radius]);
 
@@ -40,9 +40,9 @@ const Wheel: FC<WheelProps> = ({ radius, options, fillColors }) => {
   const anglePerSector = 360 / options.length;
 
   // Handlers
-  const handleClick = () => {
+  function handleClick() {
     if (isSpinning) return;
-  };
+  }
 
   const mouseDownTimeRef = useRef<number | null>(null);
 
@@ -50,6 +50,13 @@ const Wheel: FC<WheelProps> = ({ radius, options, fillColors }) => {
     if (isSpinning) return;
     mouseDownTimeRef.current = Date.now();
     setIsActive(true);
+    windUp();
+  }
+
+  function handleMouseLeave() {
+    if (isSpinning) return;
+    cancelWindUp();
+    setIsActive(false);
   }
 
   function handleMouseUp() {
@@ -142,6 +149,7 @@ const Wheel: FC<WheelProps> = ({ radius, options, fillColors }) => {
           onClick={handleClick}
           onMouseDown={handleMouseDown}
           onMouseUp={handleMouseUp}
+          onMouseLeave={handleMouseLeave}
           disabled={isSpinning}
           style={{
             width: '8rem',
