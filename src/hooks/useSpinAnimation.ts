@@ -3,85 +3,29 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 
 // Types, interfaces and enumns:
 import type { RefObject } from 'react';
-type WheelState = 'idle' | 'windingUp' | 'cancellingWindUp' | 'spinning';
+type WheelState = 'idle' | 'windingUp' | 'cancelling' | 'spinning';
+
+// CONSTANTS:
+const MAX_WINDUP_TIME = 5;
+const MAX_WINDUP_TURN = -0.25;
+const WINDUP_ANIMATION_TIMING = `steps(25, end)`;
+const SPIN_ANIMATION_TIMING = `cubic-bezier(0.01, 0.5, 0.4, 0.99)`;
+const spinVelocity = (numberOfTurns: number) => {
+  if (numberOfTurns <= 0) return 0;
+  return numberOfTurns * 3 + 1;
+};
 
 export function useSpinAnimation(
   ref: RefObject<HTMLElement | SVGSVGElement | null>
 ) {
   // Refs:
   const spinStyleTagRef = useRef<HTMLStyleElement | null>(null);
+  const spinUpNameRef = useRef<string>('');
   const windUpStyleTagRef = useRef<HTMLStyleElement | null>(null);
   const windUpNameRef = useRef<string>('');
   const resultingTurnRef = useRef(0); // Persistent total turns
   // State:
   const [wheelState, setWheelState] = useState<WheelState>('idle');
-
-  const spin = useCallback(
-    (numberOfTurns: number) => {
-      console.log(`[useSpinAnimation][spin] numberOfTurns: ${numberOfTurns}`);
-
-      const el = ref.current;
-      if (!el || numberOfTurns === 0) return 0;
-
-      const duration = 3 * numberOfTurns + 1; // seconds
-      const animationName = `spin-${Date.now()}`;
-
-      // Clean up old style
-      if (spinStyleTagRef.current) {
-        document.head.removeChild(spinStyleTagRef.current);
-      }
-
-      const style = document.createElement('style');
-
-      style.innerHTML = `
-        @keyframes ${animationName} {
-  
-          to {
-            transform: rotate(${resultingTurnRef.current + numberOfTurns}turn);
-          }
-        }
-
-        .${animationName} {
-          animation: ${animationName} ${duration}s cubic-bezier(0.01, 0.5, 0.4, 0.99) forwards;
-        }
-      `;
-      document.head.appendChild(style);
-      spinStyleTagRef.current = style;
-
-      setWheelState('spinning');
-
-      // Apply animation class
-      el.classList.add(animationName);
-
-      const resultingTurn =
-        Math.round(
-          ((((resultingTurnRef.current + numberOfTurns) % 1) + 1) % 1) * 100
-        ) / 100;
-
-      setTimeout(() => {
-        // Remove animation class & persist final transform
-        if (el.classList.contains(windUpNameRef.current)) {
-          console.log(
-            `[useSpinAnimation][spin] el.classList.contains(windUpNameRef.current: ${el.classList.contains(
-              windUpNameRef.current
-            )}`
-          );
-          el.classList.remove(windUpNameRef.current);
-          windUpNameRef.current = '';
-        }
-        el.classList.remove(animationName);
-        resultingTurnRef.current = resultingTurn;
-        el.style.transform = `rotate(${resultingTurn}turn)`;
-
-        setTimeout(() => {
-          setWheelState('idle');
-        }, 5); // 5ms delay to ensure it's finished
-      }, duration * 1000);
-
-      return resultingTurn;
-    },
-    [ref]
-  );
 
   const windUp = useCallback(() => {
     const el = ref.current;
@@ -107,12 +51,14 @@ export function useSpinAnimation(
     style.innerHTML = `
         @keyframes ${animationName} {
           to {
-            transform: rotate(${resultingTurnRef.current + -0.25}turn);
+            transform: rotate(${
+              resultingTurnRef.current + MAX_WINDUP_TURN
+            }turn);
           }
         }
 
         .${animationName} {
-          animation: ${animationName} 5s steps(25, end) forwards;
+          animation: ${animationName} ${MAX_WINDUP_TIME}s ${WINDUP_ANIMATION_TIMING} forwards;
         }
       `;
 
@@ -125,10 +71,10 @@ export function useSpinAnimation(
     el.classList.add(animationName);
   }, [ref, wheelState]);
 
-  const cancelWindUp = useCallback(() => {
+  const cancelAnimations = useCallback(() => {
     const el = ref.current;
-    if (!el || wheelState !== 'windingUp') return;
-    setWheelState('cancellingWindUp');
+    if (!el) return;
+    setWheelState('cancelling');
     if (windUpStyleTagRef.current) {
       document.head.removeChild(windUpStyleTagRef.current);
       windUpStyleTagRef.current = null;
@@ -137,19 +83,82 @@ export function useSpinAnimation(
       el.classList.remove(windUpNameRef.current);
       windUpNameRef.current = '';
     }
+    if (spinStyleTagRef.current) {
+      document.head.removeChild(spinStyleTagRef.current);
+      spinStyleTagRef.current = null;
+    }
+    if (spinUpNameRef.current) {
+      el.classList.remove(spinUpNameRef.current);
+      spinUpNameRef.current = '';
+    }
     setWheelState('idle');
-  }, [ref, wheelState]);
+  }, [ref]);
 
-  useEffect(() => {
-    return () => {
+  const spin = useCallback(
+    (
+      numberOfTurns: number,
+      onSpinStart?: () => void,
+      onSpinEnd?: () => void
+    ) => {
+      console.log(`[useSpinAnimation][spin] numberOfTurns: ${numberOfTurns}`);
+      onSpinStart?.();
+      const el = ref.current;
+      if (!el || numberOfTurns === 0) return 0;
+
+      const duration = spinVelocity(numberOfTurns); // seconds
+      const animationName = `spin-${Date.now()}`;
+      spinUpNameRef.current = animationName;
+
+      // Clean up old style
       if (spinStyleTagRef.current) {
         document.head.removeChild(spinStyleTagRef.current);
       }
-      if (windUpStyleTagRef.current) {
-        document.head.removeChild(windUpStyleTagRef.current);
-      }
-    };
-  }, []);
 
-  return { windUp, cancelWindUp, spin, wheelState };
+      const style = document.createElement('style');
+
+      style.innerHTML = `
+        @keyframes ${animationName} {
+          to {
+            transform: rotate(${resultingTurnRef.current + numberOfTurns}turn);
+          }
+        }
+
+        .${animationName} {
+          animation: ${animationName} ${duration}s ${SPIN_ANIMATION_TIMING} forwards;
+        }
+      `;
+      document.head.appendChild(style);
+      spinStyleTagRef.current = style;
+
+      setWheelState('spinning');
+
+      // Apply animation class
+      el.classList.add(animationName);
+
+      // Calculate the final turn (angle):
+      const resultingTurn =
+        Math.round(
+          ((((resultingTurnRef.current + numberOfTurns) % 1) + 1) % 1) * 100
+        ) / 100;
+
+      setTimeout(() => {
+        // Remove animation class & persist final transform
+        cancelAnimations();
+        resultingTurnRef.current = resultingTurn;
+        el.style.transform = `rotate(${resultingTurn}turn)`;
+        onSpinEnd?.();
+      }, duration * 1000);
+
+      return resultingTurn;
+    },
+    [ref, cancelAnimations]
+  );
+
+  useEffect(() => {
+    return () => {
+      cancelAnimations();
+    };
+  }, [cancelAnimations]);
+
+  return { windUp, cancelAnimations, spin, wheelState };
 }

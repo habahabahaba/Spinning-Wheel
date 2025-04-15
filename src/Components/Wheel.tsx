@@ -31,7 +31,8 @@ const Wheel: FC<WheelProps> = ({ radius, options, fillColors }) => {
   // Refs:
   const wheelRef = useRef<SVGSVGElement>(null);
 
-  const { windUp, cancelWindUp, spin, wheelState } = useSpinAnimation(wheelRef);
+  const { windUp, cancelAnimations, spin, wheelState } =
+    useSpinAnimation(wheelRef);
 
   const center = useMemo(() => ({ x: radius, y: radius }), [radius]);
 
@@ -55,7 +56,7 @@ const Wheel: FC<WheelProps> = ({ radius, options, fillColors }) => {
 
   function handleMouseLeave() {
     if (wheelState !== 'windingUp') return;
-    cancelWindUp();
+    cancelAnimations();
     setIsActive(false);
   }
 
@@ -69,7 +70,15 @@ const Wheel: FC<WheelProps> = ({ radius, options, fillColors }) => {
       const randomTurns = +(Math.random() * 2 + strength).toFixed(2);
       // const randomTurns = 1;
       console.log(`[Wheel] randomTurns: ${randomTurns}`);
-      const resultingTurn = spin(randomTurns);
+      const resultingTurn = spin(
+        randomTurns,
+        () => {
+          console.log(`START`);
+        },
+        () => {
+          console.log(`END`);
+        }
+      );
       console.log(`[Wheel] resultingTurn: ${resultingTurn}`);
       setCurrentOption(
         () => Math.floor(options.length * (1 - resultingTurn)) % options.length
@@ -150,9 +159,7 @@ const Wheel: FC<WheelProps> = ({ radius, options, fillColors }) => {
           onMouseDown={handleMouseDown}
           onMouseUp={handleMouseUp}
           onMouseLeave={handleMouseLeave}
-          disabled={
-            wheelState === 'spinning' || wheelState === 'cancellingWindUp'
-          }
+          disabled={wheelState === 'spinning' || wheelState === 'cancelling'}
           style={{
             width: '8rem',
             position: 'relative',
@@ -171,7 +178,7 @@ const Wheel: FC<WheelProps> = ({ radius, options, fillColors }) => {
 
         <span style={{ width: '15rem', marginLeft: '1rem' }}>
           Result:
-          {wheelState === 'idle' ? ` ${currentOption + 1}` : '?'}
+          <b> {wheelState === 'idle' ? ` ${currentOption + 1}` : ' ?'}</b>
         </span>
       </div>
     </div>
