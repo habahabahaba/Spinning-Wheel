@@ -73,10 +73,10 @@ const Wheel: FC<WheelProps> = ({ radius, options, fillColors }) => {
       const resultingTurn = spin(
         randomTurns,
         () => {
-          console.log(`START`);
+          console.log(`START callback`);
         },
         () => {
-          console.log(`END`);
+          console.log(`END callback`);
         }
       );
       console.log(`[Wheel] resultingTurn: ${resultingTurn}`);
