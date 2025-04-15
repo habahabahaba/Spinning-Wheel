@@ -85,16 +85,19 @@ export function useSpinAnimation(
   // State:
   const [wheelState, setWheelState] = useState<WheelState>('idle');
 
-  const windUp = useCallback(() => {
-    const el = ref.current;
-    if (!el || wheelState !== 'idle') return;
-    setWheelState('windingUp');
+  const windUp = useCallback(
+    (onWindUpStart?: () => void) => {
+      const el = ref.current;
+      if (!el || wheelState !== 'idle') return;
+      setWheelState('windingUp');
+      // Run callback (if provided):
+      onWindUpStart?.();
 
-    addAnimation({
-      element: el,
-      styleTagRef: windUpStyleTagRef,
-      animationNameRef: windUpNameRef,
-      styleFn: (animationName) => `
+      addAnimation({
+        element: el,
+        styleTagRef: windUpStyleTagRef,
+        animationNameRef: windUpNameRef,
+        styleFn: (animationName) => `
         @keyframes ${animationName} {
           to {
             transform: rotate(${
@@ -107,27 +110,34 @@ export function useSpinAnimation(
           animation: ${animationName} ${MAX_WINDUP_TIME}s ${WINDUP_ANIMATION_TIMING} forwards;
         }
       `,
-    });
-  }, [ref, wheelState]);
+      });
+    },
+    [ref, wheelState]
+  );
 
-  const cancelAnimations = useCallback(() => {
-    const el = ref.current;
-    if (!el) return;
-    setWheelState('cancelling');
+  const cancelAnimations = useCallback(
+    (onCancel?: () => void) => {
+      const el = ref.current;
+      if (!el) return;
+      setWheelState('cancelling');
+      // Run callback (if provided):
+      onCancel?.();
 
-    removeAnimation({
-      element: el,
-      styleTagRef: windUpStyleTagRef,
-      animationNameRef: windUpNameRef,
-    });
-    removeAnimation({
-      element: el,
-      styleTagRef: spinStyleTagRef,
-      animationNameRef: spinNameRef,
-    });
+      removeAnimation({
+        element: el,
+        styleTagRef: windUpStyleTagRef,
+        animationNameRef: windUpNameRef,
+      });
+      removeAnimation({
+        element: el,
+        styleTagRef: spinStyleTagRef,
+        animationNameRef: spinNameRef,
+      });
 
-    setWheelState('idle');
-  }, [ref]);
+      setWheelState('idle');
+    },
+    [ref]
+  );
 
   const spin = useCallback(
     (
@@ -136,15 +146,15 @@ export function useSpinAnimation(
       onSpinEnd?: () => void
     ) => {
       console.log(`[useSpinAnimation][spin] numberOfTurns: ${numberOfTurns}`);
-      // Run callback (if provided):
-      onSpinStart?.();
       const el = ref.current;
       if (!el || numberOfTurns === 0) return 0;
-      if (wheelState !== 'idle' && wheelState !== 'windingUp') return;
-
-      const duration = spinVelocity(numberOfTurns); // seconds
+      if (wheelState !== 'idle' && wheelState !== 'windingUp') return 0;
 
       setWheelState('spinning');
+      // Run callback (if provided):
+      onSpinStart?.();
+
+      const duration = spinVelocity(numberOfTurns); // seconds
 
       addAnimation({
         element: el,
