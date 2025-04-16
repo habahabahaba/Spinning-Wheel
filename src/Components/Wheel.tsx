@@ -9,27 +9,34 @@ import { useMemo, useRef, useState } from 'react';
 import { useSpinAnimation } from '../hooks/useSpinAnimation';
 // Components:
 import Sector from './Sector';
+import Arrow from './Arrow';
+import ResultDisplayModal from './ResultDisplayModal';
 // CSS:
 // Types, interfaces and enumns:
 import type { FC } from 'react';
-interface Option {
+import type { ModalHandle } from './Modal';
+interface Outcome {
   label: string;
   fillColor?: string;
   textColor?: string;
+  fontFamily?: string;
   angle?: number;
 }
 interface WheelProps {
   radius: number;
-  options: Option[];
+  outcomes: Outcome[];
   fillColors: string[];
 }
 
-const Wheel: FC<WheelProps> = ({ radius, options, fillColors }) => {
+const Wheel: FC<WheelProps> = ({ radius, outcomes, fillColors }) => {
   // State:
-  const [currentOption, setCurrentOption] = useState<number>(0);
-  const [isActive, setIsActive] = useState(false);
+  const [currentOutcome, setCurrentOutcome] = useState<number>(0);
+  const [isWinding, setIsWinding] = useState(false);
+  // const [isShowingResult, setIsShowingResult] = useState(false);
+
   // Refs:
   const wheelRef = useRef<SVGSVGElement>(null);
+  const resultModalRef = useRef<ModalHandle>(null);
 
   const { windUp, cancelAnimations, spin, wheelState } =
     useSpinAnimation(wheelRef);
@@ -38,7 +45,7 @@ const Wheel: FC<WheelProps> = ({ radius, options, fillColors }) => {
 
   const diameter = 2 * radius;
 
-  const anglePerSector = 360 / options.length;
+  const anglePerSector = 360 / outcomes.length;
 
   // Handlers
   function handleClick() {
@@ -50,14 +57,14 @@ const Wheel: FC<WheelProps> = ({ radius, options, fillColors }) => {
   function handleMouseDown() {
     if (wheelState !== 'idle') return;
     mouseDownTimeRef.current = Date.now();
-    setIsActive(true);
+    setIsWinding(true);
     windUp();
   }
 
   function handleMouseLeave() {
     if (wheelState !== 'windingUp') return;
     cancelAnimations();
-    setIsActive(false);
+    setIsWinding(false);
   }
 
   function handleMouseUp() {
@@ -77,20 +84,22 @@ const Wheel: FC<WheelProps> = ({ radius, options, fillColors }) => {
         },
         () => {
           console.log(`END callback`);
+          resultModalRef.current?.handleShowModal();
         }
       );
       console.log(`[Wheel] resultingTurn: ${resultingTurn}`);
-      setCurrentOption(
-        () => Math.floor(options.length * (1 - resultingTurn)) % options.length
+      setCurrentOutcome(
+        () =>
+          Math.floor(outcomes.length * (1 - resultingTurn)) % outcomes.length
       );
     }
-    setIsActive(false);
+    setIsWinding(false);
   }
 
   // JSX:
   const sectors = useMemo(
     () =>
-      options.map((option, i) => {
+      outcomes.map((outcome, i) => {
         // Convert to SVG coordinate system (0° = right)
         const startAngle = i * anglePerSector + 90; // Subtract 90° to align 0° with right
         const endAngle = (i + 1) * anglePerSector + 90;
@@ -101,19 +110,19 @@ const Wheel: FC<WheelProps> = ({ radius, options, fillColors }) => {
             radius={radius}
             startAngle={startAngle}
             endAngle={endAngle}
-            label={option.label}
-            fillColor={option.fillColor || fillColors[i % fillColors.length]}
-            isHighlighted={wheelState === 'idle' && i === currentOption}
+            label={outcome.label}
+            fillColor={outcome.fillColor || fillColors[i % fillColors.length]}
+            isHighlighted={wheelState === 'idle' && i === currentOutcome}
           />
         );
       }),
     [
       fillColors,
-      options,
+      outcomes,
       center,
       radius,
       anglePerSector,
-      currentOption,
+      currentOutcome,
       wheelState,
     ]
   );
@@ -140,17 +149,7 @@ const Wheel: FC<WheelProps> = ({ radius, options, fillColors }) => {
           {sectors}
         </svg>
 
-        <div
-          style={{
-            position: 'absolute',
-            right: 0,
-            top: 'calc(50% + 1px)',
-            transform: 'translate(50%, -50%)',
-            width: '15px',
-            height: '2px',
-            backgroundColor: 'red',
-          }}
-        />
+        <Arrow arrowIdx={2} />
       </div>
 
       <div>
@@ -165,7 +164,7 @@ const Wheel: FC<WheelProps> = ({ radius, options, fillColors }) => {
             position: 'relative',
             textAlign: 'center',
             zIndex: 5,
-            backgroundColor: isActive ? 'red' : 'white',
+            backgroundColor: isWinding ? 'red' : 'white',
             transition: 'background-color 5s',
           }}
         >
@@ -177,10 +176,19 @@ const Wheel: FC<WheelProps> = ({ radius, options, fillColors }) => {
         </button>
 
         <span style={{ width: '15rem', marginLeft: '1rem' }}>
-          Result:
-          <b> {wheelState === 'idle' ? ` ${currentOption + 1}` : ' ?'}</b>
+          Result index:
+          <b> {wheelState === 'idle' ? ` ${currentOutcome}` : ' ?'}</b>
         </span>
       </div>
+      <ResultDisplayModal
+        label={outcomes[currentOutcome]['label']}
+        backgroundColor={
+          outcomes[currentOutcome]['fillColor'] ||
+          fillColors[currentOutcome % fillColors.length]
+        }
+        fontFamily={outcomes[currentOutcome]['fontFamily']}
+        ref={resultModalRef}
+      />
     </div>
   );
 };

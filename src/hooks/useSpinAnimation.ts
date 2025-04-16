@@ -151,6 +151,7 @@ export function useSpinAnimation(
       if (wheelState !== 'idle' && wheelState !== 'windingUp') return 0;
 
       setWheelState('spinning');
+
       // Run callback (if provided):
       onSpinStart?.();
 
