@@ -8,9 +8,10 @@
 // Components:
 // CSS:
 // Types, interfaces and enumns:
-import type { FC } from 'react';
+import type { FC, Ref } from 'react';
 interface ArrowProps {
   arrowIdx?: number;
+  ref?: Ref<HTMLDivElement>;
 }
 
 const arrowSVGs = [
@@ -200,7 +201,7 @@ const arrowSVGs = [
   </svg>,
 ];
 
-const Arrow: FC<ArrowProps> = ({ arrowIdx = 0 }) => {
+const Arrow: FC<ArrowProps> = ({ arrowIdx = 0, ref }) => {
   // JSX:
   return (
     <div
@@ -210,6 +211,7 @@ const Arrow: FC<ArrowProps> = ({ arrowIdx = 0 }) => {
         top: '51%',
         transform: 'translate(50%, -50%)',
       }}
+      ref={ref}
     >
       {arrowSVGs[arrowIdx] || arrowSVGs[0]}
     </div>

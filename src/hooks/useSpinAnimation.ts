@@ -103,6 +103,7 @@ export function useSpinAnimation(
             transform: rotate(${
               resultingTurnRef.current + MAX_WINDUP_TURN
             }turn);
+            filter: brightness(0.35) sepia(1) hue-rotate(-45deg) saturate(5);
           }
         }
 

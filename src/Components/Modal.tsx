@@ -5,7 +5,6 @@
 // React:
 import {
   useImperativeHandle,
-  forwardRef,
   useRef,
   useCallback,
   isValidElement,
@@ -18,11 +17,13 @@ import modalCloseCtx from '../context/modalCloseCtx';
 // Components:
 // CSS:
 // Types, interfaces and enumns:
-import type { ReactElement } from 'react';
-type ModalProps<P = unknown> = {
+import type { ReactElement, FC, Ref } from 'react';
+type ModalProps<P = object> = {
   children: ReactElement<P>;
-  modalClasses?: string;
-} & P;
+  childProps?: P;
+  className?: string;
+  ref?: Ref<ModalHandle>;
+};
 
 export type ModalHandle = {
   handleShowModal: () => void;
@@ -30,52 +31,54 @@ export type ModalHandle = {
 };
 
 const modalRootEl = document.getElementById('modal-root');
-const Modal = forwardRef<ModalHandle, ModalProps>(
-  ({ modalClasses = '', children, ...rest }: ModalProps, ref) => {
-    // Refs:
-    const dialogRef = useRef<HTMLDialogElement>(null);
+const Modal: FC<ModalProps> = ({
+  className = '',
+  children,
+  childProps,
+  ref,
+}) => {
+  // Refs:
+  const dialogRef = useRef<HTMLDialogElement>(null);
 
-    // Handlers:
-    const handleShowModal = useCallback(() => {
-      dialogRef.current?.showModal();
-    }, []);
-    const handleCloseModal = useCallback(() => {
-      dialogRef.current?.close();
-    }, []);
+  // Handlers:
+  const handleShowModal = useCallback(() => {
+    dialogRef.current?.showModal();
+  }, []);
+  const handleCloseModal = useCallback(() => {
+    dialogRef.current?.close();
+  }, []);
 
-    // Imperative handle:
-    useImperativeHandle(ref, () => ({
-      handleShowModal,
-      handleCloseModal,
-    }));
+  // Imperative handle:
+  useImperativeHandle(ref, () => ({
+    handleShowModal,
+    handleCloseModal,
+  }));
 
-    // JSX:
-    const childWithProps = isValidElement(children)
-      ? cloneElement(children, { ...rest })
-      : children;
+  // JSX:
+  const childWithProps = isValidElement(children)
+    ? cloneElement(children, { ...childProps })
+    : children;
 
-    return modalRootEl
-      ? createPortal(
-          <dialog
-            ref={dialogRef}
-            role='dialog'
-            onClick={(ev) => {
-              if (ev.target === dialogRef.current) {
-                handleCloseModal();
-              }
-            }}
-            className={`absolute top-18 left-1/3 rounded-md p-4 shadow-md backdrop:bg-stone-900/90 ${modalClasses}`}
-          >
-            <div className='mt-4 mb-9 w-[35rem]'>
-              <modalCloseCtx.Provider value={{ handleCloseModal }}>
-                {childWithProps}
-              </modalCloseCtx.Provider>
-            </div>
-          </dialog>,
-          modalRootEl
-        )
-      : null;
-  }
-);
-
+  return modalRootEl
+    ? createPortal(
+        <dialog
+          ref={dialogRef}
+          role='dialog'
+          onClick={(ev) => {
+            if (ev.target === dialogRef.current) {
+              handleCloseModal();
+            }
+          }}
+          className={`absolute top-18 left-1/3 rounded-md p-4 shadow-md backdrop:bg-stone-900/90 ${className}`}
+        >
+          <div className='mt-4 mb-9 w-[35rem]'>
+            <modalCloseCtx.Provider value={{ handleCloseModal }}>
+              {childWithProps}
+            </modalCloseCtx.Provider>
+          </div>
+        </dialog>,
+        modalRootEl
+      )
+    : null;
+};
 export default Modal;

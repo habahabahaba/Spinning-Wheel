@@ -19,7 +19,11 @@ const ResultDisplayModal = forwardRef<ModalHandle, ResultDisplayProps>(
   ({ label, backgroundColor }, ref: ForwardedRef<ModalHandle>) => {
     // JSX:
     return (
-      <Modal ref={ref} modalClasses='drop-down'>
+      <Modal
+        ref={ref}
+        className='drop-down'
+        childProps={{ label, backgroundColor }}
+      >
         <ResultDisplay label={label} backgroundColor={backgroundColor} />
       </Modal>
     );
