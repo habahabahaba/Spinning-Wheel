@@ -123,6 +123,7 @@ const Main: FC = () => {
           position: 'relative',
           border: '1px solid black',
           borderRadius: '50%',
+          boxShadow: '0px 0px 10px 0px black',
           //   height: 'fit-content',
           //   padding: 0,
         }}

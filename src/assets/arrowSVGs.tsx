@@ -24,7 +24,7 @@ const arrowSVGs: JSX.Element[] = [
   >
     <g
       strokeWidth='60'
-      stroke='hsl(0, 0%, 0%)'
+      stroke='#000'
       fill='none'
       strokeLinecap='square'
       transform='rotate(134, 400, 400)'
@@ -47,7 +47,7 @@ const arrowSVGs: JSX.Element[] = [
         orient='auto'
         id='SvgjsMarker2753'
       >
-        <polygon points='0,5 0,0 5,2.5' fill='hsl(0, 0%, 0%)'></polygon>
+        <polygon points='0,5 0,0 5,2.5' fill='#000'></polygon>
       </marker>
     </defs>
   </svg>,
