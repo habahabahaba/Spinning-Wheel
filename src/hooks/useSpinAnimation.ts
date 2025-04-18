@@ -66,7 +66,7 @@ function removeAnimation(options: RemoveAnimationOptions): void {
 // CONSTANTS:
 const MAX_WINDUP_TIME = 5;
 const MAX_WINDUP_TURN = -0.25;
-const WINDUP_ANIMATION_TIMING = `steps(50, end)`;
+const WINDUP_ANIMATION_TIMING = `steps(25, end)`;
 const SPIN_ANIMATION_TIMING = `cubic-bezier(0.01, 0.5, 0.4, 0.99)`;
 const spinVelocity = (numberOfTurns: number) => {
   if (numberOfTurns <= 0) return 0;
@@ -103,7 +103,7 @@ export function useSpinAnimation(
             transform: rotate(${
               resultingTurnRef.current + MAX_WINDUP_TURN
             }turn);
-            filter: brightness(0.35) sepia(1) hue-rotate(-45deg) saturate(5);
+            filter: brightness(0.6) contrast(1.7) grayscale(100%);
           }
         }
 

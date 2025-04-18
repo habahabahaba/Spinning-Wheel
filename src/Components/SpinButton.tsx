@@ -8,9 +8,13 @@
 // Hooks:
 // Components:
 // CSS:
+// Icons:
+import { idleSVGs, windUpSVGs, spinningSVGs } from '../assets/spinSVGs';
 // Types, interfaces and enumns:
 import type { FC } from 'react';
 interface SpinButtonProps {
+  fillColors: string[];
+  wheelRadius: number;
   wheelState: string;
   onClick: () => void;
   onMouseDown: () => void;
@@ -19,6 +23,8 @@ interface SpinButtonProps {
 }
 
 const SpinButton: FC<SpinButtonProps> = ({
+  fillColors,
+  wheelRadius,
   wheelState,
   onClick,
   onMouseDown,
@@ -35,23 +41,54 @@ const SpinButton: FC<SpinButtonProps> = ({
       onMouseLeave={onMouseLeave}
       disabled={wheelState === 'spinning' || wheelState === 'cancelling'}
       style={{
-        width: '8rem',
-        position: 'relative',
-        textAlign: 'center',
+        width: `${wheelRadius * 0.2}px`,
+        height: `${wheelRadius * 0.2}px`,
+        overflow: 'hidden',
+        border: '2px solid',
+        borderRadius: '50%',
+        padding: '2px',
+
+        position: 'absolute',
+        left: '50%',
+        top: '50%',
+        transform: 'translate(-50%, -50%)',
+
+        // textAlign: 'center',
         zIndex: 5,
+        backgroundColor: `${
+          wheelState === 'windingUp'
+            ? fillColors[1]
+            : wheelState === 'spinning'
+            ? fillColors[2]
+            : fillColors[3]
+        }`,
         filter: `${
           wheelState === 'windingUp'
-            ? 'brightness(0.35) sepia(1) hue-rotate(-45deg) saturate(5)'
+            ? 'brightness(1.6) contrast(1) grayscale(0%)'
             : ''
         }`,
-        transition: 'filter 5s',
+        boxShadow: `${
+          wheelState === 'windingUp'
+            ? '0px 0px 0px, inset 0px 0px 80px -10px black'
+            : wheelState === 'spinning'
+            ? ''
+            : '0px 0px 10px 0px black'
+        }`,
+        transition: 'filter 6s, box-shadow 6s, background-color 2s',
       }}
+      className={`${
+        wheelState === 'spinning'
+          ? 'button-spin'
+          : wheelState === 'windingUp'
+          ? 'button-wind-up'
+          : ''
+      }`}
     >
       {wheelState === 'spinning'
-        ? 'Spinning...'
+        ? spinningSVGs[1] || spinningSVGs[0]
         : wheelState === 'windingUp'
-        ? 'Winding...'
-        : 'Spin!'}
+        ? windUpSVGs[0] || windUpSVGs[0]
+        : idleSVGs[0] || idleSVGs[0]}
     </button>
   );
 };

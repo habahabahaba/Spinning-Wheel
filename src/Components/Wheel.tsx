@@ -8,7 +8,6 @@ import { useMemo } from 'react';
 // Hooks:
 // Components:
 import Sector from './Sector';
-import Arrow from './Arrow';
 // CSS:
 // Types, interfaces and enumns:
 import type { FC, Ref } from 'react';
@@ -20,7 +19,6 @@ interface WheelProps {
   fillColors: string[];
   wheelContainerRef?: Ref<HTMLDivElement>;
   wheelRef?: Ref<SVGSVGElement>;
-  arrowRef?: Ref<HTMLDivElement>;
 }
 
 export interface WheelHandle {
@@ -35,7 +33,6 @@ const Wheel: FC<WheelProps> = ({
   fillColors,
   wheelContainerRef,
   wheelRef,
-  arrowRef,
 }) => {
   // Refs:
   // const wheelContainerRef = useRef<HTMLDivElement>(null);
@@ -84,12 +81,11 @@ const Wheel: FC<WheelProps> = ({
     <div
       ref={wheelContainerRef}
       style={{
-        border: 'solid 4px black',
+        border: `solid 6px ${fillColors[1]}`,
         borderRadius: '50%',
         padding: '0',
         height: `${diameter}px`,
         position: 'relative',
-        display: 'inline-block',
         // overflow: 'hidden',
       }}
     >
@@ -102,8 +98,6 @@ const Wheel: FC<WheelProps> = ({
       >
         {sectors}
       </svg>
-
-      <Arrow arrowIdx={1} ref={arrowRef} />
     </div>
   );
 };

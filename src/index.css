@@ -36,25 +36,6 @@ h1 {
   line-height: 1.1;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
@@ -69,34 +50,53 @@ button:focus-visible {
 }
 
 .drop-down {
-  /* position: fixed; */
-  animation: drop-down 0.7s forwards;
-  /* position: fixed; */
-  /* top: 0%;
-  left: 0%; */
-  /* transform: translate(-50%, -50%); */
-  /* height: auto; */
+  position: absolute;
+  animation: drop-down 0.5s forwards;
   padding: 0;
+}
+
+.button-spin {
+  animation: button-spin 2s linear infinite;
+}
+.button-wind-up {
+  animation: button-wind-up 5s linear forwards;
 }
 
 @keyframes drop-down {
   0% {
-    transform: translateY(-100vh);
+    transform: translateY(-100%);
     /* opacity: 0; */
     animation-timing-function: ease-in;
   }
   75% {
-    transform: translateY(0);
+    transform: translateY(0%);
     /* opacity: 0; */
     animation-timing-function: ease-out;
   }
   90% {
-    transform: translateY(-10vh);
+    transform: translateY(-10%);
     /* opacity: 0; */
     animation-timing-function: ease-in;
   }
   100% {
-    transform: translateY(0);
+    transform: translateY(0%);
     /* opacity: 1; */
+  }
+}
+
+@keyframes button-spin {
+  0% {
+    transform: translate(-50%, -50%);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(1turn);
+  }
+}
+@keyframes button-wind-up {
+  0% {
+    transform: translate(-50%, -50%);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(-0.25turn);
   }
 }

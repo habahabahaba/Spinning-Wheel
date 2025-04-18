@@ -9,6 +9,7 @@ import { useRef, useState } from 'react';
 import { useSpinAnimation } from '../hooks/useSpinAnimation';
 // Components:
 import Wheel from './Wheel';
+import Arrow from './Arrow';
 import SpinButton from './SpinButton';
 import ResultDisplayModal from './ResultDisplayModal';
 // CSS:
@@ -41,7 +42,9 @@ const outcomes6 = createOutcomes(72, (i) => ({
   label: `Outcome-${i + 1}`,
 }));
 
-const fillColors = ['#e6b89c', '#fe938c', '#ead2ac', '#9cafb7'];
+const FILL_COLORS = ['#e6b89c', '#fe938c', '#ead2ac', '#9cafb7'];
+
+const WHEEL_RADIUS = 360;
 
 function createOutcomes(
   quantity: number,
@@ -115,35 +118,41 @@ const Main: FC = () => {
 
   return (
     <main>
-      <Wheel
-        radius={360}
-        outcomes={outcomes6}
-        fillColors={fillColors}
-        wheelRef={wheelRef}
-      />
-      <div>
+      <div
+        style={{
+          position: 'relative',
+          border: '1px solid black',
+          borderRadius: '50%',
+          //   height: 'fit-content',
+          //   padding: 0,
+        }}
+      >
+        <Wheel
+          radius={WHEEL_RADIUS}
+          outcomes={outcomes6}
+          fillColors={FILL_COLORS}
+          wheelRef={wheelRef}
+        />
+        <Arrow arrowIdx={1} />
         <SpinButton
+          fillColors={FILL_COLORS}
+          wheelRadius={WHEEL_RADIUS}
           wheelState={wheelState}
           onClick={handleClick}
           onMouseDown={handleMouseDown}
           onMouseUp={handleMouseUp}
           onMouseLeave={handleMouseLeave}
         />
-
-        {/* <span style={{ width: '15rem', marginLeft: '1rem' }}>
-          Result index:
-          <b> {wheelState === 'idle' ? ` ${currentOutcome}` : ' ?'}</b>
-        </span> */}
+        <ResultDisplayModal
+          label={outcomes6[currentOutcome]['label']}
+          backgroundColor={
+            outcomes6[currentOutcome]['fillColor'] ||
+            FILL_COLORS[currentOutcome % FILL_COLORS.length]
+          }
+          fontFamily={outcomes6[currentOutcome]['fontFamily']}
+          ref={resultModalRef}
+        />
       </div>
-      <ResultDisplayModal
-        label={outcomes6[currentOutcome]['label']}
-        backgroundColor={
-          outcomes6[currentOutcome]['fillColor'] ||
-          fillColors[currentOutcome % fillColors.length]
-        }
-        fontFamily={outcomes6[currentOutcome]['fontFamily']}
-        ref={resultModalRef}
-      />
     </main>
   );
 };
