@@ -1,3 +1,5 @@
+// Utils:
+import { createOutcomes } from '../utils/wheelConfig';
 // 3rd party:
 // Redux RTK:
 // Store:
@@ -23,35 +25,22 @@ export interface Outcome {
   fontFamily?: string;
   angle?: number;
 }
-// const outcomes1 = createOutcomes(2, (i) => ({
-//   label: `Outcome-${i + 1}-01234567890123456789xxxwwwwwwwww`,
-// }));
-// const outcomes2 = createOutcomes(22, (i) => ({
-//   label: `Outcome-${i + 1}-01234567890123456789xxxwwwwwwwww`,
-// }));
-// const outcomes3 = createOutcomes(72, (i) => ({
-//   label: `Outcome-${i + 1}-01234567890123456789xxxwwwwwwwww`,
-// }));
-// const outcomes4 = createOutcomes(7, (i) => ({
-//   label: `Outcome-${i + 1}-x`,
-// }));
-// const outcomes5 = createOutcomes(22, (i) => ({
-//   label: `Outcome-${i + 1}-01234567890123456789xxxwwwwwwwww`,
-// }));
-const outcomes6 = createOutcomes(72, (i) => ({
-  label: `Outcome-${i + 1}`,
-}));
+// const outcomes1 = createOutcomes(2, (i) => (`Outcome-${i + 1}-01234567890123456789xxxwwwwwwwww`
+// ));
+// const outcomes2 = createOutcomes(22, (i) => (`Outcome-${i + 1}-01234567890123456789xxxwwwwwwwww`
+// ));
+// const outcomes3 = createOutcomes(72, (i) => (`Outcome-${i + 1}-01234567890123456789xxxwwwwwwwww`
+// ));
+// const outcomes4 = createOutcomes(7, (i) => (`Outcome-${i + 1}-x`
+// ));
+// const outcomes5 = createOutcomes(22, (i) => (`Outcome-${i + 1}-01234567890123456789xxxwwwwwwwww`
+// ));
+const outcomes6 = createOutcomes(72, (i) => `Outcome ${i + 1}`);
 
 const FILL_COLORS = ['#e6b89c', '#fe938c', '#ead2ac', '#9cafb7'];
 
 const WHEEL_RADIUS = 360;
 
-function createOutcomes(
-  quantity: number,
-  labelFn: (i: number) => Outcome
-): Outcome[] {
-  return new Array(quantity).fill(0).map((_, i) => labelFn(i));
-}
 const Main: FC = () => {
   // State:
   const [currentOutcome, setCurrentOutcome] = useState<number>(0);

@@ -11,14 +11,15 @@ export class OutcomeModel implements Outcome {
     this.fillColor = fillColor.trim();
     this.fontFamily = fontFamily.trim();
   }
+  
   public label: string;
   public fillColor: string;
   public fontFamily: string;
 }
 
 export interface WheelConfig {
-  fillColors: string[];
-  fontFamily: string[];
+  default_fillColors: string[];
+  default_fontFamily: string[];
   outcomes: Outcome[];
 }
 
