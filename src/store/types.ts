@@ -7,11 +7,11 @@ export interface Outcome {
 
 export class OutcomeModel implements Outcome {
   constructor({ label, fillColor, fontFamily }: Outcome) {
-    this.label = label.trim();
-    this.fillColor = fillColor.trim();
-    this.fontFamily = fontFamily.trim();
+    this.label = label;
+    this.fillColor = fillColor;
+    this.fontFamily = fontFamily;
   }
-  
+
   public label: string;
   public fillColor: string;
   public fontFamily: string;
@@ -19,7 +19,7 @@ export class OutcomeModel implements Outcome {
 
 export interface WheelConfig {
   default_fillColors: string[];
-  default_fontFamily: string[];
+  default_fontFamily: string;
   outcomes: Outcome[];
 }
 
@@ -31,3 +31,5 @@ export interface WheelConfigs {
   activeConfig: WheelConfig;
   savedConfigs: (SavedWheelConfig | undefined)[];
 }
+
+
