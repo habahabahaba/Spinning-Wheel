@@ -1,16 +1,28 @@
 // Assets:
 import { PALETTES } from '../assets/palettes';
 // Utils:
-import { blankOutcome, initConfigs, prepareConfig } from '../utils/wheelConfig';
+import {
+  blankOutcome,
+  initConfigs,
+  initConfig,
+  prepareConfig,
+} from '../utils/wheelConfig';
 import { getCurrentDate } from '../utils/date';
 // 3rd party:
 import { create } from 'zustand';
+import { devtools } from 'zustand/middleware';
 // Types, interfaces and enumns:
-import type { Outcome, WheelConfigs } from './types';
+import type { Outcome, WheelConfigs, WheelConfig } from './types';
 interface WheelActions {
   replaceState: ({ newState }: { newState: WheelConfigs }) => void;
 
   resetState: () => void;
+
+  replaceCurrentConfig: ({ newConfig }: { newConfig: WheelConfig }) => void;
+
+  resetCurrentConfig: () => void;
+
+  setDefaultPalette: ({ paletteIdx }: { paletteIdx: number }) => void;
 
   setDefaultFontFamily: ({ fontFamily }: { fontFamily: string }) => void;
 
@@ -20,14 +32,14 @@ interface WheelActions {
 
   removeOutcome: ({ outcomeIdx }: { outcomeIdx: number }) => void;
 
-  modifyOutcome: <T extends keyof Outcome>({
+  modifyOutcome: <K extends keyof Outcome>({
     outcomeIdx,
     key,
     value,
   }: {
     outcomeIdx: number;
-    key: T;
-    value: Outcome[T];
+    key: K;
+    value: Outcome[K];
   }) => void;
 
   saveCurrentConfig: ({
@@ -43,148 +55,173 @@ interface WheelActions {
   applyConfig: () => void;
 }
 
-const useWheelStore = create<WheelConfigs & WheelActions>()((set) => ({
-  ...initConfigs,
+const useWheelStore = create<WheelConfigs & WheelActions>()(
+  devtools((set) => ({
+    ...initConfigs,
 
-  replaceState: ({ newState }: { newState: WheelConfigs }) => set(newState),
+    replaceState: ({ newState }: { newState: WheelConfigs }) => set(newState),
 
-  resetState: () => {
-    set(initConfigs);
-  },
+    resetState: () => {
+      set(initConfigs);
+    },
 
-  setDefaultFillColors: ({ palettesIdx }: { palettesIdx: number }) =>
-    set((state) => {
-      if (palettesIdx >= PALETTES.length || palettesIdx < 0) return state;
-      return {
+    replaceCurrentConfig: ({ newConfig }: { newConfig: WheelConfig }) =>
+      set({
+        currentConfig: newConfig,
+      }),
+
+    resetCurrentConfig: () =>
+      set({
+        currentConfig: initConfig,
+      }),
+
+    setDefaultPalette: ({ paletteIdx }: { paletteIdx: number }) =>
+      set((state) => {
+        if (paletteIdx >= PALETTES.length || paletteIdx < 0) return state;
+        return {
+          currentConfig: {
+            ...state.currentConfig,
+            default_palette_idx: paletteIdx,
+          },
+        };
+      }),
+
+    setDefaultFontFamily: ({ fontFamily }: { fontFamily: string }) =>
+      set((state) => ({
         currentConfig: {
           ...state.currentConfig,
-          default_fillColors: PALETTES[palettesIdx],
+          default_FontFamily: fontFamily,
         },
-      };
-    }),
+      })), // WILL BE REDONE!
 
-  setDefaultFontFamily: ({ fontFamily }: { fontFamily: string }) =>
-    set((state) => ({
-      currentConfig: { ...state.currentConfig, default_FontFamily: fontFamily },
-    })), // WILL BE REDONE!
+    addBlankOutcomes: ({ quantity }: { quantity: number }) =>
+      set((state) => {
+        const length = state.currentConfig.outcomes.length;
+        if (length > 71) return state;
 
-  addBlankOutcomes: ({ quantity }: { quantity: number }) =>
-    set((state) => {
-      const length = state.currentConfig.outcomes.length;
-      if (length > 71) return state;
+        const clampedQuantity = Math.max(1, Math.min(quantity, 72 - length));
 
-      const clampedQuantity = Math.max(1, Math.min(quantity, 72 - length));
+        const blankOutcomes = Array.from({ length: clampedQuantity }, () => ({
+          ...blankOutcome,
+        }));
 
-      const blankOutcomes = Array.from({ length: clampedQuantity }, () => ({
-        ...blankOutcome,
-      }));
+        return {
+          currentConfig: {
+            ...state.currentConfig,
+            outcomes: [...state.currentConfig.outcomes, ...blankOutcomes],
+          },
+        };
+      }),
 
-      return {
-        currentConfig: {
+    duplicateOutcome: ({ outcomeIdx }: { outcomeIdx: number }) =>
+      set((state) => {
+        const length = state.currentConfig.outcomes.length;
+        if (length > 71 || outcomeIdx >= length || outcomeIdx < 0) return state;
+
+        return {
+          ...state,
+          currentConfig: {
+            ...state.currentConfig,
+            outcomes: [
+              ...state.currentConfig.outcomes.slice(0, outcomeIdx + 1),
+              {
+                ...state.currentConfig.outcomes[outcomeIdx],
+              },
+              ...state.currentConfig.outcomes.slice(outcomeIdx + 1),
+            ],
+          },
+        };
+      }),
+
+    removeOutcome: ({ outcomeIdx }: { outcomeIdx: number }) =>
+      set((state) => {
+        const length = state.currentConfig.outcomes.length;
+        if (length < 3 || outcomeIdx >= length || outcomeIdx < 0) return state;
+
+        return {
+          currentConfig: {
+            ...state.currentConfig,
+            outcomes: [
+              ...state.currentConfig.outcomes.slice(0, outcomeIdx),
+              ...state.currentConfig.outcomes.slice(outcomeIdx + 1),
+            ],
+          },
+        };
+      }),
+
+    modifyOutcome: <T extends keyof Outcome>({
+      outcomeIdx,
+      key,
+      value,
+    }: {
+      outcomeIdx: number;
+      key: T;
+      value: Outcome[T];
+    }) =>
+      set((state) => {
+        const length = state.currentConfig.outcomes.length;
+        if (outcomeIdx >= length || outcomeIdx < 0) return state;
+
+        return {
+          currentConfig: {
+            ...state.currentConfig,
+            outcomes: [
+              ...state.currentConfig.outcomes.slice(0, outcomeIdx),
+              { ...state.currentConfig.outcomes[outcomeIdx], [key]: value },
+              ...state.currentConfig.outcomes.slice(outcomeIdx + 1),
+            ],
+          },
+        };
+      }),
+
+    saveCurrentConfig: ({
+      saveIdx,
+      configName,
+    }: {
+      saveIdx: number;
+      configName: string;
+    }) =>
+      set((state) => {
+        const length = state.savedConfigs.length;
+        if (saveIdx >= length || saveIdx < 0) return state;
+
+        const savedConfig = {
           ...state.currentConfig,
-          outcomes: [...state.currentConfig.outcomes, ...blankOutcomes],
-        },
-      };
-    }),
+          configName: configName || getCurrentDate(),
+        };
 
-  duplicateOutcome: ({ outcomeIdx }: { outcomeIdx: number }) =>
-    set((state) => {
-      const length = state.currentConfig.outcomes.length;
-      if (length > 71 || outcomeIdx >= length || outcomeIdx < 0) return state;
-      return {
-        currentConfig: {
-          ...state.currentConfig,
-          outcomes: [
-            ...state.currentConfig.outcomes.slice(0, outcomeIdx + 1),
-            {
-              ...state.currentConfig.outcomes[outcomeIdx],
-            },
-            ...state.currentConfig.outcomes.slice(outcomeIdx + 1),
+        return {
+          savedConfigs: [
+            ...state.savedConfigs.slice(0, saveIdx),
+            savedConfig,
+            ...state.savedConfigs.slice(saveIdx + 1),
           ],
-        },
-      };
-    }),
+        };
+      }),
 
-  removeOutcome: ({ outcomeIdx }: { outcomeIdx: number }) =>
-    set((state) => {
-      const length = state.currentConfig.outcomes.length;
-      if (length < 3 || outcomeIdx >= length || outcomeIdx < 0) return state;
+    loadConfig: ({ saveIdx }: { saveIdx: number }) =>
+      set((state) => {
+        const length = state.savedConfigs.length;
+        if (saveIdx >= length || saveIdx < 0 || !state.savedConfigs[saveIdx])
+          return state;
 
-      return {
-        currentConfig: {
-          ...state.currentConfig,
-          outcomes: [
-            ...state.currentConfig.outcomes.slice(0, outcomeIdx),
-            ...state.currentConfig.outcomes.slice(outcomeIdx + 1),
-          ],
-        },
-      };
-    }),
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        const { configName, ...newCurrentConfig } = state.savedConfigs[saveIdx];
 
-  modifyOutcome: <T extends keyof Outcome>({
-    outcomeIdx,
-    key,
-    value,
-  }: {
-    outcomeIdx: number;
-    key: T;
-    value: Outcome[T];
-  }) =>
-    set((state) => {
-      const length = state.currentConfig.outcomes.length;
-      if (outcomeIdx >= length || outcomeIdx < 0) return state;
+        return { currentConfig: newCurrentConfig };
+      }),
 
-      return {
-        currentConfig: {
-          ...state.currentConfig,
-          outcomes: [
-            ...state.currentConfig.outcomes.slice(0, outcomeIdx),
-            { ...state.currentConfig.outcomes[outcomeIdx], [key]: value },
-            ...state.currentConfig.outcomes.slice(outcomeIdx + 1),
-          ],
-        },
-      };
-    }),
+    applyConfig: () =>
+      set((state) => ({
+        activeConfig: prepareConfig(state.currentConfig),
+      })),
+  }))
+);
 
-  saveCurrentConfig: ({
-    saveIdx,
-    configName,
-  }: {
-    saveIdx: number;
-    configName: string;
-  }) =>
-    set((state) => {
-      const length = state.savedConfigs.length;
-      if (saveIdx >= length || saveIdx < 0) return state;
+if (import.meta.hot) {
+  import.meta.hot.accept(() => {
+    // Handle HMR if needed
+  });
+}
 
-      const savedConfig = {
-        ...state.currentConfig,
-        configName: configName || getCurrentDate(),
-      };
-
-      return {
-        savedConfigs: [
-          ...state.savedConfigs.slice(0, saveIdx),
-          savedConfig,
-          ...state.savedConfigs.slice(saveIdx + 1),
-        ],
-      };
-    }),
-
-  loadConfig: ({ saveIdx }: { saveIdx: number }) =>
-    set((state) => {
-      const length = state.savedConfigs.length;
-      if (saveIdx >= length || saveIdx < 0 || !state.savedConfigs[saveIdx])
-        return state;
-
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const { configName, ...newCurrentConfig } = state.savedConfigs[saveIdx];
-
-      return { currentConfig: newCurrentConfig };
-    }),
-
-  applyConfig: () =>
-    set((state) => ({
-      activeConfig: prepareConfig(state.currentConfig),
-    })),
-}));
+export default useWheelStore;

@@ -1,5 +1,4 @@
 // 3rd party:
-// Redux RTK:
 // Store:
 // React Router:
 // React:
@@ -11,12 +10,14 @@ import Sector from './Sector';
 // CSS:
 // Types, interfaces and enumns:
 import type { FC, Ref } from 'react';
-import type { Outcome } from './Main';
+import type { Outcome } from '../store/types';
 
 interface WheelProps {
   radius: number;
   outcomes: Outcome[];
   fillColors: string[];
+  fontFamily: string;
+  currentOutcome: number | null;
   wheelContainerRef?: Ref<HTMLDivElement>;
   wheelRef?: Ref<SVGSVGElement>;
 }
@@ -31,24 +32,11 @@ const Wheel: FC<WheelProps> = ({
   radius,
   outcomes,
   fillColors,
+  fontFamily = 'Arial',
+  currentOutcome,
   wheelContainerRef,
   wheelRef,
 }) => {
-  // Refs:
-  // const wheelContainerRef = useRef<HTMLDivElement>(null);
-  // const wheelRef = useRef<SVGSVGElement>(null);
-  // const arrowRef = useRef<HTMLDivElement>(null);
-  // Imperative handle:
-  // useImperativeHandle(
-  //   ref,
-  //   () => ({
-  //     wheelContainerRef,
-  //     wheelRef,
-  //     arrowRef,
-  //   }),
-  //   []
-  // );
-
   const center = useMemo(() => ({ x: radius, y: radius }), [radius]);
 
   const diameter = 2 * radius;
@@ -71,10 +59,20 @@ const Wheel: FC<WheelProps> = ({
             endAngle={endAngle}
             label={outcome.label}
             fillColor={outcome.fillColor || fillColors[i % fillColors.length]}
+            fontFamily={outcome.fontFamily || fontFamily}
+            isHighlighted={currentOutcome === i}
           />
         );
       }),
-    [fillColors, outcomes, center, radius, anglePerSector]
+    [
+      fillColors,
+      fontFamily,
+      outcomes,
+      center,
+      radius,
+      anglePerSector,
+      currentOutcome,
+    ]
   );
 
   return (

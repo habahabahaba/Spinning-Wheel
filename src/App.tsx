@@ -1,5 +1,6 @@
 // Components:
 import Main from './Components/Main';
+import ConfigForm from './Components/ConfigForm';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       {/* <Wheel radius={360} outcomes={outcomes4} fillColors={fillColors} /> */}
       {/* <Wheel radius={360} outcomes={outcomes5} fillColors={fillColors} /> */}
       <Main />
+      <ConfigForm />
     </>
   );
 }

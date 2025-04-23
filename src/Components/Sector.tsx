@@ -84,6 +84,8 @@ const Sector: FC<SectorProps> = ({
         strokeWidth={1}
         style={{
           willChange: 'transform',
+          transition: 'filter 0.5s',
+          filter: `${isHighlighted ? 'brightness(1.4)' : ''}`,
         }}
       />
 

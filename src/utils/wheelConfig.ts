@@ -1,5 +1,5 @@
 // Assets:
-import { PALETTES } from '../assets/palettes';
+// import { PALETTES } from '../assets/palettes';
 // Utils:
 import { uniqueRandomsInRange } from './random';
 // Types, interfaces and enumns:
@@ -8,7 +8,7 @@ import { OutcomeModel } from '../store/types';
 
 // Initial state:
 export const initConfig: WheelConfig = {
-  default_fillColors: PALETTES[0],
+  default_palette_idx: 0,
   default_fontFamily: 'Arial',
   outcomes: createOutcomes(2, (i) => `Outcome ${i + 1}`),
 };
@@ -30,12 +30,14 @@ export function createOutcomes(
   quantity: number,
   labelFn: (i: number) => string
 ): Outcome[] {
-  return new Array(quantity)
-    .fill(0)
-    .map(
-      (_, i) =>
-        new OutcomeModel({ label: labelFn(i), fillColor: '', fontFamily: '' })
-    );
+  return new Array(quantity).fill(0).map(
+    (_, i) =>
+      new OutcomeModel({
+        label: labelFn(i),
+        fillColor: '',
+        fontFamily: '',
+      })
+  );
 }
 
 export function prepareConfig(wheelConfig: WheelConfig): WheelConfig {
@@ -62,14 +64,6 @@ export function prepareConfig(wheelConfig: WheelConfig): WheelConfig {
     preparedConfig.outcomes = preparedConfig.outcomes.slice(0, 72);
   }
 
-  // If there are less than 6 outcomes, multiply them:
-  while (preparedConfig.outcomes.length < 6) {
-    preparedConfig.outcomes = [
-      ...preparedConfig.outcomes,
-      ...preparedConfig.outcomes,
-    ];
-  }
-
   // Randomise outcomes sequence:
   const randomSequence = uniqueRandomsInRange(
     preparedConfig.outcomes.length,
@@ -79,6 +73,14 @@ export function prepareConfig(wheelConfig: WheelConfig): WheelConfig {
   preparedConfig.outcomes = randomSequence.map(
     (num) => preparedConfig.outcomes[num]
   );
+
+  // If there are less than 6 outcomes, multiply them:
+  while (preparedConfig.outcomes.length < 6) {
+    preparedConfig.outcomes = [
+      ...preparedConfig.outcomes,
+      ...preparedConfig.outcomes,
+    ];
+  }
 
   return preparedConfig;
 }

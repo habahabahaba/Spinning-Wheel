@@ -18,7 +18,7 @@ export class OutcomeModel implements Outcome {
 }
 
 export interface WheelConfig {
-  default_fillColors: string[];
+  default_palette_idx: number;
   default_fontFamily: string;
   outcomes: Outcome[];
 }

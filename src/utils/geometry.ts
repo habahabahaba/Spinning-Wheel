@@ -64,7 +64,7 @@ export function maxInscribedRectangle(
     // Case 2: Sector angle < 180°
     const A = 2 * aspectRatio * tanHalfAngleRad;
     const maxWidth = (A * radius) / (1 + A);
-    const maxHeight = maxWidth / aspectRatio;
+    const maxHeight = (maxWidth / aspectRatio) * 0.94; // leave space for a spin button.
     return { maxWidth, maxHeight };
   }
 }
@@ -125,12 +125,13 @@ export function evaluateRectangleInSector(
 
     return {
       validHeight,
-      distanceFromApex: 1, // leave a small padding
+      distanceFromApex: radius * 0.15, // leave a small padding
       arcOvershoot,
     };
   } else {
     // For narrow sectors
     const distanceFromApex = halfHeight / Math.tan(halfAngleRad);
+
     // console.log(
     //   `[evaluateRectangleInSector] distanceFromApex: ${distanceFromApex}`
     // );

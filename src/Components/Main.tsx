@@ -1,8 +1,10 @@
+// Assets:
+import { PALETTES } from '../assets/palettes';
 // Utils:
-import { createOutcomes } from '../utils/wheelConfig';
+// import { createOutcomes } from '../utils/wheelConfig';
 // 3rd party:
-// Redux RTK:
 // Store:
+import useWheelStore from '../store/wheelStore';
 // React Router:
 // React:
 import { useRef, useState } from 'react';
@@ -18,13 +20,7 @@ import ResultDisplayModal from './ResultDisplayModal';
 // Types, interfaces and enumns:
 import type { FC } from 'react';
 import type { ModalHandle } from './Modal';
-export interface Outcome {
-  label: string;
-  fillColor?: string;
-  textColor?: string;
-  fontFamily?: string;
-  angle?: number;
-}
+
 // const outcomes1 = createOutcomes(2, (i) => (`Outcome-${i + 1}-01234567890123456789xxxwwwwwwwww`
 // ));
 // const outcomes2 = createOutcomes(22, (i) => (`Outcome-${i + 1}-01234567890123456789xxxwwwwwwwww`
@@ -35,13 +31,15 @@ export interface Outcome {
 // ));
 // const outcomes5 = createOutcomes(22, (i) => (`Outcome-${i + 1}-01234567890123456789xxxwwwwwwwww`
 // ));
-const outcomes6 = createOutcomes(72, (i) => `Outcome ${i + 1}`);
-
-const FILL_COLORS = ['#e6b89c', '#fe938c', '#ead2ac', '#9cafb7'];
+// const outcomes6 = createOutcomes(72, (i) => `Outcome ${i + 1}`);
 
 const WHEEL_RADIUS = 360;
 
 const Main: FC = () => {
+  // Store:
+  const { outcomes, default_fontFamily, default_palette_idx } = useWheelStore(
+    (state) => state.activeConfig
+  );
   // State:
   const [currentOutcome, setCurrentOutcome] = useState<number>(0);
 
@@ -97,7 +95,7 @@ const Main: FC = () => {
       console.log(`[Wheel] resultingTurn: ${resultingTurn}`);
       setCurrentOutcome(
         () =>
-          Math.floor(outcomes6.length * (1 - resultingTurn)) % outcomes6.length
+          Math.floor(outcomes.length * (1 - resultingTurn)) % outcomes.length
       );
     }
     // setIsWinding(false);
@@ -119,13 +117,15 @@ const Main: FC = () => {
       >
         <Wheel
           radius={WHEEL_RADIUS}
-          outcomes={outcomes6}
-          fillColors={FILL_COLORS}
+          outcomes={outcomes}
+          fillColors={PALETTES[default_palette_idx]}
+          fontFamily={default_fontFamily}
           wheelRef={wheelRef}
+          currentOutcome={wheelState === 'idle' ? currentOutcome : null}
         />
         <Arrow arrowIdx={1} />
         <SpinButton
-          fillColors={FILL_COLORS}
+          fillColors={PALETTES[default_palette_idx]}
           wheelRadius={WHEEL_RADIUS}
           wheelState={wheelState}
           onClick={handleClick}
@@ -134,12 +134,14 @@ const Main: FC = () => {
           onMouseLeave={handleMouseLeave}
         />
         <ResultDisplayModal
-          label={outcomes6[currentOutcome]['label']}
+          label={outcomes[currentOutcome]['label']}
           backgroundColor={
-            outcomes6[currentOutcome]['fillColor'] ||
-            FILL_COLORS[currentOutcome % FILL_COLORS.length]
+            outcomes[currentOutcome]['fillColor'] ||
+            PALETTES[default_palette_idx][
+              currentOutcome % PALETTES[default_palette_idx].length
+            ]
           }
-          fontFamily={outcomes6[currentOutcome]['fontFamily']}
+          fontFamily={outcomes[currentOutcome]['fontFamily']}
           ref={resultModalRef}
         />
       </div>
