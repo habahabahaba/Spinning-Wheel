@@ -1,6 +1,10 @@
+// Assets:
+import { PALETTES } from '../assets/palettes';
+// Utils:
+import { contrastColor } from '../utils/color';
 // 3rd party:
-// Redux RTK:
 // Store:
+import useWheelStore from '../store/wheelStore';
 // React Router:
 // React:
 // import { useState } from 'react';
@@ -31,7 +35,21 @@ const SpinButton: FC<SpinButtonProps> = ({
   onMouseUp,
   onMouseLeave,
 }) => {
-  // State:
+  // Store:
+  const paletteIdx = useWheelStore(
+    (state) => state.activeConfig.default_palette_idx
+  );
+
+  // Colors:
+  const colors = PALETTES[paletteIdx];
+
+  const idleFillColor = fillColors[3];
+  const idleIconColor = contrastColor(idleFillColor);
+  const windingUpFillColor = fillColors[1];
+  const windingUpIconColor = contrastColor(windingUpFillColor);
+  const spinningFillColor = fillColors[2];
+  //   const spinningIconColor = contrastColor(spinningFillColor);
+
   // JSX:
   return (
     <button
@@ -41,26 +59,26 @@ const SpinButton: FC<SpinButtonProps> = ({
       onMouseLeave={onMouseLeave}
       disabled={wheelState === 'spinning' || wheelState === 'cancelling'}
       style={{
-        width: `${wheelRadius * 0.2}px`,
-        height: `${wheelRadius * 0.2}px`,
-        overflow: 'hidden',
-        border: '2px solid',
-        borderRadius: '50%',
-        padding: '2px',
-
         position: 'absolute',
         left: '50%',
         top: '50%',
         transform: 'translate(-50%, -50%)',
-
-        // textAlign: 'center',
         zIndex: 5,
+
+        width: `${wheelRadius * 0.2}px`,
+        height: `${wheelRadius * 0.2}px`,
+        border: '2px solid',
+        borderRadius: '50%',
+        padding: '2px',
+
+        cursor: 'pointer',
+
         backgroundColor: `${
           wheelState === 'windingUp'
-            ? fillColors[1]
+            ? windingUpFillColor
             : wheelState === 'spinning'
-            ? fillColors[2]
-            : fillColors[3]
+            ? spinningFillColor
+            : idleFillColor
         }`,
         filter: `${
           wheelState === 'windingUp'
@@ -85,10 +103,13 @@ const SpinButton: FC<SpinButtonProps> = ({
       }`}
     >
       {wheelState === 'spinning'
-        ? spinningSVGs[1] || spinningSVGs[0]
+        ? spinningSVGs[1]({ color1: colors[1], color2: colors[3] }) ||
+          spinningSVGs[0]({ color1: colors[1], color2: colors[3] })
         : wheelState === 'windingUp'
-        ? windUpSVGs[0] || windUpSVGs[0]
-        : idleSVGs[0] || idleSVGs[0]}
+        ? windUpSVGs[0]({ color1: windingUpIconColor }) ||
+          windUpSVGs[0]({ color1: windingUpIconColor })
+        : idleSVGs[0]({ color1: idleIconColor }) ||
+          idleSVGs[0]({ color1: idleIconColor })}
     </button>
   );
 };

@@ -23,6 +23,10 @@ const ResultDisplayModal = forwardRef<ModalHandle, ResultDisplayProps>(
         ref={ref}
         className='drop-down'
         childProps={{ label, backgroundColor }}
+        style={{
+          right: 'calc(60px - 1rem)',
+          top: '-15vh',
+        }}
       >
         <ResultDisplay label={label} backgroundColor={backgroundColor} />
       </Modal>

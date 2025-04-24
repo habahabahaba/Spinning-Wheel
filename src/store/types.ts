@@ -1,7 +1,9 @@
+import { HexColor } from "../utils/color";
+
 // Wheel configs:
 export interface Outcome {
   label: string;
-  fillColor: string;
+  fillColor: HexColor|'';
   fontFamily: string;
 }
 
@@ -13,7 +15,7 @@ export class OutcomeModel implements Outcome {
   }
 
   public label: string;
-  public fillColor: string;
+  public fillColor: HexColor|'';
   public fontFamily: string;
 }
 

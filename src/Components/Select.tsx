@@ -117,6 +117,7 @@ const Select: FC<SelectProps> = ({
   );
 };
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const Option = ({ value: _value, children }: OptionProps) => {
   return <>{children}</>;
 };

@@ -16,6 +16,7 @@ import Wheel from './Wheel';
 import Arrow from './Arrow';
 import SpinButton from './SpinButton';
 import ResultDisplayModal from './ResultDisplayModal';
+import Wallpaper from './Wallpaper';
 // CSS:
 // Types, interfaces and enumns:
 import type { FC } from 'react';
@@ -104,15 +105,96 @@ const Main: FC = () => {
   // JSX:
 
   return (
-    <main>
+    <main
+      style={{
+        height: '100vh',
+        width: 'auto',
+        padding: '2rem',
+        position: 'relative',
+      }}
+    >
+      <Wallpaper
+        variant={0}
+        paletteColor1={1}
+        style={{
+          opacity: '0.7',
+          backgroundSize: 'contain',
+          backgroundRepeat: 'repeat',
+        }}
+      />
+      {/* <Wallpaper
+        variant={1}
+        paletteColor1={0}
+        paletteColor2={3}
+        style={{
+          opacity: '0.8',
+          backgroundSize: 'contain',
+          backgroundRepeat: 'repeat',
+        }}
+      /> */}
+      {/* <Wallpaper
+        variant={2}
+        paletteColor1={1}
+        style={{
+          opacity: '0.8',
+          backgroundSize: 'contain',
+          backgroundRepeat: 'repeat',
+        }}
+      /> */}
+      {/* <Wallpaper
+        variant={3}
+        paletteColor1={0}
+        paletteColor2={2}
+        style={{
+          //   opacity: '0.5',
+          backgroundSize: 'contain',
+          //   backgroundRepeat: 'repeat',
+        }}
+      /> */}
+      {/* <Wallpaper
+        variant={4}
+        paletteColor1={1}
+        style={{
+          opacity: '0.8',
+          backgroundSize: 'contain',
+        }}
+      /> */}
+      {/* <Wallpaper
+        variant={5}
+        paletteColor1={3}
+        style={{
+          opacity: '0.7',
+          backgroundSize: 'cover',
+        }}
+      /> */}
+      {/* <Wallpaper
+        variant={6}
+        paletteColor1={1}
+        paletteColor2={3}
+        style={{
+          //   backgroundPosition: 'center',
+          opacity: '0.8',
+          backgroundSize: 'inherit',
+          backgroundRepeat: 'repeat',
+        }}
+      /> */}
+      {/* <Wallpaper
+        variant={7}
+        paletteColor1={0}
+        style={{
+          //   backgroundPosition: 'center',
+          opacity: '0.8',
+          backgroundSize: 'cover',
+          //   backgroundRepeat: 'repeat',
+        }}
+      /> */}
       <div
         style={{
+          width: 'fit-content',
           position: 'relative',
           border: '1px solid black',
           borderRadius: '50%',
           boxShadow: '0px 0px 10px 0px black',
-          //   height: 'fit-content',
-          //   padding: 0,
         }}
       >
         <Wheel
@@ -123,7 +205,7 @@ const Main: FC = () => {
           wheelRef={wheelRef}
           currentOutcome={wheelState === 'idle' ? currentOutcome : null}
         />
-        <Arrow arrowIdx={1} />
+        <Arrow size={WHEEL_RADIUS / 6} arrowIdx={0} />
         <SpinButton
           fillColors={PALETTES[default_palette_idx]}
           wheelRadius={WHEEL_RADIUS}

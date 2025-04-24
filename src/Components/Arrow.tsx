@@ -12,19 +12,25 @@ import arrowSVGs from '../assets/arrowSVGs.tsx';
 // Types, interfaces and enumns:
 import type { FC, Ref } from 'react';
 interface ArrowProps {
+  size: number;
   arrowIdx?: number;
   ref?: Ref<HTMLDivElement>;
 }
 
-const Arrow: FC<ArrowProps> = ({ arrowIdx = 0, ref }) => {
+const Arrow: FC<ArrowProps> = ({ size, arrowIdx = 0, ref }) => {
   // JSX:
   return (
     <div
       style={{
         position: 'absolute',
-        right: '-4%',
-        top: '50.6%',
+        right: `-${size / 2.5}px`,
+        top: `calc(50% + ${size / 7}px)`,
         transform: 'translate(50%, -50%)',
+        // transformOrigin: 'center left',
+        width: `${size}px`,
+        aspectRatio: 1,
+        // boxShadow: '10px 0px 24px 0px black',
+        // WebkitBoxShadow: '10px 0px 24px 0px black',
       }}
       ref={ref}
     >

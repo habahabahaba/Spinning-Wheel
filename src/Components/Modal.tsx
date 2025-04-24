@@ -17,11 +17,12 @@ import modalCloseCtx from '../context/modalCloseCtx';
 // Components:
 // CSS:
 // Types, interfaces and enumns:
-import type { ReactElement, FC, Ref } from 'react';
+import type { ReactElement, FC, Ref, CSSProperties } from 'react';
 type ModalProps<P = object> = {
   children: ReactElement<P>;
   childProps?: P;
   className?: string;
+  style?: CSSProperties;
   ref?: Ref<ModalHandle>;
 };
 
@@ -33,6 +34,7 @@ export type ModalHandle = {
 const modalRootEl = document.getElementById('modal-root');
 const Modal: FC<ModalProps> = ({
   className = '',
+  style = {},
   children,
   childProps,
   ref,
@@ -69,9 +71,10 @@ const Modal: FC<ModalProps> = ({
               handleCloseModal();
             }
           }}
-          className={`absolute top-18 left-1/3 rounded-md p-4 shadow-md backdrop:bg-stone-900/90 ${className}`}
+          style={style}
+          className={` ${className}`}
         >
-          <div className='mt-4 mb-9 w-[35rem]'>
+          <div className=''>
             <modalCloseCtx.Provider value={{ handleCloseModal }}>
               {childWithProps}
             </modalCloseCtx.Provider>

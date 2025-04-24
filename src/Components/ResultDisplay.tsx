@@ -1,5 +1,6 @@
+// Utils:
+import { contrastColor, brightness } from '../utils/color';
 // 3rd party:
-// Redux RTK:
 // Store:
 // React Router:
 // React:
@@ -19,23 +20,25 @@ export interface ResultDisplayProps {
 
 const ResultDisplay: FC<ResultDisplayProps> = ({
   label,
-  backgroundColor = '#FFF',
+  backgroundColor = '#FFFFFF',
   fontFamily = 'Arial',
 }) => {
   // For closing:
   const { handleCloseModal } = use(modalCloseCtx);
 
+  const textColor = contrastColor(brightness(backgroundColor, 1.4));
   // JSX:
   return (
     <div
       style={{
         backgroundColor: `${backgroundColor}`,
+        color: `${textColor}`,
         fontFamily: `${fontFamily}`,
         margin: '0',
         padding: '1rem 2rem',
-        border: 'solid black 1px',
         cursor: 'pointer',
-        filter: 'brightness(1.25)',
+        filter: 'brightness(1.4)',
+        // border: 'solid black 1px',
       }}
       onClick={handleCloseModal}
     >

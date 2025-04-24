@@ -1,3 +1,5 @@
+// Utils:
+import { isHexColor } from '../utils/color';
 // 3rd party:
 // Store:
 import useWheelStore from '../store/wheelStore';
@@ -52,7 +54,10 @@ const OutcomeInputs: FC<OutcomeInputsProps> = ({ index }) => {
           id={`fillColor-input-Outcome-${index}`}
           value={outcome.fillColor || '#ffffff'}
           onChange={(ev) => {
-            handleChange('fillColor', ev.target.value);
+            handleChange(
+              'fillColor',
+              isHexColor(ev.target.value) ? ev.target.value : ''
+            );
           }}
         />
       </div>

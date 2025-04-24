@@ -1,3 +1,5 @@
+// Utils:
+import { contrastColor, brightness } from '../utils/color';
 // 3rd party:
 // Store:
 // React Router:
@@ -50,6 +52,14 @@ const Wheel: FC<WheelProps> = ({
         // Convert to SVG coordinate system (0° = right)
         const startAngle = i * anglePerSector + 90; // Subtract 90° to align 0° with right
         const endAngle = (i + 1) * anglePerSector + 90;
+
+        const isHighlighted = currentOutcome === i;
+        const fillColor =
+          outcome.fillColor || fillColors[i % fillColors.length];
+        const textColor = contrastColor(
+          !isHighlighted ? fillColor : brightness(fillColor, 1.4)
+        );
+
         return (
           <Sector
             key={i}
@@ -58,9 +68,10 @@ const Wheel: FC<WheelProps> = ({
             startAngle={startAngle}
             endAngle={endAngle}
             label={outcome.label}
-            fillColor={outcome.fillColor || fillColors[i % fillColors.length]}
+            fillColor={fillColor}
             fontFamily={outcome.fontFamily || fontFamily}
-            isHighlighted={currentOutcome === i}
+            textColor={textColor}
+            isHighlighted={isHighlighted}
           />
         );
       }),

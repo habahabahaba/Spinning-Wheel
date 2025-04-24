@@ -2,6 +2,7 @@
 // import { PALETTES } from '../assets/palettes';
 // Utils:
 import { uniqueRandomsInRange } from './random';
+import { isHexColor } from './color';
 // Types, interfaces and enumns:
 import type { Outcome, WheelConfig, WheelConfigs } from '../store/types';
 import { OutcomeModel } from '../store/types';
@@ -47,7 +48,7 @@ export function prepareConfig(wheelConfig: WheelConfig): WheelConfig {
   preparedConfig.outcomes = preparedConfig.outcomes.map(
     ({ label, fillColor, fontFamily }: Outcome) => ({
       label: label.trim(),
-      fillColor: fillColor.trim(),
+      fillColor: isHexColor(fillColor) ? fillColor : '',
       fontFamily: fontFamily.trim(),
     })
   );
