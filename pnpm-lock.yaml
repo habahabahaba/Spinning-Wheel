@@ -8,6 +8,75 @@ importers:
 
   .:
     dependencies:
+      '@fontsource/alkatra':
+        specifier: ^5.2.5
+        version: 5.2.5
+      '@fontsource/chivo':
+        specifier: ^5.2.5
+        version: 5.2.5
+      '@fontsource/eb-garamond':
+        specifier: ^5.2.5
+        version: 5.2.5
+      '@fontsource/expletus-sans':
+        specifier: ^5.2.5
+        version: 5.2.5
+      '@fontsource/fraunces':
+        specifier: ^5.2.5
+        version: 5.2.5
+      '@fontsource/grandstander':
+        specifier: ^5.2.5
+        version: 5.2.5
+      '@fontsource/inter':
+        specifier: ^5.2.5
+        version: 5.2.5
+      '@fontsource/literata':
+        specifier: ^5.2.5
+        version: 5.2.5
+      '@fontsource/lora':
+        specifier: ^5.2.5
+        version: 5.2.5
+      '@fontsource/manrope':
+        specifier: ^5.2.5
+        version: 5.2.5
+      '@fontsource/nunito-sans':
+        specifier: ^5.2.5
+        version: 5.2.5
+      '@fontsource/overpass':
+        specifier: ^5.2.5
+        version: 5.2.5
+      '@fontsource/pixelify-sans':
+        specifier: ^5.2.5
+        version: 5.2.5
+      '@fontsource/playpen-sans':
+        specifier: ^5.2.5
+        version: 5.2.5
+      '@fontsource/reddit-sans-condensed':
+        specifier: ^5.2.5
+        version: 5.2.5
+      '@fontsource/roboto':
+        specifier: ^5.2.5
+        version: 5.2.5
+      '@fontsource/roboto-condensed':
+        specifier: ^5.2.5
+        version: 5.2.5
+      '@fontsource/roboto-slab':
+        specifier: ^5.2.5
+        version: 5.2.5
+      '@fontsource/sansita-swashed':
+        specifier: ^5.2.5
+        version: 5.2.5
+      '@fontsource/sofia-sans-semi-condensed':
+        specifier: ^5.2.5
+        version: 5.2.5
+      '@fontsource/source-serif-4':
+        specifier: ^5.2.6
+        version: 5.2.6
+      '@fontsource/tektur':
+        specifier: ^5.2.5
+        version: 5.2.5
+      '@fontsource/winky-rough':
+        specifier: ^5.2.1
+        version: 5.2.1
       react:
         specifier: ^19.0.0
         version: 19.1.0
@@ -245,6 +314,75 @@ packages:
   '@eslint/plugin-kit@0.2.8':
     resolution: {integrity: sha512-ZAoA40rNMPwSm+AeHpCq8STiNAwzWLJuP8Xv4CHIc9wv/PSuExjMrmjfYNj682vW0OOiZ1HKxzvjQr9XZIisQA==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+
+  '@fontsource/alkatra@5.2.5':
+    resolution: {integrity: sha512-pGWHnPckcxuJSF2106E307SHEhNqnQX+Ptq3Kvcu/88cHBeYFSedo+l3BEh4OxZQ0gt1/ntzm27nz7Vu14+rmw==}
+
+  '@fontsource/chivo@5.2.5':
+    resolution: {integrity: sha512-WVSfG0ANn6o6cEokj/W7Vxdc3VECBbbTdkIhKUoWDwN3ho6acoQ+q6MYIqCCZ+LkfvagdHCX+mLtoq9fMQWi5g==}
+
+  '@fontsource/eb-garamond@5.2.5':
+    resolution: {integrity: sha512-1c2I2QjDu7sEzs7Pb/fc3aX8mKrVwlBm05KttfrAQK11GYBXLSBS7KpcGB8IgQj/b/WH7sxP1XtYRsKTfNpvWQ==}
+
+  '@fontsource/expletus-sans@5.2.5':
+    resolution: {integrity: sha512-hMkdxdQs3Yn8w/3fdOU7rHQ1hMjpnD/HuS+ztvET8Mgh47fcRjfvCEot3W6vq0GPTVxJVrtWzgB9Ys3PV3amJA==}
+
+  '@fontsource/fraunces@5.2.5':
+    resolution: {integrity: sha512-+OmG4NKrnYhnIvQ9SAMnDi933DQHKcgQ3BOVs1jRFasLvge0m69ItX3yapb2lPKKnrAi1haG89GuUeKK/ItdmA==}
+
+  '@fontsource/grandstander@5.2.5':
+    resolution: {integrity: sha512-O8klV1gBkf8CO91LVz9VI/zHZ4z4RlevVY8Yc5sB+R5dm7bMk8YgenRqN9IaiF3TPnk728eAcXUQrhswEP/MuA==}
+
+  '@fontsource/inter@5.2.5':
+    resolution: {integrity: sha512-kbsPKj0S4p44JdYRFiW78Td8Ge2sBVxi/PIBwmih+RpSXUdvS9nbs1HIiuUSPtRMi14CqLEZ/fbk7dj7vni1Sg==}
+
+  '@fontsource/literata@5.2.5':
+    resolution: {integrity: sha512-0DTeiWPxrzwclWZzz96prUpryc8n6A3lLhDZZJAQIOFrbwANBLQrYHWiMnLLijmTenymtU6QCsmwBM62munLUQ==}
+
+  '@fontsource/lora@5.2.5':
+    resolution: {integrity: sha512-Jr+jXw+0USPcCBKFfEyPgwKV3dD6w066PIC+1VXgINwjkOEXVX6enqEjz7uGe2WoUjOG+VbIPp4SIlzpMlWzdw==}
+
+  '@fontsource/manrope@5.2.5':
+    resolution: {integrity: sha512-4mYUAhsuF8KoXseG8T9woWUc/foznUVluFtE6fCKAqe76WM3kmDNedaINWjzWB73+wly0duFvVpDBma3NXXT0g==}
+
+  '@fontsource/nunito-sans@5.2.5':
+    resolution: {integrity: sha512-QE2I4PmR9CHoAXxfpz4L+o35X4jg64i+5/J8Aa0G24mY9xs2VPr0a4igDcZkjIMhGfFfPAvcaR+hf/NpXVhZuw==}
+
+  '@fontsource/overpass@5.2.5':
+    resolution: {integrity: sha512-xwxYbZXc4lDQi1z0r9LiJhHTJm4UqprdYcdIZVi7C4lVtWZOTX0nvyto6Be8wWJMeu+sHb9fzLN3byldibSF4A==}
+
+  '@fontsource/pixelify-sans@5.2.5':
+    resolution: {integrity: sha512-f1NppiY7A2OnVdEZLpszJj7uUFwdNmNvZnuEQUcdr4w1dOJSL2K0SbTTmh7H/lZDcU453X7oQ6wPOg+qiC3Xdg==}
+
+  '@fontsource/playpen-sans@5.2.5':
+    resolution: {integrity: sha512-QAVA8jHOGq2UViINp+dNW8UPcMF1LgPORU/Js673JttgURwOaU4QFgZNNUn+a62unujh2z5LQIKJqIxW5XGrMQ==}
+
+  '@fontsource/reddit-sans-condensed@5.2.5':
+    resolution: {integrity: sha512-F+IZo1lZcgxBv/geJmMJC9GpvnvsxRLGXjMkxxwpsDDqog4OZJEUAOIwgZtOnUqm85ycvHLBYt6PA8pFiRxOPA==}
+
+  '@fontsource/roboto-condensed@5.2.5':
+    resolution: {integrity: sha512-FVubmVJpZ2js2+nCBEA3IOHhAgWmZ2/YKvTae0X25jlxbd85umOOvUIY6FL6OMpUvIgvwOImS9l0GJjzEPk+mg==}
+
+  '@fontsource/roboto-slab@5.2.5':
+    resolution: {integrity: sha512-pOWJaBy+i4bI10Q5aSXqXxfF5Oow1wq07+5QFX3O15QkQ0TwTXDQR4yxFUjmVYR2p8tZOe408FbR25AQx8mqwg==}
+
+  '@fontsource/roboto@5.2.5':
+    resolution: {integrity: sha512-70r2UZ0raqLn5W+sPeKhqlf8wGvUXFWlofaDlcbt/S3d06+17gXKr3VNqDODB0I1ASme3dGT5OJj9NABt7OTZQ==}
+
+  '@fontsource/sansita-swashed@5.2.5':
+    resolution: {integrity: sha512-llYTvwqI8SDmkL1otbaUiTexJdfcGbDpyAxKRWbr9HZ+wcNXXodJ6YPMwyxdpYUTpvhBmdQwSx9Ragfppfq9Ww==}
+
+  '@fontsource/sofia-sans-semi-condensed@5.2.5':
+    resolution: {integrity: sha512-2KUkqrYAyFWyMVsw5NO8FE1xB/rAx0QwFz44LCRQsRLwNDTr7S+59ZdxA2j3uQG7Gft/gPCbex6jDCwofqXzcQ==}
+
+  '@fontsource/source-serif-4@5.2.6':
+    resolution: {integrity: sha512-cDdgLlxmYYL+h0CYthYB+Qjc71yrzvPi54XZsseIfq8qzoxEUh3uWWdC1tLBo01tg4KXrJYixflTCcc+VNxgZQ==}
+
+  '@fontsource/tektur@5.2.5':
+    resolution: {integrity: sha512-YBE3TP2Y5lhn/wJCx/WDFfM34Mhf42L4VWhjtwcE6cArL5+3HAvRP53brfexStU5wFmgf4WGrJutmMW7mFR08g==}
+
+  '@fontsource/winky-rough@5.2.1':
+    resolution: {integrity: sha512-IjXJz0mN7SpYsPeK1Qm1m2uwX9Odr08foOSf21pHB8nVcOttmdPVA0D1djkkjmbzUqiLhsY9BpNdjflioXXjMg==}
 
   '@humanfs/core@0.19.1':
     resolution: {integrity: sha512-5DyQ4+1JEUzejeK1JGICcideyfUbGixgS9jNgex5nqkW+cY7WZhxBigmieN5Qnw9ZosSNVC9KQKyb+GUaGyKUA==}
@@ -1133,6 +1271,52 @@ snapshots:
     dependencies:
       '@eslint/core': 0.13.0
       levn: 0.4.1
+
+  '@fontsource/alkatra@5.2.5': {}
+
+  '@fontsource/chivo@5.2.5': {}
+
+  '@fontsource/eb-garamond@5.2.5': {}
+
+  '@fontsource/expletus-sans@5.2.5': {}
+
+  '@fontsource/fraunces@5.2.5': {}
+
+  '@fontsource/grandstander@5.2.5': {}
+
+  '@fontsource/inter@5.2.5': {}
+
+  '@fontsource/literata@5.2.5': {}
+
+  '@fontsource/lora@5.2.5': {}
+
+  '@fontsource/manrope@5.2.5': {}
+
+  '@fontsource/nunito-sans@5.2.5': {}
+
+  '@fontsource/overpass@5.2.5': {}
+
+  '@fontsource/pixelify-sans@5.2.5': {}
+
+  '@fontsource/playpen-sans@5.2.5': {}
+
+  '@fontsource/reddit-sans-condensed@5.2.5': {}
+
+  '@fontsource/roboto-condensed@5.2.5': {}
+
+  '@fontsource/roboto-slab@5.2.5': {}
+
+  '@fontsource/roboto@5.2.5': {}
+
+  '@fontsource/sansita-swashed@5.2.5': {}
+
+  '@fontsource/sofia-sans-semi-condensed@5.2.5': {}
+
+  '@fontsource/source-serif-4@5.2.6': {}
+
+  '@fontsource/tektur@5.2.5': {}
+
+  '@fontsource/winky-rough@5.2.1': {}
 
   '@humanfs/core@0.19.1': {}
 

@@ -34,6 +34,7 @@ const ResultDisplay: FC<ResultDisplayProps> = ({
         backgroundColor: `${backgroundColor}`,
         color: `${textColor}`,
         fontFamily: `${fontFamily}`,
+        // textDecoration: 'underline',
         margin: '0',
         padding: '1rem 2rem',
         cursor: 'pointer',

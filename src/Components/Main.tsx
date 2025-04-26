@@ -1,5 +1,5 @@
 // Assets:
-import { PALETTES } from '../assets/palettes';
+import { PALETTES } from '../constants/palettes';
 // Utils:
 // import { createOutcomes } from '../utils/wheelConfig';
 // 3rd party:

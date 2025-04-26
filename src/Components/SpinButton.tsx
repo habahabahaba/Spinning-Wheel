@@ -1,5 +1,5 @@
 // Assets:
-import { PALETTES } from '../assets/palettes';
+import { PALETTES } from '../constants/palettes';
 // Utils:
 import { contrastColor } from '../utils/color';
 // 3rd party:
@@ -13,7 +13,7 @@ import useWheelStore from '../store/wheelStore';
 // Components:
 // CSS:
 // Icons:
-import { idleSVGs, windUpSVGs, spinningSVGs } from '../assets/spinSVGs';
+import { idleSVGs, windUpSVGs, spinningSVGs } from './spinSVGs';
 // Types, interfaces and enumns:
 import type { FC } from 'react';
 interface SpinButtonProps {

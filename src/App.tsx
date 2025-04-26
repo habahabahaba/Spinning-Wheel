@@ -1,8 +1,16 @@
+// Fonts:
+// import { FONT_FAMILIES_REMOTE } from './assets/FontFamilies';
 // Components:
 import Main from './Components/Main';
 import ConfigForm from './Components/ConfigForm';
 
 function App() {
+  // console.log(
+  //   FONT_FAMILIES_REMOTE.map(
+  //     (f) => `@fontsource/${f.toLowerCase().replaceAll(' ', '-')}`
+  //   ).join(' ')
+  // );
+
   return (
     <>
       {/* <Wheel radius={360} outcomes={outcomes1} fillColors={fillColors} /> */}

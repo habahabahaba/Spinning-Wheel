@@ -103,6 +103,7 @@ const Sector: FC<SectorProps> = ({
         fill={textColor}
         style={{
           willChange: 'transform',
+          textDecoration: `${isHighlighted ? 'underline' : ''}`,
         }}
         transform={`rotate(${midAngle - 90} ${textPos.x} ${textPos.y})`}
       >
