@@ -1,4 +1,6 @@
 // Assets:
+// Constants:
+// import { FONT_FAMILIES_ALL } from '../constants/FontFamilies';
 // import { PALETTES } from '../assets/palettes';
 // Utils:
 import { uniqueRandomsInRange } from './random';
@@ -49,7 +51,7 @@ export function prepareConfig(wheelConfig: WheelConfig): WheelConfig {
     ({ label, fillColor, fontFamily }: Outcome) => ({
       label: label.trim(),
       fillColor: isHexColor(fillColor) ? fillColor : '',
-      fontFamily: fontFamily.trim(),
+      fontFamily: fontFamily,
     })
   );
 

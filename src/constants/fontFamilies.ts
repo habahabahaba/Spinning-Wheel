@@ -45,7 +45,11 @@ export const FONT_FAMILIES_REMOTE = Object.keys(
 export const FONT_FAMILIES_ALL: AllFontNames[] = [
   ...FONT_FAMILIES_LOCAL,
   ...FONT_FAMILIES_REMOTE,
-];
+] as const;
+
+export const initFontState = {
+  loadedFonts: new Set(FONT_FAMILIES_LOCAL),
+};
 
 // export const FONT_FAMILIES_REMOTE = [
 //     'Playpen Sans',

@@ -1,4 +1,4 @@
-// Assets:
+// Constants:
 import { PALETTES } from '../constants/palettes';
 // Utils:
 import {
@@ -13,6 +13,7 @@ import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
 // Types, interfaces and enumns:
 import type { Outcome, WheelConfigs, WheelConfig } from './types';
+
 interface WheelActions {
   replaceState: ({ newState }: { newState: WheelConfigs }) => void;
 

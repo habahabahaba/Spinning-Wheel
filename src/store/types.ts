@@ -1,10 +1,21 @@
-import { HexColor } from "../utils/color";
+import { HexColor } from '../utils/color';
+// Fonts:
+import type {
+  LocalFontNames,
+  RemoteFontNames,
+  AllFontNames,
+} from '../constants/FontFamilies';
+export { LocalFontNames, RemoteFontNames, AllFontNames };
+
+export interface FontState {
+  loadedFonts: Set<AllFontNames>;
+}
 
 // Wheel configs:
 export interface Outcome {
   label: string;
-  fillColor: HexColor|'';
-  fontFamily: string;
+  fillColor: HexColor | '';
+  fontFamily: AllFontNames | '';
 }
 
 export class OutcomeModel implements Outcome {
@@ -15,13 +26,13 @@ export class OutcomeModel implements Outcome {
   }
 
   public label: string;
-  public fillColor: HexColor|'';
-  public fontFamily: string;
+  public fillColor: HexColor | '';
+  public fontFamily: AllFontNames | '';
 }
 
 export interface WheelConfig {
   default_palette_idx: number;
-  default_fontFamily: string;
+  default_fontFamily: AllFontNames;
   outcomes: Outcome[];
 }
 
@@ -33,5 +44,3 @@ export interface WheelConfigs {
   activeConfig: WheelConfig;
   savedConfigs: (SavedWheelConfig | undefined)[];
 }
-
-
