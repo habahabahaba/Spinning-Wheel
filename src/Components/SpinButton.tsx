@@ -4,7 +4,7 @@ import { PALETTES } from '../constants/palettes';
 import { contrastColor } from '../utils/color';
 // 3rd party:
 // Store:
-import useWheelStore from '../store/wheelStore';
+import useBoundStore from '../store/boundStore';
 // React Router:
 // React:
 // import { useState } from 'react';
@@ -36,7 +36,7 @@ const SpinButton: FC<SpinButtonProps> = ({
   onMouseLeave,
 }) => {
   // Store:
-  const paletteIdx = useWheelStore(
+  const paletteIdx = useBoundStore(
     (state) => state.activeConfig.default_palette_idx
   );
 

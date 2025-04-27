@@ -2,7 +2,7 @@
 import { PALETTES } from '../constants/palettes';
 // 3rd party:
 // Store:
-import useWheelStore from '../store/wheelStore';
+import useBoundStore from '../store/boundStore';
 // React Router:
 // React:
 // Context:
@@ -17,11 +17,11 @@ import type { FC } from 'react';
 
 const PaletteSelector: FC = () => {
   // Store:
-  const currentPalette = useWheelStore(
+  const currentPalette = useBoundStore(
     (state) => state.currentConfig.default_palette_idx
   );
   // Actions:
-  const setPalette = useWheelStore((state) => state.setDefaultPalette);
+  const setPalette = useBoundStore((state) => state.setDefaultPalette);
 
   // JSX:
   const options = Array(PALETTES.length)

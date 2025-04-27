@@ -1,6 +1,6 @@
 // 3rd party:
 // Store:
-import useWheelStore from '../store/wheelStore';
+import useBoundStore from '../store/boundStore';
 // React Router:
 // React:
 import { useState } from 'react';
@@ -16,15 +16,15 @@ import type { FC, MouseEvent } from 'react';
 
 const ConfigForm: FC = () => {
   // Store:
-  const outcomesLength = useWheelStore(
+  const outcomesLength = useBoundStore(
     (state) => state.currentConfig.outcomes.length
   );
   const possibleQuantity = 72 - outcomesLength;
 
   // Actions:
-  const addBlankOutcomes = useWheelStore((state) => state.addBlankOutcomes);
-  const resetConfig = useWheelStore((state) => state.resetCurrentConfig);
-  const applyConfig = useWheelStore((state) => state.applyConfig);
+  const addBlankOutcomes = useBoundStore((state) => state.addBlankOutcomes);
+  const resetConfig = useBoundStore((state) => state.resetCurrentConfig);
+  const applyConfig = useBoundStore((state) => state.applyConfig);
 
   // State:
   const [addQuantity, setAddQuantity] = useState<number>(1);

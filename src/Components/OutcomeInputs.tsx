@@ -2,7 +2,7 @@
 import { isHexColor } from '../utils/color';
 // 3rd party:
 // Store:
-import useWheelStore from '../store/wheelStore';
+import useBoundStore from '../store/boundStore';
 // React Router:
 // React:
 // Context:
@@ -18,14 +18,14 @@ interface OutcomeInputsProps {
 
 const OutcomeInputs: FC<OutcomeInputsProps> = ({ index }) => {
   // Store:
-  const outcome = useWheelStore((state) => state.currentConfig.outcomes[index]);
-  const outcomesLength = useWheelStore(
+  const outcome = useBoundStore((state) => state.currentConfig.outcomes[index]);
+  const outcomesLength = useBoundStore(
     (state) => state.currentConfig.outcomes.length
   );
   // Actions:
-  const modifyOutcome = useWheelStore((state) => state.modifyOutcome);
-  const duplicateOutcome = useWheelStore((state) => state.duplicateOutcome);
-  const removeOutcome = useWheelStore((state) => state.removeOutcome);
+  const modifyOutcome = useBoundStore((state) => state.modifyOutcome);
+  const duplicateOutcome = useBoundStore((state) => state.duplicateOutcome);
+  const removeOutcome = useBoundStore((state) => state.removeOutcome);
 
   // Handlers:
   function handleChange<K extends keyof Outcome>(

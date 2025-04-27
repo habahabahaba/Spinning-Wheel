@@ -6,7 +6,7 @@
 import { uniqueRandomsInRange } from './random';
 import { isHexColor } from './color';
 // Types, interfaces and enumns:
-import type { Outcome, WheelConfig, WheelConfigs } from '../store/types';
+import type { Outcome, WheelConfig, WheelConfigsState } from '../store/types';
 import { OutcomeModel } from '../store/types';
 
 // Initial state:
@@ -16,7 +16,7 @@ export const initConfig: WheelConfig = {
   outcomes: createOutcomes(2, (i) => `Outcome ${i + 1}`),
 };
 
-export const initConfigs: WheelConfigs = {
+export const initConfigs: WheelConfigsState = {
   userId: 'USER_ID',
   currentConfig: initConfig,
   activeConfig: prepareConfig(initConfig),

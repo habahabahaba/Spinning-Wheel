@@ -5,7 +5,7 @@ import wallpaperSVGstrings from './wallpaperSVGstrings';
 // 3rd party:
 // Redux, RTK:
 // Store:
-import useWheelStore from '../store/wheelStore';
+import useBoundStore from '../store/boundStore';
 // Router:
 // React:
 import { useMemo } from 'react';
@@ -32,13 +32,13 @@ const Wallpaper: FC<WallpaperProps> = ({
   style = {},
 }) => {
   // Store:
-  const paletteIdx = useWheelStore(
+  const paletteIdx = useBoundStore(
     (state) => state.activeConfig.default_palette_idx
   );
   const colors = PALETTES[paletteIdx];
 
   const backgroundImage = useMemo(() => {
-    const svgString = wallpaperSVGstrings[variant]({
+    const svgString = (wallpaperSVGstrings[variant] || wallpaperSVGstrings[0])({
       color1: colors[paletteColor1 || 0],
       color2: colors[paletteColor2 || 0],
       color3: colors[paletteColor3 || 0],
@@ -49,8 +49,8 @@ const Wallpaper: FC<WallpaperProps> = ({
 
   const styleObj: CSSProperties = {
     backgroundPosition: 'center',
-    backgroundSize: 'cover',
-    backgroundRepeat: 'unset',
+    backgroundSize: 'contain',
+    backgroundRepeat: 'repeat',
     backgroundOrigin: 'initial',
 
     ...style,

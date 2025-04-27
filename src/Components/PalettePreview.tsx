@@ -25,7 +25,7 @@ const PalettePreview: FC<PalettePreviewProps> = ({ palette_idx }) => {
         <span
           key={idx}
           style={{
-            display: 'inline-block',
+            // display: 'inline-block',
             backgroundColor: color,
             width: `calc(90% / ${colorsLength})`,
             aspectRatio: '1',
@@ -41,11 +41,11 @@ const PalettePreview: FC<PalettePreviewProps> = ({ palette_idx }) => {
     <>
       <div
         style={{
-          width: '10rem',
+          width: '8rem',
           display: 'flex',
           justifyContent: 'space-between',
-          padding: '0.25rem',
-          // border: '1px solid black',
+          padding: '0.1rem',
+          //   border: '1px solid black',
         }}
       >
         {colors}

@@ -1,15 +1,43 @@
+// Constants:
 // Fonts:
-// import { FONT_FAMILIES_REMOTE } from './assets/FontFamilies';
+import { FONT_IMPORTS } from './constants/FontFamilies';
+// Store:
+import useBoundStore from './store/boundStore';
+// React:
+import { useEffect } from 'react';
 // Components:
 import Main from './Components/Main';
 import ConfigForm from './Components/ConfigForm';
+// Types, interfaces and enumns:
+import type { RemoteFontNames } from './constants/FontFamilies';
 
 function App() {
-  // console.log(
-  //   FONT_FAMILIES_REMOTE.map(
-  //     (f) => `@fontsource/${f.toLowerCase().replaceAll(' ', '-')}`
-  //   ).join(' ')
-  // );
+  // Actions:
+  const markLoadedFont = useBoundStore((state) => state.markLoadedFont);
+  // const checkFont = useBoundStore((state) => state.checkFont);
+
+  // Loading additional fonts:
+  useEffect(() => {
+    Object.entries(FONT_IMPORTS).forEach(async function loadRemoteFonts([
+      font,
+      loader,
+    ]) {
+      try {
+        await loader();
+        await document.fonts.load(`600 1em "${font}"`);
+        if (document.fonts.check(`600 1em "${font}"`)) {
+          markLoadedFont(font as RemoteFontNames);
+          // console.log(
+          //   `[loadRemoteFonts]: injected font ${font}: ${checkFont(
+          //     font as RemoteFontNames
+          //   )}`
+          // );
+        }
+      } catch (err) {
+        console.error(`Failed to load font: ${font}`, err);
+      }
+    });
+  }, [markLoadedFont]);
 
   return (
     <>
