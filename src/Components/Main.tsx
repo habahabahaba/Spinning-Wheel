@@ -30,7 +30,7 @@ const Main: FC = () => {
     (state) => state.activeConfig
   );
   // State:
-  const [currentOutcome, setCurrentOutcome] = useState<number>(0);
+  const [currentOutcomeIdx, setCurrentOutcomeIdx] = useState<number>(0);
 
   // const [isShowingResult, setIsShowingResult] = useState(false);
 
@@ -82,7 +82,7 @@ const Main: FC = () => {
         }
       );
       console.log(`[Wheel] resultingTurn: ${resultingTurn}`);
-      setCurrentOutcome(
+      setCurrentOutcomeIdx(
         () =>
           Math.floor(outcomes.length * (1 - resultingTurn)) % outcomes.length
       );
@@ -95,7 +95,7 @@ const Main: FC = () => {
   return (
     <main
       style={{
-        height: '100vh',
+        // height: '100vh',
         width: 'auto',
         padding: '2rem',
         position: 'relative',
@@ -125,7 +125,7 @@ const Main: FC = () => {
           fillColors={PALETTES[default_palette_idx]}
           fontFamily={default_fontFamily}
           wheelRef={wheelRef}
-          currentOutcome={wheelState === 'idle' ? currentOutcome : null}
+          currentOutcomeIdx={wheelState === 'idle' ? currentOutcomeIdx : null}
         />
         <Arrow size={WHEEL_RADIUS / 6} arrowIdx={0} />
         <SpinButton
@@ -138,14 +138,7 @@ const Main: FC = () => {
           onMouseLeave={handleMouseLeave}
         />
         <ResultDisplayModal
-          label={outcomes[currentOutcome]['label']}
-          backgroundColor={
-            outcomes[currentOutcome]['fillColor'] ||
-            PALETTES[default_palette_idx][
-              currentOutcome % PALETTES[default_palette_idx].length
-            ]
-          }
-          fontFamily={outcomes[currentOutcome]['fontFamily']}
+          currentOutcomeIdx={currentOutcomeIdx}
           ref={resultModalRef}
         />
       </div>

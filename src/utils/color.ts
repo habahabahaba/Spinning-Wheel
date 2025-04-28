@@ -53,65 +53,46 @@ export function contrastColor(hexColor: string): '#000000' | '#FFFFFF' {
 }
 
 /**
- * Adjusts the brightness of a hexadecimal color, accurately mimicking CSS `filter: brightness()` behavior.
- * Supports both 3-digit (`#RGB`) and 6-digit (`#RRGGBB`) hex formats.
+ * Adjusts the brightness of a hex color similarly to the CSS `filter: brightness()`.
  *
- * @param hexColor - The color to adjust in hexadecimal format (case-insensitive).
- * @param amount - Brightness multiplier where:
- *                 - 0 = completely black
- *                 - 1 = original color
- *                 - 1-2 = increasingly brighter
- *                 Values outside [0, 2] will be clamped to this range.
- * @returns The adjusted color in 6-digit hexadecimal format (`#RRGGBB`).
- * @throws {Error} Only if hexColor is invalid.
+ * @param hexColor - A string representing the hex color (with or without `#`), either 3-digit (e.g., `#abc`) or 6-digit (e.g., `#aabbcc`).
+ * @param amount - A number where `1` means no change, `>1` increases brightness, and `<1` decreases brightness.
+ * @returns A hex color string (`#rrggbb`) after applying the brightness adjustment.
  *
  * @example
- * brightness('#808080', 1.5); // Brighten gray → '#bfbfbf'
- * brightness('#0044ff', 2);   // Maximum brightness → '#0088ff'
- * brightness('#ff0000', 0.5); // Darken red → '#800000'
+ * brightness("#6699cc", 1.2); // -> "#7ab8f5"
+ * brightness("#abc", 0.8);    // -> "#8899aa"
  */
 export function brightness(hexColor: string, amount: number): `#${string}` {
-  // Clamp amount to [0, 2] range
-  const clampedAmount = Math.max(0, Math.min(2, amount));
+  // Remove '#' if present
+  let color = hexColor.replace(/^#/, '');
 
-  // Normalize 3-digit hex to 6-digit
-  const normalizedHex = hexColor.replace(
-    /^#([0-9a-f])([0-9a-f])([0-9a-f])$/i,
-    '#$1$1$2$2$3$3'
-  );
-
-  // Validate hex format
-  if (!/^#[0-9a-f]{6}$/i.test(normalizedHex)) {
-    throw new Error(
-      `Invalid hex color: "${hexColor}". Expected #RGB or #RRGGBB.`
-    );
+  // Expand 3-digit colors to 6-digit
+  if (color.length === 3) {
+    color = color
+      .split('')
+      .map((ch) => ch + ch)
+      .join('');
   }
 
-  // Extract RGB components
-  const r = parseInt(normalizedHex.slice(1, 3), 16);
-  const g = parseInt(normalizedHex.slice(3, 5), 16);
-  const b = parseInt(normalizedHex.slice(5, 7), 16);
+  if (color.length !== 6) {
+    throw new Error(`Invalid hex color: ${hexColor}`);
+  }
 
-  // Adjust brightness while maintaining color ratios
-  const adjust = (value: number) => {
-    // For amounts > 1, we scale up while keeping proportions
-    if (clampedAmount > 1) {
-      const scaled = value * clampedAmount;
-      // Preserve color ratios by scaling towards 255 without exceeding it
-      return Math.min(255, scaled + (255 - scaled) * (clampedAmount - 1));
-    }
-    // For amounts <= 1, simple multiplication
-    return Math.round(value * clampedAmount);
-  };
+  // Convert to R, G, B components
+  const num = parseInt(color, 16);
+  let r = (num >> 16) & 0xff;
+  let g = (num >> 8) & 0xff;
+  let b = num & 0xff;
 
-  // Apply adjustment and clamp to [0, 255]
-  const clamp = (value: number) =>
-    Math.min(255, Math.max(0, Math.round(value)));
-  const adjustedR = clamp(adjust(r));
-  const adjustedG = clamp(adjust(g));
-  const adjustedB = clamp(adjust(b));
+  // Adjust brightness
+  r = Math.min(255, Math.max(0, Math.round(r * amount)));
+  g = Math.min(255, Math.max(0, Math.round(g * amount)));
+  b = Math.min(255, Math.max(0, Math.round(b * amount)));
 
-  // Convert back to 6-digit hex
-  const toHex = (value: number) => value.toString(16).padStart(2, '0');
-  return `#${toHex(adjustedR)}${toHex(adjustedG)}${toHex(adjustedB)}` as const;
+  // Convert back to hex string
+  const result = `#${[r, g, b]
+    .map((x) => x.toString(16).padStart(2, '0'))
+    .join('')}` as `#${string}`;
+  return result;
 }

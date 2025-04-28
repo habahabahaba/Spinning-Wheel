@@ -20,6 +20,7 @@ import type {
   WheelConfigsSlice,
   FontSlice,
 } from './types';
+import type { AllFontNames } from './types';
 
 // const useWheelStore = create<WheelConfigsState & WheelConfigsActions>()(
 //   devtools((set) => ({
@@ -221,11 +222,11 @@ const createWheelConfigsSlice: StateCreator<
       };
     }),
 
-  setDefaultFontFamily: ({ fontFamily }: { fontFamily: string }) =>
+  setDefaultFontFamily: ({ fontFamily }: { fontFamily: AllFontNames }) =>
     set((state) => ({
       currentConfig: {
         ...state.currentConfig,
-        default_FontFamily: fontFamily,
+        default_fontFamily: fontFamily,
       },
     })), // WILL BE REDONE!
 

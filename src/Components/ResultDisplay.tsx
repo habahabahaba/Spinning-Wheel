@@ -1,7 +1,10 @@
+// Constants:
+import { PALETTES } from '../constants/palettes';
 // Utils:
 import { contrastColor, brightness } from '../utils/color';
 // 3rd party:
 // Store:
+import useBoundStore from '../store/boundStore';
 // React Router:
 // React:
 import { use } from 'react';
@@ -13,32 +16,50 @@ import modalCloseCtx from '../context/modalCloseCtx';
 // Types, interfaces and enumns:
 import type { FC } from 'react';
 export interface ResultDisplayProps {
-  label: string;
-  backgroundColor?: string;
-  fontFamily?: string;
+  currentOutcomeIdx: number;
 }
 
-const ResultDisplay: FC<ResultDisplayProps> = ({
-  label,
-  backgroundColor = '#FFFFFF',
-  fontFamily = 'Arial',
-}) => {
+const ResultDisplay: FC<ResultDisplayProps> = ({ currentOutcomeIdx }) => {
   // For closing:
   const { handleCloseModal } = use(modalCloseCtx);
 
-  const textColor = contrastColor(brightness(backgroundColor, 1.4));
+  // Store:
+  const currentOutcome = useBoundStore(
+    (state) => state.activeConfig.outcomes[currentOutcomeIdx]
+  );
+
+  if (!currentOutcome) {
+    handleCloseModal();
+  }
+
+  const { label, fillColor, fontFamily } = currentOutcome;
+  const palette_idx = useBoundStore(
+    (state) => state.activeConfig.default_palette_idx
+  );
+  const default_fontFamily = useBoundStore(
+    (state) => state.activeConfig.default_fontFamily
+  );
+
+  const backgroundColor =
+    fillColor ||
+    PALETTES[palette_idx][currentOutcomeIdx % PALETTES[palette_idx].length];
+  const brightBGColor = brightness(backgroundColor, 1.4);
+
+  const font = fontFamily || default_fontFamily;
+  const textColor = contrastColor(brightBGColor);
+
   // JSX:
   return (
     <div
       style={{
-        backgroundColor: `${backgroundColor}`,
+        backgroundColor: `${brightBGColor}`,
         color: `${textColor}`,
-        fontFamily: `${fontFamily}`,
+        fontFamily: `${font}`,
+        // filter: 'brightness(1.4)',
         // textDecoration: 'underline',
         margin: '0',
         padding: '1rem 2rem',
         cursor: 'pointer',
-        filter: 'brightness(1.4)',
         // border: 'solid black 1px',
       }}
       onClick={handleCloseModal}

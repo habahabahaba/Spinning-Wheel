@@ -9,6 +9,7 @@ import { useState } from 'react';
 // Components:
 import OutcomeInputs from './OutcomeInputs';
 import PaletteSelector from './PaletteSelector';
+import FontSelector from './FontSelector';
 // CSS:
 // Types, interfaces and enumns:
 import type { FC, MouseEvent } from 'react';
@@ -59,6 +60,7 @@ const ConfigForm: FC = () => {
     <form>
       <div>
         <PaletteSelector />
+        <FontSelector outcomeIdx={-1} />
       </div>
       {outcomes}
       <div>

@@ -39,12 +39,14 @@ const Sector: FC<SectorProps> = ({
   fillColor,
   textColor = '#000',
   label = '',
-  fontFamily = 'sans-serif',
+  fontFamily = 'Arial',
   fontWeight = '600',
   isHighlighted = false,
 }) => {
   const sectorAngle = endAngle - startAngle;
   const midAngle = (startAngle + endAngle) / 2;
+
+  // console.log(`[Sector] fontFamily: ${fontFamily}`);
 
   const describeSector = useMemo(() => {
     const start = polarToCartesian(center.x, center.y, radius, endAngle);

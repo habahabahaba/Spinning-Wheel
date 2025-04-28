@@ -19,7 +19,7 @@ interface WheelProps {
   outcomes: Outcome[];
   fillColors: string[];
   fontFamily: string;
-  currentOutcome: number | null;
+  currentOutcomeIdx: number | null;
   wheelContainerRef?: Ref<HTMLDivElement>;
   wheelRef?: Ref<SVGSVGElement>;
 }
@@ -35,7 +35,7 @@ const Wheel: FC<WheelProps> = ({
   outcomes,
   fillColors,
   fontFamily = 'Arial',
-  currentOutcome,
+  currentOutcomeIdx,
   wheelContainerRef,
   wheelRef,
 }) => {
@@ -45,6 +45,8 @@ const Wheel: FC<WheelProps> = ({
 
   const anglePerSector = 360 / outcomes.length;
 
+  // console.log(`[Wheel] default_FontFamily: ${fontFamily}`);
+
   // JSX:
   const sectors = useMemo(
     () =>
@@ -53,7 +55,7 @@ const Wheel: FC<WheelProps> = ({
         const startAngle = i * anglePerSector + 90; // Subtract 90° to align 0° with right
         const endAngle = (i + 1) * anglePerSector + 90;
 
-        const isHighlighted = currentOutcome === i;
+        const isHighlighted = currentOutcomeIdx === i;
         const fillColor =
           outcome.fillColor || fillColors[i % fillColors.length];
         const textColor = contrastColor(
@@ -82,7 +84,7 @@ const Wheel: FC<WheelProps> = ({
       center,
       radius,
       anglePerSector,
-      currentOutcome,
+      currentOutcomeIdx,
     ]
   );
 

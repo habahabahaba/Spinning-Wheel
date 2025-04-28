@@ -33,8 +33,6 @@ const PaletteSelector: FC = () => {
     ));
 
   return (
-    // <label htmlFor='palette-select'>
-    //   Default colors
     <Select
       id='palette-select'
       value={currentPalette}
@@ -44,7 +42,6 @@ const PaletteSelector: FC = () => {
     >
       {options}
     </Select>
-    // {/* </label> */}
   );
 };
 

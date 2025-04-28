@@ -8,23 +8,17 @@ import type {
 export { LocalFontNames, RemoteFontNames, AllFontNames };
 
 export interface FontState {
-  loadedFonts: Set<AllFontNames>;
+  fontsLoadStates: Record<AllFontNames, boolean>;
 }
 
 export interface FontActions {
   resetFontState: () => void;
   replaceFontState: (newState: FontState) => void;
   markLoadedFont: (loadedFont: RemoteFontNames) => void;
-  checkFont: (fontName: AllFontNames) => void;
+  checkFont: (fontName: AllFontNames) => boolean;
 }
 
-export interface FontSlice {
-  loadedFonts: Set<AllFontNames>;
-  resetFontState: () => void;
-  replaceFontState: (newState: FontState) => void;
-  markLoadedFont: (loadedFont: RemoteFontNames) => void;
-  checkFont: (fontName: AllFontNames) => void;
-}
+export type FontSlice = FontState & FontActions;
 
 // Wheel configs:
 export interface Outcome {
@@ -71,7 +65,7 @@ export interface WheelConfigsActions {
 
   setDefaultPalette: ({ paletteIdx }: { paletteIdx: number }) => void;
 
-  setDefaultFontFamily: ({ fontFamily }: { fontFamily: string }) => void;
+  setDefaultFontFamily: ({ fontFamily }: { fontFamily: AllFontNames }) => void;
 
   addBlankOutcomes: ({ quantity }: { quantity: number }) => void;
 
@@ -102,49 +96,4 @@ export interface WheelConfigsActions {
   applyConfig: () => void;
 }
 
-export interface WheelConfigsSlice {
-  userId: string;
-  currentConfig: WheelConfig;
-  activeConfig: WheelConfig;
-  savedConfigs: (SavedWheelConfig | undefined)[];
-
-  replaceState: ({ newState }: { newState: WheelConfigsState }) => void;
-
-  resetState: () => void;
-
-  replaceCurrentConfig: ({ newConfig }: { newConfig: WheelConfig }) => void;
-
-  resetCurrentConfig: () => void;
-
-  setDefaultPalette: ({ paletteIdx }: { paletteIdx: number }) => void;
-
-  setDefaultFontFamily: ({ fontFamily }: { fontFamily: string }) => void;
-
-  addBlankOutcomes: ({ quantity }: { quantity: number }) => void;
-
-  duplicateOutcome: ({ outcomeIdx }: { outcomeIdx: number }) => void;
-
-  removeOutcome: ({ outcomeIdx }: { outcomeIdx: number }) => void;
-
-  modifyOutcome: <K extends keyof Outcome>({
-    outcomeIdx,
-    key,
-    value,
-  }: {
-    outcomeIdx: number;
-    key: K;
-    value: Outcome[K];
-  }) => void;
-
-  saveCurrentConfig: ({
-    saveIdx,
-    configName,
-  }: {
-    saveIdx: number;
-    configName: string;
-  }) => void;
-
-  loadConfig: ({ saveIdx }: { saveIdx: number }) => void;
-
-  applyConfig: () => void;
-}
+export type WheelConfigsSlice = WheelConfigsState & WheelConfigsActions;

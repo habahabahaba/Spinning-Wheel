@@ -1,5 +1,4 @@
 // 3rd party:
-// Redux RTK:
 // Store:
 // React Router:
 // React:
@@ -16,19 +15,19 @@ import type { ModalHandle } from './Modal';
 import type { ResultDisplayProps } from './ResultDisplay';
 
 const ResultDisplayModal = forwardRef<ModalHandle, ResultDisplayProps>(
-  ({ label, backgroundColor }, ref: ForwardedRef<ModalHandle>) => {
+  ({ currentOutcomeIdx }, ref: ForwardedRef<ModalHandle>) => {
     // JSX:
     return (
       <Modal
         ref={ref}
         className='drop-down'
-        childProps={{ label, backgroundColor }}
+        childProps={{ currentOutcomeIdx }}
         style={{
           right: 'calc(60px - 1rem)',
           top: '-15vh',
         }}
       >
-        <ResultDisplay label={label} backgroundColor={backgroundColor} />
+        <ResultDisplay currentOutcomeIdx={currentOutcomeIdx} />
       </Modal>
     );
   }

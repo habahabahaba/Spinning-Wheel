@@ -8,6 +8,7 @@ import useBoundStore from '../store/boundStore';
 // Context:
 // Hooks:
 // Components:
+import FontSelector from './FontSelector';
 // CSS:
 // Types, interfaces and enumns:
 import type { FC } from 'react';
@@ -37,30 +38,50 @@ const OutcomeInputs: FC<OutcomeInputsProps> = ({ index }) => {
 
   // JSX:
   return (
-    <div style={{ display: 'flex' }}>
-      <div>
-        <input
-          id={`label-input-Outcome-${index}`}
-          type='text'
-          maxLength={25}
-          placeholder={`Outcome ${index + 1}`}
-          value={outcome.label}
-          onChange={(ev) => {
-            handleChange('label', ev.target.value);
-          }}
-        />
-        <input
-          type='color'
-          id={`fillColor-input-Outcome-${index}`}
-          value={outcome.fillColor || '#ffffff'}
-          onChange={(ev) => {
-            handleChange(
-              'fillColor',
-              isHexColor(ev.target.value) ? ev.target.value : ''
-            );
-          }}
-        />
-      </div>
+    <div
+      style={{
+        display: 'flex',
+        width: '90%',
+        justifyContent: 'space-around',
+        margin: '0.5rem',
+      }}
+    >
+      <input
+        id={`label-input-Outcome-${index}`}
+        type='text'
+        maxLength={30}
+        placeholder={`Outcome ${index + 1}`}
+        value={outcome.label}
+        onChange={(ev) => {
+          handleChange('label', ev.target.value);
+        }}
+        style={{
+          minHeight: '1.5rem',
+          padding: '0.25.rem',
+          border: '1px solid',
+          borderRadius: ' 0.1rem',
+          minWidth: '12rem',
+        }}
+      />
+      <input
+        type='color'
+        id={`fillColor-input-Outcome-${index}`}
+        value={outcome.fillColor || '#ffffff'}
+        onChange={(ev) => {
+          handleChange(
+            'fillColor',
+            isHexColor(ev.target.value) ? ev.target.value : ''
+          );
+        }}
+        style={{
+          minHeight: '2rem',
+          padding: '0.25.rem',
+          border: '1px solid',
+          borderRadius: ' 0.1rem',
+        }}
+      />
+      <FontSelector outcomeIdx={index} />
+
       <button
         name='duplicate'
         onClick={(ev) => {

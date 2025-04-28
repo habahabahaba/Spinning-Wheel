@@ -3,7 +3,7 @@ import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
 // Store:
 import createFontSlice from './fontSlice';
-import createWheelConfigsSlice from './wheelSlice';
+import createWheelConfigsSlice from './wheelConfigsSlice';
 // Types, interfaces and enumns:
 import type { FontSlice, WheelConfigsSlice } from './types';
 

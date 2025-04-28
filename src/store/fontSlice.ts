@@ -1,5 +1,5 @@
 // Constants:
-import { initFontState } from '../constants/FontFamilies';
+import { initFontsState } from '../constants/FontFamilies';
 // Utils:
 // 3rd party:
 // import { create } from 'zustand';
@@ -14,47 +14,27 @@ import type {
   FontSlice,
 } from './types';
 
-// const useFontStore = create<FontState & FontActions>()(
-//   devtools((set, get) => ({
-//     ...initFontState,
-
-//     // Actions:
-//     resetFontState: () => {
-//       set(initFontState);
-//     },
-
-//     replaceFontState: (newState: FontState) => set(newState),
-
-//     markLoadedFont: (loadedFont: RemoteFontNames) =>
-//       set((state) => ({
-//         loadedFonts: new Set([...state.loadedFonts]).add(loadedFont),
-//       })),
-
-//     checkFont: (fontName: AllFontNames) => get().loadedFonts.has(fontName),
-//   }))
-// );
-
 const createFontSlice: StateCreator<
   FontSlice & WheelConfigsSlice,
   [],
   [],
   FontSlice
 > = (set, get) => ({
-  ...initFontState,
+  ...initFontsState,
 
   // Actions:
   resetFontState: () => {
-    set(initFontState);
+    set(initFontsState);
   },
 
   replaceFontState: (newState: FontState) => set(newState),
 
   markLoadedFont: (loadedFont: RemoteFontNames) =>
     set((state) => ({
-      loadedFonts: new Set([...state.loadedFonts]).add(loadedFont),
+      fontsLoadStates: { ...state.fontsLoadStates, [loadedFont]: true },
     })),
 
-  checkFont: (fontName: AllFontNames) => get().loadedFonts.has(fontName),
+  checkFont: (fontName: AllFontNames) => get().fontsLoadStates[fontName],
 });
 
 export default createFontSlice;
