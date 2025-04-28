@@ -1,7 +1,6 @@
 // Assets:
 import { PALETTES } from '../constants/palettes';
 // Utils:
-// import { createOutcomes } from '../utils/wheelConfig';
 // 3rd party:
 // Store:
 import useBoundStore from '../store/boundStore';
@@ -74,10 +73,10 @@ const Main: FC = () => {
       const resultingTurn = spin(
         randomTurns,
         () => {
-          console.log(`START callback`);
+          // console.log(`START callback`);
         },
         () => {
-          console.log(`END callback`);
+          // console.log(`END callback`);
           resultModalRef.current?.handleShowModal();
         }
       );

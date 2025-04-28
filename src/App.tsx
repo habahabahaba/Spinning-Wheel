@@ -1,6 +1,6 @@
 // Constants:
 // Fonts:
-import { FONT_IMPORTS } from './constants/FontFamilies';
+import { FONT_IMPORTS } from './constants/fontFamilies';
 // Store:
 import useBoundStore from './store/boundStore';
 // React:
@@ -9,7 +9,7 @@ import { useEffect } from 'react';
 import Main from './Components/Main';
 import ConfigForm from './Components/ConfigForm';
 // Types, interfaces and enumns:
-import type { RemoteFontNames } from './constants/FontFamilies';
+import type { RemoteFontNames } from './constants/fontFamilies';
 
 function App() {
   // Actions:

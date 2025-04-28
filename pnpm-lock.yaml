@@ -20,12 +20,6 @@ importers:
       '@fontsource/expletus-sans':
         specifier: ^5.2.5
         version: 5.2.5
-      '@fontsource/fraunces':
-        specifier: ^5.2.5
-        version: 5.2.5
-      '@fontsource/grandstander':
-        specifier: ^5.2.5
-        version: 5.2.5
       '@fontsource/inter':
         specifier: ^5.2.5
         version: 5.2.5
@@ -53,9 +47,6 @@ importers:
       '@fontsource/reddit-sans-condensed':
         specifier: ^5.2.5
         version: 5.2.5
-      '@fontsource/roboto':
-        specifier: ^5.2.5
-        version: 5.2.5
       '@fontsource/roboto-condensed':
         specifier: ^5.2.5
         version: 5.2.5
@@ -68,9 +59,6 @@ importers:
       '@fontsource/sofia-sans-semi-condensed':
         specifier: ^5.2.5
         version: 5.2.5
-      '@fontsource/source-serif-4':
-        specifier: ^5.2.6
-        version: 5.2.6
       '@fontsource/tektur':
         specifier: ^5.2.5
         version: 5.2.5
@@ -327,12 +315,6 @@ packages:
   '@fontsource/expletus-sans@5.2.5':
     resolution: {integrity: sha512-hMkdxdQs3Yn8w/3fdOU7rHQ1hMjpnD/HuS+ztvET8Mgh47fcRjfvCEot3W6vq0GPTVxJVrtWzgB9Ys3PV3amJA==}
 
-  '@fontsource/fraunces@5.2.5':
-    resolution: {integrity: sha512-+OmG4NKrnYhnIvQ9SAMnDi933DQHKcgQ3BOVs1jRFasLvge0m69ItX3yapb2lPKKnrAi1haG89GuUeKK/ItdmA==}
-
-  '@fontsource/grandstander@5.2.5':
-    resolution: {integrity: sha512-O8klV1gBkf8CO91LVz9VI/zHZ4z4RlevVY8Yc5sB+R5dm7bMk8YgenRqN9IaiF3TPnk728eAcXUQrhswEP/MuA==}
-
   '@fontsource/inter@5.2.5':
     resolution: {integrity: sha512-kbsPKj0S4p44JdYRFiW78Td8Ge2sBVxi/PIBwmih+RpSXUdvS9nbs1HIiuUSPtRMi14CqLEZ/fbk7dj7vni1Sg==}
 
@@ -366,17 +348,11 @@ packages:
   '@fontsource/roboto-slab@5.2.5':
     resolution: {integrity: sha512-pOWJaBy+i4bI10Q5aSXqXxfF5Oow1wq07+5QFX3O15QkQ0TwTXDQR4yxFUjmVYR2p8tZOe408FbR25AQx8mqwg==}
 
-  '@fontsource/roboto@5.2.5':
-    resolution: {integrity: sha512-70r2UZ0raqLn5W+sPeKhqlf8wGvUXFWlofaDlcbt/S3d06+17gXKr3VNqDODB0I1ASme3dGT5OJj9NABt7OTZQ==}
-
   '@fontsource/sansita-swashed@5.2.5':
     resolution: {integrity: sha512-llYTvwqI8SDmkL1otbaUiTexJdfcGbDpyAxKRWbr9HZ+wcNXXodJ6YPMwyxdpYUTpvhBmdQwSx9Ragfppfq9Ww==}
 
   '@fontsource/sofia-sans-semi-condensed@5.2.5':
     resolution: {integrity: sha512-2KUkqrYAyFWyMVsw5NO8FE1xB/rAx0QwFz44LCRQsRLwNDTr7S+59ZdxA2j3uQG7Gft/gPCbex6jDCwofqXzcQ==}
-
-  '@fontsource/source-serif-4@5.2.6':
-    resolution: {integrity: sha512-cDdgLlxmYYL+h0CYthYB+Qjc71yrzvPi54XZsseIfq8qzoxEUh3uWWdC1tLBo01tg4KXrJYixflTCcc+VNxgZQ==}
 
   '@fontsource/tektur@5.2.5':
     resolution: {integrity: sha512-YBE3TP2Y5lhn/wJCx/WDFfM34Mhf42L4VWhjtwcE6cArL5+3HAvRP53brfexStU5wFmgf4WGrJutmMW7mFR08g==}
@@ -1280,10 +1256,6 @@ snapshots:
 
   '@fontsource/expletus-sans@5.2.5': {}
 
-  '@fontsource/fraunces@5.2.5': {}
-
-  '@fontsource/grandstander@5.2.5': {}
-
   '@fontsource/inter@5.2.5': {}
 
   '@fontsource/literata@5.2.5': {}
@@ -1306,13 +1278,9 @@ snapshots:
 
   '@fontsource/roboto-slab@5.2.5': {}
 
-  '@fontsource/roboto@5.2.5': {}
-
   '@fontsource/sansita-swashed@5.2.5': {}
 
   '@fontsource/sofia-sans-semi-condensed@5.2.5': {}
-
-  '@fontsource/source-serif-4@5.2.6': {}
 
   '@fontsource/tektur@5.2.5': {}
 
