@@ -1,5 +1,5 @@
 // Constants:
-import { AllFontNames, FONT_FAMILIES_ALL } from '../constants/FontFamilies';
+import { AllFontNames, FONT_FAMILIES_ALL } from '../constants/fontFamilies';
 // 3rd party:
 // Store:
 import useBoundStore from '../store/boundStore';
@@ -59,7 +59,7 @@ const FontSelector: FC<FontSelectorProps> = ({ outcomeIdx }) => {
 
   return (
     <Select
-      id='palette-select'
+      id='font-select'
       placeholder='Select font'
       value={currentFont}
       onChange={

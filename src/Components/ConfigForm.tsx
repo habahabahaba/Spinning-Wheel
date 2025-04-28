@@ -3,16 +3,20 @@
 import useBoundStore from '../store/boundStore';
 // React Router:
 // React:
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 // Context:
 // Hooks:
 // Components:
-import OutcomeInputs from './OutcomeInputs';
+import SaveSlotSelector from './SaveSlotSelector';
+import SaveConfigModal from './SaveConfigModal';
+import LoadConfigModal from './LoadConfigModal';
 import PaletteSelector from './PaletteSelector';
 import FontSelector from './FontSelector';
+import OutcomeInputs from './OutcomeInputs';
 // CSS:
 // Types, interfaces and enumns:
 import type { FC, MouseEvent } from 'react';
+import type { ModalHandle } from './Modal';
 // interface ConfigFormProps {}
 
 const ConfigForm: FC = () => {
@@ -29,6 +33,11 @@ const ConfigForm: FC = () => {
 
   // State:
   const [addQuantity, setAddQuantity] = useState<number>(1);
+  const [saveIdx, setSaveIdx] = useState<number>(-1);
+
+  // Refs (for modals):
+  const saveConfigModalRef = useRef<ModalHandle>(null);
+  const loadConfigModalRef = useRef<ModalHandle>(null);
 
   // Handlers
   function handleAddOutcomes(ev: MouseEvent<HTMLButtonElement>) {
@@ -51,40 +60,80 @@ const ConfigForm: FC = () => {
     applyConfig();
   }
 
+  function handleOpenSaveModal(ev: MouseEvent<HTMLButtonElement>) {
+    ev.preventDefault();
+
+    saveConfigModalRef.current?.handleShowModal();
+  }
+
+  function handleOpenLoadModal(ev: MouseEvent<HTMLButtonElement>) {
+    ev.preventDefault();
+
+    loadConfigModalRef.current?.handleShowModal();
+  }
+
   // JSX:
   const outcomes = Array.from({ length: outcomesLength }, () => null).map(
     (_, idx) => <OutcomeInputs index={idx} key={idx} />
   );
 
   return (
-    <form>
-      <div>
-        <PaletteSelector />
-        <FontSelector outcomeIdx={-1} />
-      </div>
-      {outcomes}
-      <div>
-        <input
-          style={{ width: '2rem' }}
-          type='number'
-          min={1}
-          max={possibleQuantity}
-          step={1}
-          value={addQuantity}
-          onChange={(ev) => {
-            setAddQuantity(+ev.target.value);
-          }}
-        />
-        <button
-          onClick={handleAddOutcomes}
-          disabled={addQuantity > possibleQuantity}
-        >
-          Add
-        </button>
-        <button onClick={handleResetConfig}>Reset</button>
-        <button onClick={handleApplyConfig}>Apply</button>
-      </div>
-    </form>
+    <>
+      <form>
+        <div>
+          <SaveSlotSelector
+            value={saveIdx}
+            onChange={(value) => {
+              setSaveIdx(() => +value);
+            }}
+          />
+          <button
+            id='open-save-config-form'
+            name='Start saving configuration'
+            disabled={saveIdx < 0 || saveIdx > 9}
+            onClick={handleOpenSaveModal}
+          >
+            Save
+          </button>
+          <button
+            id='open-load-config-form'
+            name='Start loading configuration'
+            disabled={saveIdx < 0 || saveIdx > 9}
+            onClick={handleOpenLoadModal}
+          >
+            Load
+          </button>
+        </div>
+        <div>
+          <PaletteSelector />
+          <FontSelector outcomeIdx={-1} />
+        </div>
+        {outcomes}
+        <div>
+          <input
+            style={{ width: '2rem' }}
+            type='number'
+            min={1}
+            max={possibleQuantity}
+            step={1}
+            value={addQuantity}
+            onChange={(ev) => {
+              setAddQuantity(+ev.target.value);
+            }}
+          />
+          <button
+            onClick={handleAddOutcomes}
+            disabled={addQuantity > possibleQuantity}
+          >
+            Add
+          </button>
+          <button onClick={handleResetConfig}>Reset</button>
+          <button onClick={handleApplyConfig}>Apply</button>
+        </div>
+      </form>
+      <SaveConfigModal saveIdx={saveIdx} ref={saveConfigModalRef} />
+      <LoadConfigModal saveIdx={saveIdx} ref={loadConfigModalRef} />
+    </>
   );
 };
 

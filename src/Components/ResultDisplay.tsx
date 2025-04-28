@@ -20,7 +20,7 @@ export interface ResultDisplayProps {
 }
 
 const ResultDisplay: FC<ResultDisplayProps> = ({ currentOutcomeIdx }) => {
-  // For closing:
+  // Modal context For closing:
   const { handleCloseModal } = use(modalCloseCtx);
 
   // Store:
