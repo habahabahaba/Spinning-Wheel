@@ -4,7 +4,7 @@ import type {
   LocalFontNames,
   RemoteFontNames,
   AllFontNames,
-} from '../constants/FontFamilies';
+} from '../constants/fontFamilies';
 export { LocalFontNames, RemoteFontNames, AllFontNames };
 
 export interface FontState {
@@ -40,18 +40,17 @@ export class OutcomeModel implements Outcome {
 }
 
 export interface WheelConfig {
+  configName: string;
   default_palette_idx: number;
   default_fontFamily: AllFontNames;
   outcomes: Outcome[];
 }
 
-export type SavedWheelConfig = WheelConfig & { configName: string };
-
 export interface WheelConfigsState {
   userId: string;
   currentConfig: WheelConfig;
   activeConfig: WheelConfig;
-  savedConfigs: (SavedWheelConfig | undefined)[];
+  savedConfigs: (WheelConfig | undefined)[];
 }
 
 export interface WheelConfigsActions {

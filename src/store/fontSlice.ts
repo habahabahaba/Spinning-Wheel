@@ -1,5 +1,5 @@
 // Constants:
-import { initFontsState } from '../constants/FontFamilies';
+import { initFontsState } from '../constants/fontFamilies';
 // Utils:
 // 3rd party:
 // import { create } from 'zustand';

@@ -341,8 +341,7 @@ const createWheelConfigsSlice: StateCreator<
       if (saveIdx >= length || saveIdx < 0 || !state.savedConfigs[saveIdx])
         return state;
 
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const { configName, ...newCurrentConfig } = state.savedConfigs[saveIdx];
+      const { ...newCurrentConfig } = state.savedConfigs[saveIdx];
 
       return { currentConfig: newCurrentConfig };
     }),
