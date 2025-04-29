@@ -23,8 +23,11 @@ const ResultDisplayModal = forwardRef<ModalHandle, ResultDisplayProps>(
         className='drop-down'
         childProps={{ currentOutcomeIdx }}
         style={{
-          right: 'calc(60px - 1rem)',
-          top: '-15vh',
+          transform: 'translate(50%, 50%)',
+          // right: 'calc(60px - 1rem)',
+          // top: '-15vh',
+          top: '-10%',
+          right: '0%',
         }}
       >
         <ResultDisplay currentOutcomeIdx={currentOutcomeIdx} />

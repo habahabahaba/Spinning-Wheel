@@ -76,6 +76,7 @@ export function maxInscribedRectangle(
  * @param radius - Sector radius
  * @param height - Rectangle height (perpendicular to central radius)
  * @param width - Rectangle width (parallel to central radius)
+ * @param apexPaddingRatio - Minimal distance between the apex of the sector and the closest side of the rectangle, defined as a ratio of the radius.
  * @returns {
  *   validHeight: boolean;           // whether rectangle is short enough to fit inside the sector
  *   distanceFromApex: number;       // distance from apex to center of rectangle side, closest to the apex, with its corners touching radii
@@ -86,7 +87,8 @@ export function evaluateRectangleInSector(
   angleDeg: number,
   radius: number,
   height: number,
-  width: number
+  width: number,
+  apexPaddingRatio: number = 0.1
 ): { validHeight: boolean; distanceFromApex: number; arcOvershoot: number } {
   const angleRad = degreesToRadians(angleDeg);
   const halfAngleRad = angleRad / 2;
@@ -125,12 +127,15 @@ export function evaluateRectangleInSector(
 
     return {
       validHeight,
-      distanceFromApex: radius * 0.15, // leave a small padding
+      distanceFromApex: radius * apexPaddingRatio, // leave a small padding for the spin-button
       arcOvershoot,
     };
   } else {
     // For narrow sectors
-    const distanceFromApex = halfHeight / Math.tan(halfAngleRad);
+    const distanceFromApex = Math.max(
+      halfHeight / Math.tan(halfAngleRad),
+      radius * apexPaddingRatio
+    ); // leave a small padding for the spin-button
 
     // console.log(
     //   `[evaluateRectangleInSector] distanceFromApex: ${distanceFromApex}`

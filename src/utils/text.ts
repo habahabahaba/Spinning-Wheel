@@ -164,7 +164,6 @@ export function truncateTextWithEllipsis(
     rtl = false,
     position = 'middle',
   } = options;
-  // console.log(`[truncateTextWithEllipsis] availableWidth: ${availableWidth}`);
 
   if (!text || availableWidth <= 0) return '';
 
@@ -293,21 +292,14 @@ export function calculateTextLayout(
     fontFamily,
     fontWeight
   );
-  // console.log(
-  //   `[calculateTextLayout] angle: ${sectorAngleDeg},
-  //     minMetrics: ${JSON.stringify(minMetrics)}`
-  // );
 
   const minFitEvaluation = evaluateRectangleInSector(
     sectorAngleDeg,
     radius,
     minMetrics.height,
-    minMetrics.width
+    minMetrics.width,
+    0.16
   );
-  // console.log(
-  //   `[calculateTextLayout] angle: ${sectorAngleDeg},
-  //     minFitEvaluation: ${JSON.stringify(minFitEvaluation)}`
-  // );
 
   // Handle cases where text doesn't fit at minFontSize
   if (!minFitEvaluation.validHeight || minFitEvaluation.arcOvershoot > 0) {
@@ -336,30 +328,18 @@ export function calculateTextLayout(
       sectorAngleDeg,
       radius,
       truncatedMetrics.height,
-      truncatedMetrics.width
+      truncatedMetrics.width,
+      0.13
     );
     if (!truncatedFit.validHeight) {
       // console.log(`[calculateTextLayout] NO fit`);
       return { text: '', fontSize: 0, distanceFromApex: 0 };
     }
 
-    // console.log(
-    //   `[calculateTextLayout] TRUNCATED FIT angle: ${sectorAngleDeg},
-    //   minMetrics: ${JSON.stringify(minMetrics)}`
-    // );
-    // console.log(
-    //   `[calculateTextLayout] TRUNCATED FIT angle: ${sectorAngleDeg},
-    //   minFitEvaluation:${JSON.stringify(minFitEvaluation)}`
-    // );
-    // console.log(
-    //   `[calculateTextLayout] TRUNCATED FIT angle: ${sectorAngleDeg},
-    //   truncatedFit:${JSON.stringify(truncatedFit)}`
-    // );
-
     return {
       text: truncated,
       fontSize: minFontSize,
-      distanceFromApex: truncatedFit.distanceFromApex, // truncated width is already as wide as possible, there's no space between in and the arc
+      distanceFromApex: truncatedFit.distanceFromApex, // truncated width is already as wide as possible, there's no space between it and the arc
     };
   }
 
@@ -371,10 +351,6 @@ export function calculateTextLayout(
   const fontKey = `${maxRect.maxHeight}-${fontFamily}-${fontWeight}`;
   const cachedFontSize = fontSizeCache.get(fontKey);
   if (cachedFontSize) {
-    // console.log(
-    //   `[calculateTextLayout] NORMAL FIT angle: ${sectorAngleDeg},
-    // cachedFontSize: ${cachedFontSize}`
-    // );
     maxFontSize = cachedFontSize;
   } else {
     maxFontSize = Math.floor(
@@ -382,15 +358,6 @@ export function calculateTextLayout(
     );
     fontSizeCache.set(fontKey, maxFontSize);
   }
-  // const maxFontSize = Math.max(
-  //   minFontSize,
-  //   Math.floor(minFontSize * (maxRect.maxHeight / minMetrics.height))
-  // );
-
-  // console.log(
-  //   `[calculateTextLayout] NORMAL FIT angle: ${sectorAngleDeg},
-  //   maxRect:${JSON.stringify(maxRect)}`
-  // );
 
   const maxMetrics = measureTextBox(
     label,
@@ -404,17 +371,9 @@ export function calculateTextLayout(
     sectorAngleDeg,
     radius,
     maxMetrics.height,
-    maxMetrics.width
+    maxMetrics.width,
+    0.1
   );
-
-  // console.log(
-  //   `[calculateTextLayout] NORMAL FIT angle: ${sectorAngleDeg},
-  //   maxMetrics: ${JSON.stringify(maxMetrics)}`
-  // );
-  // console.log(
-  //   `[calculateTextLayout] NORMAL FIT angle: ${sectorAngleDeg},
-  //   maxFitEvaluation:${JSON.stringify(maxFitEvaluation)}`
-  // );
 
   const arcPadding = Math.min(5, -maxFitEvaluation.arcOvershoot / 2); // Apply small padding, if space allows for it.
   const distanceFromApex =

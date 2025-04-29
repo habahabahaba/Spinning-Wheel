@@ -80,32 +80,53 @@ const ConfigForm: FC = () => {
   return (
     <>
       <form>
-        <div>
+        <div
+          style={{
+            display: 'flex',
+            gap: '0.5rem',
+            justifyContent: 'end',
+            margin: '0.5rem',
+          }}
+        >
+          <span>Save / Load configuration:</span>
           <SaveSlotSelector
             value={saveIdx}
             onChange={(value) => {
               setSaveIdx(() => +value);
             }}
           />
-          <button
-            id='open-save-config-form'
-            name='Start saving configuration'
-            disabled={saveIdx < 0 || saveIdx > 9}
-            onClick={handleOpenSaveModal}
-          >
-            Save
-          </button>
-          <button
-            id='open-load-config-form'
-            name='Start loading configuration'
-            disabled={saveIdx < 0 || saveIdx > 9}
-            onClick={handleOpenLoadModal}
-          >
-            Load
-          </button>
+          <div style={{ display: 'flex', gap: '0.5rem' }}>
+            <button
+              id='open-save-config-form'
+              name='Start saving configuration'
+              disabled={saveIdx < 0 || saveIdx > 9}
+              onClick={handleOpenSaveModal}
+            >
+              Save
+            </button>
+            <button
+              id='open-load-config-form'
+              name='Start loading configuration'
+              disabled={saveIdx < 0 || saveIdx > 9}
+              onClick={handleOpenLoadModal}
+            >
+              Load
+            </button>
+          </div>
         </div>
-        <div>
+        <div
+          style={{
+            display: 'flex',
+            gap: '0.5rem',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            margin: '0.5rem',
+          }}
+        >
+          <span>Default colors:</span>
           <PaletteSelector />
+
+          <span>Default Font:</span>
           <FontSelector outcomeIdx={-1} />
         </div>
         {outcomes}

@@ -1,6 +1,6 @@
 // 3rd party:
 import { create } from 'zustand';
-import { devtools, persist } from 'zustand/middleware';
+import { persist } from 'zustand/middleware';
 // Store:
 import createFontSlice from './fontSlice';
 import createWheelConfigsSlice from './wheelConfigsSlice';

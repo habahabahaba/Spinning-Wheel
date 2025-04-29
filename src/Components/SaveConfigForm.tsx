@@ -38,7 +38,8 @@ const SaveConfigForm: FC<SaveConfigFormProps> = ({ saveIdx }) => {
   function handleSaveConfig(ev: FormEvent) {
     ev.preventDefault();
 
-    const configName = nameInputRef.current?.value || getCurrentDate();
+    const configName =
+      nameInputRef.current?.value || prevConfig?.configName || getCurrentDate();
     saveCurrentConfig({ saveIdx, configName });
 
     if (nameInputRef.current && nameInputRef.current.value) {
