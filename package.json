@@ -10,7 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fontsource/advent-pro": "^5.2.5",
     "@fontsource/alkatra": "^5.2.5",
+    "@fontsource/anybody": "^5.2.5",
+    "@fontsource/archivo-narrow": "^5.2.5",
     "@fontsource/chivo": "^5.2.5",
     "@fontsource/eb-garamond": "^5.2.5",
     "@fontsource/expletus-sans": "^5.2.5",

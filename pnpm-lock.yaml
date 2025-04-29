@@ -8,7 +8,16 @@ importers:
 
   .:
     dependencies:
+      '@fontsource/advent-pro':
+        specifier: ^5.2.5
+        version: 5.2.5
       '@fontsource/alkatra':
+        specifier: ^5.2.5
+        version: 5.2.5
+      '@fontsource/anybody':
+        specifier: ^5.2.5
+        version: 5.2.5
+      '@fontsource/archivo-narrow':
         specifier: ^5.2.5
         version: 5.2.5
       '@fontsource/chivo':
@@ -303,8 +312,17 @@ packages:
     resolution: {integrity: sha512-ZAoA40rNMPwSm+AeHpCq8STiNAwzWLJuP8Xv4CHIc9wv/PSuExjMrmjfYNj682vW0OOiZ1HKxzvjQr9XZIisQA==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
+  '@fontsource/advent-pro@5.2.5':
+    resolution: {integrity: sha512-VW6p8ZOmYdyagyY1rYdsZB3/9XeLVOFOYagtzz1AUCzGC2mzuZfZwjVw7PrxWzAp6yYnl861/c5ckfHK9Tic5w==}
+
   '@fontsource/alkatra@5.2.5':
     resolution: {integrity: sha512-pGWHnPckcxuJSF2106E307SHEhNqnQX+Ptq3Kvcu/88cHBeYFSedo+l3BEh4OxZQ0gt1/ntzm27nz7Vu14+rmw==}
+
+  '@fontsource/anybody@5.2.5':
+    resolution: {integrity: sha512-2OVNH8DibzrQa8vDua3zWadGQF9YMm6ROnbV5zJtvj7G0lhqs/Jyhen80J5UlvqHId/T/1pU+mdbc5o5/sbHvA==}
+
+  '@fontsource/archivo-narrow@5.2.5':
+    resolution: {integrity: sha512-4jRDlFjtQYAJzRbBN9lDJ73sDaL5u3e34ogQfz81DsYav0iGjrs3xlehteG7c5zk2l6/YiukOihC3iosdjXLNg==}
 
   '@fontsource/chivo@5.2.5':
     resolution: {integrity: sha512-WVSfG0ANn6o6cEokj/W7Vxdc3VECBbbTdkIhKUoWDwN3ho6acoQ+q6MYIqCCZ+LkfvagdHCX+mLtoq9fMQWi5g==}
@@ -1248,7 +1266,13 @@ snapshots:
       '@eslint/core': 0.13.0
       levn: 0.4.1
 
+  '@fontsource/advent-pro@5.2.5': {}
+
   '@fontsource/alkatra@5.2.5': {}
+
+  '@fontsource/anybody@5.2.5': {}
+
+  '@fontsource/archivo-narrow@5.2.5': {}
 
   '@fontsource/chivo@5.2.5': {}
 
