@@ -8,6 +8,12 @@ export const FONT_FAMILIES_LOCAL = [
 export const FONT_IMPORTS = {
   Alkatra: () => import('@fontsource/alkatra/600.css'),
 
+  Anybody: () => import('@fontsource/anybody/600.css'),
+
+  'Advent Pro': () => import('@fontsource/advent-pro/600.css'),
+
+  'Archivo Narrow': () => import('@fontsource/archivo-narrow/600.css'),
+
   Chivo: () => import('@fontsource/chivo/600.css'),
 
   'EB Garamond': () => import('@fontsource/eb-garamond/600.css'),
@@ -71,6 +77,9 @@ const initFontsLoadStates: Record<AllFontNames, boolean> = {
 
   // Remote fonts:
   Alkatra: false,
+  Anybody: false,
+  'Advent Pro': false,
+  'Archivo Narrow': false,
   Chivo: false,
   'EB Garamond': false,
   'Expletus Sans': false,
