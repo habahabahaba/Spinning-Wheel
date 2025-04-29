@@ -8,7 +8,7 @@
 // Components:
 // CSS:
 // Arrow icons:
-import arrowSVGs from './arrowSVGs.tsx';
+import arrowSVGs from './SVG/arrowSVGs.tsx';
 // Types, interfaces and enumns:
 import type { FC, Ref } from 'react';
 interface ArrowProps {

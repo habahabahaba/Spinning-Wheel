@@ -13,7 +13,7 @@ import useBoundStore from '../store/boundStore';
 // Components:
 // CSS:
 // Icons:
-import { idleSVGs, windUpSVGs, spinningSVGs } from './spinSVGs';
+import { idleSVGs, windUpSVGs, spinningSVGs } from './SVG/spinSVGs';
 // Types, interfaces and enumns:
 import type { FC } from 'react';
 interface SpinButtonProps {

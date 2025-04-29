@@ -10,7 +10,7 @@ const arrowSVGs: JSX.Element[] = [
   >
     <g
       strokeWidth='111'
-      stroke='hsl(0, 0%, 0%)'
+      stroke='#000000'
       fill='none'
       strokeLinecap='square'
       transform='matrix(-0.7071067811865475,0.7071067811865476,-0.7071067811865476,-0.7071067811865475,989.685424949238,399.99999999999994)'
@@ -34,7 +34,7 @@ const arrowSVGs: JSX.Element[] = [
         orient='auto'
         id='SvgjsMarker1254'
       >
-        <polygon points='0,6.5 0,0 6.5,3.25' fill='hsl(0, 0%, 0%)'></polygon>
+        <polygon points='0,6.5 0,0 6.5,3.25' fill='#000000'></polygon>
       </marker>
     </defs>
   </svg>,
@@ -101,7 +101,7 @@ const arrowSVGs: JSX.Element[] = [
   >
     <g
       strokeWidth='63'
-      stroke='hsl(0, 0%, 0%)'
+      stroke='#000000'
       fill='none'
       strokeLinecap='square'
       transform='matrix(-0.7193398003386512,0.6946583704589971,-0.6946583704589971,-0.7193398003386512,838.5992683190593,411.87257195186163)'
@@ -124,10 +124,7 @@ const arrowSVGs: JSX.Element[] = [
         orient='auto'
         id='SvgjsMarker2209'
       >
-        <polygon
-          points='0,4.5 1.5,2.25 0,0 4.5,2.25'
-          fill='hsl(0, 0%, 0%)'
-        ></polygon>
+        <polygon points='0,4.5 1.5,2.25 0,0 4.5,2.25' fill='#000000'></polygon>
       </marker>
     </defs>
   </svg>,
@@ -140,7 +137,7 @@ const arrowSVGs: JSX.Element[] = [
   >
     <g
       strokeWidth='111'
-      stroke='hsl(0, 0%, 0%)'
+      stroke='#000000'
       fill='none'
       strokeLinecap='square'
       transform='matrix(-0.7071067811865475,0.7071067811865476,-0.7071067811865476,-0.7071067811865475,995.685424949238,413.99999999999994)'
@@ -163,10 +160,7 @@ const arrowSVGs: JSX.Element[] = [
         orient='auto'
         id='SvgjsMarker4105'
       >
-        <polygon
-          points='0,4.5 2.25,2.25 0,0 4.5,2.25'
-          fill='hsl(0, 0%, 0%)'
-        ></polygon>
+        <polygon points='0,4.5 2.25,2.25 0,0 4.5,2.25' fill='#000000'></polygon>
       </marker>
     </defs>
   </svg>,
@@ -179,7 +173,7 @@ const arrowSVGs: JSX.Element[] = [
   >
     <g
       strokeWidth='87'
-      stroke='hsl(0, 0%, 0%)'
+      stroke='#000000'
       fill='none'
       strokeLinecap='square'
       transform='matrix(-0.7071067811865475,0.7071067811865476,-0.7071067811865476,-0.7071067811865475,897.685424949238,413.99999999999994)'
@@ -204,7 +198,7 @@ const arrowSVGs: JSX.Element[] = [
       >
         <polygon
           points='1.5,4.5 0,2.25 1.5,0 4.5,2.25'
-          fill='hsl(0, 0%, 0%)'
+          fill='#000000'
         ></polygon>
       </marker>
     </defs>
@@ -218,7 +212,7 @@ const arrowSVGs: JSX.Element[] = [
   >
     <g
       strokeWidth='89'
-      stroke='hsl(0, 0%, 0%)'
+      stroke='#000000'
       fill='none'
       strokeLinecap='square'
       transform='matrix(-0.7071067811865475,0.7071067811865476,-0.7071067811865476,-0.7071067811865475,902.685424949238,413.99999999999994)'
@@ -243,7 +237,7 @@ const arrowSVGs: JSX.Element[] = [
       >
         <polygon
           points='0.9,4.5 0,2.25 0.9,0 4.5,2.25'
-          fill='hsl(0, 0%, 0%)'
+          fill='#000000'
         ></polygon>
       </marker>
     </defs>
