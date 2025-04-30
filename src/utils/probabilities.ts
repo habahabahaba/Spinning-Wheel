@@ -1,4 +1,4 @@
-export function distributionAndShifts(
+export function distributionAndSteps(
   outcomes: number,
   roundingPlace: number,
   reps: number
