@@ -1,6 +1,6 @@
 // Types, interfaces and enumns:
 // import type { JSX } from 'react';
-import type { HexColor } from '../utils/color';
+import type { HexColor } from '../../utils/color';
 type SVGstringFn = (colors: {
   color1?: HexColor;
   color2?: HexColor;

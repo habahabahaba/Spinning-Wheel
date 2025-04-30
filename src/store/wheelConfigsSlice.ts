@@ -11,6 +11,7 @@ import { getCurrentDate } from '../utils/date';
 // 3rd party:
 // import { create } from 'zustand';
 // import { devtools } from 'zustand/middleware';
+
 // Types, interfaces and enumns:
 import type { StateCreator } from 'zustand';
 import type {
@@ -20,6 +21,7 @@ import type {
   WheelConfigsSlice,
   FontSlice,
 } from './types';
+import { Radius } from '../constants/radii';
 import type { AllFontNames } from './types';
 
 // const useWheelStore = create<WheelConfigsState & WheelConfigsActions>()(
@@ -210,6 +212,11 @@ const createWheelConfigsSlice: StateCreator<
     set({
       currentConfig: initConfig,
     }),
+
+  setRadius: ({ radius }: { radius: Radius }) =>
+    set((state) => ({
+      currentConfig: { ...state.currentConfig, radius },
+    })),
 
   setDefaultPalette: ({ paletteIdx }: { paletteIdx: number }) =>
     set((state) => {

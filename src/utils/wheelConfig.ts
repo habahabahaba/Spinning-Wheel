@@ -12,6 +12,7 @@ import { OutcomeModel } from '../store/types';
 // Initial state:
 export const initConfig: WheelConfig = {
   configName: '',
+  radius: 'Medium',
   default_palette_idx: 0,
   default_fontFamily: 'Arial',
   outcomes: createOutcomes(2, (i) => `Outcome ${i + 1}`),

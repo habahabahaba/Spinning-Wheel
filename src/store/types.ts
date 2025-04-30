@@ -1,10 +1,12 @@
 import { HexColor } from '../utils/color';
-// Fonts:
+import type { Radius } from '../constants/radii';
 import type {
   LocalFontNames,
   RemoteFontNames,
   AllFontNames,
 } from '../constants/fontFamilies';
+
+// Fonts:
 export { LocalFontNames, RemoteFontNames, AllFontNames };
 
 export interface FontState {
@@ -41,6 +43,7 @@ export class OutcomeModel implements Outcome {
 
 export interface WheelConfig {
   configName: string;
+  radius: Radius;
   default_palette_idx: number;
   default_fontFamily: AllFontNames;
   outcomes: Outcome[];
@@ -61,6 +64,8 @@ export interface WheelConfigsActions {
   replaceCurrentConfig: ({ newConfig }: { newConfig: WheelConfig }) => void;
 
   resetCurrentConfig: () => void;
+
+  setRadius: ({ radius }: { radius: Radius }) => void;
 
   setDefaultPalette: ({ paletteIdx }: { paletteIdx: number }) => void;
 

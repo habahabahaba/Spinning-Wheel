@@ -1,6 +1,6 @@
 // Assets:
 import { PALETTES } from '../constants/palettes';
-import wallpaperSVGstrings from './wallpaperSVGstrings';
+import wallpaperSVGstrings from './SVG/wallpaperSVGstrings';
 // Utils:
 // 3rd party:
 // Redux, RTK:

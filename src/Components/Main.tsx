@@ -1,4 +1,6 @@
 // Assets:
+// Constants:
+import { WHEEL_RADII_MAP } from '../constants/radii';
 import { PALETTES } from '../constants/palettes';
 // Utils:
 // 3rd party:
@@ -21,17 +23,12 @@ import Wallpaper from './Wallpaper';
 import type { FC } from 'react';
 import type { ModalHandle } from './Modal';
 
-const WHEEL_RADIUS = 360;
-
 const Main: FC = () => {
   // Store:
-  const { outcomes, default_fontFamily, default_palette_idx } = useBoundStore(
-    (state) => state.activeConfig
-  );
+  const { outcomes, radius, default_fontFamily, default_palette_idx } =
+    useBoundStore((state) => state.activeConfig);
   // State:
   const [currentOutcomeIdx, setCurrentOutcomeIdx] = useState<number>(0);
-
-  // const [isShowingResult, setIsShowingResult] = useState(false);
 
   // Refs:
   const wheelRef = useRef<SVGSVGElement>(null);
@@ -64,11 +61,10 @@ const Main: FC = () => {
     const startTime = mouseDownTimeRef.current;
     if (startTime && wheelState === 'windingUp') {
       const heldSeconds = (Date.now() - startTime) / 1000;
-      const strength = Math.min(heldSeconds, 4) + 1;
+      const strength = Math.min(Math.ceil(heldSeconds), 5);
       mouseDownTimeRef.current = null;
 
-      const randomTurns = +(Math.random() * 2 + strength).toFixed(2);
-      // const randomTurns = 1;
+      const randomTurns = +(Math.random() + strength).toFixed(2);
       console.log(`[Wheel] randomTurns: ${randomTurns}`);
       const resultingTurn = spin(
         randomTurns,
@@ -89,15 +85,20 @@ const Main: FC = () => {
     // setIsWinding(false);
   }
 
+  const wheelRadius = WHEEL_RADII_MAP[radius];
+
   // JSX:
 
   return (
     <main
       style={{
-        // height: '100vh',
-        width: 'auto',
-        padding: '2rem',
         position: 'relative',
+        // height: '100vh',
+        width: `${wheelRadius * 2}px`,
+        minWidth: '100%',
+        padding: `${wheelRadius / 5}px`,
+        // overflow: 'visible',
+        // boxSizing: 'content-box',
       }}
     >
       <Wallpaper
@@ -110,6 +111,7 @@ const Main: FC = () => {
       />
 
       <div
+        id='wheel-pointer-assembly'
         style={{
           width: 'fit-content',
           position: 'relative',
@@ -119,17 +121,17 @@ const Main: FC = () => {
         }}
       >
         <Wheel
-          radius={WHEEL_RADIUS}
+          radius={wheelRadius}
           outcomes={outcomes}
           fillColors={PALETTES[default_palette_idx]}
           fontFamily={default_fontFamily}
           wheelRef={wheelRef}
           currentOutcomeIdx={wheelState === 'idle' ? currentOutcomeIdx : null}
         />
-        <Arrow size={WHEEL_RADIUS / 6} arrowIdx={0} />
+        <Arrow size={wheelRadius / 6} arrowIdx={0} />
         <SpinButton
           fillColors={PALETTES[default_palette_idx]}
-          wheelRadius={WHEEL_RADIUS}
+          wheelRadius={wheelRadius}
           wheelState={wheelState}
           onClick={handleClick}
           onMouseDown={handleMouseDown}

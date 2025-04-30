@@ -10,6 +10,7 @@ import { useState, useRef } from 'react';
 import SaveSlotSelector from './SaveSlotSelector';
 import SaveConfigModal from './SaveConfigModal';
 import LoadConfigModal from './LoadConfigModal';
+import RadiusSelector from './RadiusSelector';
 import PaletteSelector from './PaletteSelector';
 import FontSelector from './FontSelector';
 import OutcomeInputs from './OutcomeInputs';
@@ -123,6 +124,9 @@ const ConfigForm: FC = () => {
             margin: '0.5rem',
           }}
         >
+          <span>Wheel size:</span>
+          <RadiusSelector />
+
           <span>Default colors:</span>
           <PaletteSelector />
 
