@@ -101,3 +101,33 @@ export interface WheelConfigsActions {
 }
 
 export type WheelConfigsSlice = WheelConfigsState & WheelConfigsActions;
+
+// Spin state:
+export type WheelAnimationState =
+  | 'idle'
+  | 'windingUp'
+  | 'cancelling'
+  | 'spinning';
+
+export interface WheelSpinState {
+  animationState: WheelAnimationState;
+  winningOutcomeIdx: number | null;
+}
+
+interface WheelSpinActions {
+  resetWheelSpinState: () => void;
+
+  setAnimationState: ({ newState }: { newState: WheelAnimationState }) => void;
+
+  resetWinningOutcomeIdx: () => void;
+
+  setWinningOutcomeIdx: ({ newIdx }: { newIdx: number | null }) => void;
+
+  setWinningOutcomeIdxFromTurn: ({
+    resultingTurn,
+  }: {
+    resultingTurn: number;
+  }) => void;
+}
+
+export type WheelSpinSlice = WheelSpinState & WheelSpinActions;

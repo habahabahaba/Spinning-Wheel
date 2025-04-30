@@ -11,11 +11,12 @@ import type {
   RemoteFontNames,
   AllFontNames,
   WheelConfigsSlice,
+  WheelSpinSlice,
   FontSlice,
 } from './types';
 
 const createFontSlice: StateCreator<
-  FontSlice & WheelConfigsSlice,
+  FontSlice & WheelConfigsSlice & WheelSpinSlice,
   [],
   [],
   FontSlice
