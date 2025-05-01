@@ -3,11 +3,15 @@ type HexColor = `#${string}`;
 export const PALETTES: HexColor[][] = [
   ['#e6b89c', '#fe938c', '#ead2ac', '#9cafb7'],
 
-  ['#b5ac86', '#e88b6d', '#e0c18c', '#858f7b'],
-
   ['#80e8f7', '#faf470', '#d186f7', '#d0f8ff', '#ffffb4', '#e6d5ff'],
 
   ['#e8f3fd', '#ed4d41', '#5764ad', '#ede73b', '#d0e7fb', '#574d6c'],
 
   ['#f300ea', '#fd597e', '#fbee88', '#a800d5', '#fafbc3', '#ff00cb'],
+
+  ['#00D1D1', '#FF3E3E', '#FF00FF', '#B0FF00', '#0066FF', '#FFEE00'],
+
+  ['#E6D8A8', '#E6A8A8', '#A8E6CE', '#C7A8E6', '#A8C7E6', '#E6A8D8'],
+
+  ['#005E2D', '#5E0035', '#5E4D00', '#003E5E', '#5E0000', '#3D005E'],
 ] as const;

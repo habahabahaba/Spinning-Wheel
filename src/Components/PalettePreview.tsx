@@ -16,7 +16,7 @@ interface PalettePreviewProps {
 }
 
 const PalettePreview: FC<PalettePreviewProps> = ({ palette_idx }) => {
-  const colorsLength = PALETTES[palette_idx].length;
+  // const colorsLength = PALETTES[palette_idx].length;
 
   // JSX:
   const colors = PALETTES[palette_idx] ? (
@@ -27,7 +27,7 @@ const PalettePreview: FC<PalettePreviewProps> = ({ palette_idx }) => {
           style={{
             // display: 'inline-block',
             backgroundColor: color,
-            width: `calc(90% / ${colorsLength})`,
+            height: `90%`,
             aspectRatio: '1',
           }}
         />
@@ -41,10 +41,14 @@ const PalettePreview: FC<PalettePreviewProps> = ({ palette_idx }) => {
     <>
       <div
         style={{
-          width: '8rem',
+          height: '1.3rem',
+          width: '100%',
           display: 'flex',
           justifyContent: 'space-between',
+          alignItems: 'center',
+          gap: '0.2rem',
           padding: '0.1rem',
+          // transition: 'width 0.3s',
           //   border: '1px solid black',
         }}
       >
