@@ -33,6 +33,8 @@ const arrowSVGs: JSX.Element[] = [
         viewBox='0 0 6.5 6.5'
         orient='auto'
         id='SvgjsMarker1254'
+        stroke='#fff'
+        strokeWidth='0.1'
       >
         <polygon points='0,6.5 0,0 6.5,3.25' fill='#000000'></polygon>
       </marker>
@@ -44,10 +46,7 @@ const arrowSVGs: JSX.Element[] = [
     viewBox='0 0 22 24'
     transform='translate(8, 2) rotate(225 0 0)'
   >
-    <path
-      // transform='rotate(225 1 1)'
-      d='M3,10.714,21,3,13.286,21,12,12Z'
-    />
+    <path d='M3,10.714,21,3,13.286,21,12,12Z' />
   </svg>,
 
   <svg xmlns='http://www.w3.org/2000/svg' viewBox='-1 -2 20 20'>

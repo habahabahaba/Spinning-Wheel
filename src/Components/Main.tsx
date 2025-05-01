@@ -1,14 +1,13 @@
 // Assets:
 // Constants:
 import { WHEEL_RADII_MAP } from '../constants/radii';
-import { PALETTES } from '../constants/palettes';
 // Utils:
 // 3rd party:
 // Store:
 import useBoundStore from '../store/boundStore';
 // React Router:
 // React:
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 // Context:
 // Hooks:
 import { useSpinAnimation } from '../hooks/useSpinAnimation';
@@ -25,47 +24,72 @@ import type { ModalHandle } from './Modal';
 
 const Main: FC = () => {
   // Store:
-  const { outcomes, radius, default_fontFamily, default_palette_idx } =
-    useBoundStore((state) => state.activeConfig);
-  // State:
-  const [currentOutcomeIdx, setCurrentOutcomeIdx] = useState<number>(0);
+  const radiusName = useBoundStore((state) => state.activeConfig.radiusName);
+  const wheelAnimationState = useBoundStore(
+    (state) => state.wheelAnimationState
+  );
+  // const winningOutcomeIdx = useBoundStore((state) => state.winningOutcomeIdx);
+
+  // Actions:
+  const setWheelAnimationState = useBoundStore(
+    (state) => state.setWheelAnimationState
+  );
+  // const setWinningOutcomeIdx = useBoundStore(
+  //   (state) => state.setWinningOutcomeIdx
+  // );
+  const setWinningOutcomeIdxFromTurn = useBoundStore(
+    (state) => state.setWinningOutcomeIdxFromTurn
+  );
+  const resetWinningOutcomeIdx = useBoundStore(
+    (state) => state.resetWinningOutcomeIdx
+  );
 
   // Refs:
   const wheelRef = useRef<SVGSVGElement>(null);
   const resultModalRef = useRef<ModalHandle>(null);
+  const randomRef = useRef<number>(0);
 
-  const { windUp, cancelAnimations, spin, wheelState } =
-    useSpinAnimation(wheelRef);
+  const { windUp, cancelAnimations, spin } = useSpinAnimation(
+    wheelRef,
+    wheelAnimationState,
+    setWheelAnimationState
+  );
 
   // Handlers
   function handleClick() {
-    if (wheelState !== 'idle') return;
+    if (wheelAnimationState !== 'idle') return;
   }
 
   const mouseDownTimeRef = useRef<number | null>(null);
 
   function handleMouseDown() {
-    if (wheelState !== 'idle') return;
+    if (wheelAnimationState !== 'idle') return;
     mouseDownTimeRef.current = Date.now();
-    // setIsWinding(true);
+
+    // Generate random number beforehand.
+    randomRef.current = Math.random();
+
     windUp();
   }
 
   function handleMouseLeave() {
-    if (wheelState !== 'windingUp') return;
+    if (wheelAnimationState !== 'windingUp') return;
     cancelAnimations();
     // setIsWinding(false);
   }
 
   function handleMouseUp() {
+    resetWinningOutcomeIdx();
+
     const startTime = mouseDownTimeRef.current;
-    if (startTime && wheelState === 'windingUp') {
+    if (startTime && wheelAnimationState === 'windingUp') {
       const heldSeconds = (Date.now() - startTime) / 1000;
       const strength = Math.min(Math.ceil(heldSeconds), 5);
       mouseDownTimeRef.current = null;
 
-      const randomTurns = +(Math.random() + strength).toFixed(2);
+      const randomTurns = +(randomRef.current + strength).toFixed(2);
       console.log(`[Wheel] randomTurns: ${randomTurns}`);
+
       const resultingTurn = spin(
         randomTurns,
         () => {
@@ -77,15 +101,12 @@ const Main: FC = () => {
         }
       );
       console.log(`[Wheel] resultingTurn: ${resultingTurn}`);
-      setCurrentOutcomeIdx(
-        () =>
-          Math.floor(outcomes.length * (1 - resultingTurn)) % outcomes.length
-      );
+      setWinningOutcomeIdxFromTurn({ resultingTurn });
     }
     // setIsWinding(false);
   }
 
-  const wheelRadius = WHEEL_RADII_MAP[radius];
+  const wheelRadius = WHEEL_RADII_MAP[radiusName];
 
   // JSX:
 
@@ -122,26 +143,17 @@ const Main: FC = () => {
       >
         <Wheel
           radius={wheelRadius}
-          outcomes={outcomes}
-          fillColors={PALETTES[default_palette_idx]}
-          fontFamily={default_fontFamily}
+          wheelAnimationState={wheelAnimationState}
           wheelRef={wheelRef}
-          currentOutcomeIdx={wheelState === 'idle' ? currentOutcomeIdx : null}
         />
         <Arrow size={wheelRadius / 6} arrowIdx={0} />
         <SpinButton
-          fillColors={PALETTES[default_palette_idx]}
-          wheelRadius={wheelRadius}
-          wheelState={wheelState}
           onClick={handleClick}
           onMouseDown={handleMouseDown}
           onMouseUp={handleMouseUp}
           onMouseLeave={handleMouseLeave}
         />
-        <ResultDisplayModal
-          currentOutcomeIdx={currentOutcomeIdx}
-          ref={resultModalRef}
-        />
+        <ResultDisplayModal ref={resultModalRef} />
       </div>
     </main>
   );

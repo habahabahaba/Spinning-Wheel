@@ -29,8 +29,6 @@ const Arrow: FC<ArrowProps> = ({ size, arrowIdx = 0, ref }) => {
         // transformOrigin: 'center left',
         width: `${size}px`,
         aspectRatio: 1,
-        // boxShadow: '10px 0px 24px 0px black',
-        // WebkitBoxShadow: '10px 0px 24px 0px black',
       }}
       ref={ref}
     >

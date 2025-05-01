@@ -1,5 +1,6 @@
-// Assets:
+// Constants:
 import { PALETTES } from '../constants/palettes';
+import { WHEEL_RADII_MAP } from '../constants/radii';
 // Utils:
 import { contrastColor } from '../utils/color';
 // 3rd party:
@@ -17,9 +18,9 @@ import { idleSVGs, windUpSVGs, spinningSVGs } from './SVG/spinSVGs';
 // Types, interfaces and enumns:
 import type { FC } from 'react';
 interface SpinButtonProps {
-  fillColors: string[];
-  wheelRadius: number;
-  wheelState: string;
+  // colors: string[];
+  // wheelRadius: number;
+  // wheelAnimationState: string;
   onClick: () => void;
   onMouseDown: () => void;
   onMouseUp: () => void;
@@ -27,9 +28,9 @@ interface SpinButtonProps {
 }
 
 const SpinButton: FC<SpinButtonProps> = ({
-  fillColors,
-  wheelRadius,
-  wheelState,
+  // colors,
+  // wheelRadius,
+  // wheelState,
   onClick,
   onMouseDown,
   onMouseUp,
@@ -39,25 +40,34 @@ const SpinButton: FC<SpinButtonProps> = ({
   const paletteIdx = useBoundStore(
     (state) => state.activeConfig.default_palette_idx
   );
+  const wheelAnimationState = useBoundStore(
+    (state) => state.wheelAnimationState
+  );
 
   // Colors:
   const colors = PALETTES[paletteIdx];
+  const radiusName = useBoundStore((state) => state.activeConfig.radiusName);
 
-  const idleFillColor = fillColors[3];
+  const idleFillColor = colors[3];
   const idleIconColor = contrastColor(idleFillColor);
-  const windingUpFillColor = fillColors[1];
+  const windingUpFillColor = colors[1];
   const windingUpIconColor = contrastColor(windingUpFillColor);
-  const spinningFillColor = fillColors[2];
+  const spinningFillColor = colors[2];
+  const wheelRadius = WHEEL_RADII_MAP[radiusName];
   //   const spinningIconColor = contrastColor(spinningFillColor);
 
   // JSX:
   return (
     <button
+      id='spin-button'
       onClick={onClick}
       onMouseDown={onMouseDown}
       onMouseUp={onMouseUp}
       onMouseLeave={onMouseLeave}
-      disabled={wheelState === 'spinning' || wheelState === 'cancelling'}
+      disabled={
+        wheelAnimationState === 'spinning' ||
+        wheelAnimationState === 'cancelling'
+      }
       style={{
         position: 'absolute',
         left: '50%',
@@ -74,38 +84,38 @@ const SpinButton: FC<SpinButtonProps> = ({
         cursor: 'pointer',
 
         backgroundColor: `${
-          wheelState === 'windingUp'
+          wheelAnimationState === 'windingUp'
             ? windingUpFillColor
-            : wheelState === 'spinning'
+            : wheelAnimationState === 'spinning'
             ? spinningFillColor
             : idleFillColor
         }`,
         filter: `${
-          wheelState === 'windingUp'
+          wheelAnimationState === 'windingUp'
             ? 'brightness(1.6) contrast(1) grayscale(0%)'
             : ''
         }`,
         boxShadow: `${
-          wheelState === 'windingUp'
+          wheelAnimationState === 'windingUp'
             ? '0px 0px 0px, inset 0px 0px 80px -10px black'
-            : wheelState === 'spinning'
+            : wheelAnimationState === 'spinning'
             ? ''
             : '0px 0px 10px 0px black'
         }`,
         transition: 'filter 6s, box-shadow 6s, background-color 2s',
       }}
       className={`${
-        wheelState === 'spinning'
+        wheelAnimationState === 'spinning'
           ? 'button-spin'
-          : wheelState === 'windingUp'
+          : wheelAnimationState === 'windingUp'
           ? 'button-wind-up'
           : ''
       }`}
     >
-      {wheelState === 'spinning'
+      {wheelAnimationState === 'spinning'
         ? spinningSVGs[1]({ color1: colors[1], color2: colors[3] }) ||
           spinningSVGs[0]({ color1: colors[1], color2: colors[3] })
-        : wheelState === 'windingUp'
+        : wheelAnimationState === 'windingUp'
         ? windUpSVGs[0]({ color1: windingUpIconColor }) ||
           windUpSVGs[0]({ color1: windingUpIconColor })
         : idleSVGs[0]({ color1: idleIconColor }) ||

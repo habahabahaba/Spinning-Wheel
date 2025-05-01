@@ -17,7 +17,9 @@ import type { Radius } from '../constants/radii';
 
 const RadiusSelector: FC = () => {
   // Store:
-  const currentRadius = useBoundStore((state) => state.currentConfig.radius);
+  const currentRadius = useBoundStore(
+    (state) => state.currentConfig.radiusName
+  );
   // Actions:
   const setRadius = useBoundStore((state) => state.setRadius);
 
@@ -33,7 +35,7 @@ const RadiusSelector: FC = () => {
       id='palette-select'
       value={currentRadius}
       onChange={(value) => {
-        setRadius({ radius: value as Radius });
+        setRadius({ radiusName: value as Radius });
       }}
     >
       {options}

@@ -15,24 +15,19 @@ import modalCloseCtx from '../context/modalCloseCtx';
 // CSS:
 // Types, interfaces and enumns:
 import type { FC } from 'react';
-export interface ResultDisplayProps {
-  currentOutcomeIdx: number;
-}
+// export interface ResultDisplayProps {
+//   winningOutcomeIdx: number;
+// }
 
-const ResultDisplay: FC<ResultDisplayProps> = ({ currentOutcomeIdx }) => {
+const ResultDisplay: FC = () => {
   // Modal context For closing:
   const { handleCloseModal } = use(modalCloseCtx);
 
   // Store:
-  const currentOutcome = useBoundStore(
-    (state) => state.activeConfig.outcomes[currentOutcomeIdx]
+  const winningOutcomeIdx = useBoundStore((state) => state.winningOutcomeIdx);
+  const winningOutcome = useBoundStore(
+    (state) => state.activeConfig.outcomes[winningOutcomeIdx ?? -1]
   );
-
-  if (!currentOutcome) {
-    handleCloseModal();
-  }
-
-  const { label, fillColor, fontFamily } = currentOutcome;
   const palette_idx = useBoundStore(
     (state) => state.activeConfig.default_palette_idx
   );
@@ -40,9 +35,16 @@ const ResultDisplay: FC<ResultDisplayProps> = ({ currentOutcomeIdx }) => {
     (state) => state.activeConfig.default_fontFamily
   );
 
+  // Guard:
+  if (winningOutcomeIdx === null || !winningOutcome) {
+    handleCloseModal();
+    return <></>;
+  }
+
+  const { label, fillColor, fontFamily } = winningOutcome;
   const backgroundColor =
     fillColor ||
-    PALETTES[palette_idx][currentOutcomeIdx % PALETTES[palette_idx].length];
+    PALETTES[palette_idx][winningOutcomeIdx % PALETTES[palette_idx].length];
   const brightBGColor = brightness(backgroundColor, 1.4);
 
   const font = fontFamily || default_fontFamily;

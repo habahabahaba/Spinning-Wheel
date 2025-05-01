@@ -214,9 +214,9 @@ const createWheelConfigsSlice: StateCreator<
       currentConfig: initConfig,
     }),
 
-  setRadius: ({ radius }: { radius: Radius }) =>
+  setRadius: ({ radiusName }: { radiusName: Radius }) =>
     set((state) => ({
-      currentConfig: { ...state.currentConfig, radius },
+      currentConfig: { ...state.currentConfig, radiusName },
     })),
 
   setDefaultPalette: ({ paletteIdx }: { paletteIdx: number }) =>

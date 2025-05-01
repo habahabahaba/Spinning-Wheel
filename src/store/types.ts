@@ -43,7 +43,7 @@ export class OutcomeModel implements Outcome {
 
 export interface WheelConfig {
   configName: string;
-  radius: Radius;
+  radiusName: Radius;
   default_palette_idx: number;
   default_fontFamily: AllFontNames;
   outcomes: Outcome[];
@@ -65,7 +65,7 @@ export interface WheelConfigsActions {
 
   resetCurrentConfig: () => void;
 
-  setRadius: ({ radius }: { radius: Radius }) => void;
+  setRadius: ({ radiusName }: { radiusName: Radius }) => void;
 
   setDefaultPalette: ({ paletteIdx }: { paletteIdx: number }) => void;
 
@@ -110,14 +110,18 @@ export type WheelAnimationState =
   | 'spinning';
 
 export interface WheelSpinState {
-  animationState: WheelAnimationState;
+  wheelAnimationState: WheelAnimationState;
   winningOutcomeIdx: number | null;
 }
 
 interface WheelSpinActions {
   resetWheelSpinState: () => void;
 
-  setAnimationState: ({ newState }: { newState: WheelAnimationState }) => void;
+  setWheelAnimationState: ({
+    newState,
+  }: {
+    newState: WheelAnimationState;
+  }) => void;
 
   resetWinningOutcomeIdx: () => void;
 

@@ -1,7 +1,10 @@
+// Constants:
+import { PALETTES } from '../constants/palettes';
 // Utils:
 import { contrastColor, brightness } from '../utils/color';
 // 3rd party:
 // Store:
+import useBoundStore from '../store/boundStore';
 // React Router:
 // React:
 import { useMemo } from 'react';
@@ -12,16 +15,13 @@ import Sector from './Sector';
 // CSS:
 // Types, interfaces and enumns:
 import type { FC, Ref } from 'react';
-import type { Outcome } from '../store/types';
+import type { WheelAnimationState } from '../store/types';
 
 interface WheelProps {
   radius: number;
-  outcomes: Outcome[];
-  fillColors: string[];
-  fontFamily: string;
-  currentOutcomeIdx: number | null;
-  wheelContainerRef?: Ref<HTMLDivElement>;
+  wheelAnimationState: WheelAnimationState;
   wheelRef?: Ref<SVGSVGElement>;
+  wheelContainerRef?: Ref<HTMLDivElement>;
 }
 
 export interface WheelHandle {
@@ -32,20 +32,28 @@ export interface WheelHandle {
 
 const Wheel: FC<WheelProps> = ({
   radius,
-  outcomes,
-  fillColors,
-  fontFamily = 'Arial',
-  currentOutcomeIdx,
+  wheelAnimationState,
   wheelContainerRef,
   wheelRef,
 }) => {
+  // Store:
+  const outcomes = useBoundStore((state) => state.activeConfig.outcomes);
+  const default_palette_idx = useBoundStore(
+    (state) => state.activeConfig.default_palette_idx
+  );
+  const default_fontFamily = useBoundStore(
+    (state) => state.activeConfig.default_fontFamily
+  );
+  const winningOutcomeIdx = useBoundStore((state) => state.winningOutcomeIdx);
+
+  const fillColors = PALETTES[default_palette_idx];
+  const fontFamily = default_fontFamily;
+
   const center = useMemo(() => ({ x: radius, y: radius }), [radius]);
 
   const diameter = 2 * radius;
 
   const anglePerSector = 360 / outcomes.length;
-
-  // console.log(`[Wheel] default_FontFamily: ${fontFamily}`);
 
   // JSX:
   const sectors = useMemo(
@@ -55,7 +63,8 @@ const Wheel: FC<WheelProps> = ({
         const startAngle = i * anglePerSector + 90; // Subtract 90° to align 0° with right
         const endAngle = (i + 1) * anglePerSector + 90;
 
-        const isHighlighted = currentOutcomeIdx === i;
+        const isHighlighted =
+          wheelAnimationState === 'idle' && winningOutcomeIdx === i;
         const fillColor =
           outcome.fillColor || fillColors[i % fillColors.length];
         const textColor = contrastColor(
@@ -84,7 +93,8 @@ const Wheel: FC<WheelProps> = ({
       center,
       radius,
       anglePerSector,
-      currentOutcomeIdx,
+      winningOutcomeIdx,
+      wheelAnimationState,
     ]
   );
 

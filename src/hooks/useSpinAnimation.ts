@@ -1,9 +1,10 @@
 // React:
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 
 // Types, interfaces and enumns:
 import type { RefObject } from 'react';
-type WheelState = 'idle' | 'windingUp' | 'cancelling' | 'spinning';
+import type { WheelAnimationState } from '../store/types';
+// type WheelState = 'idle' | 'windingUp' | 'cancelling' | 'spinning';
 interface AddAnimationOptions {
   element: HTMLElement | SVGSVGElement | null;
   styleTagRef: RefObject<HTMLStyleElement | null>;
@@ -74,7 +75,13 @@ const spinVelocity = (numberOfTurns: number) => {
 };
 
 export function useSpinAnimation(
-  ref: RefObject<HTMLElement | SVGSVGElement | null>
+  ref: RefObject<HTMLElement | SVGSVGElement | null>,
+  wheelAnimationState: WheelAnimationState,
+  setWheelAnimationState: ({
+    newState,
+  }: {
+    newState: WheelAnimationState;
+  }) => void
 ) {
   // Refs:
   const spinStyleTagRef = useRef<HTMLStyleElement | null>(null);
@@ -83,13 +90,12 @@ export function useSpinAnimation(
   const windUpNameRef = useRef<string>('');
   const resultingTurnRef = useRef(0);
   // State:
-  const [wheelState, setWheelState] = useState<WheelState>('idle');
 
   const windUp = useCallback(
     (onWindUpStart?: () => void) => {
       const el = ref.current;
-      if (!el || wheelState !== 'idle') return;
-      setWheelState('windingUp');
+      if (!el || wheelAnimationState !== 'idle') return;
+      setWheelAnimationState({ newState: 'windingUp' });
       // Run callback (if provided):
       onWindUpStart?.();
 
@@ -113,14 +119,14 @@ export function useSpinAnimation(
       `,
       });
     },
-    [ref, wheelState]
+    [ref, wheelAnimationState, setWheelAnimationState]
   );
 
   const cancelAnimations = useCallback(
     (onCancel?: () => void) => {
       const el = ref.current;
       if (!el) return;
-      setWheelState('cancelling');
+      setWheelAnimationState({ newState: 'cancelling' });
       // Run callback (if provided):
       onCancel?.();
 
@@ -135,7 +141,7 @@ export function useSpinAnimation(
         animationNameRef: spinNameRef,
       });
 
-      setWheelState('idle');
+      setWheelAnimationState({ newState: 'idle' });
     },
     [ref]
   );
@@ -149,9 +155,10 @@ export function useSpinAnimation(
       console.log(`[useSpinAnimation][spin] numberOfTurns: ${numberOfTurns}`);
       const el = ref.current;
       if (!el || numberOfTurns === 0) return 0;
-      if (wheelState !== 'idle' && wheelState !== 'windingUp') return 0;
+      if (wheelAnimationState !== 'idle' && wheelAnimationState !== 'windingUp')
+        return 0;
 
-      setWheelState('spinning');
+      setWheelAnimationState({ newState: 'spinning' });
 
       // Run callback (if provided):
       onSpinStart?.();
@@ -192,7 +199,7 @@ export function useSpinAnimation(
 
       return resultingTurn;
     },
-    [ref, cancelAnimations, wheelState]
+    [ref, cancelAnimations, wheelAnimationState, setWheelAnimationState]
   );
 
   useEffect(() => {
@@ -201,5 +208,5 @@ export function useSpinAnimation(
     };
   }, [cancelAnimations]);
 
-  return { windUp, cancelAnimations, spin, wheelState };
+  return { windUp, cancelAnimations, spin };
 }

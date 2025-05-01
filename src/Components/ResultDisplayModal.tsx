@@ -12,16 +12,14 @@ import ResultDisplay from './ResultDisplay';
 // Types, interfaces and enumns:
 import type { ForwardedRef } from 'react';
 import type { ModalHandle } from './Modal';
-import type { ResultDisplayProps } from './ResultDisplay';
 
-const ResultDisplayModal = forwardRef<ModalHandle, ResultDisplayProps>(
-  ({ currentOutcomeIdx }, ref: ForwardedRef<ModalHandle>) => {
+const ResultDisplayModal = forwardRef<ModalHandle>(
+  (_, ref: ForwardedRef<ModalHandle>) => {
     // JSX:
     return (
       <Modal
         ref={ref}
         className='drop-down'
-        childProps={{ currentOutcomeIdx }}
         style={{
           transform: 'translate(50%, 50%)',
           // right: 'calc(60px - 1rem)',
@@ -30,7 +28,7 @@ const ResultDisplayModal = forwardRef<ModalHandle, ResultDisplayProps>(
           right: '0%',
         }}
       >
-        <ResultDisplay currentOutcomeIdx={currentOutcomeIdx} />
+        <ResultDisplay />
       </Modal>
     );
   }

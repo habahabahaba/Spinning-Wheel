@@ -31,6 +31,9 @@ const ConfigForm: FC = () => {
   const addBlankOutcomes = useBoundStore((state) => state.addBlankOutcomes);
   const resetConfig = useBoundStore((state) => state.resetCurrentConfig);
   const applyConfig = useBoundStore((state) => state.applyConfig);
+  const resetWinningOutcomeIdx = useBoundStore(
+    (state) => state.resetWinningOutcomeIdx
+  );
 
   // State:
   const [addQuantity, setAddQuantity] = useState<number>(1);
@@ -58,6 +61,7 @@ const ConfigForm: FC = () => {
   function handleApplyConfig(ev: MouseEvent<HTMLButtonElement>) {
     ev.preventDefault();
 
+    resetWinningOutcomeIdx();
     applyConfig();
   }
 
@@ -83,6 +87,7 @@ const ConfigForm: FC = () => {
       <form>
         <div
           style={{
+            maxWidth: '100vw',
             display: 'flex',
             gap: '0.5rem',
             justifyContent: 'end',
@@ -118,9 +123,11 @@ const ConfigForm: FC = () => {
         <div
           style={{
             display: 'flex',
+            flexWrap: 'wrap',
             gap: '0.5rem',
-            justifyContent: 'space-between',
+            justifyContent: 'start',
             alignItems: 'center',
+            // maxWidth: '100%',
             margin: '0.5rem',
           }}
         >

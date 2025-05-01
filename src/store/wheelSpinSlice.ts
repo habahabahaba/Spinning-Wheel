@@ -9,7 +9,7 @@ import type {
 } from './types';
 
 const initWheelSpinState: WheelSpinState = {
-  animationState: 'idle',
+  wheelAnimationState: 'idle',
   winningOutcomeIdx: null,
 };
 
@@ -26,8 +26,8 @@ const createWheelSpinSlice: StateCreator<
     set(initWheelSpinState);
   },
 
-  setAnimationState: ({ newState }: { newState: WheelAnimationState }) => {
-    set({ animationState: newState });
+  setWheelAnimationState: ({ newState }: { newState: WheelAnimationState }) => {
+    set({ wheelAnimationState: newState });
   },
 
   resetWinningOutcomeIdx: () => {

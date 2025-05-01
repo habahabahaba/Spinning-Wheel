@@ -2,7 +2,6 @@
 import { polarToCartesian } from '../utils/geometry';
 import { calculateTextLayout } from '../utils/text';
 // 3rd party:
-// Redux RTK:
 // Store:
 // React Router:
 // React:
@@ -26,10 +25,6 @@ interface SectorProps {
   fontWeight?: string;
   isHighlighted?: boolean;
 }
-
-// Constants for scaling font and truncation
-// const MIN_SECTORS = 2;
-// const MAX_SECTORS = 72;
 
 const Sector: FC<SectorProps> = ({
   center,
@@ -68,8 +63,6 @@ const Sector: FC<SectorProps> = ({
     [label, fontFamily, fontWeight, radius, sectorAngle]
   );
 
-  // console.log(`[Sector.tsx] distanceFromApex: ${distanceFromApex}`);
-
   const textPos = useMemo(
     () => polarToCartesian(center.x, center.y, distanceFromApex, midAngle),
     [center, distanceFromApex, midAngle]
@@ -79,10 +72,8 @@ const Sector: FC<SectorProps> = ({
     <g>
       <path
         d={describeSector}
-        // fill={!isHighlighted ? fillColor : 'black'}
         fill={fillColor}
         stroke='black'
-        // strokeWidth={!isHighlighted ? 1 : 3}
         strokeWidth={1}
         style={{
           willChange: 'transform',
@@ -97,11 +88,8 @@ const Sector: FC<SectorProps> = ({
         textAnchor='start'
         dominantBaseline='central'
         fontFamily={fontFamily}
-        // fontWeight={!isHighlighted ? fontWeight : 'Bold'}
         fontWeight={fontWeight}
-        // fontSize={`${!isHighlighted ? fontSize : fontSize + 1}px`}
         fontSize={`${fontSize}px`}
-        // fill={!isHighlighted ? textColor : 'white'}
         fill={textColor}
         style={{
           willChange: 'transform',
