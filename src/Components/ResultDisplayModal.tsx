@@ -1,5 +1,8 @@
+// Constants:
+import { WHEEL_RADII_MAP } from '../constants/radii';
 // 3rd party:
 // Store:
+import useBoundStore from '../store/boundStore';
 // React Router:
 // React:
 import { forwardRef } from 'react';
@@ -12,23 +15,33 @@ import ResultDisplay from './ResultDisplay';
 // Types, interfaces and enumns:
 import type { ForwardedRef } from 'react';
 import type { ModalHandle } from './Modal';
+import type { ResultDisplayProps } from './ResultDisplay';
 
-const ResultDisplayModal = forwardRef<ModalHandle>(
-  (_, ref: ForwardedRef<ModalHandle>) => {
+const ResultDisplayModal = forwardRef<ModalHandle, ResultDisplayProps>(
+  ({ confettiTrigger }, ref: ForwardedRef<ModalHandle>) => {
+    // Store:
+    const radiusName = useBoundStore((state) => state.activeConfig.radiusName);
+    const wheelRadius = WHEEL_RADII_MAP[radiusName];
+    const dY = (wheelRadius * 12) / 5;
+    const dX = (wheelRadius * 71) / 30;
+
     // JSX:
     return (
       <Modal
         ref={ref}
         className='drop-down'
         style={{
-          transform: 'translate(50%, 50%)',
-          // right: 'calc(60px - 1rem)',
-          // top: '-15vh',
-          top: '-10%',
-          right: '0%',
+          position: 'relative',
+          // position: 'absolute',
+          // top: '0%',
+          // right: '0%',
+          top: `min(calc(${dY}px - 100vh), 50vh)`,
+          right: `calc(100vw - ${dX}px)`,
+          // zIndex: -1,
+          overflow: 'visible',
         }}
       >
-        <ResultDisplay />
+        <ResultDisplay confettiTrigger={confettiTrigger} />
       </Modal>
     );
   }

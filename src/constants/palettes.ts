@@ -1,6 +1,8 @@
 // Types, interfaces and enumns:
 type HexColor = `#${string}`;
 export const PALETTES: HexColor[][] = [
+  ['#C18AFF', '#FF5F6D', '#FFC371', '#47E5BC', '#6A82FB', '#F6D365'],
+
   ['#e6b89c', '#fe938c', '#ead2ac', '#9cafb7'],
 
   ['#80e8f7', '#faf470', '#d186f7', '#d0f8ff', '#ffffb4', '#e6d5ff'],

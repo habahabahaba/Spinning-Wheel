@@ -6,26 +6,33 @@
 // Router:
 // React:
 import { useEffect } from 'react';
+// import { createPortal } from 'react-dom';
 // Context:
 // Hooks:
 import { useConfetti } from '../hooks/useConfetti';
 // Components:
 // CSS:
 // Types, interfaces and enumns:
-import type { FC } from 'react';
+import type { CSSProperties, FC } from 'react';
+import type { HexColor } from '../utils/color';
 interface ConfettiCanvasProps {
   trigger: boolean;
+  colors: HexColor[];
+  style?: CSSProperties;
 }
 
-const ConfettiCanvas: FC<ConfettiCanvasProps> = ({ trigger }) => {
-  const { launch, setCanvasRef } = useConfetti();
+const ConfettiCanvas: FC<ConfettiCanvasProps> = ({
+  trigger,
+  colors,
+  style = {},
+}) => {
+  const { launch, setCanvasRef } = useConfetti(colors);
 
   useEffect(() => {
-    if (trigger) launch(120); // you can pass the count here
+    if (trigger) launch(320);
   }, [trigger, launch]);
 
-  // JSX:
-  return (
+  const canvas = (
     <canvas
       ref={setCanvasRef}
       style={{
@@ -36,9 +43,12 @@ const ConfettiCanvas: FC<ConfettiCanvasProps> = ({ trigger }) => {
         width: '100vw',
         height: '100vh',
         zIndex: 9999,
+        ...style,
       }}
     />
   );
+
+  return canvas;
 };
 
 export default ConfettiCanvas;

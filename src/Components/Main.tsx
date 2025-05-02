@@ -7,7 +7,7 @@ import { WHEEL_RADII_MAP } from '../constants/radii';
 import useBoundStore from '../store/boundStore';
 // React Router:
 // React:
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 // Context:
 // Hooks:
 import { useSpinAnimation } from '../hooks/useSpinAnimation';
@@ -17,6 +17,8 @@ import Arrow from './Arrow';
 import SpinButton from './SpinButton';
 import ResultDisplayModal from './ResultDisplayModal';
 import Wallpaper from './Wallpaper';
+// import ConfettiCanvas from './ConfettiCanvas';
+// import Modal from './Modal';
 // CSS:
 // Types, interfaces and enumns:
 import type { FC } from 'react';
@@ -43,6 +45,9 @@ const Main: FC = () => {
   const resetWinningOutcomeIdx = useBoundStore(
     (state) => state.resetWinningOutcomeIdx
   );
+
+  // State:
+  const [confettiTrigger, setConfettiTrigger] = useState<boolean>(false);
 
   // Refs:
   const wheelRef = useRef<SVGSVGElement>(null);
@@ -98,6 +103,12 @@ const Main: FC = () => {
         () => {
           // console.log(`END callback`);
           resultModalRef.current?.handleShowModal();
+          setTimeout(() => {
+            setConfettiTrigger(true);
+          }, 600);
+          setTimeout(() => {
+            setConfettiTrigger(false);
+          }, 610);
         }
       );
       console.log(`[Wheel] resultingTurn: ${resultingTurn}`);
@@ -123,8 +134,8 @@ const Main: FC = () => {
       }}
     >
       <Wallpaper
-        variant={0}
-        paletteColor1={1}
+        variant={2}
+        paletteColor1={2}
         paletteColor2={2}
         style={{
           opacity: '0.8',
@@ -153,8 +164,11 @@ const Main: FC = () => {
           onMouseUp={handleMouseUp}
           onMouseLeave={handleMouseLeave}
         />
-        <ResultDisplayModal ref={resultModalRef} />
       </div>
+      <ResultDisplayModal
+        ref={resultModalRef}
+        confettiTrigger={confettiTrigger}
+      />
     </main>
   );
 };

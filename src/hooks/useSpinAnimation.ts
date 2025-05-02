@@ -143,7 +143,7 @@ export function useSpinAnimation(
 
       setWheelAnimationState({ newState: 'idle' });
     },
-    [ref]
+    [ref, setWheelAnimationState]
   );
 
   const spin = useCallback(

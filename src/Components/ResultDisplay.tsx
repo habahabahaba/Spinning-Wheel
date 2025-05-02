@@ -1,5 +1,6 @@
 // Constants:
 import { PALETTES } from '../constants/palettes';
+import { WHEEL_RADII_MAP } from '../constants/radii';
 // Utils:
 import { contrastColor, brightness } from '../utils/color';
 // 3rd party:
@@ -12,14 +13,15 @@ import { use } from 'react';
 import modalCloseCtx from '../context/modalCloseCtx';
 // Hooks:
 // Components:
+import ConfettiArray from './ConfettiArray';
 // CSS:
 // Types, interfaces and enumns:
 import type { FC } from 'react';
-// export interface ResultDisplayProps {
-//   winningOutcomeIdx: number;
-// }
+export interface ResultDisplayProps {
+  confettiTrigger: boolean;
+}
 
-const ResultDisplay: FC = () => {
+const ResultDisplay: FC<ResultDisplayProps> = ({ confettiTrigger }) => {
   // Modal context For closing:
   const { handleCloseModal } = use(modalCloseCtx);
 
@@ -34,6 +36,7 @@ const ResultDisplay: FC = () => {
   const default_fontFamily = useBoundStore(
     (state) => state.activeConfig.default_fontFamily
   );
+  const radiusName = useBoundStore((state) => state.activeConfig.radiusName);
 
   // Guard:
   if (winningOutcomeIdx === null || !winningOutcome) {
@@ -41,33 +44,47 @@ const ResultDisplay: FC = () => {
     return <></>;
   }
 
+  // Derived values:
   const { label, fillColor, fontFamily } = winningOutcome;
+  const palette = PALETTES[palette_idx];
   const backgroundColor =
-    fillColor ||
-    PALETTES[palette_idx][winningOutcomeIdx % PALETTES[palette_idx].length];
+    fillColor || palette[winningOutcomeIdx % palette.length];
   const brightBGColor = brightness(backgroundColor, 1.4);
 
+  const radius = WHEEL_RADII_MAP[radiusName];
+  const fontSize = Math.floor(radius / 4.5);
   const font = fontFamily || default_fontFamily;
   const textColor = contrastColor(brightBGColor);
 
+  const confettiColors = palette.map((col) => brightness(col, 1.1));
   // JSX:
   return (
-    <div
-      style={{
-        backgroundColor: `${brightBGColor}`,
-        color: `${textColor}`,
-        fontFamily: `${font}`,
-        // filter: 'brightness(1.4)',
-        // textDecoration: 'underline',
-        margin: '0',
-        padding: '1rem 2rem',
-        cursor: 'pointer',
-        // border: 'solid black 1px',
-      }}
-      onClick={handleCloseModal}
-    >
-      <h1>{label}</h1>
-    </div>
+    <>
+      <div
+        style={{
+          backgroundColor: `${brightBGColor}`,
+          margin: '0',
+          padding: '1px 2rem',
+          cursor: 'pointer',
+          // border: 'solid black 1px',
+        }}
+        onClick={handleCloseModal}
+      >
+        <h1
+          style={{
+            color: `${textColor}`,
+            fontFamily: `${font}`,
+            fontSize: `clamp(1rem, ${fontSize}px, 7rem)`,
+          }}
+        >
+          {label}
+        </h1>
+      </div>
+      <ConfettiArray
+        confettiTrigger={confettiTrigger}
+        colors={confettiColors}
+      />
+    </>
   );
 };
 

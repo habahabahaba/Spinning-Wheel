@@ -2,6 +2,7 @@
 import { useRef, useCallback } from 'react';
 
 // Types, interfaces and enumns:
+import type { HexColor } from '../utils/color';
 export interface ConfettiParticle {
   x: number;
   y: number;
@@ -15,9 +16,7 @@ export interface ConfettiParticle {
   decay: number;
 }
 
-const colors = ['#FF5F6D', '#FFC371', '#47E5BC', '#6A82FB', '#F6D365'];
-
-export function useConfetti() {
+export function useConfetti(colors: HexColor[]) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const animationRef = useRef<number>(0);
   const particles = useRef<ConfettiParticle[]>([]);
@@ -49,32 +48,35 @@ export function useConfetti() {
     animationRef.current = requestAnimationFrame(render);
   };
 
-  const launch = useCallback((count = 100) => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
+  const launch = useCallback(
+    (count = 100) => {
+      const canvas = canvasRef.current;
+      if (!canvas) return;
 
-    const width = canvas.width;
-    const height = canvas.height;
+      const width = canvas.width;
+      const height = canvas.height;
 
-    for (let i = 0; i < count; i++) {
-      particles.current.push({
-        x: width / 2,
-        y: height / 2,
-        dx: (Math.random() - 0.5) * 8,
-        dy: (Math.random() - 0.7) * 8,
-        rotation: Math.random() * 2 * Math.PI,
-        rotationSpeed: (Math.random() - 0.5) * 0.2,
-        size: 6 + Math.random() * 4,
-        color: colors[Math.floor(Math.random() * colors.length)],
-        alpha: 1,
-        decay: 0.01 + Math.random() * 0.01,
-      });
-    }
+      for (let i = 0; i < count; i++) {
+        particles.current.push({
+          x: width / 2,
+          y: height / 2,
+          dx: (Math.random() - 0.5) * 8,
+          dy: (Math.random() - 0.7) * 8,
+          rotation: Math.random() * 2 * Math.PI,
+          rotationSpeed: (Math.random() - 0.5) * 0.2,
+          size: 6 + Math.random() * 4,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          alpha: 1,
+          decay: 0.01 + Math.random() * 0.01,
+        });
+      }
 
-    if (!animationRef.current) {
-      animationRef.current = requestAnimationFrame(render);
-    }
-  }, []);
+      if (!animationRef.current) {
+        animationRef.current = requestAnimationFrame(render);
+      }
+    },
+    [colors]
+  );
 
   const setCanvasRef = useCallback((node: HTMLCanvasElement | null) => {
     if (node) {

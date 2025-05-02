@@ -35,6 +35,7 @@ const arrowSVGs: JSX.Element[] = [
         id='SvgjsMarker1254'
         stroke='#fff'
         strokeWidth='0.1'
+        strokeLinecap='square'
       >
         <polygon points='0,6.5 0,0 6.5,3.25' fill='#000000'></polygon>
       </marker>
