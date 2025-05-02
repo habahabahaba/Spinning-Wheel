@@ -30,7 +30,7 @@ const ConfettiCanvas: FC<ConfettiCanvasProps> = ({
   const { launch, setCanvasRef } = useConfetti(confettiOptions);
 
   useEffect(() => {
-    if (trigger) launch(320);
+    if (trigger) launch();
   }, [trigger, launch]);
 
   const canvas = (
@@ -41,8 +41,8 @@ const ConfettiCanvas: FC<ConfettiCanvasProps> = ({
         top: 0,
         left: 0,
         pointerEvents: 'none',
-        width: '100vw',
         height: '100vh',
+        width: '100vw',
         zIndex: 9999,
         ...style,
       }}

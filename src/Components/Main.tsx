@@ -134,11 +134,11 @@ const Main: FC = () => {
       }}
     >
       <Wallpaper
-        variant={2}
+        variant={1}
         paletteColor1={2}
-        paletteColor2={2}
+        paletteColor2={0}
         style={{
-          opacity: '0.8',
+          opacity: '0.9',
         }}
       />
 

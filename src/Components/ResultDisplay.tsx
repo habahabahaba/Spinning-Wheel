@@ -56,7 +56,7 @@ const ResultDisplay: FC<ResultDisplayProps> = ({ confettiTrigger }) => {
   const font = fontFamily || default_fontFamily;
   const textColor = contrastColor(brightBGColor);
 
-  const confettiColors = palette.map((col) => brightness(col, 1.1));
+  const confettiColors = palette.map((color) => brightness(color, 1.1));
   // JSX:
   return (
     <>

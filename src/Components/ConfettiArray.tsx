@@ -22,7 +22,7 @@ type Setter = Dispatch<SetStateAction<boolean>>;
 
 function chainFlip(
   settersArr: Setter[],
-  interval: number = 180,
+  interval: number = 240,
   step: number = 0
 ): void {
   if (step === settersArr.length) {
@@ -57,19 +57,18 @@ const ConfettiArray: FC<ConfettiArrayProps> = ({ confettiTrigger, colors }) => {
   }, [confettiTrigger]);
 
   // Derived values:
-  const [canvasHeight, canvasWidth] = [800, 800];
+  const [canvasHeight, canvasWidth] = [100, 100];
 
   const commonStyle: CSSProperties = {
-    position: 'absolute',
-    height: `${canvasHeight}px`,
-    width: `${canvasWidth}px`,
-    transform: 'none',
-    // zIndex: 1000,
+    // position: 'absolute',
+    // height: `${canvasHeight}vh`,
+    // width: `${canvasWidth}vw`,
+    // transform: 'none',
   };
   const commonOptions: ConfettiOptions = {
     colors,
     particleCount: 320,
-    spread: 90,
+    spread: 60,
     scalar: 1.2,
     gravity: 0.2,
     ticks: 200,
@@ -81,46 +80,54 @@ const ConfettiArray: FC<ConfettiArrayProps> = ({ confettiTrigger, colors }) => {
     <>
       <ConfettiCanvas
         trigger={trigger0}
-        confettiOptions={{ ...commonOptions, direction: 'N', shape: 'circle' }}
+        confettiOptions={{
+          ...commonOptions,
+          // direction: 'N',
+          shape: 'circle',
+        }}
         style={{
           ...commonStyle,
-          top: `${canvasHeight * -0.5}px`,
-          left: `${canvasWidth * -0.5}px`,
+          top: `${canvasHeight * -0.5}vh`,
+          left: `${canvasWidth * -0.5}vw`,
         }}
       />
       <ConfettiCanvas
         trigger={trigger1}
         confettiOptions={{
           ...commonOptions,
-          direction: 'N',
+          //   direction: 'N',
           shape: 'triangle',
         }}
         style={{
           ...commonStyle,
-          top: `${canvasHeight * -0.5}px`,
-          left: `calc(100% - ${canvasWidth * 0.5}px)`,
+          top: `${canvasHeight * -0.5}vh`,
+          left: `calc(100% - ${canvasWidth * 0.5}vw)`,
         }}
       />
       <ConfettiCanvas
         trigger={trigger2}
-        confettiOptions={{ ...commonOptions, direction: 'N', shape: 'circle' }}
+        confettiOptions={{
+          ...commonOptions,
+          //   direction: 'NE',
+          shape: 'circle',
+        }}
         style={{
           ...commonStyle,
-          top: `calc(100% - ${canvasHeight * 0.5}px)`,
-          left: `calc(100% - ${canvasWidth * 0.5}px)`,
+          top: `calc(100% - ${canvasHeight * 0.5}vh)`,
+          left: `calc(100% - ${canvasWidth * 0.5}vw)`,
         }}
       />
       <ConfettiCanvas
         trigger={trigger3}
         confettiOptions={{
           ...commonOptions,
-          direction: 'N',
+          //   direction: 'NW',
           shape: 'triangle',
         }}
         style={{
           ...commonStyle,
-          top: `calc(100% - ${canvasHeight * 0.5}px)`,
-          left: `${canvasWidth * -0.5}px`,
+          top: `calc(100% - ${canvasHeight * 0.5}vh)`,
+          left: `${canvasWidth * -0.5}vw`,
         }}
       />
     </>

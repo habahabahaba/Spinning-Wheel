@@ -1,5 +1,5 @@
 // React:
-import { useRef, useCallback } from 'react';
+import { useRef, useCallback, useMemo } from 'react';
 
 // Types, interfaces and enumns:
 export type ConfettiShape = 'square' | 'circle' | 'triangle';
@@ -37,17 +37,17 @@ type Particle = {
   shape: ConfettiShape;
 };
 
-// const directionAngles: Record<ConfettiDirection, number> = {
-//   N: Math.PI / 2,
-//   NE: Math.PI / 4,
-//   E: 0,
-//   SE: -Math.PI / 4,
-//   S: -Math.PI / 2,
-//   SW: (-3 * Math.PI) / 4,
-//   W: Math.PI,
-//   NW: (3 * Math.PI) / 4,
-//   CENTER: 0, // will randomize
-// };
+const directionAngles: Record<ConfettiDirection, number> = {
+  N: Math.PI / 2,
+  NE: Math.PI / 4,
+  E: 0,
+  SE: -Math.PI / 4,
+  S: -Math.PI / 2,
+  SW: (-3 * Math.PI) / 4,
+  W: Math.PI,
+  NW: (3 * Math.PI) / 4,
+  CENTER: 0, // will randomize
+};
 
 export default function useConfetti(defaultOptions?: ConfettiOptions) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -55,30 +55,21 @@ export default function useConfetti(defaultOptions?: ConfettiOptions) {
   const animationRef = useRef<number | null>(null);
   const ctxRef = useRef<CanvasRenderingContext2D | null>(null);
 
-  const options = {
-    colors: ['#f94144', '#f3722c', '#f8961e', '#90be6d', '#577590'],
-    gravity: 0.4,
-    wind: 0,
-    scalar: 1,
-    particleCount: 80,
-    spread: 45,
-    ticks: 90,
-    shape: 'square' as ConfettiShape,
-    direction: 'CENTER' as ConfettiDirection,
-    ...defaultOptions,
-  };
-
-  const directionAngles: Record<ConfettiDirection, number> = {
-    N: Math.PI / 2,
-    NE: Math.PI / 4,
-    E: 0,
-    SE: -Math.PI / 4,
-    S: -Math.PI / 2,
-    SW: (-3 * Math.PI) / 4,
-    W: Math.PI,
-    NW: (3 * Math.PI) / 4,
-    CENTER: 0, // special case
-  };
+  const options = useMemo(
+    () => ({
+      colors: ['#f94144', '#f3722c', '#f8961e', '#90be6d', '#577590'],
+      gravity: 0.4,
+      wind: 0,
+      scalar: 1,
+      particleCount: 80,
+      spread: 45,
+      ticks: 90,
+      shape: 'square' as ConfettiShape,
+      direction: 'CENTER' as ConfettiDirection,
+      ...defaultOptions,
+    }),
+    [defaultOptions]
+  );
 
   const setCanvasRef = useCallback((node: HTMLCanvasElement | null) => {
     if (!node) return;
