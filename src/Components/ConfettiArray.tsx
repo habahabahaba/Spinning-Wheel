@@ -13,6 +13,7 @@ import ConfettiCanvas from './ConfettiCanvas';
 // Types, interfaces and enumns:
 import type { FC, Dispatch, SetStateAction, CSSProperties } from 'react';
 import type { HexColor } from '../utils/color';
+import type { ConfettiOptions } from '../hooks/useConfetti';
 export interface ConfettiArrayProps {
   confettiTrigger: boolean;
   colors: HexColor[];
@@ -65,13 +66,22 @@ const ConfettiArray: FC<ConfettiArrayProps> = ({ confettiTrigger, colors }) => {
     transform: 'none',
     // zIndex: 1000,
   };
+  const commonOptions: ConfettiOptions = {
+    colors,
+    particleCount: 320,
+    spread: 90,
+    scalar: 1.2,
+    gravity: 0.2,
+    ticks: 200,
+    // wind: 5,
+  };
 
   // JSX:
   return (
     <>
       <ConfettiCanvas
         trigger={trigger0}
-        colors={colors}
+        confettiOptions={{ ...commonOptions, direction: 'N', shape: 'circle' }}
         style={{
           ...commonStyle,
           top: `${canvasHeight * -0.5}px`,
@@ -80,7 +90,11 @@ const ConfettiArray: FC<ConfettiArrayProps> = ({ confettiTrigger, colors }) => {
       />
       <ConfettiCanvas
         trigger={trigger1}
-        colors={colors}
+        confettiOptions={{
+          ...commonOptions,
+          direction: 'N',
+          shape: 'triangle',
+        }}
         style={{
           ...commonStyle,
           top: `${canvasHeight * -0.5}px`,
@@ -89,7 +103,7 @@ const ConfettiArray: FC<ConfettiArrayProps> = ({ confettiTrigger, colors }) => {
       />
       <ConfettiCanvas
         trigger={trigger2}
-        colors={colors}
+        confettiOptions={{ ...commonOptions, direction: 'N', shape: 'circle' }}
         style={{
           ...commonStyle,
           top: `calc(100% - ${canvasHeight * 0.5}px)`,
@@ -98,7 +112,11 @@ const ConfettiArray: FC<ConfettiArrayProps> = ({ confettiTrigger, colors }) => {
       />
       <ConfettiCanvas
         trigger={trigger3}
-        colors={colors}
+        confettiOptions={{
+          ...commonOptions,
+          direction: 'N',
+          shape: 'triangle',
+        }}
         style={{
           ...commonStyle,
           top: `calc(100% - ${canvasHeight * 0.5}px)`,
