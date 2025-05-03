@@ -25,6 +25,7 @@ const LoadConfigModal = forwardRef<ModalHandle, LoadConfigDialogProps>(
         style={{
           top: '-50%',
           right: '0',
+          maxWidth: '75%',
         }}
       >
         <LoadConfigDialog saveIdx={saveIdx} />

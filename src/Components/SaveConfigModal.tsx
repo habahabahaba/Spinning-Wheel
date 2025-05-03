@@ -25,6 +25,7 @@ const SaveConfigModal = forwardRef<ModalHandle, SaveConfigFormProps>(
         style={{
           top: '-50%',
           right: '0',
+          maxWidth: '75%',
         }}
       >
         <SaveConfigForm saveIdx={saveIdx} />

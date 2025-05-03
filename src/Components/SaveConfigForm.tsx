@@ -90,7 +90,7 @@ const SaveConfigForm: FC<SaveConfigFormProps> = ({ saveIdx }) => {
             name='Configuration name'
             type='text'
             minLength={1}
-            maxLength={25}
+            maxLength={35}
             placeholder='Enter configuration name'
             value={inputValue || prevConfig?.configName || ''}
             onChange={handleInputChange}

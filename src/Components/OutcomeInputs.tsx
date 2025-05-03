@@ -8,6 +8,7 @@ import useBoundStore from '../store/boundStore';
 // Context:
 // Hooks:
 // Components:
+import Button from './Button';
 import FontSelector from './FontSelector';
 // CSS:
 // Types, interfaces and enumns:
@@ -44,6 +45,8 @@ const OutcomeInputs: FC<OutcomeInputsProps> = ({ index }) => {
         width: '90%',
         justifyContent: 'space-around',
         margin: '0.5rem',
+        backgroundColor: 'white',
+        borderRadius: '0.1rem',
       }}
     >
       <input
@@ -56,8 +59,8 @@ const OutcomeInputs: FC<OutcomeInputsProps> = ({ index }) => {
           handleChange('label', ev.target.value);
         }}
         style={{
-          minHeight: '1.5rem',
-          padding: '0.25.rem',
+          height: '1.5rem',
+          padding: '0.2rem',
           border: '1px solid',
           borderRadius: ' 0.1rem',
           minWidth: '12rem',
@@ -66,7 +69,7 @@ const OutcomeInputs: FC<OutcomeInputsProps> = ({ index }) => {
       <input
         type='color'
         id={`fillColor-input-Outcome-${index}`}
-        value={outcome.fillColor || '#ffffff'}
+        value={outcome.fillColor || '#eeeeee'}
         onChange={(ev) => {
           handleChange(
             'fillColor',
@@ -75,14 +78,17 @@ const OutcomeInputs: FC<OutcomeInputsProps> = ({ index }) => {
         }}
         style={{
           minHeight: '2rem',
-          padding: '0.25.rem',
+          padding: '0.15rem',
           border: '1px solid',
           borderRadius: ' 0.1rem',
+          backgroundColor: 'white',
         }}
       />
       <FontSelector outcomeIdx={index} />
 
-      <button
+      <Button
+        outlined={true}
+        shape='rounded'
         name='duplicate'
         onClick={(ev) => {
           ev.preventDefault();
@@ -91,8 +97,10 @@ const OutcomeInputs: FC<OutcomeInputsProps> = ({ index }) => {
         disabled={outcomesLength > 71}
       >
         x2
-      </button>
-      <button
+      </Button>
+      <Button
+        variant='danger'
+        outlined={true}
         name='delete'
         onClick={(ev) => {
           ev.preventDefault();
@@ -101,7 +109,7 @@ const OutcomeInputs: FC<OutcomeInputsProps> = ({ index }) => {
         disabled={outcomesLength < 3}
       >
         Delete
-      </button>
+      </Button>
     </div>
   );
 };

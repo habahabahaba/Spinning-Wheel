@@ -32,6 +32,7 @@ const SaveSlotSelector: FC<SaveSlotSelectorProps> = ({ value, onChange }) => {
       placeholder='Select a save slot'
       value={value}
       onChange={onChange}
+      className=''
     >
       {options}
     </Select>

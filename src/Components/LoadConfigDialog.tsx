@@ -12,6 +12,7 @@ import { use } from 'react';
 import modalCloseCtx from '../context/modalCloseCtx';
 // Hooks:
 // Components:
+import Button from './Button';
 // CSS:
 // Types, interfaces and enumns:
 import type { FC } from 'react';
@@ -23,6 +24,8 @@ const LoadConfigDialog: FC<LoadConfigDialogProps> = ({ saveIdx }) => {
   // Modal context For closing:
   const { handleCloseModal } = use(modalCloseCtx);
 
+  // Store:
+  const savedConfig = useBoundStore((state) => state.savedConfigs[saveIdx]);
   // Actions:
   const loadConfig = useBoundStore((state) => state.loadConfig);
 
@@ -33,7 +36,9 @@ const LoadConfigDialog: FC<LoadConfigDialogProps> = ({ saveIdx }) => {
 
   // Handlers:
   function handleLoadConfig() {
-    loadConfig({ saveIdx });
+    if (savedConfig) {
+      loadConfig({ saveIdx });
+    }
     handleCloseModal();
   }
   // JSX:
@@ -46,13 +51,15 @@ const LoadConfigDialog: FC<LoadConfigDialogProps> = ({ saveIdx }) => {
         position: 'relative',
         minWidth: '50%',
         minHeight: '8rem',
-        padding: '1rem',
+        padding: '0.25rem',
       }}
     >
-      <p>
-        This will discard the current configuration, but will not affect the
-        wheel until applied.
-      </p>
+      <div style={{ padding: '0.5rem' }}>
+        <p>
+          This will discard the current configuration, but will not affect the
+          wheel until applied.
+        </p>
+      </div>
       <div
         style={{
           display: 'flex',
@@ -61,21 +68,22 @@ const LoadConfigDialog: FC<LoadConfigDialogProps> = ({ saveIdx }) => {
           marginTop: '1rem',
         }}
       >
-        <button
+        <Button
           id='cancel-load-config-button'
           name='Cancel and close form'
           onClick={handleCloseModal}
         >
           Cancel
-        </button>
-        <button
+        </Button>
+        <Button
+          variant='warning'
           id='load-config-button'
           name='Load configuration'
           onClick={handleLoadConfig}
           style={{ minWidth: '5rem' }}
         >
           Load
-        </button>
+        </Button>
       </div>
     </div>
   );

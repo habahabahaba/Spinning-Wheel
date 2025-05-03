@@ -7,9 +7,7 @@ import { useState, useRef } from 'react';
 // Context:
 // Hooks:
 // Components:
-import SaveSlotSelector from './SaveSlotSelector';
-import SaveConfigModal from './SaveConfigModal';
-import LoadConfigModal from './LoadConfigModal';
+import SaveLoadConfigMenu from './SaveLoadConfigMenu';
 import ResetConfigModal from './ResetConfigModal';
 import RadiusSelector from './RadiusSelector';
 import PaletteSelector from './PaletteSelector';
@@ -27,7 +25,7 @@ const ConfigForm: FC = () => {
   const outcomesLength = useBoundStore(
     (state) => state.currentConfig.outcomes.length
   );
-  const possibleQuantity = 72 - outcomesLength;
+  const validQuantity = 72 - outcomesLength;
 
   // Actions:
   const addBlankOutcomes = useBoundStore((state) => state.addBlankOutcomes);
@@ -38,18 +36,15 @@ const ConfigForm: FC = () => {
 
   // State:
   const [addQuantity, setAddQuantity] = useState<number>(1);
-  const [saveIdx, setSaveIdx] = useState<number>(-1);
 
   // Refs (for modals):
-  const saveConfigModalRef = useRef<ModalHandle>(null);
-  const loadConfigModalRef = useRef<ModalHandle>(null);
   const resetConfigModalRef = useRef<ModalHandle>(null);
 
   // Handlers
   function handleAddOutcomes(ev: MouseEvent<HTMLButtonElement>) {
     ev.preventDefault();
     if (outcomesLength > 71) return;
-    const quantity = Math.max(1, Math.min(possibleQuantity, addQuantity));
+    const quantity = Math.max(1, Math.min(validQuantity, addQuantity));
 
     addBlankOutcomes({ quantity });
   }
@@ -59,18 +54,6 @@ const ConfigForm: FC = () => {
 
     resetWinningOutcomeIdx();
     applyConfig();
-  }
-
-  function handleOpenSaveModal(ev: MouseEvent<HTMLButtonElement>) {
-    ev.preventDefault();
-
-    saveConfigModalRef.current?.handleShowModal();
-  }
-
-  function handleOpenLoadModal(ev: MouseEvent<HTMLButtonElement>) {
-    ev.preventDefault();
-
-    loadConfigModalRef.current?.handleShowModal();
   }
 
   function handleOpenResetModal(ev: MouseEvent<HTMLButtonElement>) {
@@ -87,42 +70,7 @@ const ConfigForm: FC = () => {
   return (
     <>
       <form>
-        <div
-          style={{
-            maxWidth: '100vw',
-            display: 'flex',
-            gap: '0.5rem',
-            justifyContent: 'end',
-            margin: '0.5rem',
-          }}
-        >
-          <span>Save / Load configuration:</span>
-          <SaveSlotSelector
-            value={saveIdx}
-            onChange={(value) => {
-              setSaveIdx(() => +value);
-            }}
-          />
-          <div style={{ display: 'flex', gap: '0.5rem' }}>
-            <Button
-              id='open-save-config-form'
-              name='Start saving configuration'
-              disabled={saveIdx < 0 || saveIdx > 9}
-              onClick={handleOpenSaveModal}
-            >
-              Save
-            </Button>
-            <Button
-              variant='warning'
-              id='open-load-config-form'
-              name='Start loading configuration'
-              disabled={saveIdx < 0 || saveIdx > 9}
-              onClick={handleOpenLoadModal}
-            >
-              Load
-            </Button>
-          </div>
-        </div>
+        <SaveLoadConfigMenu />
         <div
           style={{
             display: 'flex',
@@ -143,11 +91,22 @@ const ConfigForm: FC = () => {
           <span>Default Font:</span>
           <FontSelector outcomeIdx={-1} />
         </div>
-        {outcomes}
+        <div
+          style={{
+            minHeight: '8rem',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'start',
+            gap: '0.05rem',
+            padding: '0.25rem',
+          }}
+        >
+          {outcomes}
+        </div>
         <div>
           <div
             style={{
-              width: '90%',
+              width: '95%',
               display: 'flex',
               flexWrap: 'wrap',
               gap: '0.5rem',
@@ -160,14 +119,14 @@ const ConfigForm: FC = () => {
             <input
               style={{
                 minHeight: '1.5rem',
-                padding: '0.25.rem',
+                paddingLeft: '0.25rem',
                 border: '1px solid',
                 borderRadius: ' 0.1rem',
                 minWidth: '2rem',
               }}
               type='number'
               min={1}
-              max={possibleQuantity}
+              max={validQuantity}
               step={1}
               value={addQuantity}
               onChange={(ev) => {
@@ -175,8 +134,10 @@ const ConfigForm: FC = () => {
               }}
             />
             <Button
+              variant='default'
+              // shape='rounded'
               onClick={handleAddOutcomes}
-              disabled={addQuantity > possibleQuantity}
+              disabled={addQuantity > validQuantity}
             >
               Add
             </Button>
@@ -202,8 +163,6 @@ const ConfigForm: FC = () => {
           </div>
         </div>
       </form>
-      <SaveConfigModal saveIdx={saveIdx} ref={saveConfigModalRef} />
-      <LoadConfigModal saveIdx={saveIdx} ref={loadConfigModalRef} />
       <ResetConfigModal ref={resetConfigModalRef} />
     </>
   );

@@ -28,7 +28,7 @@ const SaveSlotPreview: FC<SaveSlotPreviewProps> = ({ saveIdx }) => {
   // JSX:
   return (
     <span>
-      <b>{saveIdx + 1}.</b> {preview}
+      <b style={{ paddingRight: '0.15rem' }}>{saveIdx + 1}.</b> {preview}
     </span>
   );
 };
