@@ -2,7 +2,6 @@
 // Constants:
 // Utils:
 // 3rd party:
-// Redux, RTK:
 // Store:
 import useBoundStore from '../store/boundStore';
 // Router:
@@ -15,25 +14,18 @@ import modalCloseCtx from '../context/modalCloseCtx';
 // CSS:
 // Types, interfaces and enumns:
 import type { FC } from 'react';
-export interface LoadConfigDialogProps {
-  saveIdx: number;
-}
+// interface ResetConfigDialogProps{}
 
-const LoadConfigDialog: FC<LoadConfigDialogProps> = ({ saveIdx }) => {
+const ResetConfigDialog: FC = () => {
   // Modal context For closing:
   const { handleCloseModal } = use(modalCloseCtx);
 
   // Actions:
-  const loadConfig = useBoundStore((state) => state.loadConfig);
-
-  if (saveIdx < 0 || saveIdx > 9) {
-    handleCloseModal();
-    return <></>;
-  }
+  const resetCurrentConfig = useBoundStore((state) => state.resetCurrentConfig);
 
   // Handlers:
-  function handleLoadConfig() {
-    loadConfig({ saveIdx });
+  function handleResetConfig() {
+    resetCurrentConfig();
     handleCloseModal();
   }
   // JSX:
@@ -51,7 +43,7 @@ const LoadConfigDialog: FC<LoadConfigDialogProps> = ({ saveIdx }) => {
     >
       <p>
         This will discard the current configuration, but will not affect the
-        wheel until applied.
+        wheel.
       </p>
       <div
         style={{
@@ -71,14 +63,14 @@ const LoadConfigDialog: FC<LoadConfigDialogProps> = ({ saveIdx }) => {
         <button
           id='load-config-button'
           name='Load configuration'
-          onClick={handleLoadConfig}
+          onClick={handleResetConfig}
           style={{ minWidth: '5rem' }}
         >
-          Load
+          Reset
         </button>
       </div>
     </div>
   );
 };
 
-export default LoadConfigDialog;
+export default ResetConfigDialog;

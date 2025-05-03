@@ -10,10 +10,12 @@ import { useState, useRef } from 'react';
 import SaveSlotSelector from './SaveSlotSelector';
 import SaveConfigModal from './SaveConfigModal';
 import LoadConfigModal from './LoadConfigModal';
+import ResetConfigModal from './ResetConfigModal';
 import RadiusSelector from './RadiusSelector';
 import PaletteSelector from './PaletteSelector';
 import FontSelector from './FontSelector';
 import OutcomeInputs from './OutcomeInputs';
+import Button from './Button';
 // CSS:
 // Types, interfaces and enumns:
 import type { FC, MouseEvent } from 'react';
@@ -29,7 +31,6 @@ const ConfigForm: FC = () => {
 
   // Actions:
   const addBlankOutcomes = useBoundStore((state) => state.addBlankOutcomes);
-  const resetConfig = useBoundStore((state) => state.resetCurrentConfig);
   const applyConfig = useBoundStore((state) => state.applyConfig);
   const resetWinningOutcomeIdx = useBoundStore(
     (state) => state.resetWinningOutcomeIdx
@@ -42,6 +43,7 @@ const ConfigForm: FC = () => {
   // Refs (for modals):
   const saveConfigModalRef = useRef<ModalHandle>(null);
   const loadConfigModalRef = useRef<ModalHandle>(null);
+  const resetConfigModalRef = useRef<ModalHandle>(null);
 
   // Handlers
   function handleAddOutcomes(ev: MouseEvent<HTMLButtonElement>) {
@@ -50,12 +52,6 @@ const ConfigForm: FC = () => {
     const quantity = Math.max(1, Math.min(possibleQuantity, addQuantity));
 
     addBlankOutcomes({ quantity });
-  }
-
-  function handleResetConfig(ev: MouseEvent<HTMLButtonElement>) {
-    ev.preventDefault();
-
-    resetConfig();
   }
 
   function handleApplyConfig(ev: MouseEvent<HTMLButtonElement>) {
@@ -75,6 +71,12 @@ const ConfigForm: FC = () => {
     ev.preventDefault();
 
     loadConfigModalRef.current?.handleShowModal();
+  }
+
+  function handleOpenResetModal(ev: MouseEvent<HTMLButtonElement>) {
+    ev.preventDefault();
+
+    resetConfigModalRef.current?.handleShowModal();
   }
 
   // JSX:
@@ -142,29 +144,66 @@ const ConfigForm: FC = () => {
         </div>
         {outcomes}
         <div>
-          <input
-            style={{ width: '2rem' }}
-            type='number'
-            min={1}
-            max={possibleQuantity}
-            step={1}
-            value={addQuantity}
-            onChange={(ev) => {
-              setAddQuantity(+ev.target.value);
+          <div
+            style={{
+              width: '90%',
+              display: 'flex',
+              flexWrap: 'wrap',
+              gap: '0.5rem',
+              justifyContent: 'end',
+              alignItems: 'center',
+              // maxWidth: '100%',
+              margin: '0.5rem',
             }}
-          />
-          <button
-            onClick={handleAddOutcomes}
-            disabled={addQuantity > possibleQuantity}
           >
-            Add
-          </button>
-          <button onClick={handleResetConfig}>Reset</button>
-          <button onClick={handleApplyConfig}>Apply</button>
+            <input
+              style={{
+                minHeight: '1.5rem',
+                padding: '0.25.rem',
+                border: '1px solid',
+                borderRadius: ' 0.1rem',
+                minWidth: '2rem',
+              }}
+              type='number'
+              min={1}
+              max={possibleQuantity}
+              step={1}
+              value={addQuantity}
+              onChange={(ev) => {
+                setAddQuantity(+ev.target.value);
+              }}
+            />
+            <Button
+              onClick={handleAddOutcomes}
+              disabled={addQuantity > possibleQuantity}
+            >
+              Add
+            </Button>
+          </div>
+          <div
+            style={{
+              // width: '90%',
+              display: 'flex',
+              flexWrap: 'wrap',
+              gap: '0.5rem',
+              justifyContent: 'end',
+              alignItems: 'center',
+              // maxWidth: '100%',
+              margin: '0.5rem',
+            }}
+          >
+            <Button variant='danger' onClick={handleOpenResetModal}>
+              Reset
+            </Button>
+            <Button variant='success' onClick={handleApplyConfig}>
+              Apply
+            </Button>
+          </div>
         </div>
       </form>
       <SaveConfigModal saveIdx={saveIdx} ref={saveConfigModalRef} />
       <LoadConfigModal saveIdx={saveIdx} ref={loadConfigModalRef} />
+      <ResetConfigModal ref={resetConfigModalRef} />
     </>
   );
 };

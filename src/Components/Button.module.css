@@ -4,7 +4,7 @@
   justify-content: center;
   gap: 8px;
   padding: 8px 16px;
-  font-size: 14px;
+  font-size: 0.8rem;
   font-weight: 500;
   border: none;
   cursor: pointer;
@@ -51,7 +51,7 @@
 
 /* Shapes */
 .rectangle {
-  border-radius: 4px;
+  border-radius: 0.1rem;
 }
 
 .rounded {

@@ -135,8 +135,8 @@ const Main: FC = () => {
     >
       <Wallpaper
         variant={1}
-        paletteColor1={2}
-        paletteColor2={0}
+        color1={2}
+        color2={0}
         style={{
           opacity: '0.9',
         }}

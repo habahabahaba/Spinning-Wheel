@@ -18,17 +18,17 @@ import type { CSSProperties, FC } from 'react';
 
 interface WallpaperProps {
   variant: number;
-  paletteColor1: number;
-  paletteColor2?: number;
-  paletteColor3?: number;
+  color1: number;
+  color2?: number;
+  color3?: number;
   style?: CSSProperties;
 }
 
 const Wallpaper: FC<WallpaperProps> = ({
   variant,
-  paletteColor1,
-  paletteColor2 = 0,
-  paletteColor3 = 0,
+  color1,
+  color2 = 0,
+  color3 = 0,
   style = {},
 }) => {
   // Store:
@@ -39,13 +39,13 @@ const Wallpaper: FC<WallpaperProps> = ({
 
   const backgroundImage = useMemo(() => {
     const svgString = (wallpaperSVGstrings[variant] || wallpaperSVGstrings[0])({
-      color1: colors[paletteColor1 || 0],
-      color2: colors[paletteColor2 || 0],
-      color3: colors[paletteColor3 || 0],
+      color1: colors[color1 || 0],
+      color2: colors[color2 || 0],
+      color3: colors[color3 || 0],
     });
     const encoded = encodeURIComponent(svgString);
     return `url("data:image/svg+xml,${encoded}")`;
-  }, [variant, paletteColor1, paletteColor2, paletteColor3, colors]);
+  }, [variant, color1, color2, color3, colors]);
 
   const styleObj: CSSProperties = {
     backgroundPosition: 'center',
