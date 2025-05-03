@@ -8,14 +8,15 @@ import { getCurrentDate } from '../utils/date';
 import useBoundStore from '../store/boundStore';
 // Router:
 // React:
-import { use, useRef } from 'react';
+import { use, useState } from 'react';
 // Context:
 import modalCloseCtx from '../context/modalCloseCtx';
 // Hooks:
 // Components:
+import Button from './Button';
 // CSS:
 // Types, interfaces and enumns:
-import type { FC, FormEvent } from 'react';
+import type { FC, FormEvent, ChangeEventHandler } from 'react';
 export interface SaveConfigFormProps {
   saveIdx: number;
 }
@@ -31,20 +32,26 @@ const SaveConfigForm: FC<SaveConfigFormProps> = ({ saveIdx }) => {
   const prevConfig = useBoundStore((state) => state.savedConfigs[saveIdx]);
   // Actions:
   const saveCurrentConfig = useBoundStore((state) => state.saveCurrentConfig);
-  // Refs:
-  const nameInputRef = useRef<HTMLInputElement>(null);
+
+  // State:
+  const [inputValue, setInputValue] = useState<string>(
+    prevConfig?.configName || ''
+  );
 
   // Handlers:
+  const handleInputChange: ChangeEventHandler<HTMLInputElement> = (ev) => {
+    setInputValue(ev.target.value);
+  };
+
   function handleSaveConfig(ev: FormEvent) {
     ev.preventDefault();
 
     const configName =
-      nameInputRef.current?.value || prevConfig?.configName || getCurrentDate();
+      inputValue.trim() || prevConfig?.configName || getCurrentDate();
+
     saveCurrentConfig({ saveIdx, configName });
 
-    if (nameInputRef.current && nameInputRef.current.value) {
-      nameInputRef.current.value = '';
-    }
+    setInputValue(() => '');
     handleCloseModal();
   }
 
@@ -69,29 +76,36 @@ const SaveConfigForm: FC<SaveConfigFormProps> = ({ saveIdx }) => {
         position: 'relative',
         minWidth: '50%',
         minHeight: '8rem',
-        padding: '1rem',
+        padding: '0.25rem',
       }}
       onSubmit={handleSaveConfig}
     >
-      <label
-        style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}
-      >
-        Configuration name:
-        <input
-          id='config-name-input'
-          name='Configuration name'
-          type='text'
-          minLength={1}
-          maxLength={25}
-          placeholder={
-            prevConfig ? prevConfig.configName : 'Enter configuration name'
-          }
-          // defaultValue={prevConfig ? prevConfig.configName : undefined}
-          ref={nameInputRef}
-          style={{ minWidth: '15rem' }}
-        />
-      </label>
-      {warning}
+      <div style={{ padding: '0.5rem' }}>
+        <label
+          style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}
+        >
+          Configuration name:
+          <input
+            id='config-name-input'
+            name='Configuration name'
+            type='text'
+            minLength={1}
+            maxLength={25}
+            placeholder='Enter configuration name'
+            value={inputValue || prevConfig?.configName || ''}
+            onChange={handleInputChange}
+            // defaultValue={prevConfig ? prevConfig.configName : undefined}
+            style={{
+              minHeight: '1.5rem',
+              padding: '0.25.rem',
+              border: '1px solid',
+              borderRadius: ' 0.1rem',
+              minWidth: '15rem',
+            }}
+          />
+        </label>
+        {warning}
+      </div>
       <div
         style={{
           display: 'flex',
@@ -100,22 +114,23 @@ const SaveConfigForm: FC<SaveConfigFormProps> = ({ saveIdx }) => {
           marginTop: '1rem',
         }}
       >
-        <button
+        <Button
           id='cancel-save-config-button'
           name='Cancel and close form'
           onClick={handleCloseModal}
           type='reset'
         >
           Cancel
-        </button>
-        <button
+        </Button>
+        <Button
+          variant={prevConfig ? 'danger' : 'success'}
           id='save-config-button'
           name='Save configuration'
           type='submit'
           style={{ minWidth: '5rem' }}
         >
           {prevConfig ? 'Overwrite' : 'Save'}
-        </button>
+        </Button>
       </div>
     </form>
   );

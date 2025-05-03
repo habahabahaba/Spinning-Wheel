@@ -104,22 +104,23 @@ const ConfigForm: FC = () => {
             }}
           />
           <div style={{ display: 'flex', gap: '0.5rem' }}>
-            <button
+            <Button
               id='open-save-config-form'
               name='Start saving configuration'
               disabled={saveIdx < 0 || saveIdx > 9}
               onClick={handleOpenSaveModal}
             >
               Save
-            </button>
-            <button
+            </Button>
+            <Button
+              variant='warning'
               id='open-load-config-form'
               name='Start loading configuration'
               disabled={saveIdx < 0 || saveIdx > 9}
               onClick={handleOpenLoadModal}
             >
               Load
-            </button>
+            </Button>
           </div>
         </div>
         <div
@@ -192,7 +193,7 @@ const ConfigForm: FC = () => {
               margin: '0.5rem',
             }}
           >
-            <Button variant='danger' onClick={handleOpenResetModal}>
+            <Button variant='warning' onClick={handleOpenResetModal}>
               Reset
             </Button>
             <Button variant='success' onClick={handleApplyConfig}>

@@ -11,6 +11,7 @@ import { use } from 'react';
 import modalCloseCtx from '../context/modalCloseCtx';
 // Hooks:
 // Components:
+import Button from './Button';
 // CSS:
 // Types, interfaces and enumns:
 import type { FC } from 'react';
@@ -38,7 +39,7 @@ const ResetConfigDialog: FC = () => {
         position: 'relative',
         minWidth: '50%',
         minHeight: '8rem',
-        padding: '1rem',
+        padding: '0.5rem',
       }}
     >
       <p>
@@ -53,21 +54,22 @@ const ResetConfigDialog: FC = () => {
           marginTop: '1rem',
         }}
       >
-        <button
+        <Button
           id='cancel-load-config-button'
           name='Cancel and close form'
           onClick={handleCloseModal}
         >
           Cancel
-        </button>
-        <button
+        </Button>
+        <Button
+          variant='danger'
           id='load-config-button'
           name='Load configuration'
           onClick={handleResetConfig}
           style={{ minWidth: '5rem' }}
         >
           Reset
-        </button>
+        </Button>
       </div>
     </div>
   );
