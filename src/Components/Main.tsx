@@ -93,7 +93,7 @@ const Main: FC = () => {
       mouseDownTimeRef.current = null;
 
       const randomTurns = +(randomRef.current + strength).toFixed(2);
-      console.log(`[Wheel] randomTurns: ${randomTurns}`);
+      // console.log(`[Wheel] randomTurns: ${randomTurns}`);
 
       const resultingTurn = spin(
         randomTurns,
@@ -111,7 +111,7 @@ const Main: FC = () => {
           }, 610);
         }
       );
-      console.log(`[Wheel] resultingTurn: ${resultingTurn}`);
+      // console.log(`[Wheel] resultingTurn: ${resultingTurn}`);
       setWinningOutcomeIdxFromTurn({ resultingTurn });
     }
     // setIsWinding(false);

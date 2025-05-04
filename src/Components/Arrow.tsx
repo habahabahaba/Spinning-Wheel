@@ -32,7 +32,7 @@ const Arrow: FC<ArrowProps> = ({ size, arrowIdx = 0, ref }) => {
       }}
       ref={ref}
     >
-      {arrowSVGs[arrowIdx] || arrowSVGs[0]}
+      {arrowSVGs[arrowIdx]({}) || arrowSVGs[0]({})}
     </div>
   );
 };

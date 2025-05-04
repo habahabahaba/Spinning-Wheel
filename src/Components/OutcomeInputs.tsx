@@ -100,6 +100,7 @@ const OutcomeInputs: FC<OutcomeInputsProps> = ({ index }) => {
       </Button>
       <Button
         variant='danger'
+        shape='rounded'
         outlined={true}
         name='delete'
         onClick={(ev) => {
