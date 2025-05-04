@@ -1,6 +1,8 @@
 // 3rd party:
-// Redux RTK:
+// Constants:
+import { PALETTES } from '../constants/palettes.ts';
 // Store:
+import useBoundStore from '../store/boundStore.ts';
 // React Router:
 // React:
 // Context:
@@ -18,6 +20,11 @@ interface ArrowProps {
 }
 
 const Arrow: FC<ArrowProps> = ({ size, arrowIdx = 0, ref }) => {
+  // Store:
+  const paletteIdx = useBoundStore(
+    (state) => state.activeConfig.default_palette_idx
+  );
+
   // JSX:
   return (
     <div
@@ -32,7 +39,9 @@ const Arrow: FC<ArrowProps> = ({ size, arrowIdx = 0, ref }) => {
       }}
       ref={ref}
     >
-      {arrowSVGs[arrowIdx]({}) || arrowSVGs[0]({})}
+      {arrowSVGs[arrowIdx]({
+        strokeColor: (PALETTES[paletteIdx] || PALETTES[0])[1],
+      }) || arrowSVGs[0]({})}
     </div>
   );
 };

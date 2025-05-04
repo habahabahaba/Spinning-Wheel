@@ -82,14 +82,14 @@ const ConfigForm: FC = () => {
             margin: '0.5rem',
           }}
         >
-          <span>Wheel size:</span>
           <RadiusSelector />
 
-          <span>Default colors:</span>
           <PaletteSelector />
 
-          <span>Default Font:</span>
-          <FontSelector outcomeIdx={-1} />
+          <label>
+            Main font:
+            <FontSelector outcomeIdx={-1} />{' '}
+          </label>
         </div>
         <div
           style={{

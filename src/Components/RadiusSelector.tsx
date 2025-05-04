@@ -26,20 +26,23 @@ const RadiusSelector: FC = () => {
   // JSX:
   const options = Object.keys(WHEEL_RADII_MAP).map((key) => (
     <Option value={key} key={key}>
-      {key}
+      <b> {key}</b>
     </Option>
   ));
 
   return (
-    <Select
-      id='palette-select'
-      value={currentRadius}
-      onChange={(value) => {
-        setRadius({ radiusName: value as Radius });
-      }}
-    >
-      {options}
-    </Select>
+    <label>
+      Wheel size:
+      <Select
+        id='palette-select'
+        value={currentRadius}
+        onChange={(value) => {
+          setRadius({ radiusName: value as Radius });
+        }}
+      >
+        {options}
+      </Select>
+    </label>
   );
 };
 
