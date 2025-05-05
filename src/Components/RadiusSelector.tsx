@@ -31,18 +31,15 @@ const RadiusSelector: FC = () => {
   ));
 
   return (
-    <label>
-      Wheel size:
-      <Select
-        id='palette-select'
-        value={currentRadius}
-        onChange={(value) => {
-          setRadius({ radiusName: value as Radius });
-        }}
-      >
-        {options}
-      </Select>
-    </label>
+    <Select
+      id='palette-select'
+      value={currentRadius}
+      onChange={(value) => {
+        setRadius({ radiusName: value as Radius });
+      }}
+    >
+      {options}
+    </Select>
   );
 };
 

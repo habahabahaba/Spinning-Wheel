@@ -33,18 +33,15 @@ const PaletteSelector: FC = () => {
     ));
 
   return (
-    <label>
-      Default colors:
-      <Select
-        id='palette-select'
-        value={currentPalette}
-        onChange={(value) => {
-          setPalette({ paletteIdx: +value });
-        }}
-      >
-        {options}
-      </Select>
-    </label>
+    <Select
+      id='palette-select'
+      value={currentPalette}
+      onChange={(value) => {
+        setPalette({ paletteIdx: +value });
+      }}
+    >
+      {options}
+    </Select>
   );
 };
 

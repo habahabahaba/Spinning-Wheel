@@ -88,6 +88,7 @@ const OutcomeInputs: FC<OutcomeInputsProps> = ({ index }) => {
       <FontSelector outcomeIdx={index} />
 
       <Button
+        variant='success'
         shape='rounded'
         name='duplicate'
         // outlined={true}

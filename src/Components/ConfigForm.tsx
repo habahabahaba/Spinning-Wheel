@@ -82,12 +82,18 @@ const ConfigForm: FC = () => {
             margin: '0.5rem',
           }}
         >
-          <RadiusSelector />
-
-          <PaletteSelector />
+          <label>
+            Wheel size:
+            <RadiusSelector />
+          </label>
 
           <label>
-            Main font:
+            Default colors:
+            <PaletteSelector />
+          </label>
+
+          <label>
+            Default font:
             <FontSelector outcomeIdx={-1} />{' '}
           </label>
         </div>
@@ -135,7 +141,7 @@ const ConfigForm: FC = () => {
             />
             <Button
               variant='default'
-              // shape='rounded'
+              shape='rounded'
               onClick={handleAddOutcomes}
               disabled={addQuantity > validQuantity}
             >
