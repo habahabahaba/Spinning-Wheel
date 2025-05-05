@@ -10,6 +10,7 @@ import useBoundStore from '../store/boundStore';
 // Components:
 import Button from './Button';
 import FontSelector from './FontSelector';
+import deleteSVGs from './SVG/deleteSVGs';
 // CSS:
 // Types, interfaces and enumns:
 import type { FC } from 'react';
@@ -87,21 +88,21 @@ const OutcomeInputs: FC<OutcomeInputsProps> = ({ index }) => {
       <FontSelector outcomeIdx={index} />
 
       <Button
-        outlined={true}
         shape='rounded'
         name='duplicate'
+        // outlined={true}
         onClick={(ev) => {
           ev.preventDefault();
           duplicateOutcome({ outcomeIdx: index });
         }}
         disabled={outcomesLength > 71}
       >
-        x2
+        <b>x2</b>
       </Button>
       <Button
         variant='danger'
         shape='rounded'
-        outlined={true}
+        // outlined={true}
         name='delete'
         onClick={(ev) => {
           ev.preventDefault();
@@ -109,7 +110,7 @@ const OutcomeInputs: FC<OutcomeInputsProps> = ({ index }) => {
         }}
         disabled={outcomesLength < 3}
       >
-        Delete
+        {deleteSVGs[2]({ height: '1rem', color1: '#000000' })}
       </Button>
     </div>
   );

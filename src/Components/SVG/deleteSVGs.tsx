@@ -2,19 +2,21 @@
 import type { JSX } from 'react';
 import type { HexColor } from '../../utils/color';
 type SVGfn = (colors: {
+  height: string;
+  width?: string;
   color1?: HexColor;
   color2?: HexColor;
   color3?: HexColor;
 }) => JSX.Element;
 
-export const deleteSVGs: SVGfn[] = [
-  ({ color1 = '#000' }) => (
+const deleteSVGs: SVGfn[] = [
+  ({ height, width = height, color1 = '#000000' }) => (
     <svg
       data-name='20 Delete'
       xmlns='http://www.w3.org/2000/svg'
       fill={color1}
-      // width="800px"
-      // height="800px"
+      height={height}
+      width={width}
       viewBox='0 0 512 512'
       id='_20_Forbid'
     >
@@ -22,14 +24,14 @@ export const deleteSVGs: SVGfn[] = [
         id='Path_27'
         data-name='Path 27'
         d='M256,512C114.625,512,0,397.375,0,256,0,114.609,114.625,0,256,0S512,114.609,512,256C512,397.375,397.375,512,256,512ZM64,256A190.514,190.514,0,0,0,99.531,366.656L366.656,99.516A190.648,190.648,0,0,0,256,64C149.969,64,64,149.969,64,256ZM412.469,145.344,145.344,412.5A190.635,190.635,0,0,0,256,448c106.031,0,192-85.969,192-192A190.477,190.477,0,0,0,412.469,145.344Z'
-        fill-rule='evenodd'
+        fillRule='evenodd'
       />
     </svg>
   ),
-  ({ color1 = '#000' }) => (
+  ({ height, width = height, color1 = '#000000' }) => (
     <svg
-      //   width='800px'
-      //   height='800px'
+      height={height}
+      width={width}
       viewBox='0 0 16 16'
       version='1.1'
       xmlns='http://www.w3.org/2000/svg'
@@ -43,12 +45,12 @@ export const deleteSVGs: SVGfn[] = [
     </svg>
   ),
 
-  ({ color1 = '#000' }) => (
+  ({ height, width = height, color1 = '#000000' }) => (
     <svg
       fill={color1}
-      // width="800px"
-      // height="800px"
-      viewBox='0 0 32 32'
+      height={height}
+      width={width}
+      viewBox='8 9 15 15'
       version='1.1'
       xmlns='http://www.w3.org/2000/svg'
     >
@@ -57,17 +59,17 @@ export const deleteSVGs: SVGfn[] = [
     </svg>
   ),
 
-  ({ color1 = '#000' }) => (
+  ({ height, width = height, color1 = '#000000' }) => (
     <svg
       fill={color1}
       version='1.1'
       id='Layer_1'
       xmlns='http://www.w3.org/2000/svg'
       xmlnsXlink='http://www.w3.org/1999/xlink'
-      // width="800px"
-      // height="800px"
+      height={height}
+      width={width}
       viewBox='0 0 100 100'
-      enable-background='new 0 0 100 100'
+      enableBackground='new 0 0 100 100'
       xmlSpace='preserve'
     >
       <g>
@@ -82,3 +84,5 @@ export const deleteSVGs: SVGfn[] = [
     </svg>
   ),
 ];
+
+export default deleteSVGs;
