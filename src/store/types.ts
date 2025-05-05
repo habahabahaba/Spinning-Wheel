@@ -11,6 +11,7 @@ export { LocalFontNames, RemoteFontNames, AllFontNames };
 
 export interface FontState {
   fontsLoadStates: Record<AllFontNames, boolean>;
+  allFontsReady: boolean;
 }
 
 export interface FontActions {
@@ -18,6 +19,7 @@ export interface FontActions {
   replaceFontState: (newState: FontState) => void;
   markLoadedFont: (loadedFont: RemoteFontNames) => void;
   checkFont: (fontName: AllFontNames) => boolean;
+  markAllFontsReady: (boolean: boolean) => void;
 }
 
 export type FontSlice = FontState & FontActions;

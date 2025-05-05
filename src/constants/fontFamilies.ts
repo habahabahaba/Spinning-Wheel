@@ -102,4 +102,5 @@ const initFontsLoadStates: Record<AllFontNames, boolean> = {
 
 export const initFontsState = {
   fontsLoadStates: initFontsLoadStates,
+  allFontsReady: false,
 };
