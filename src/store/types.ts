@@ -74,6 +74,8 @@ export interface WheelConfigsActions {
 
   setDefaultFontFamily: ({ fontFamily }: { fontFamily: AllFontNames }) => void;
 
+  setConfigName: ({ configName }: { configName: string }) => void;
+
   addBlankOutcomes: ({ quantity }: { quantity: number }) => void;
 
   duplicateOutcome: ({ outcomeIdx }: { outcomeIdx: number }) => void;

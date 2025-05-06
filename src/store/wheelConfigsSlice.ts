@@ -236,7 +236,10 @@ const createWheelConfigsSlice: StateCreator<
         ...state.currentConfig,
         default_fontFamily: fontFamily,
       },
-    })), // WILL BE REDONE!
+    })),
+
+  setConfigName: ({ configName }: { configName: string }) =>
+    set((state) => ({ currentConfig: { ...state.currentConfig, configName } })),
 
   addBlankOutcomes: ({ quantity }: { quantity: number }) =>
     set((state) => {

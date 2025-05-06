@@ -15,6 +15,7 @@ import FontSelector from '../Selectors/FontSelector';
 import OutcomeInputs from './OutcomeInputs';
 import ResetConfigModal from '../Modals/ResetConfigModal';
 import CheckFontsModal from '../Modals/CheckFontsModal';
+import ExportConfigModal from '../Modals/ExportConfigModal';
 // CSS:
 // Types, interfaces and enumns:
 import type { FC, MouseEvent } from 'react';
@@ -42,6 +43,7 @@ const ConfigForm: FC = () => {
   // Refs (for modals):
   const resetConfigModalRef = useRef<ModalHandle>(null);
   const checkFontsModalRef = useRef<ModalHandle>(null);
+  const exportConfigModalRef = useRef<ModalHandle>(null);
 
   // Handlers
   function handleAddOutcomes(ev: MouseEvent<HTMLButtonElement>) {
@@ -68,6 +70,12 @@ const ConfigForm: FC = () => {
     ev.preventDefault();
 
     resetConfigModalRef.current?.handleShowModal();
+  }
+
+  function handleOpenExportModal(ev: MouseEvent<HTMLButtonElement>) {
+    ev.preventDefault();
+
+    exportConfigModalRef.current?.handleShowModal();
   }
 
   // JSX:
@@ -160,25 +168,69 @@ const ConfigForm: FC = () => {
             style={{
               // width: '90%',
               display: 'flex',
-              flexWrap: 'wrap',
-              gap: '0.5rem',
-              justifyContent: 'end',
+              // flexWrap: 'wrap',
+              // gap: '0.5rem',
+              justifyContent: 'space-between',
               alignItems: 'center',
               // maxWidth: '100%',
               margin: '0.5rem',
             }}
           >
-            <Button variant='warning' onClick={handleOpenResetModal}>
-              Reset
-            </Button>
-            <Button variant='success' onClick={handleApplyConfig}>
-              Apply
-            </Button>
+            <div
+              style={{
+                // width: '90%',
+                display: 'flex',
+                flexWrap: 'wrap',
+                gap: '0.5rem',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                // maxWidth: '100%',
+                // margin: '0.5rem',
+              }}
+            >
+              <Button
+                id='config-form-export-button'
+                name='export configuration'
+                onClick={handleOpenExportModal}
+              >
+                Export
+              </Button>
+            </div>
+            <div
+              style={{
+                // width: '90%',
+                display: 'flex',
+                flexWrap: 'wrap',
+                gap: '0.5rem',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                // maxWidth: '100%',
+                // margin: '0.5rem',
+              }}
+            >
+              <Button
+                variant='warning'
+                id='config-form-reset-button'
+                name='reset configuration'
+                onClick={handleOpenResetModal}
+              >
+                Reset
+              </Button>
+              <Button
+                variant='success'
+                id='config-form-apply-button'
+                name='apply configuration'
+                onClick={handleApplyConfig}
+              >
+                Apply
+              </Button>
+            </div>
           </div>
         </div>
       </form>
       <ResetConfigModal ref={resetConfigModalRef} />
       <CheckFontsModal ref={checkFontsModalRef} />
+      <ExportConfigModal ref={exportConfigModalRef} />
     </>
   );
 };

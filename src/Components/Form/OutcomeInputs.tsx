@@ -88,9 +88,10 @@ const OutcomeInputs: FC<OutcomeInputsProps> = ({ index }) => {
       <FontSelector outcomeIdx={index} />
 
       <Button
+        id={`duplicate-outcome-${index}-button`}
+        name='duplicate line'
         variant='success'
         shape='rounded'
-        name='duplicate'
         // outlined={true}
         onClick={(ev) => {
           ev.preventDefault();
@@ -101,10 +102,11 @@ const OutcomeInputs: FC<OutcomeInputsProps> = ({ index }) => {
         <b>x2</b>
       </Button>
       <Button
+        id={`delete-outcome-${index}-button`}
+        name='delete line'
         variant='danger'
         shape='rounded'
         // outlined={true}
-        name='delete'
         onClick={(ev) => {
           ev.preventDefault();
           removeOutcome({ outcomeIdx: index });
