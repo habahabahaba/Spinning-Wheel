@@ -1,6 +1,6 @@
 // Utils:
-import { polarToCartesian } from '../utils/geometry';
-import { calculateTextLayout } from '../utils/text';
+import { polarToCartesian } from '../../utils/geometry';
+import { calculateTextLayout } from '../../utils/text';
 // 3rd party:
 // Store:
 // React Router:

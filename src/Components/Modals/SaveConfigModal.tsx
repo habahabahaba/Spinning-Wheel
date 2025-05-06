@@ -6,12 +6,12 @@ import { forwardRef } from 'react';
 // Context:
 // Hooks:
 // Components:
-import Modal from './Modal';
+import Modal from '../UI/Modal';
 import SaveConfigForm from './SaveConfigForm';
 // CSS:
 // Types, interfaces and enumns:
 import type { ForwardedRef } from 'react';
-import type { ModalHandle } from './Modal';
+import type { ModalHandle } from '../UI/Modal';
 import type { SaveConfigFormProps } from './SaveConfigForm';
 
 const SaveConfigModal = forwardRef<ModalHandle, SaveConfigFormProps>(

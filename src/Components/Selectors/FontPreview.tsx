@@ -3,7 +3,7 @@
 // Utils:
 // 3rd party:
 // Store:
-import useBoundStore from '../store/boundStore';
+import useBoundStore from '../../store/boundStore';
 // Router:
 // React:
 // Context:
@@ -12,7 +12,7 @@ import useBoundStore from '../store/boundStore';
 // CSS:
 // Types, interfaces and enumns:
 import type { CSSProperties, FC } from 'react';
-import type { AllFontNames } from '../constants/fontFamilies';
+import type { AllFontNames } from '../../constants/fontFamilies';
 interface FontPreviewProps {
   fontFamily: AllFontNames;
 }

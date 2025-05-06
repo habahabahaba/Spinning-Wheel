@@ -3,21 +3,21 @@
 // Utils:
 // 3rd party:
 // Store:
-import useBoundStore from '../store/boundStore';
+import useBoundStore from '../../store/boundStore';
 // Router:
 // React:
 import { useState, useRef } from 'react';
 // Context:
 // Hooks:
 // Components:
-import Button from './Button';
-import SaveSlotSelector from './SaveSlotSelector';
-import LoadConfigModal from './LoadConfigModal';
-import SaveConfigModal from './SaveConfigModal';
+import Button from '../UI/Button';
+import SaveSlotSelector from '../Selectors/SaveSlotSelector';
+import LoadConfigModal from '../Modals/LoadConfigModal';
+import SaveConfigModal from '../Modals/SaveConfigModal';
 // CSS:
 // Types, interfaces and enumns:
 import type { FC, MouseEvent } from 'react';
-import type { ModalHandle } from './Modal';
+import type { ModalHandle } from '../UI/Modal';
 // interface SaveLoadConfigMenuProps {}
 
 const SaveLoadConfigMenu: FC = () => {

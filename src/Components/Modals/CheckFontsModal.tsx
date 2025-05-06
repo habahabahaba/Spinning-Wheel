@@ -10,12 +10,12 @@ import { forwardRef } from 'react';
 // Context:
 // Hooks:
 // Components:
-import Modal from './Modal';
+import Modal from '../UI/Modal';
 import CheckFontsDialog from './CheckFontsDialog';
 // CSS:
 // Types, interfaces and enumns:
 import type { ForwardedRef } from 'react';
-import type { ModalHandle } from './Modal';
+import type { ModalHandle } from '../UI/Modal';
 
 const CheckFontsModal = forwardRef<ModalHandle>(
   (_, ref: ForwardedRef<ModalHandle>) => {

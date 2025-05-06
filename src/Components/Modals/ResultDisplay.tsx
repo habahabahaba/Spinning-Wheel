@@ -1,19 +1,19 @@
 // Constants:
-import { PALETTES } from '../constants/palettes';
-import { WHEEL_RADII_MAP } from '../constants/radii';
+import { PALETTES } from '../../constants/palettes';
+import { WHEEL_RADII_MAP } from '../../constants/radii';
 // Utils:
-import { contrastColor, brightness } from '../utils/color';
+import { contrastColor, brightness } from '../../utils/color';
 // 3rd party:
 // Store:
-import useBoundStore from '../store/boundStore';
+import useBoundStore from '../../store/boundStore';
 // React Router:
 // React:
 import { use } from 'react';
 // Context:
-import modalCloseCtx from '../context/modalCloseCtx';
+import modalCloseCtx from '../../context/modalCloseCtx';
 // Hooks:
 // Components:
-import ConfettiArray from './ConfettiArray';
+import ConfettiArray from '../ConfettiArray';
 // CSS:
 // Types, interfaces and enumns:
 import type { FC } from 'react';

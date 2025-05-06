@@ -9,7 +9,7 @@
 // Context:
 // Hooks:
 // Components:
-import { Select, Option } from './Select';
+import { Select, Option } from '../UI/Select';
 import SaveSlotPreview from './SaveSlotPreview';
 // CSS:
 // Types, interfaces and enumns:

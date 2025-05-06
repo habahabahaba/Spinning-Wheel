@@ -1,11 +1,11 @@
 // Assets:
-import { PALETTES } from '../constants/palettes';
-import wallpaperSVGstrings from './SVG/wallpaperSVGstrings';
+import { PALETTES } from '../../constants/palettes';
+import wallpaperSVGstrings from '../SVG/wallpaperSVGstrings';
 // Utils:
 // 3rd party:
 // Redux, RTK:
 // Store:
-import useBoundStore from '../store/boundStore';
+import useBoundStore from '../../store/boundStore';
 // Router:
 // React:
 import { useMemo } from 'react';

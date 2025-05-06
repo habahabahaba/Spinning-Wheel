@@ -12,7 +12,7 @@ import {
 } from 'react';
 import { createPortal } from 'react-dom';
 // Context:
-import modalCloseCtx from '../context/modalCloseCtx';
+import modalCloseCtx from '../../context/modalCloseCtx';
 // Hooks:
 // Components:
 // CSS:

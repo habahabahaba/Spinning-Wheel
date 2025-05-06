@@ -4,7 +4,7 @@
 // 3rd party:
 // Redux, RTK:
 // Store:
-import useBoundStore from '../store/boundStore';
+import useBoundStore from '../../store/boundStore';
 // Router:
 // React:
 // Context:

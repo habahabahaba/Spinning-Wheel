@@ -12,17 +12,17 @@ import { useRef, useState } from 'react';
 // Hooks:
 import { useSpinAnimation } from '../hooks/useSpinAnimation';
 // Components:
-import Wheel from './Wheel';
-import Arrow from './Arrow';
-import SpinButton from './SpinButton';
-import ResultDisplayModal from './ResultDisplayModal';
-import Wallpaper from './Wallpaper';
+import Wheel from './Wheel/Wheel';
+import Arrow from './Wheel/Arrow';
+import SpinButton from './Wheel/SpinButton';
+import ResultDisplayModal from './Modals/ResultDisplayModal';
+import Wallpaper from './UI/Wallpaper';
 // import ConfettiCanvas from './ConfettiCanvas';
 // import Modal from './Modal';
 // CSS:
 // Types, interfaces and enumns:
 import type { FC } from 'react';
-import type { ModalHandle } from './Modal';
+import type { ModalHandle } from './UI/Modal';
 
 const Main: FC = () => {
   // Store:

@@ -1,18 +1,18 @@
 // Assets:
-import { WHEEL_RADII_MAP } from '../constants/radii';
+import { WHEEL_RADII_MAP } from '../../constants/radii';
 // 3rd party:
 // Store:
-import useBoundStore from '../store/boundStore';
+import useBoundStore from '../../store/boundStore';
 // React Router:
 // React:
 // Context:
 // Hooks:
 // Components:
-import { Select, Option } from './Select';
+import { Select, Option } from '../UI/Select';
 // CSS:
 // Types, interfaces and enumns:
 import type { FC } from 'react';
-import type { Radius } from '../constants/radii';
+import type { Radius } from '../../constants/radii';
 // interface RadiusSelectorProps{}
 
 const RadiusSelector: FC = () => {

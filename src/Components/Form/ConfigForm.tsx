@@ -1,24 +1,24 @@
 // 3rd party:
 // Store:
-import useBoundStore from '../store/boundStore';
+import useBoundStore from '../../store/boundStore';
 // React Router:
 // React:
 import { useState, useRef } from 'react';
 // Context:
 // Hooks:
 // Components:
-import Button from './Button';
+import Button from '../UI/Button';
 import SaveLoadConfigMenu from './SaveLoadConfigMenu';
-import RadiusSelector from './RadiusSelector';
-import PaletteSelector from './PaletteSelector';
-import FontSelector from './FontSelector';
+import RadiusSelector from '../Selectors/RadiusSelector';
+import PaletteSelector from '../Selectors/PaletteSelector';
+import FontSelector from '../Selectors/FontSelector';
 import OutcomeInputs from './OutcomeInputs';
-import ResetConfigModal from './ResetConfigModal';
-import CheckFontsModal from './CheckFontsModal';
+import ResetConfigModal from '../Modals/ResetConfigModal';
+import CheckFontsModal from '../Modals/CheckFontsModal';
 // CSS:
 // Types, interfaces and enumns:
 import type { FC, MouseEvent } from 'react';
-import type { ModalHandle } from './Modal';
+import type { ModalHandle } from '../UI/Modal';
 // interface ConfigFormProps {}
 
 const ConfigForm: FC = () => {

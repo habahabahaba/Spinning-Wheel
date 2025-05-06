@@ -1,23 +1,23 @@
 // Assets:
 // Constants:
-import { FONT_FAMILIES_LOCAL } from '../constants/fontFamilies';
+import { FONT_FAMILIES_LOCAL } from '../../constants/fontFamilies';
 // Utils:
 // 3rd party:
 // Store:
-import useBoundStore from '../store/boundStore';
+import useBoundStore from '../../store/boundStore';
 // Router:
 // React:
 import { use } from 'react';
 // Context:
-import modalCloseCtx from '../context/modalCloseCtx';
+import modalCloseCtx from '../../context/modalCloseCtx';
 // Hooks:
 // Components:
-import Button from './Button';
+import Button from '../UI/Button';
 // CSS:
 // Types, interfaces and enumns:
 import type { FC } from 'react';
-import type { WheelConfig } from '../store/types';
-import type { AllFontNames } from '../constants/fontFamilies';
+import type { WheelConfig } from '../../store/types';
+import type { AllFontNames } from '../../constants/fontFamilies';
 // interface CheckFontsDialogProps {}
 
 const CheckFontsDialog: FC = () => {

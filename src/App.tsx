@@ -7,7 +7,7 @@ import useBoundStore from './store/boundStore';
 import { useEffect, useRef } from 'react';
 // Components:
 import Main from './Components/Main';
-import ConfigForm from './Components/ConfigForm';
+import ConfigForm from './Components/Form/ConfigForm';
 // Types, interfaces and enumns:
 import type { RemoteFontNames } from './constants/fontFamilies';
 

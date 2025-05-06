@@ -1,15 +1,15 @@
 // Constants:
-import { AllFontNames, FONT_FAMILIES_ALL } from '../constants/fontFamilies';
+import { AllFontNames, FONT_FAMILIES_ALL } from '../../constants/fontFamilies';
 // 3rd party:
 // Store:
-import useBoundStore from '../store/boundStore';
+import useBoundStore from '../../store/boundStore';
 // React Router:
 // React:
 // Context:
 // Hooks:
 // Components:
 import FontPreview from './FontPreview';
-import { Select, Option } from './Select';
+import { Select, Option } from '../UI/Select';
 // CSS:
 // Types, interfaces and enumns:
 import type { FC } from 'react';

@@ -1,11 +1,11 @@
 // Constants:
-import { PALETTES } from '../constants/palettes';
-import { WHEEL_RADII_MAP } from '../constants/radii';
+import { PALETTES } from '../../constants/palettes';
+import { WHEEL_RADII_MAP } from '../../constants/radii';
 // Utils:
-import { contrastColor } from '../utils/color';
+import { contrastColor } from '../../utils/color';
 // 3rd party:
 // Store:
-import useBoundStore from '../store/boundStore';
+import useBoundStore from '../../store/boundStore';
 // React Router:
 // React:
 // import { useState } from 'react';
@@ -14,7 +14,7 @@ import useBoundStore from '../store/boundStore';
 // Components:
 // CSS:
 // Icons:
-import { idleSVGs, windUpSVGs, spinningSVGs } from './SVG/spinSVGs';
+import { idleSVGs, windUpSVGs, spinningSVGs } from '../SVG/spinSVGs';
 // Types, interfaces and enumns:
 import type { FC } from 'react';
 interface SpinButtonProps {

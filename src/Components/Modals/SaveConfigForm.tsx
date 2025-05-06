@@ -1,19 +1,19 @@
 // Assets:
 // Constants:
 // Utils:
-import { getCurrentDate } from '../utils/date';
+import { getCurrentDate } from '../../utils/date';
 // 3rd party:
 // Redux, RTK:
 // Store:
-import useBoundStore from '../store/boundStore';
+import useBoundStore from '../../store/boundStore';
 // Router:
 // React:
 import { use, useState } from 'react';
 // Context:
-import modalCloseCtx from '../context/modalCloseCtx';
+import modalCloseCtx from '../../context/modalCloseCtx';
 // Hooks:
 // Components:
-import Button from './Button';
+import Button from '../UI/Button';
 // CSS:
 // Types, interfaces and enumns:
 import type { FC, FormEvent, ChangeEventHandler } from 'react';

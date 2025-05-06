@@ -1,20 +1,20 @@
 // Constants:
-import { WHEEL_RADII_MAP } from '../constants/radii';
+import { WHEEL_RADII_MAP } from '../../constants/radii';
 // 3rd party:
 // Store:
-import useBoundStore from '../store/boundStore';
+import useBoundStore from '../../store/boundStore';
 // React Router:
 // React:
 import { forwardRef } from 'react';
 // Context:
 // Hooks:
 // Components:
-import Modal from './Modal';
+import Modal from '../UI/Modal';
 import ResultDisplay from './ResultDisplay';
 // CSS:
 // Types, interfaces and enumns:
 import type { ForwardedRef } from 'react';
-import type { ModalHandle } from './Modal';
+import type { ModalHandle } from '../UI/Modal';
 import type { ResultDisplayProps } from './ResultDisplay';
 
 const ResultDisplayModal = forwardRef<ModalHandle, ResultDisplayProps>(

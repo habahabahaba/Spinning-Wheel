@@ -1,8 +1,8 @@
 // 3rd party:
 // Constants:
-import { PALETTES } from '../constants/palettes.ts';
+import { PALETTES } from '../../constants/palettes.ts';
 // Store:
-import useBoundStore from '../store/boundStore.ts';
+import useBoundStore from '../../store/boundStore.ts';
 // React Router:
 // React:
 // Context:
@@ -10,7 +10,7 @@ import useBoundStore from '../store/boundStore.ts';
 // Components:
 // CSS:
 // Arrow icons:
-import arrowSVGs from './SVG/arrowSVGs.tsx';
+import arrowSVGs from '../SVG/arrowSVGs.tsx';
 // Types, interfaces and enumns:
 import type { FC, Ref } from 'react';
 interface ArrowProps {

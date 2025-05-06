@@ -1,10 +1,10 @@
 // Constants:
-import { PALETTES } from '../constants/palettes';
+import { PALETTES } from '../../constants/palettes';
 // Utils:
-import { contrastColor, brightness } from '../utils/color';
+import { contrastColor, brightness } from '../../utils/color';
 // 3rd party:
 // Store:
-import useBoundStore from '../store/boundStore';
+import useBoundStore from '../../store/boundStore';
 // React Router:
 // React:
 import { useMemo } from 'react';
@@ -15,7 +15,7 @@ import Sector from './Sector';
 // CSS:
 // Types, interfaces and enumns:
 import type { FC, Ref } from 'react';
-import type { WheelAnimationState } from '../store/types';
+import type { WheelAnimationState } from '../../store/types';
 
 interface WheelProps {
   radius: number;

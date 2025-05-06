@@ -2,31 +2,43 @@
 // Constants:
 // Utils:
 // 3rd party:
+// Redux, RTK:
 // Store:
-import useBoundStore from '../store/boundStore';
+import useBoundStore from '../../store/boundStore';
 // Router:
 // React:
 import { use } from 'react';
 // Context:
-import modalCloseCtx from '../context/modalCloseCtx';
+import modalCloseCtx from '../../context/modalCloseCtx';
 // Hooks:
 // Components:
-import Button from './Button';
+import Button from '../UI/Button';
 // CSS:
 // Types, interfaces and enumns:
 import type { FC } from 'react';
-// interface ResetConfigDialogProps{}
+export interface LoadConfigDialogProps {
+  saveIdx: number;
+}
 
-const ResetConfigDialog: FC = () => {
+const LoadConfigDialog: FC<LoadConfigDialogProps> = ({ saveIdx }) => {
   // Modal context For closing:
   const { handleCloseModal } = use(modalCloseCtx);
 
+  // Store:
+  const savedConfig = useBoundStore((state) => state.savedConfigs[saveIdx]);
   // Actions:
-  const resetCurrentConfig = useBoundStore((state) => state.resetCurrentConfig);
+  const loadConfig = useBoundStore((state) => state.loadConfig);
+
+  if (saveIdx < 0 || saveIdx > 9) {
+    handleCloseModal();
+    return <></>;
+  }
 
   // Handlers:
-  function handleResetConfig() {
-    resetCurrentConfig();
+  function handleLoadConfig() {
+    if (savedConfig) {
+      loadConfig({ saveIdx });
+    }
     handleCloseModal();
   }
   // JSX:
@@ -39,13 +51,15 @@ const ResetConfigDialog: FC = () => {
         position: 'relative',
         minWidth: '50%',
         minHeight: '8rem',
-        padding: '0.5rem',
+        padding: '0.25rem',
       }}
     >
-      <p>
-        This will discard the current configuration, but will not affect the
-        wheel.
-      </p>
+      <div style={{ padding: '0.5rem' }}>
+        <p>
+          This will discard the current configuration, but will not affect the
+          wheel until applied.
+        </p>
+      </div>
       <div
         style={{
           display: 'flex',
@@ -62,17 +76,17 @@ const ResetConfigDialog: FC = () => {
           Cancel
         </Button>
         <Button
-          variant='danger'
+          variant='warning'
           id='load-config-button'
           name='Load configuration'
-          onClick={handleResetConfig}
+          onClick={handleLoadConfig}
           style={{ minWidth: '5rem' }}
         >
-          Reset
+          Load
         </Button>
       </div>
     </div>
   );
 };
 
-export default ResetConfigDialog;
+export default LoadConfigDialog;

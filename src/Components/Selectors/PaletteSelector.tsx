@@ -1,15 +1,15 @@
 // Assets:
-import { PALETTES } from '../constants/palettes';
+import { PALETTES } from '../../constants/palettes';
 // 3rd party:
 // Store:
-import useBoundStore from '../store/boundStore';
+import useBoundStore from '../../store/boundStore';
 // React Router:
 // React:
 // Context:
 // Hooks:
 // Components:
 import PalettePreview from './PalettePreview';
-import { Select, Option } from './Select';
+import { Select, Option } from '../UI/Select';
 // CSS:
 // Types, interfaces and enumns:
 import type { FC } from 'react';

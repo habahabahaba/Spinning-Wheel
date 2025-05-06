@@ -1,5 +1,5 @@
 // Assets:
-import { PALETTES } from '../constants/palettes';
+import { PALETTES } from '../../constants/palettes';
 // 3rd party:
 // Redux RTK:
 // Store:

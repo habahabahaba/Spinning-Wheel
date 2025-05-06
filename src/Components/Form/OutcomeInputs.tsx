@@ -1,20 +1,20 @@
 // Utils:
-import { isHexColor } from '../utils/color';
+import { isHexColor } from '../../utils/color';
 // 3rd party:
 // Store:
-import useBoundStore from '../store/boundStore';
+import useBoundStore from '../../store/boundStore';
 // React Router:
 // React:
 // Context:
 // Hooks:
 // Components:
-import Button from './Button';
-import FontSelector from './FontSelector';
-import deleteSVGs from './SVG/deleteSVGs';
+import Button from '../UI/Button';
+import FontSelector from '../Selectors/FontSelector';
+import deleteSVGs from '../SVG/deleteSVGs';
 // CSS:
 // Types, interfaces and enumns:
 import type { FC } from 'react';
-import type { Outcome } from '../store/types';
+import type { Outcome } from '../../store/types';
 interface OutcomeInputsProps {
   index: number;
 }
