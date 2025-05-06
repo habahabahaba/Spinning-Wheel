@@ -7,13 +7,14 @@ import { useState, useRef } from 'react';
 // Context:
 // Hooks:
 // Components:
+import Button from './Button';
 import SaveLoadConfigMenu from './SaveLoadConfigMenu';
-import ResetConfigModal from './ResetConfigModal';
 import RadiusSelector from './RadiusSelector';
 import PaletteSelector from './PaletteSelector';
 import FontSelector from './FontSelector';
 import OutcomeInputs from './OutcomeInputs';
-import Button from './Button';
+import ResetConfigModal from './ResetConfigModal';
+import CheckFontsModal from './CheckFontsModal';
 // CSS:
 // Types, interfaces and enumns:
 import type { FC, MouseEvent } from 'react';
@@ -33,12 +34,14 @@ const ConfigForm: FC = () => {
   const resetWinningOutcomeIdx = useBoundStore(
     (state) => state.resetWinningOutcomeIdx
   );
+  const checkAllFontsReady = useBoundStore((state) => state.checkAllFontsReady);
 
   // State:
   const [addQuantity, setAddQuantity] = useState<number>(1);
 
   // Refs (for modals):
   const resetConfigModalRef = useRef<ModalHandle>(null);
+  const checkFontsModalRef = useRef<ModalHandle>(null);
 
   // Handlers
   function handleAddOutcomes(ev: MouseEvent<HTMLButtonElement>) {
@@ -53,7 +56,12 @@ const ConfigForm: FC = () => {
     ev.preventDefault();
 
     resetWinningOutcomeIdx();
-    applyConfig();
+
+    if (checkAllFontsReady()) {
+      applyConfig();
+    } else {
+      checkFontsModalRef?.current?.handleShowModal();
+    }
   }
 
   function handleOpenResetModal(ev: MouseEvent<HTMLButtonElement>) {
@@ -170,6 +178,7 @@ const ConfigForm: FC = () => {
         </div>
       </form>
       <ResetConfigModal ref={resetConfigModalRef} />
+      <CheckFontsModal ref={checkFontsModalRef} />
     </>
   );
 };

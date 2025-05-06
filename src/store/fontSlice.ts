@@ -38,6 +38,8 @@ const createFontSlice: StateCreator<
   checkFont: (fontName: AllFontNames) => get().fontsLoadStates[fontName],
 
   markAllFontsReady: (boolean: boolean) => set({ allFontsReady: boolean }),
+
+  checkAllFontsReady: () => get().allFontsReady,
 });
 
 export default createFontSlice;

@@ -63,6 +63,10 @@ export const FONT_FAMILIES_REMOTE = Object.keys(
   FONT_IMPORTS
 ) as RemoteFontNames[];
 
+export const FONT_FAMILIES_REMOTE_SET: Set<AllFontNames> = new Set(
+  FONT_FAMILIES_REMOTE
+);
+
 export const FONT_FAMILIES_ALL: AllFontNames[] = [
   ...FONT_FAMILIES_LOCAL,
   ...FONT_FAMILIES_REMOTE,

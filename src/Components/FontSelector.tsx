@@ -24,6 +24,7 @@ const FontSelector: FC<FontSelectorProps> = ({ outcomeIdx }) => {
     (state) => state.currentConfig.outcomes.length
   );
 
+  // Derived values:
   const forOutcome = outcomeIdx >= 0 && outcomeIdx < outcomesLength;
 
   const currentFont = useBoundStore((state) =>
@@ -38,13 +39,6 @@ const FontSelector: FC<FontSelectorProps> = ({ outcomeIdx }) => {
     (state) => state.setDefaultFontFamily
   );
 
-  // JSX:
-  const options = FONT_FAMILIES_ALL.map((font, idx) => (
-    <Option value={font} key={idx}>
-      <FontPreview fontFamily={font} />
-    </Option>
-  ));
-
   // Handlers:
   function outcomeFontChangeHandler(value: string | number): void {
     modifyOutcome({
@@ -56,6 +50,13 @@ const FontSelector: FC<FontSelectorProps> = ({ outcomeIdx }) => {
   function defaultFontChangeHandler(value: string | number): void {
     setDefaultFontFamily({ fontFamily: value.toString() as AllFontNames });
   }
+
+  // JSX:
+  const options = FONT_FAMILIES_ALL.map((font, idx) => (
+    <Option value={font} key={idx}>
+      <FontPreview fontFamily={font} />
+    </Option>
+  ));
 
   return (
     <Select

@@ -20,6 +20,7 @@ export interface FontActions {
   markLoadedFont: (loadedFont: RemoteFontNames) => void;
   checkFont: (fontName: AllFontNames) => boolean;
   markAllFontsReady: (boolean: boolean) => void;
+  checkAllFontsReady: () => boolean;
 }
 
 export type FontSlice = FontState & FontActions;

@@ -60,10 +60,10 @@ const SaveConfigForm: FC<SaveConfigFormProps> = ({ saveIdx }) => {
     <div>
       <p style={{ color: 'red' }}>
         This will overwrite your older configuration:
+        <span
+          style={{ color: 'initial', fontWeight: 'bold' }}
+        >{` ${prevConfig.configName}`}</span>
       </p>
-      <p
-        style={{ color: 'initial', fontWeight: 'bold' }}
-      >{`${prevConfig.configName}`}</p>
     </div>
   ) : null;
 
