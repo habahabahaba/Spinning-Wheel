@@ -36,9 +36,6 @@ const Main: FC = () => {
   const setWheelAnimationState = useBoundStore(
     (state) => state.setWheelAnimationState
   );
-  // const setWinningOutcomeIdx = useBoundStore(
-  //   (state) => state.setWinningOutcomeIdx
-  // );
   const setWinningOutcomeIdxFromTurn = useBoundStore(
     (state) => state.setWinningOutcomeIdxFromTurn
   );
@@ -102,7 +99,9 @@ const Main: FC = () => {
         },
         () => {
           // console.log(`END callback`);
-          resultModalRef.current?.handleShowModal();
+          setTimeout(() => {
+            resultModalRef.current?.handleShowModal();
+          }, 1);
           setTimeout(() => {
             setConfettiTrigger(true);
           }, 600);
@@ -165,10 +164,12 @@ const Main: FC = () => {
           onMouseLeave={handleMouseLeave}
         />
       </div>
-      <ResultDisplayModal
-        ref={resultModalRef}
-        confettiTrigger={confettiTrigger}
-      />
+      {wheelAnimationState === 'idle' ? (
+        <ResultDisplayModal
+          ref={resultModalRef}
+          confettiTrigger={confettiTrigger}
+        />
+      ) : null}
     </main>
   );
 };

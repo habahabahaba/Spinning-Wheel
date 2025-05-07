@@ -193,6 +193,8 @@ export function useSpinAnimation(
         cancelAnimations();
         resultingTurnRef.current = resultingTurn;
         el.style.transform = `rotate(${resultingTurn}turn)`;
+
+        setWheelAnimationState({ newState: 'idle' });
         // Run callback (if provided):
         onSpinEnd?.();
       }, duration * 1000);
