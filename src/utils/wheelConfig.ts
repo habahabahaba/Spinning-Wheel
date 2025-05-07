@@ -16,6 +16,83 @@ import type { AllFontNames } from '../store/types';
 import type { Radius } from '../constants/radii';
 import type { HexColor } from './color';
 
+// Type Guards:
+function isOutcome(obj: unknown): obj is Outcome {
+  if (typeof obj !== 'object' || obj === null) return false;
+
+  const o = obj as Record<string, unknown>;
+
+  const keys = Object.keys(o);
+  if (
+    keys.length !== 3 ||
+    !keys.includes('label') ||
+    !keys.includes('fillColor') ||
+    !keys.includes('fontFamily')
+  ) {
+    return false;
+  }
+
+  if (typeof o.label !== 'string') return false;
+
+  if (typeof o.fillColor !== 'string') return false;
+  if (o.fillColor !== '' && !isHexColor(o.fillColor)) return false;
+
+  if (typeof o.fontFamily !== 'string') return false;
+  if (
+    o.fontFamily !== '' &&
+    !FONT_FAMILIES_ALL.includes(o.fontFamily as AllFontNames)
+  ) {
+    return false;
+  }
+
+  return true;
+}
+
+function isWheelConfig(obj: unknown): obj is WheelConfig {
+  if (typeof obj !== 'object' || obj === null) return false;
+
+  const o = obj as Record<string, unknown>;
+
+  const expectedKeys = [
+    'configName',
+    'radiusName',
+    'default_palette_idx',
+    'default_fontFamily',
+    'outcomes',
+  ];
+
+  const hasOnlyExpectedKeys =
+    Object.keys(o).length === expectedKeys.length &&
+    expectedKeys.every((key) => key in o);
+
+  if (!hasOnlyExpectedKeys) return false;
+
+  if (typeof o.configName !== 'string') return false;
+
+  if (typeof o.radiusName !== 'string' || !(o.radiusName in WHEEL_RADII_MAP))
+    return false;
+
+  if (
+    typeof o.default_palette_idx !== 'number' ||
+    !Number.isInteger(o.default_palette_idx)
+  )
+    return false;
+
+  if (
+    typeof o.default_fontFamily !== 'string' ||
+    !FONT_FAMILIES_ALL.includes(o.default_fontFamily as AllFontNames)
+  )
+    return false;
+
+  if (!Array.isArray(o.outcomes)) return false;
+
+  for (const outcome of o.outcomes) {
+    if (!isOutcome(outcome)) return false;
+  }
+
+  return true;
+}
+
 // Initial state:
 export const initConfig: WheelConfig = {
   configName: '',
@@ -101,8 +178,8 @@ export function prepareConfig(wheelConfig: WheelConfig): WheelConfig {
  * Represents the result of validating a WheelConfig.
  */
 export type ValidationResult =
-  | { valid: true; config: WheelConfig; warnings: string[] }
-  | { valid: false; error: string };
+  | { valid: true; config: WheelConfig; error: string; warnings: string[] }
+  | { valid: false; config: null; error: string; warnings: string[] };
 
 /**
  * Validates and sanitizes a raw JSON object into a strict WheelConfig.
@@ -113,39 +190,22 @@ export type ValidationResult =
  * - Coerces unknown fonts to fallback font.
  * - Coerces unknown radiusName to 'Medium'.
  * - Coerces out-of-range palette index to 0.
- * - Replaces empty outcome labels with 'Outcome ${index + 1}'.
  * - Ensures at least 2 outcomes.
  *
  * @param raw - The untyped object to validate.
  * @returns A valid WheelConfig or an error.
  */
 export function validateWheelConfig(raw: unknown): ValidationResult {
-  if (typeof raw !== 'object' || raw === null) {
-    return { valid: false, error: 'Input must be a non-null object' };
-  }
-
-  const expectedKeys: (keyof WheelConfig)[] = [
-    'configName',
-    'radiusName',
-    'default_palette_idx',
-    'default_fontFamily',
-    'outcomes',
-  ];
-
-  const rawKeys = Object.keys(raw);
-  if (
-    rawKeys.length !== expectedKeys.length ||
-    !expectedKeys.every((k) => rawKeys.includes(k))
-  ) {
+  if (!isWheelConfig(raw)) {
     return {
       valid: false,
-      error: `Object must only contain the following keys: ${expectedKeys.join(
-        ', '
-      )}`,
+      config: null,
+      error:
+        'Object must be a valid WheelConfig with only keys: configName, radiusName, default_palette_idx, default_fontFamily, outcomes. Each outcome must contain only "label", "fillColor", and "fontFamily".',
+      warnings: [],
     };
   }
 
-  const obj = raw as Record<string, unknown>;
   const fallbackFont: AllFontNames = FONT_FAMILIES_LOCAL[0];
   const warnings: string[] = [];
 
@@ -182,84 +242,62 @@ export function validateWheelConfig(raw: unknown): ValidationResult {
   const isValidHexColor = (value: unknown): value is HexColor =>
     typeof value === 'string' && isHexColor(value);
 
-  const isValidOutcomeShape = (o: unknown): o is Outcome => {
-    if (typeof o !== 'object' || o === null) return false;
-    const keys = Object.keys(o);
-    return (
-      keys.length === 3 && 'label' in o && 'fillColor' in o && 'fontFamily' in o
-    );
-  };
-
-  const parseOutcome = (data: unknown, index: number): Outcome | null => {
-    if (!isValidOutcomeShape(data)) return null;
-
-    const outcome = data as unknown as Record<string, unknown>;
-
-    let label = safeString(outcome.label).trim();
-    if (label === '') {
-      label = `Outcome ${index + 1}`;
-      warnings.push(
-        `Outcome at index ${index} had empty label, replaced with "${label}"`
-      );
-    }
+  const parseOutcome = (data: Outcome, index: number): Outcome => {
+    const label = safeString(data.label).trim() || `Outcome ${index + 1}`;
 
     const fillColor =
-      outcome.fillColor === '' || isValidHexColor(outcome.fillColor)
-        ? (outcome.fillColor as HexColor | '')
+      data.fillColor === '' || isValidHexColor(data.fillColor)
+        ? data.fillColor
         : '';
 
     if (
-      outcome.fillColor !== '' &&
-      (typeof outcome.fillColor !== 'string' || !isHexColor(outcome.fillColor))
+      data.fillColor !== '' &&
+      (typeof data.fillColor !== 'string' || !isHexColor(data.fillColor))
     ) {
       warnings.push(
-        `Outcome "${label}" had invalid fillColor "${outcome.fillColor}", set to ""`
+        `Outcome number ${index + 1}, ${label} had an invalid fill-color "${
+          data.fillColor
+        }" that was set to default color`
       );
     }
 
-    const fontFamily =
-      outcome.fontFamily !== '' ? validFont(outcome.fontFamily) : '';
+    const fontFamily = data.fontFamily !== '' ? validFont(data.fontFamily) : '';
 
     return new OutcomeModel({ label, fillColor, fontFamily });
   };
 
-  if (!Array.isArray(obj.outcomes)) {
-    return { valid: false, error: 'Invalid or missing "outcomes" array' };
+  // Start validation of config properties
+  const outcomesRaw = raw.outcomes;
+  const trimmedOutcomes = outcomesRaw.slice(0, 72);
+
+  if (outcomesRaw.length > 72) {
+    warnings.push(
+      `The maximum possible number of outcomes is 72; extra outcomes were removed.`
+    );
   }
 
-  const parsedOutcomes: Outcome[] = [];
-  for (let i = 0; i < obj.outcomes.length; i++) {
-    const parsed = parseOutcome(obj.outcomes[i], i);
-    if (!parsed) {
-      return {
-        valid: false,
-        error: `Invalid outcome at index ${i}: must contain only "label", "fillColor", "fontFamily"`,
-      };
-    }
-    parsedOutcomes.push(parsed);
-  }
+  const parsedOutcomes: Outcome[] = trimmedOutcomes.map(parseOutcome);
 
-  // Ensure at least two outcomes
   if (parsedOutcomes.length === 0) {
-    warnings.push('No valid outcomes found. Added Outcome 1 and Outcome 2.');
+    warnings.push('No outcomes were found. Added Outcome 1 and Outcome 2.');
     parsedOutcomes.push(
       new OutcomeModel({ label: 'Outcome 1', fillColor: '', fontFamily: '' }),
       new OutcomeModel({ label: 'Outcome 2', fillColor: '', fontFamily: '' })
     );
   } else if (parsedOutcomes.length === 1) {
-    warnings.push('Only one outcome found. Added Outcome 2.');
+    warnings.push('Only one outcome was found. Added Outcome 2.');
     parsedOutcomes.push(
       new OutcomeModel({ label: 'Outcome 2', fillColor: '', fontFamily: '' })
     );
   }
 
   const validated: WheelConfig = {
-    configName: safeString(obj.configName),
-    radiusName: validRadius(obj.radiusName),
-    default_palette_idx: validPaletteIndex(obj.default_palette_idx),
-    default_fontFamily: validFont(obj.default_fontFamily),
+    configName: safeString(raw.configName),
+    radiusName: validRadius(raw.radiusName),
+    default_palette_idx: validPaletteIndex(raw.default_palette_idx),
+    default_fontFamily: validFont(raw.default_fontFamily),
     outcomes: parsedOutcomes,
   };
 
-  return { valid: true, config: validated, warnings };
+  return { valid: true, config: validated, error: '', warnings };
 }
