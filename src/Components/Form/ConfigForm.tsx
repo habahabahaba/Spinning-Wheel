@@ -13,9 +13,10 @@ import RadiusSelector from '../Selectors/RadiusSelector';
 import PaletteSelector from '../Selectors/PaletteSelector';
 import FontSelector from '../Selectors/FontSelector';
 import OutcomeInputs from './OutcomeInputs';
-import ResetConfigModal from '../Modals/ResetConfigModal';
-import CheckFontsModal from '../Modals/CheckFontsModal';
 import ExportConfigModal from '../Modals/ExportConfigModal';
+import ImportConfigModal from '../Modals/ImportConfigModal';
+import CheckFontsModal from '../Modals/CheckFontsModal';
+import ResetConfigModal from '../Modals/ResetConfigModal';
 // CSS:
 // Types, interfaces and enumns:
 import type { FC, MouseEvent } from 'react';
@@ -44,6 +45,7 @@ const ConfigForm: FC = () => {
   const resetConfigModalRef = useRef<ModalHandle>(null);
   const checkFontsModalRef = useRef<ModalHandle>(null);
   const exportConfigModalRef = useRef<ModalHandle>(null);
+  const importConfigModalRef = useRef<ModalHandle>(null);
 
   // Handlers
   function handleAddOutcomes(ev: MouseEvent<HTMLButtonElement>) {
@@ -66,16 +68,22 @@ const ConfigForm: FC = () => {
     }
   }
 
-  function handleOpenResetModal(ev: MouseEvent<HTMLButtonElement>) {
-    ev.preventDefault();
-
-    resetConfigModalRef.current?.handleShowModal();
-  }
-
   function handleOpenExportModal(ev: MouseEvent<HTMLButtonElement>) {
     ev.preventDefault();
 
     exportConfigModalRef.current?.handleShowModal();
+  }
+
+  function handleOpenImportModal(ev: MouseEvent<HTMLButtonElement>) {
+    ev.preventDefault();
+
+    importConfigModalRef.current?.handleShowModal();
+  }
+
+  function handleOpenResetModal(ev: MouseEvent<HTMLButtonElement>) {
+    ev.preventDefault();
+
+    resetConfigModalRef.current?.handleShowModal();
   }
 
   // JSX:
@@ -195,6 +203,14 @@ const ConfigForm: FC = () => {
               >
                 Export
               </Button>
+              <Button
+                variant='warning'
+                id='config-form-import-button'
+                name='import configuration'
+                onClick={handleOpenImportModal}
+              >
+                Import
+              </Button>
             </div>
             <div
               style={{
@@ -228,9 +244,11 @@ const ConfigForm: FC = () => {
           </div>
         </div>
       </form>
+      <ExportConfigModal ref={exportConfigModalRef} />
+      <ImportConfigModal ref={importConfigModalRef} />
+
       <ResetConfigModal ref={resetConfigModalRef} />
       <CheckFontsModal ref={checkFontsModalRef} />
-      <ExportConfigModal ref={exportConfigModalRef} />
     </>
   );
 };

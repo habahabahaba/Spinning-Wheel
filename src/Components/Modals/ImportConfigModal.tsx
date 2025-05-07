@@ -7,28 +7,30 @@ import { forwardRef } from 'react';
 // Hooks:
 // Components:
 import Modal from '../UI/Modal';
-import ExportConfigDialog from './ExportConfigDialog';
+import ImportConfigDialog from './ImportConfigDialog';
 // CSS:
 // Types, interfaces and enumns:
 import type { ForwardedRef } from 'react';
 import type { ModalHandle } from '../UI/Modal';
 
-const ExportConfigModal = forwardRef<ModalHandle>(
+const ImportConfigModal = forwardRef<ModalHandle>(
   (_, ref: ForwardedRef<ModalHandle>) => {
     // JSX:
     return (
       <Modal
         ref={ref}
         // className=''
-        style={{
-          top: '-50%',
-          right: '0',
-        }}
+        style={
+          {
+            //   top: '-50%',
+            //   right: '0',
+          }
+        }
       >
-        <ExportConfigDialog />
+        <ImportConfigDialog />
       </Modal>
     );
   }
 );
 
-export default ExportConfigModal;
+export default ImportConfigModal;

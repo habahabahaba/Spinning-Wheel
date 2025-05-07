@@ -49,6 +49,7 @@ const ExportConfigDialog: FC = () => {
   // JSX:
   return (
     <div
+      id={`export-dialog`}
       className=''
       style={{
         display: 'flex',
@@ -87,11 +88,16 @@ const ExportConfigDialog: FC = () => {
           marginTop: '1rem',
         }}
       >
-        <Button id='cancel-export-dialog-button' onClick={handleCloseModal}>
+        <Button
+          id='cancel-export-dialog-button'
+          name={`cancel export and close dialog`}
+          onClick={handleCloseModal}
+        >
           Cancel
         </Button>
         <Button
           id='export-current-config-button'
+          name={`export configuration`}
           variant='success'
           onClick={handleDownload}
           disabled={!currentConfig.configName.trim()}

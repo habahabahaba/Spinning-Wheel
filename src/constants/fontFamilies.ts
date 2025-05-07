@@ -1,7 +1,7 @@
 export const FONT_FAMILIES_LOCAL = [
+  'sans-serif',
   'Arial',
   'serif',
-  'sans-serif',
   'system-ui',
 ] as const;
 
@@ -74,8 +74,8 @@ export const FONT_FAMILIES_ALL: AllFontNames[] = [
 
 const initFontsLoadStates: Record<AllFontNames, boolean> = {
   // System fonts:
-  Arial: true,
   'sans-serif': true,
+  Arial: true,
   serif: true,
   'system-ui': true,
 

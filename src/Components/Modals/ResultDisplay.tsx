@@ -67,6 +67,8 @@ const ResultDisplay: FC<ResultDisplayProps> = ({ confettiTrigger }) => {
           padding: '1px 2rem',
           cursor: 'pointer',
           // border: 'solid black 1px',
+          minWidth: '50vw',
+          textAlign: 'center',
         }}
         onClick={handleCloseModal}
       >

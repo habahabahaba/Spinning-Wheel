@@ -2,7 +2,6 @@
 // Constants:
 // Utils:
 // 3rd party:
-// Redux, RTK:
 // Store:
 import useBoundStore from '../../store/boundStore';
 // Router:
@@ -55,6 +54,7 @@ const LoadConfigDialog: FC<LoadConfigDialogProps> = ({ saveIdx }) => {
       }}
     >
       <div style={{ padding: '0.5rem' }}>
+        <h3 style={{ color: '#ef4444' }}>Warning</h3>
         <p>
           This will discard the current configuration, but will not affect the
           wheel until applied.

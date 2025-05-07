@@ -1,0 +1,31 @@
+.button::file-selector-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 16px;
+  font-family: 'system-ui';
+  font-size: 0.9rem;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.button::file-selector-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Variants */
+.default::file-selector-button {
+  background-color: #e2e8f0;
+  color: #1e293b;
+}
+.default::file-selector-button:hover {
+  background-color: #cbd5e1;
+}
+
+.rectangle::file-selector-button {
+  border-radius: 0.1rem;
+}

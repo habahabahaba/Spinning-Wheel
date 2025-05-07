@@ -38,14 +38,18 @@ const ResetConfigDialog: FC = () => {
         justifyContent: 'space-between',
         position: 'relative',
         minWidth: '50%',
+        maxWidth: '80vw',
         minHeight: '8rem',
         padding: '0.5rem',
       }}
     >
-      <p>
-        This will discard the current configuration, but will not affect the
-        wheel.
-      </p>
+      <div>
+        <h3>Warning:</h3>
+        <p>
+          This will discard your current configuration, but will not affect the
+          wheel, until applied.
+        </p>
+      </div>
       <div
         style={{
           display: 'flex',
