@@ -98,7 +98,7 @@ const ImportConfigDialog: FC = () => {
     } catch (error) {
       if (error instanceof Error) console.error(error);
 
-      setError(() => 'There was an error, reading this file.');
+      setError(() => 'The file appears to be corrupted or of a wrong format.');
 
       fileInputRef.current.value = '';
       return;

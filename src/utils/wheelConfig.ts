@@ -201,7 +201,7 @@ export function validateWheelConfig(raw: unknown): ValidationResult {
       valid: false,
       config: null,
       error:
-        'Object must be a valid WheelConfig with only keys: configName, radiusName, default_palette_idx, default_fontFamily, outcomes. Each outcome must contain only "label", "fillColor", and "fontFamily".',
+        'The file either had some fields missing, or contained invalid fields or invalid values.',
       warnings: [],
     };
   }
