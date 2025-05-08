@@ -2,13 +2,13 @@
 import type { JSX } from 'react';
 import type { HexColor } from '../../utils/color';
 type SVGfn = (colors: {
+  color0?: HexColor;
   color1?: HexColor;
   color2?: HexColor;
-  color3?: HexColor;
 }) => JSX.Element;
 
 export const idleSVGs: SVGfn[] = [
-  ({ color1 = '#000' }) => (
+  ({ color0 = '#000' }) => (
     <svg
       version='1.1'
       id='_x32_'
@@ -20,18 +20,18 @@ export const idleSVGs: SVGfn[] = [
     >
       <g>
         <path
-          fill={color1}
+          fill={color0}
           d='M50.491 13.513c-3.449 -3.449 -7.862 -5.945 -12.807 -7.036L38.023 0 25.243 6.733 21.83 8.54l-0.633 0.332 1.01 0.541 4.77 2.568 10.129 5.45 0.285 -5.357c3.533 0.943 6.68 2.816 9.203 5.33 3.743 3.742 6.045 8.89 6.045 14.597 0 2.926 -0.605 5.697 -1.697 8.211l5.046 2.192c1.385 -3.183 2.155 -6.705 2.155 -10.402 0.01 -7.212 -2.926 -13.763 -7.651 -18.488'
         />
         <path
-          fill={color1}
+          fill={color0}
           d='m37.032 52.019 -10.138 -5.452 -0.284 5.359c-3.533 -0.944 -6.689 -2.816 -9.202 -5.33 -3.743 -3.744 -6.045 -8.89 -6.045 -14.596 0 -2.928 0.606 -5.69 1.697 -8.212l-5.046 -2.191c-1.385 3.191 -2.155 6.715 -2.155 10.403 0 7.21 2.926 13.77 7.651 18.487 3.449 3.449 7.862 5.944 12.807 7.025l-0.34 6.487 12.771 -6.735 3.432 -1.807 0.624 -0.33 -1 -0.541z'
         />
       </g>
     </svg>
   ),
 
-  ({ color1 = '#000' }) => (
+  ({ color0 = '#000' }) => (
     <svg
       xmlns='http://www.w3.org/2000/svg'
       xmlnsXlink='http://www.w3.org/1999/xlink'
@@ -41,12 +41,12 @@ export const idleSVGs: SVGfn[] = [
       xmlSpace='preserve'
       transform='matrix(-1,0,0,1,0,0) scale(0.9, 0.9)'
     >
-      <g fill={color1}>
+      <g fill={color0}>
         <g>
           <path d='M512,104.931l-92.326-12.599l-12.633,92.334l34.629-26.307c15.775,29.965,24.092,63.481,24.092,97.64 c0,115.662-94.098,209.76-209.76,209.76v43.399c139.592,0,253.159-113.567,253.159-253.159c0-43.636-11.247-86.421-32.539-124.193 L512,104.931z' />
         </g>
       </g>
-      <g fill={color1}>
+      <g fill={color0}>
         <g>
           <path d='M2.841,256.001c0,43.634,11.247,86.421,32.539,124.191L0,407.069l92.326,12.599l12.633-92.332L70.332,353.64 c-15.775-29.967-24.093-63.479-24.093-97.638C46.24,140.339,140.338,46.241,256,46.241V2.842 C116.408,2.842,2.841,116.409,2.841,256.001z' />
         </g>
@@ -54,7 +54,7 @@ export const idleSVGs: SVGfn[] = [
     </svg>
   ),
 
-  ({ color1 = '#000' }) => (
+  ({ color0 = '#000' }) => (
     <svg
       version='1.1'
       xmlns='http://www.w3.org/2000/svg'
@@ -71,13 +71,13 @@ export const idleSVGs: SVGfn[] = [
         d='M0 0H1V1H0V0z'
       ></path>
       <path
-        fill={color1}
+        fill={color0}
         d='M0.875 0v0.169A0.499 0.499 0 0 0 0.5 0C0.224 0 0 0.224 0 0.5s0.224 0.5 0.5 0.5 0.5 -0.224 0.5 -0.5h-0.125c0 0.1 -0.039 0.194 -0.11 0.265S0.6 0.875 0.5 0.875s-0.194 -0.039 -0.265 -0.11C0.164 0.694 0.125 0.6 0.125 0.5s0.039 -0.194 0.11 -0.265C0.306 0.164 0.4 0.125 0.5 0.125a0.373 0.373 0 0 1 0.28 0.125H0.625v0.125h0.375V0z'
       ></path>
     </svg>
   ),
 
-  ({ color1 = '#000' }) => (
+  ({ color0 = '#000' }) => (
     <svg
       xmlns='http://www.w3.org/2000/svg'
       xmlnsXlink='http://www.w3.org/1999/xlink'
@@ -87,7 +87,7 @@ export const idleSVGs: SVGfn[] = [
     >
       <g>
         <path
-          fill={color1}
+          fill={color0}
           d='m48.702 11.019 -6.833 9.759c0.823 0.579 1.589 1.216 2.296 1.925 3.13 3.132 5.043 7.4 5.047 12.172 -0.004 4.772 -1.917 9.032 -5.047 12.168 -3.128 3.122 -7.396 5.039 -12.162 5.039a17.2 17.2 0 0 1 -7.275 -1.607 14.5 14.5 0 0 1 -1.329 -0.701c-0.439 -0.249 -0.859 -0.523 -1.262 -0.806 -0.825 -0.575 -1.591 -1.22 -2.306 -1.925 -3.122 -3.136 -5.039 -7.396 -5.039 -12.168s1.917 -9.04 5.039 -12.172c2.086 -2.082 4.679 -3.623 7.594 -4.423v5.133l11.567 -11.704L27.425 0v6.107C13.513 8.307 2.881 20.343 2.879 34.875c0.002 9.866 4.911 18.586 12.423 23.852a30.875 30.875 0 0 0 2.138 1.367c0.733 0.416 1.481 0.815 2.254 1.175 3.737 1.744 7.905 2.724 12.309 2.731 16.088 -0.01 29.116 -13.038 29.118 -29.125 0 -9.873 -4.909 -18.585 -12.419 -23.856'
         />
       </g>
@@ -96,7 +96,7 @@ export const idleSVGs: SVGfn[] = [
 ];
 
 export const windUpSVGs: SVGfn[] = [
-  ({ color1 = '#000' }) => (
+  ({ color0 = '#000' }) => (
     <svg
       version='1.1'
       id='_x32_'
@@ -108,26 +108,26 @@ export const windUpSVGs: SVGfn[] = [
     >
       <g>
         <path
-          fill={color1}
+          fill={color0}
           d='M33.519 1.519c-0.897 0 -1.789 0.039 -2.672 0.116l0.613 7.07h0.002a24.125 24.125 0 0 1 2.057 -0.087c6.468 0.002 12.291 2.611 16.534 6.848 4.237 4.244 6.848 10.067 6.848 16.535s-2.611 12.291 -6.848 16.534c-4.243 4.237 -10.066 6.846 -16.534 6.848 -6.468 -0.002 -12.291 -2.611 -16.534 -6.848 -2.28 -2.283 -4.066 -5.035 -5.252 -8.087l3.888 -0.547 -10.029 -14.656 -2.241 6.756h-0.311c0 0.274 0.033 0.54 0.041 0.813L0 42.096l4.552 -0.639c3.981 12.201 15.436 21.024 28.967 21.025C50.355 62.48 63.998 48.836 64 32.001c-0.002 -16.836 -13.645 -30.48 -30.481 -30.481'
         />
         <path
-          fill={color1}
+          fill={color0}
           d='M14.13 18.928a24.25 24.25 0 0 1 1.224 -1.655l-5.518 -4.463c-0.558 0.69 -1.09 1.404 -1.59 2.146l5.881 3.972z'
         />
         <path
-          fill={color1}
+          fill={color0}
           d='M24.22 10.539a23.25 23.25 0 0 1 3.537 -1.206L26.015 2.451a30.25 30.25 0 0 0 -4.621 1.577l2.826 6.51v0.001z'
         />
         <path
-          fill={color1}
+          fill={color0}
           d='m20.919 12.302 -3.833 -5.976a30.375 30.375 0 0 0 -3.882 2.952l4.732 5.29a23.375 23.375 0 0 1 2.982 -2.266'
         />
       </g>
     </svg>
   ),
 
-  ({ color1 = '#000' }) => (
+  ({ color0 = '#000' }) => (
     <svg
       viewBox='-0.2 -0.2 1.4 1.4'
       version='1.1'
@@ -143,7 +143,7 @@ export const windUpSVGs: SVGfn[] = [
         d='M0 0H1V1H0V0z'
       ></path>
       <path
-        fill={color1}
+        fill={color0}
         d='M0 0v0.375h0.375V0.25H0.221q0.007 -0.008 0.014 -0.015C0.306 0.164 0.4 0.125 0.5 0.125s0.194 0.039 0.265 0.11C0.836 0.306 0.875 0.4 0.875 0.5s-0.039 0.194 -0.11 0.265A0.373 0.373 0 0 1 0.5 0.875v0.125c0.276 0 0.5 -0.224 0.5 -0.5s-0.224 -0.5 -0.5 -0.5a0.499 0.499 0 0 0 -0.375 0.169V0z'
       ></path>
     </svg>
@@ -151,9 +151,9 @@ export const windUpSVGs: SVGfn[] = [
 ];
 
 export const spinningSVGs: SVGfn[] = [
-  ({ color1 = '#000' }) => (
+  ({ color0 = '#000' }) => (
     <svg
-      fill={color1}
+      fill={color0}
       viewBox='-80.08 -80.08 1161.16 1161.16'
       xmlns='http://www.w3.org/2000/svg'
     >
@@ -169,7 +169,7 @@ export const spinningSVGs: SVGfn[] = [
     </svg>
   ),
 
-  ({ color1 = '#000', color2 = '#fff' }) => (
+  ({ color0 = '#000', color1 = '#fff' }) => (
     <svg
       xmlns='http://www.w3.org/2000/svg'
       version='1.1'
@@ -178,268 +178,268 @@ export const spinningSVGs: SVGfn[] = [
       viewBox='0 0 800 800'
     >
       <g transform='translate(800, 0) scale(-1, 1)'>
-        <g fill={color1} transform='matrix(2.2,0,0,2.2,-477,-477) '>
+        <g fill={color0} transform='matrix(2.2,0,0,2.2,-477,-477) '>
           <circle r='2.5' cx='405' cy='400'></circle>
-          <circle fill={color2} r='2.5' cx='405' cy='403'></circle>
+          <circle fill={color1} r='2.5' cx='405' cy='403'></circle>
           <circle r='2.5' cx='402' cy='406'></circle>
-          <circle fill={color2} r='2.5' cx='398' cy='407'></circle>
+          <circle fill={color1} r='2.5' cx='398' cy='407'></circle>
           <circle r='2.5' cx='394' cy='404'></circle>
-          <circle fill={color2} r='2.5' cx='392' cy='400'></circle>
+          <circle fill={color1} r='2.5' cx='392' cy='400'></circle>
           <circle r='2.5' cx='393' cy='394'></circle>
-          <circle fill={color2} r='3' cx='398' cy='391'></circle>
+          <circle fill={color1} r='3' cx='398' cy='391'></circle>
           <circle r='3' cx='404' cy='391'></circle>
-          <circle fill={color2} r='3' cx='409' cy='395'></circle>
+          <circle fill={color1} r='3' cx='409' cy='395'></circle>
           <circle r='3' cx='411' cy='401'></circle>
-          <circle fill={color2} r='3' cx='409' cy='408'></circle>
+          <circle fill={color1} r='3' cx='409' cy='408'></circle>
           <circle r='3' cx='402' cy='412'></circle>
-          <circle fill={color2} r='3' cx='394' cy='412'></circle>
+          <circle fill={color1} r='3' cx='394' cy='412'></circle>
           <circle r='3' cx='388' cy='406'></circle>
-          <circle fill={color2} r='3' cx='386' cy='397'></circle>
+          <circle fill={color1} r='3' cx='386' cy='397'></circle>
           <circle r='3' cx='390' cy='389'></circle>
-          <circle fill={color2} r='3' cx='398' cy='384'></circle>
+          <circle fill={color1} r='3' cx='398' cy='384'></circle>
           <circle r='3' cx='408' cy='386'></circle>
-          <circle fill={color2} r='3' cx='416' cy='393'></circle>
+          <circle fill={color1} r='3' cx='416' cy='393'></circle>
           <circle r='3.5' cx='417' cy='404'></circle>
-          <circle fill={color2} r='3.5' cx='412' cy='414'></circle>
+          <circle fill={color1} r='3.5' cx='412' cy='414'></circle>
           <circle r='3.5' cx='401' cy='419'></circle>
-          <circle fill={color2} r='3.5' cx='389' cy='416'></circle>
+          <circle fill={color1} r='3.5' cx='389' cy='416'></circle>
           <circle r='3.5' cx='381' cy='407'></circle>
-          <circle fill={color2} r='3.5' cx='380' cy='394'></circle>
+          <circle fill={color1} r='3.5' cx='380' cy='394'></circle>
           <circle r='3.5' cx='387' cy='383'></circle>
-          <circle fill={color2} r='3.5' cx='400' cy='378'></circle>
+          <circle fill={color1} r='3.5' cx='400' cy='378'></circle>
           <circle r='3.5' cx='414' cy='382'></circle>
-          <circle fill={color2} r='3.5' cx='423' cy='393'></circle>
+          <circle fill={color1} r='3.5' cx='423' cy='393'></circle>
           <circle r='3.5' cx='423' cy='408'></circle>
-          <circle fill={color2} r='3.5' cx='414' cy='421'></circle>
+          <circle fill={color1} r='3.5' cx='414' cy='421'></circle>
           <circle r='4' cx='398' cy='425'></circle>
-          <circle fill={color2} r='4' cx='383' cy='420'></circle>
+          <circle fill={color1} r='4' cx='383' cy='420'></circle>
           <circle r='4' cx='374' cy='406'></circle>
-          <circle fill={color2} r='4' cx='375' cy='389'></circle>
+          <circle fill={color1} r='4' cx='375' cy='389'></circle>
           <circle r='4' cx='386' cy='376'></circle>
-          <circle fill={color2} r='4' cx='403' cy='372'></circle>
+          <circle fill={color1} r='4' cx='403' cy='372'></circle>
           <circle r='4' cx='420' cy='379'></circle>
-          <circle fill={color2} r='4' cx='430' cy='395'></circle>
+          <circle fill={color1} r='4' cx='430' cy='395'></circle>
           <circle r='4' cx='427' cy='414'></circle>
-          <circle fill={color2} r='4' cx='414' cy='428'></circle>
+          <circle fill={color1} r='4' cx='414' cy='428'></circle>
           <circle r='4' cx='394' cy='431'></circle>
-          <circle fill={color2} r='4' cx='376' cy='422'></circle>
+          <circle fill={color1} r='4' cx='376' cy='422'></circle>
           <circle r='4' cx='367' cy='404'></circle>
-          <circle fill={color2} r='4.5' cx='371' cy='383'></circle>
+          <circle fill={color1} r='4.5' cx='371' cy='383'></circle>
           <circle r='4.5' cx='386' cy='368'></circle>
-          <circle fill={color2} r='4.5' cx='408' cy='366'></circle>
+          <circle fill={color1} r='4.5' cx='408' cy='366'></circle>
           <circle r='4.5' cx='427' cy='377'></circle>
-          <circle fill={color2} r='4.5' cx='436' cy='398'></circle>
+          <circle fill={color1} r='4.5' cx='436' cy='398'></circle>
           <circle r='4.5' cx='431' cy='420'></circle>
-          <circle fill={color2} r='4.5' cx='413' cy='435'></circle>
+          <circle fill={color1} r='4.5' cx='413' cy='435'></circle>
           <circle r='4.5' cx='389' cy='437'></circle>
-          <circle fill={color2} r='4.5' cx='369' cy='423'></circle>
+          <circle fill={color1} r='4.5' cx='369' cy='423'></circle>
           <circle r='4.5' cx='360' cy='400'></circle>
-          <circle fill={color2} r='4.5' cx='368' cy='376'></circle>
+          <circle fill={color1} r='4.5' cx='368' cy='376'></circle>
           <circle r='4.5' cx='388' cy='361'></circle>
-          <circle fill={color2} r='4.5' cx='414' cy='361'></circle>
+          <circle fill={color1} r='4.5' cx='414' cy='361'></circle>
           <circle r='5' cx='435' cy='377'></circle>
-          <circle fill={color2} r='5' cx='443' cy='403'></circle>
+          <circle fill={color1} r='5' cx='443' cy='403'></circle>
           <circle r='5' cx='433' cy='428'></circle>
-          <circle fill={color2} r='5' cx='410' cy='443'></circle>
+          <circle fill={color1} r='5' cx='410' cy='443'></circle>
           <circle r='5' cx='382' cy='441'></circle>
-          <circle fill={color2} r='5' cx='361' cy='423'></circle>
+          <circle fill={color1} r='5' cx='361' cy='423'></circle>
           <circle r='5' cx='354' cy='395'></circle>
-          <circle fill={color2} r='5' cx='366' cy='368'></circle>
+          <circle fill={color1} r='5' cx='366' cy='368'></circle>
           <circle r='5' cx='392' cy='353'></circle>
-          <circle fill={color2} r='5' cx='422' cy='357'></circle>
+          <circle fill={color1} r='5' cx='422' cy='357'></circle>
           <circle r='5' cx='443' cy='378'></circle>
-          <circle fill={color2} r='5' cx='448' cy='409'></circle>
+          <circle fill={color1} r='5' cx='448' cy='409'></circle>
           <circle r='5.5' cx='434' cy='436'></circle>
-          <circle fill={color2} r='5.5' cx='406' cy='450'></circle>
+          <circle fill={color1} r='5.5' cx='406' cy='450'></circle>
           <circle r='5.5' cx='374' cy='444'></circle>
-          <circle fill={color2} r='5.5' cx='352' cy='420'></circle>
+          <circle fill={color1} r='5.5' cx='352' cy='420'></circle>
           <circle r='5.5' cx='349' cy='388'></circle>
-          <circle fill={color2} r='5.5' cx='366' cy='359'></circle>
+          <circle fill={color1} r='5.5' cx='366' cy='359'></circle>
           <circle r='5.5' cx='397' cy='346'></circle>
-          <circle fill={color2} r='5.5' cx='430' cy='355'></circle>
+          <circle fill={color1} r='5.5' cx='430' cy='355'></circle>
           <circle r='5.5' cx='452' cy='381'></circle>
-          <circle fill={color2} r='5.5' cx='453' cy='416'></circle>
+          <circle fill={color1} r='5.5' cx='453' cy='416'></circle>
           <circle r='5.5' cx='433' cy='445'></circle>
-          <circle fill={color2} r='5.5' cx='400' cy='457'></circle>
+          <circle fill={color1} r='5.5' cx='400' cy='457'></circle>
           <circle r='5.5' cx='366' cy='446'></circle>
-          <circle fill={color2} r='6' cx='344' cy='416'></circle>
+          <circle fill={color1} r='6' cx='344' cy='416'></circle>
           <circle r='6' cx='345' cy='380'></circle>
-          <circle fill={color2} r='6' cx='368' cy='350'></circle>
+          <circle fill={color1} r='6' cx='368' cy='350'></circle>
           <circle r='6' cx='404' cy='340'></circle>
-          <circle fill={color2} r='6' cx='439' cy='354'></circle>
+          <circle fill={color1} r='6' cx='439' cy='354'></circle>
           <circle r='6' cx='460' cy='386'></circle>
-          <circle fill={color2} r='6' cx='457' cy='425'></circle>
+          <circle fill={color1} r='6' cx='457' cy='425'></circle>
           <circle r='6' cx='431' cy='454'></circle>
-          <circle fill={color2} r='6' cx='392' cy='463'></circle>
+          <circle fill={color1} r='6' cx='392' cy='463'></circle>
           <circle r='6' cx='356' cy='446'></circle>
-          <circle fill={color2} r='6' cx='336' cy='411'></circle>
+          <circle fill={color1} r='6' cx='336' cy='411'></circle>
           <circle r='6' cx='342' cy='371'></circle>
-          <circle fill={color2} r='6' cx='371' cy='341'></circle>
+          <circle fill={color1} r='6' cx='371' cy='341'></circle>
           <circle r='6.5' cx='412' cy='335'></circle>
-          <circle fill={color2} r='6.5' cx='449' cy='354'></circle>
+          <circle fill={color1} r='6.5' cx='449' cy='354'></circle>
           <circle r='6.5' cx='467' cy='392'></circle>
-          <circle fill={color2} r='6.5' cx='459' cy='434'></circle>
+          <circle fill={color1} r='6.5' cx='459' cy='434'></circle>
           <circle r='6.5' cx='427' cy='463'></circle>
-          <circle fill={color2} r='6.5' cx='384' cy='468'></circle>
+          <circle fill={color1} r='6.5' cx='384' cy='468'></circle>
           <circle r='6.5' cx='346' cy='445'></circle>
-          <circle fill={color2} r='6.5' cx='329' cy='404'></circle>
+          <circle fill={color1} r='6.5' cx='329' cy='404'></circle>
           <circle r='6.5' cx='340' cy='360'></circle>
-          <circle fill={color2} r='6.5' cx='376' cy='332'></circle>
+          <circle fill={color1} r='6.5' cx='376' cy='332'></circle>
           <circle r='6.5' cx='421' cy='330'></circle>
-          <circle fill={color2} r='6.5' cx='459' cy='356'></circle>
+          <circle fill={color1} r='6.5' cx='459' cy='356'></circle>
           <circle r='6.5' cx='474' cy='400'></circle>
-          <circle fill={color2} r='7' cx='460' cy='445'></circle>
+          <circle fill={color1} r='7' cx='460' cy='445'></circle>
           <circle r='7' cx='421' cy='472'></circle>
-          <circle fill={color2} r='7' cx='374' cy='471'></circle>
+          <circle fill={color1} r='7' cx='374' cy='471'></circle>
           <circle r='7' cx='336' cy='442'></circle>
-          <circle fill={color2} r='7' cx='323' cy='395'></circle>
+          <circle fill={color1} r='7' cx='323' cy='395'></circle>
           <circle r='7' cx='341' cy='350'></circle>
-          <circle fill={color2} r='7' cx='382' cy='323'></circle>
+          <circle fill={color1} r='7' cx='382' cy='323'></circle>
           <circle r='7' cx='432' cy='327'></circle>
-          <circle fill={color2} r='7' cx='469' cy='360'></circle>
+          <circle fill={color1} r='7' cx='469' cy='360'></circle>
           <circle r='7' cx='480' cy='410'></circle>
-          <circle fill={color2} r='7' cx='459' cy='456'></circle>
+          <circle fill={color1} r='7' cx='459' cy='456'></circle>
           <circle r='7' cx='414' cy='481'></circle>
-          <circle fill={color2} r='7.5' cx='363' cy='473'></circle>
+          <circle fill={color1} r='7.5' cx='363' cy='473'></circle>
           <circle r='7.5' cx='326' cy='437'></circle>
-          <circle fill={color2} r='7.5' cx='318' cy='385'></circle>
+          <circle fill={color1} r='7.5' cx='318' cy='385'></circle>
           <circle r='7.5' cx='342' cy='338'></circle>
-          <circle fill={color2} r='7.5' cx='391' cy='316'></circle>
+          <circle fill={color1} r='7.5' cx='391' cy='316'></circle>
           <circle r='7.5' cx='443' cy='326'></circle>
-          <circle fill={color2} r='7.5' cx='479' cy='366'></circle>
+          <circle fill={color1} r='7.5' cx='479' cy='366'></circle>
           <circle r='7.5' cx='484' cy='421'></circle>
-          <circle fill={color2} r='7.5' cx='456' cy='467'></circle>
+          <circle fill={color1} r='7.5' cx='456' cy='467'></circle>
           <circle r='7.5' cx='405' cy='488'></circle>
-          <circle fill={color2} r='7.5' cx='351' cy='474'></circle>
+          <circle fill={color1} r='7.5' cx='351' cy='474'></circle>
           <circle r='7.5' cx='316' cy='430'></circle>
-          <circle fill={color2} r='7.5' cx='314' cy='374'></circle>
+          <circle fill={color1} r='7.5' cx='314' cy='374'></circle>
           <circle r='8' cx='346' cy='327'></circle>
-          <circle fill={color2} r='8' cx='401' cy='309'></circle>
+          <circle fill={color1} r='8' cx='401' cy='309'></circle>
           <circle r='8' cx='455' cy='327'></circle>
-          <circle fill={color2} r='8' cx='489' cy='374'></circle>
+          <circle fill={color1} r='8' cx='489' cy='374'></circle>
           <circle r='8' cx='487' cy='432'></circle>
-          <circle fill={color2} r='8' cx='451' cy='479'></circle>
+          <circle fill={color1} r='8' cx='451' cy='479'></circle>
           <circle r='8' cx='394' cy='494'></circle>
-          <circle fill={color2} r='8' cx='338' cy='473'></circle>
+          <circle fill={color1} r='8' cx='338' cy='473'></circle>
           <circle r='8' cx='307' cy='422'></circle>
-          <circle fill={color2} r='8' cx='312' cy='361'></circle>
+          <circle fill={color1} r='8' cx='312' cy='361'></circle>
           <circle r='8' cx='352' cy='316'></circle>
-          <circle fill={color2} r='8' cx='412' cy='303'></circle>
+          <circle fill={color1} r='8' cx='412' cy='303'></circle>
           <circle r='8' cx='468' cy='329'></circle>
-          <circle fill={color2} r='8.5' cx='498' cy='383'></circle>
+          <circle fill={color1} r='8.5' cx='498' cy='383'></circle>
           <circle r='8.5' cx='489' cy='445'></circle>
-          <circle fill={color2} r='8.5' cx='444' cy='490'></circle>
+          <circle fill={color1} r='8.5' cx='444' cy='490'></circle>
           <circle r='8.5' cx='382' cy='499'></circle>
-          <circle fill={color2} r='8.5' cx='326' cy='469'></circle>
+          <circle fill={color1} r='8.5' cx='326' cy='469'></circle>
           <circle r='8.5' cx='298' cy='411'></circle>
-          <circle fill={color2} r='8.5' cx='311' cy='348'></circle>
+          <circle fill={color1} r='8.5' cx='311' cy='348'></circle>
           <circle r='8.5' cx='360' cy='305'></circle>
-          <circle fill={color2} r='8.5' cx='425' cy='299'></circle>
+          <circle fill={color1} r='8.5' cx='425' cy='299'></circle>
           <circle r='8.5' cx='481' cy='333'></circle>
-          <circle fill={color2} r='8.5' cx='505' cy='395'></circle>
+          <circle fill={color1} r='8.5' cx='505' cy='395'></circle>
           <circle r='8.5' cx='488' cy='459'></circle>
-          <circle fill={color2} r='8.5' cx='436' cy='501'></circle>
+          <circle fill={color1} r='8.5' cx='436' cy='501'></circle>
           <circle r='9' cx='368' cy='503'></circle>
-          <circle fill={color2} r='9' cx='313' cy='464'></circle>
+          <circle fill={color1} r='9' cx='313' cy='464'></circle>
           <circle r='9' cx='291' cy='399'></circle>
-          <circle fill={color2} r='9' cx='313' cy='334'></circle>
+          <circle fill={color1} r='9' cx='313' cy='334'></circle>
           <circle r='9' cx='369' cy='294'></circle>
-          <circle fill={color2} r='9' cx='439' cy='296'></circle>
+          <circle fill={color1} r='9' cx='439' cy='296'></circle>
           <circle r='9' cx='493' cy='340'></circle>
-          <circle fill={color2} r='9' cx='512' cy='407'></circle>
+          <circle fill={color1} r='9' cx='512' cy='407'></circle>
           <circle r='9' cx='486' cy='473'></circle>
-          <circle fill={color2} r='9' cx='425' cy='510'></circle>
+          <circle fill={color1} r='9' cx='425' cy='510'></circle>
           <circle r='9' cx='354' cy='504'></circle>
-          <circle fill={color2} r='9' cx='300' cy='456'></circle>
+          <circle fill={color1} r='9' cx='300' cy='456'></circle>
           <circle r='9.5' cx='286' cy='386'></circle>
-          <circle fill={color2} r='9.5' cx='316' cy='320'></circle>
+          <circle fill={color1} r='9.5' cx='316' cy='320'></circle>
           <circle r='9.5' cx='381' cy='285'></circle>
-          <circle fill={color2} r='9.5' cx='453' cy='296'></circle>
+          <circle fill={color1} r='9.5' cx='453' cy='296'></circle>
           <circle r='9.5' cx='506' cy='348'></circle>
-          <circle fill={color2} r='9.5' cx='516' cy='421'></circle>
+          <circle fill={color1} r='9.5' cx='516' cy='421'></circle>
           <circle r='9.5' cx='481' cy='487'></circle>
-          <circle fill={color2} r='9.5' cx='413' cy='519'></circle>
+          <circle fill={color1} r='9.5' cx='413' cy='519'></circle>
           <circle r='9.5' cx='339' cy='504'></circle>
-          <circle fill={color2} r='9.5' cx='289' cy='447'></circle>
+          <circle fill={color1} r='9.5' cx='289' cy='447'></circle>
           <circle r='9.5' cx='282' cy='371'></circle>
-          <circle fill={color2} r='9.5' cx='322' cy='306'></circle>
+          <circle fill={color1} r='9.5' cx='322' cy='306'></circle>
           <circle r='9.5' cx='394' cy='277'></circle>
-          <circle fill={color2} r='10' cx='469' cy='297'></circle>
+          <circle fill={color1} r='10' cx='469' cy='297'></circle>
           <circle r='10' cx='517' cy='359'></circle>
-          <circle fill={color2} r='10' cx='519' cy='437'></circle>
+          <circle fill={color1} r='10' cx='519' cy='437'></circle>
           <circle r='10' cx='474' cy='501'></circle>
-          <circle fill={color2} r='10' cx='399' cy='526'></circle>
+          <circle fill={color1} r='10' cx='399' cy='526'></circle>
           <circle r='10' cx='324' cy='501'></circle>
-          <circle fill={color2} r='10' cx='278' cy='435'></circle>
+          <circle fill={color1} r='10' cx='278' cy='435'></circle>
           <circle r='10' cx='280' cy='355'></circle>
-          <circle fill={color2} r='10' cx='330' cy='292'></circle>
+          <circle fill={color1} r='10' cx='330' cy='292'></circle>
           <circle r='10' cx='409' cy='271'></circle>
-          <circle fill={color2} r='10' cx='484' cy='301'></circle>
+          <circle fill={color1} r='10' cx='484' cy='301'></circle>
           <circle r='10' cx='527' cy='371'></circle>
-          <circle fill={color2} r='10' cx='520' cy='453'></circle>
+          <circle fill={color1} r='10' cx='520' cy='453'></circle>
           <circle r='10.5' cx='465' cy='515'></circle>
-          <circle fill={color2} r='10.5' cx='383' cy='531'></circle>
+          <circle fill={color1} r='10.5' cx='383' cy='531'></circle>
           <circle r='10.5' cx='308' cy='496'></circle>
-          <circle fill={color2} r='10.5' cx='268' cy='422'></circle>
+          <circle fill={color1} r='10.5' cx='268' cy='422'></circle>
           <circle r='10.5' cx='281' cy='339'></circle>
-          <circle fill={color2} r='10.5' cx='341' cy='279'></circle>
+          <circle fill={color1} r='10.5' cx='341' cy='279'></circle>
           <circle r='10.5' cx='425' cy='267'></circle>
-          <circle fill={color2} r='10.5' cx='500' cy='307'></circle>
+          <circle fill={color1} r='10.5' cx='500' cy='307'></circle>
           <circle r='10.5' cx='536' cy='385'></circle>
-          <circle fill={color2} r='10.5' cx='518' cy='470'></circle>
+          <circle fill={color1} r='10.5' cx='518' cy='470'></circle>
           <circle r='10.5' cx='453' cy='527'></circle>
-          <circle fill={color2} r='10.5' cx='367' cy='535'></circle>
+          <circle fill={color1} r='10.5' cx='367' cy='535'></circle>
           <circle r='11' cx='292' cy='489'></circle>
-          <circle fill={color2} r='11' cx='260' cy='407'></circle>
+          <circle fill={color1} r='11' cx='260' cy='407'></circle>
           <circle r='11' cx='283' cy='322'></circle>
-          <circle fill={color2} r='11' cx='353' cy='267'></circle>
+          <circle fill={color1} r='11' cx='353' cy='267'></circle>
           <circle r='11' cx='442' cy='264'></circle>
-          <circle fill={color2} r='11' cx='515' cy='316'></circle>
+          <circle fill={color1} r='11' cx='515' cy='316'></circle>
           <circle r='11' cx='543' cy='401'></circle>
-          <circle fill={color2} r='11' cx='515' cy='487'></circle>
+          <circle fill={color1} r='11' cx='515' cy='487'></circle>
           <circle r='11' cx='440' cy='539'></circle>
-          <circle fill={color2} r='11' cx='349' cy='536'></circle>
+          <circle fill={color1} r='11' cx='349' cy='536'></circle>
           <circle r='11' cx='277' cy='479'></circle>
-          <circle fill={color2} r='11' cx='254' cy='390'></circle>
+          <circle fill={color1} r='11' cx='254' cy='390'></circle>
           <circle r='11' cx='288' cy='304'></circle>
-          <circle fill={color2} r='11.5' cx='367' cy='256'></circle>
+          <circle fill={color1} r='11.5' cx='367' cy='256'></circle>
           <circle r='11.5' cx='460' cy='264'></circle>
-          <circle fill={color2} r='11.5' cx='530' cy='327'></circle>
+          <circle fill={color1} r='11.5' cx='530' cy='327'></circle>
           <circle r='11.5' cx='548' cy='419'></circle>
-          <circle fill={color2} r='11.5' cx='508' cy='504'></circle>
+          <circle fill={color1} r='11.5' cx='508' cy='504'></circle>
           <circle r='11.5' cx='425' cy='549'></circle>
-          <circle fill={color2} r='11.5' cx='331' cy='535'></circle>
+          <circle fill={color1} r='11.5' cx='331' cy='535'></circle>
           <circle r='11.5' cx='263' cy='467'></circle>
-          <circle fill={color2} r='11.5' cx='250' cy='372'></circle>
+          <circle fill={color1} r='11.5' cx='250' cy='372'></circle>
           <circle r='11.5' cx='296' cy='287'></circle>
-          <circle fill={color2} r='11.5' cx='384' cy='247'></circle>
+          <circle fill={color1} r='11.5' cx='384' cy='247'></circle>
           <circle r='11.5' cx='479' cy='267'></circle>
-          <circle fill={color2} r='11.5' cx='543' cy='340'></circle>
+          <circle fill={color1} r='11.5' cx='543' cy='340'></circle>
           <circle r='12' cx='551' cy='438'></circle>
-          <circle fill={color2} r='12' cx='499' cy='521'></circle>
+          <circle fill={color1} r='12' cx='499' cy='521'></circle>
           <circle r='12' cx='407' cy='557'></circle>
-          <circle fill={color2} r='12' cx='312' cy='531'></circle>
+          <circle fill={color1} r='12' cx='312' cy='531'></circle>
           <circle r='12' cx='250' cy='453'></circle>
-          <circle fill={color2} r='12' cx='248' cy='353'></circle>
+          <circle fill={color1} r='12' cx='248' cy='353'></circle>
           <circle r='12' cx='306' cy='271'></circle>
-          <circle fill={color2} r='12' cx='402' cy='239'></circle>
+          <circle fill={color1} r='12' cx='402' cy='239'></circle>
           <circle r='12' cx='498' cy='272'></circle>
-          <circle fill={color2} r='12' cx='556' cy='355'></circle>
+          <circle fill={color1} r='12' cx='556' cy='355'></circle>
           <circle r='12' cx='552' cy='457'></circle>
-          <circle fill={color2} r='12' cx='488' cy='537'></circle>
+          <circle fill={color1} r='12' cx='488' cy='537'></circle>
           <circle r='12' cx='389' cy='563'></circle>
-          <circle fill={color2} r='12.5' cx='293' cy='525'></circle>
+          <circle fill={color1} r='12.5' cx='293' cy='525'></circle>
           <circle r='12.5' cx='239' cy='436'></circle>
-          <circle fill={color2} r='12.5' cx='249' cy='333'></circle>
+          <circle fill={color1} r='12.5' cx='249' cy='333'></circle>
           <circle r='12.5' cx='319' cy='255'></circle>
-          <circle fill={color2} r='12.5' cx='421' cy='234'></circle>
+          <circle fill={color1} r='12.5' cx='421' cy='234'></circle>
           <circle r='12.5' cx='516' cy='279'></circle>
         </g>
       </g>
     </svg>
   ),
 
-  ({ color1 = '#000', color2 = '#fff' }) => (
+  ({ color0 = '#000', color1 = '#fff' }) => (
     <svg
       xmlns='http://www.w3.org/2000/svg'
       version='1.1'
@@ -449,8 +449,8 @@ export const spinningSVGs: SVGfn[] = [
     >
       <defs>
         <linearGradient x1='50%' y1='0%' x2='50%' y2='100%' id='cccoil-grad'>
-          <stop stopColor={color2} stopOpacity='1' offset='0%'></stop>
-          <stop stopColor={color1} stopOpacity='1' offset='100%'></stop>
+          <stop stopColor={color1} stopOpacity='1' offset='0%'></stop>
+          <stop stopColor={color0} stopOpacity='1' offset='100%'></stop>
         </linearGradient>
       </defs>
       <g stroke='url(#cccoil-grad)' fill='none' strokeLinecap='square'>
@@ -521,7 +521,7 @@ export const spinningSVGs: SVGfn[] = [
     </svg>
   ),
 
-  ({ color1 = '#000' }) => (
+  ({ color0 = '#000' }) => (
     <svg
       xmlns='http://www.w3.org/2000/svg'
       version='1.1'
@@ -529,7 +529,7 @@ export const spinningSVGs: SVGfn[] = [
       xmlns-svgjs='http://svgjs.dev/svgjs'
       viewBox='0 0 800 800'
     >
-      <g strokeWidth='20' stroke={color1} fill='none'>
+      <g strokeWidth='20' stroke={color0} fill='none'>
         <path
           d='M400 38.00189208984375L713.5000200324477 219.00094910451287V580.9990631338511L400 761.9981201485202L86.49997996755229 580.9990631338511V219.00094910451287L400 38.00189208984375Z '
           transform='rotate(855, 400, 400)'
@@ -629,13 +629,13 @@ export const spinningSVGs: SVGfn[] = [
     </svg>
   ),
 
-  ({ color1 = '#000' }) => (
+  ({ color0 = '#000' }) => (
     <svg
       viewBox='140 105 500 500'
       xmlns='http://www.w3.org/2000/svg'
       xmlns-svg='http://www.w3.org/2000/svg'
       version='1.1'
-      fill={color1}
+      fill={color0}
     >
       <g className='layer'>
         <title>Layer 1</title>
@@ -648,7 +648,7 @@ export const spinningSVGs: SVGfn[] = [
     </svg>
   ),
 
-  ({ color1 = '#000' }) => (
+  ({ color0 = '#000' }) => (
     <svg
       version='1.0'
       xmlns='http://www.w3.org/2000/svg'
@@ -658,7 +658,7 @@ export const spinningSVGs: SVGfn[] = [
     >
       <g
         transform='translate(0.000000,960.000000) scale(0.1,-0.1)'
-        fill={color1}
+        fill={color0}
         stroke='none'
       >
         <path
@@ -712,14 +712,14 @@ export const spinningSVGs: SVGfn[] = [
     </svg>
   ),
 
-  ({ color1 = '#000' }) => (
+  ({ color0 = '#000' }) => (
     <svg
       version='1.1'
       xmlns='http://www.w3.org/2000/svg'
       viewBox='-2250 -2100 2500 2500'
       preserveAspectRatio='xMidYMid meet'
     >
-      <g transform='scale(-0.1, -0.1)' fill={color1} stroke='none'>
+      <g transform='scale(-0.1, -0.1)' fill={color0} stroke='none'>
         <path
           d='M10725 20419 c-1907 -105 -3709 -651 -5305 -1606 -1479 -886 -2796
 -2168 -3722 -3623 -801 -1259 -1331 -2626 -1562 -4030 -251 -1524 -154 -3025

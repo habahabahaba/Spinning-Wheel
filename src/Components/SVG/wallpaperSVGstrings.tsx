@@ -2,13 +2,13 @@
 // import type { JSX } from 'react';
 import type { HexColor } from '../../utils/color';
 type SVGstringFn = (colors: {
+  color0?: HexColor;
   color1?: HexColor;
   color2?: HexColor;
-  color3?: HexColor;
 }) => string;
 
 const wallpaperSVGstrings: SVGstringFn[] = [
-  ({ color1 = '#000000' }) =>
+  ({ color0 = '#000000' }) =>
     `<svg
       xmlns='http://www.w3.org/2000/svg'
       xmlnsXlink='http://www.w3.org/1999/xlink'
@@ -17,7 +17,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
       width='1422'
       height='800'
     >
-      <g strokeWidth='2' stroke='${color1}' fill='none' strokeLinecap='square'>
+      <g strokeWidth='2' stroke='${color0}' fill='none' strokeLinecap='square'>
         <line x1='0' y1='0' x2='20' y2='20'></line>
         <line x1='40' y1='0' x2='20' y2='20'></line>
         <line x1='60' y1='0' x2='40' y2='20'></line>
@@ -2973,7 +2973,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
       </g>
     </svg>`,
 
-  ({ color1 = '#000000', color2 = '#00ff00' }) =>
+  ({ color0 = '#000000', color1 = '#00ff00' }) =>
     `<svg
       xmlns='http://www.w3.org/2000/svg'
       version='1.1'
@@ -2983,1481 +2983,1481 @@ const wallpaperSVGstrings: SVGstringFn[] = [
       width='800'
       height='800'
     >
-      <g strokeWidth='1' stroke='${color1}' fill='none'>
+      <g strokeWidth='1' stroke='${color0}' fill='none'>
         <circle
           r='3.2894736842105265'
           cx='0'
+          cy='0'
+          fill='${color0}'
+          stroke='none'
+        ></circle>
+        <circle
+          r='3.2894736842105265'
+          cx='61.53846153846154'
           cy='0'
           fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
-          cx='61.53846153846154'
-          cy='0'
-          fill='${color2}'
-          stroke='none'
-        ></circle>
-        <circle
-          r='3.2894736842105265'
           cx='123.07692307692308'
           cy='0'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='184.6153846153846'
           cy='0'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='246.15384615384616'
           cy='0'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='307.6923076923077'
           cy='0'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='369.2307692307692'
           cy='0'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='430.7692307692308'
           cy='0'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='492.3076923076923'
           cy='0'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='553.8461538461538'
           cy='0'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='615.3846153846154'
           cy='0'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='676.9230769230769'
           cy='0'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='738.4615384615385'
           cy='0'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='800'
           cy='0'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='0'
           cy='57.142857142857146'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='61.53846153846154'
           cy='57.142857142857146'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='123.07692307692308'
           cy='57.142857142857146'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='184.6153846153846'
           cy='57.142857142857146'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='246.15384615384616'
           cy='57.142857142857146'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='307.6923076923077'
           cy='57.142857142857146'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='369.2307692307692'
           cy='57.142857142857146'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='430.7692307692308'
           cy='57.142857142857146'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='492.3076923076923'
           cy='57.142857142857146'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='553.8461538461538'
           cy='57.142857142857146'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='615.3846153846154'
           cy='57.142857142857146'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='676.9230769230769'
           cy='57.142857142857146'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='738.4615384615385'
           cy='57.142857142857146'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='800'
           cy='57.142857142857146'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='0'
           cy='114.28571428571429'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='61.53846153846154'
           cy='114.28571428571429'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='123.07692307692308'
           cy='114.28571428571429'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='184.6153846153846'
           cy='114.28571428571429'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='246.15384615384616'
           cy='114.28571428571429'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='307.6923076923077'
           cy='114.28571428571429'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='369.2307692307692'
           cy='114.28571428571429'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='430.7692307692308'
           cy='114.28571428571429'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='492.3076923076923'
           cy='114.28571428571429'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='553.8461538461538'
           cy='114.28571428571429'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='615.3846153846154'
           cy='114.28571428571429'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='676.9230769230769'
           cy='114.28571428571429'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='738.4615384615385'
           cy='114.28571428571429'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='800'
           cy='114.28571428571429'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='0'
           cy='171.42857142857144'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='61.53846153846154'
           cy='171.42857142857144'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='123.07692307692308'
           cy='171.42857142857144'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='184.6153846153846'
           cy='171.42857142857144'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='246.15384615384616'
           cy='171.42857142857144'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='307.6923076923077'
           cy='171.42857142857144'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='369.2307692307692'
           cy='171.42857142857144'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='430.7692307692308'
           cy='171.42857142857144'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='492.3076923076923'
           cy='171.42857142857144'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='553.8461538461538'
           cy='171.42857142857144'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='615.3846153846154'
           cy='171.42857142857144'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='676.9230769230769'
           cy='171.42857142857144'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='738.4615384615385'
           cy='171.42857142857144'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='800'
           cy='171.42857142857144'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='0'
           cy='228.57142857142858'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='61.53846153846154'
           cy='228.57142857142858'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='123.07692307692308'
           cy='228.57142857142858'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='184.6153846153846'
           cy='228.57142857142858'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='246.15384615384616'
           cy='228.57142857142858'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='307.6923076923077'
           cy='228.57142857142858'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='369.2307692307692'
           cy='228.57142857142858'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='430.7692307692308'
           cy='228.57142857142858'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='492.3076923076923'
           cy='228.57142857142858'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='553.8461538461538'
           cy='228.57142857142858'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='615.3846153846154'
           cy='228.57142857142858'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='676.9230769230769'
           cy='228.57142857142858'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='738.4615384615385'
           cy='228.57142857142858'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='800'
           cy='228.57142857142858'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='0'
           cy='285.7142857142857'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='61.53846153846154'
           cy='285.7142857142857'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='123.07692307692308'
           cy='285.7142857142857'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='184.6153846153846'
           cy='285.7142857142857'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='246.15384615384616'
           cy='285.7142857142857'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='307.6923076923077'
           cy='285.7142857142857'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='369.2307692307692'
           cy='285.7142857142857'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='430.7692307692308'
           cy='285.7142857142857'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='492.3076923076923'
           cy='285.7142857142857'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='553.8461538461538'
           cy='285.7142857142857'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='615.3846153846154'
           cy='285.7142857142857'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='676.9230769230769'
           cy='285.7142857142857'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='738.4615384615385'
           cy='285.7142857142857'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='800'
           cy='285.7142857142857'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='0'
           cy='342.8571428571429'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='61.53846153846154'
           cy='342.8571428571429'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='123.07692307692308'
           cy='342.8571428571429'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='184.6153846153846'
           cy='342.8571428571429'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='246.15384615384616'
           cy='342.8571428571429'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='307.6923076923077'
           cy='342.8571428571429'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='369.2307692307692'
           cy='342.8571428571429'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='430.7692307692308'
           cy='342.8571428571429'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='492.3076923076923'
           cy='342.8571428571429'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='553.8461538461538'
           cy='342.8571428571429'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='615.3846153846154'
           cy='342.8571428571429'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='676.9230769230769'
           cy='342.8571428571429'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='738.4615384615385'
           cy='342.8571428571429'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='800'
           cy='342.8571428571429'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='0'
           cy='400.00000000000006'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='61.53846153846154'
           cy='400.00000000000006'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='123.07692307692308'
           cy='400.00000000000006'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='184.6153846153846'
           cy='400.00000000000006'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='246.15384615384616'
           cy='400.00000000000006'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='307.6923076923077'
           cy='400.00000000000006'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='369.2307692307692'
           cy='400.00000000000006'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='430.7692307692308'
           cy='400.00000000000006'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='492.3076923076923'
           cy='400.00000000000006'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='553.8461538461538'
           cy='400.00000000000006'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='615.3846153846154'
           cy='400.00000000000006'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='676.9230769230769'
           cy='400.00000000000006'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='738.4615384615385'
           cy='400.00000000000006'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='800'
           cy='400.00000000000006'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='0'
           cy='457.1428571428572'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='61.53846153846154'
           cy='457.1428571428572'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='123.07692307692308'
           cy='457.1428571428572'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='184.6153846153846'
           cy='457.1428571428572'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='246.15384615384616'
           cy='457.1428571428572'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='307.6923076923077'
           cy='457.1428571428572'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='369.2307692307692'
           cy='457.1428571428572'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='430.7692307692308'
           cy='457.1428571428572'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='492.3076923076923'
           cy='457.1428571428572'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='553.8461538461538'
           cy='457.1428571428572'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='615.3846153846154'
           cy='457.1428571428572'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='676.9230769230769'
           cy='457.1428571428572'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='738.4615384615385'
           cy='457.1428571428572'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='800'
           cy='457.1428571428572'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='0'
           cy='514.2857142857143'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='61.53846153846154'
           cy='514.2857142857143'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='123.07692307692308'
           cy='514.2857142857143'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='184.6153846153846'
           cy='514.2857142857143'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='246.15384615384616'
           cy='514.2857142857143'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='307.6923076923077'
           cy='514.2857142857143'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='369.2307692307692'
           cy='514.2857142857143'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='430.7692307692308'
           cy='514.2857142857143'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='492.3076923076923'
           cy='514.2857142857143'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='553.8461538461538'
           cy='514.2857142857143'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='615.3846153846154'
           cy='514.2857142857143'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='676.9230769230769'
           cy='514.2857142857143'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='738.4615384615385'
           cy='514.2857142857143'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='800'
           cy='514.2857142857143'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='0'
           cy='571.4285714285714'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='61.53846153846154'
           cy='571.4285714285714'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='123.07692307692308'
           cy='571.4285714285714'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='184.6153846153846'
           cy='571.4285714285714'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='246.15384615384616'
           cy='571.4285714285714'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='307.6923076923077'
           cy='571.4285714285714'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='369.2307692307692'
           cy='571.4285714285714'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='430.7692307692308'
           cy='571.4285714285714'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='492.3076923076923'
           cy='571.4285714285714'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='553.8461538461538'
           cy='571.4285714285714'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='615.3846153846154'
           cy='571.4285714285714'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='676.9230769230769'
           cy='571.4285714285714'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='738.4615384615385'
           cy='571.4285714285714'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='800'
           cy='571.4285714285714'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='0'
           cy='628.5714285714286'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='61.53846153846154'
           cy='628.5714285714286'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='123.07692307692308'
           cy='628.5714285714286'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='184.6153846153846'
           cy='628.5714285714286'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='246.15384615384616'
           cy='628.5714285714286'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='307.6923076923077'
           cy='628.5714285714286'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='369.2307692307692'
           cy='628.5714285714286'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='430.7692307692308'
           cy='628.5714285714286'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='492.3076923076923'
           cy='628.5714285714286'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='553.8461538461538'
           cy='628.5714285714286'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='615.3846153846154'
           cy='628.5714285714286'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='676.9230769230769'
           cy='628.5714285714286'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='738.4615384615385'
           cy='628.5714285714286'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='800'
           cy='628.5714285714286'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='0'
           cy='685.7142857142857'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='61.53846153846154'
           cy='685.7142857142857'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='123.07692307692308'
           cy='685.7142857142857'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='184.6153846153846'
           cy='685.7142857142857'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='246.15384615384616'
           cy='685.7142857142857'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='307.6923076923077'
           cy='685.7142857142857'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='369.2307692307692'
           cy='685.7142857142857'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='430.7692307692308'
           cy='685.7142857142857'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='492.3076923076923'
           cy='685.7142857142857'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='553.8461538461538'
           cy='685.7142857142857'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='615.3846153846154'
           cy='685.7142857142857'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='676.9230769230769'
           cy='685.7142857142857'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='738.4615384615385'
           cy='685.7142857142857'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='800'
           cy='685.7142857142857'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='0'
           cy='742.8571428571428'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='61.53846153846154'
           cy='742.8571428571428'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='123.07692307692308'
           cy='742.8571428571428'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='184.6153846153846'
           cy='742.8571428571428'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='246.15384615384616'
           cy='742.8571428571428'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='307.6923076923077'
           cy='742.8571428571428'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='369.2307692307692'
           cy='742.8571428571428'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='430.7692307692308'
           cy='742.8571428571428'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='492.3076923076923'
           cy='742.8571428571428'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='553.8461538461538'
           cy='742.8571428571428'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='615.3846153846154'
           cy='742.8571428571428'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='676.9230769230769'
           cy='742.8571428571428'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='738.4615384615385'
           cy='742.8571428571428'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='800'
           cy='742.8571428571428'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='0'
           cy='799.9999999999999'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='61.53846153846154'
           cy='799.9999999999999'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='123.07692307692308'
           cy='799.9999999999999'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='184.6153846153846'
           cy='799.9999999999999'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='246.15384615384616'
           cy='799.9999999999999'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='307.6923076923077'
           cy='799.9999999999999'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='369.2307692307692'
           cy='799.9999999999999'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='430.7692307692308'
           cy='799.9999999999999'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='492.3076923076923'
           cy='799.9999999999999'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='553.8461538461538'
           cy='799.9999999999999'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='615.3846153846154'
           cy='799.9999999999999'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='676.9230769230769'
           cy='799.9999999999999'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='738.4615384615385'
           cy='799.9999999999999'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <circle
           r='3.2894736842105265'
           cx='800'
           cy='799.9999999999999'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
         ></circle>
       </g>
     </svg>`,
 
-  ({ color1 = '#000000' }) =>
+  ({ color0 = '#000000' }) =>
     `<svg
   xmlns='http://www.w3.org/2000/svg'
   version='1.1'
@@ -4467,173 +4467,173 @@ const wallpaperSVGstrings: SVGstringFn[] = [
   width='800'
   height='800'
 >
-  <g stroke-width='1' stroke='${color1}' fill='none'>
+  <g stroke-width='1' stroke='${color0}' fill='none'>
     <circle
       r='3.2894736842105265'
       cx='0'
       cy='0'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='47.05882352941177'
       cy='0'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='94.11764705882354'
       cy='0'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='141.1764705882353'
       cy='0'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='188.23529411764707'
       cy='0'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='235.29411764705884'
       cy='0'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='282.3529411764706'
       cy='0'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='329.4117647058824'
       cy='0'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='376.47058823529414'
       cy='0'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='423.5294117647059'
       cy='0'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='470.5882352941177'
       cy='0'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='517.6470588235295'
       cy='0'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='564.7058823529412'
       cy='0'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='611.7647058823529'
       cy='0'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='658.8235294117646'
       cy='0'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='705.8823529411764'
       cy='0'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='752.9411764705881'
       cy='0'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='799.9999999999998'
       cy='0'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='0'
       cy='44.44444444444444'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='47.05882352941177'
       cy='44.44444444444444'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='94.11764705882354'
       cy='44.44444444444444'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='141.1764705882353'
       cy='44.44444444444444'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='188.23529411764707'
       cy='44.44444444444444'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='235.29411764705884'
       cy='44.44444444444444'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
@@ -4646,28 +4646,28 @@ const wallpaperSVGstrings: SVGstringFn[] = [
       r='3.2894736842105265'
       cx='329.4117647058824'
       cy='44.44444444444444'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='376.47058823529414'
       cy='44.44444444444444'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='423.5294117647059'
       cy='44.44444444444444'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='470.5882352941177'
       cy='44.44444444444444'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
@@ -4680,7 +4680,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
       r='3.2894736842105265'
       cx='564.7058823529412'
       cy='44.44444444444444'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
@@ -4693,91 +4693,91 @@ const wallpaperSVGstrings: SVGstringFn[] = [
       r='3.2894736842105265'
       cx='658.8235294117646'
       cy='44.44444444444444'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='705.8823529411764'
       cy='44.44444444444444'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='752.9411764705881'
       cy='44.44444444444444'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='799.9999999999998'
       cy='44.44444444444444'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='0'
       cy='88.88888888888889'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='47.05882352941177'
       cy='88.88888888888889'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='94.11764705882354'
       cy='88.88888888888889'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='141.1764705882353'
       cy='88.88888888888889'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='188.23529411764707'
       cy='88.88888888888889'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='235.29411764705884'
       cy='88.88888888888889'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='282.3529411764706'
       cy='88.88888888888889'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='329.4117647058824'
       cy='88.88888888888889'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='376.47058823529414'
       cy='88.88888888888889'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
@@ -4790,7 +4790,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
       r='3.2894736842105265'
       cx='470.5882352941177'
       cy='88.88888888888889'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
@@ -4803,7 +4803,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
       r='3.2894736842105265'
       cx='564.7058823529412'
       cy='88.88888888888889'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
@@ -4816,42 +4816,42 @@ const wallpaperSVGstrings: SVGstringFn[] = [
       r='3.2894736842105265'
       cx='658.8235294117646'
       cy='88.88888888888889'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='705.8823529411764'
       cy='88.88888888888889'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='752.9411764705881'
       cy='88.88888888888889'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='799.9999999999998'
       cy='88.88888888888889'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='0'
       cy='133.33333333333331'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='47.05882352941177'
       cy='133.33333333333331'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
@@ -4864,14 +4864,14 @@ const wallpaperSVGstrings: SVGstringFn[] = [
       r='3.2894736842105265'
       cx='141.1764705882353'
       cy='133.33333333333331'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='188.23529411764707'
       cy='133.33333333333331'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
@@ -4884,70 +4884,70 @@ const wallpaperSVGstrings: SVGstringFn[] = [
       r='3.2894736842105265'
       cx='282.3529411764706'
       cy='133.33333333333331'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='329.4117647058824'
       cy='133.33333333333331'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='376.47058823529414'
       cy='133.33333333333331'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='423.5294117647059'
       cy='133.33333333333331'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='470.5882352941177'
       cy='133.33333333333331'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='517.6470588235295'
       cy='133.33333333333331'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='564.7058823529412'
       cy='133.33333333333331'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='611.7647058823529'
       cy='133.33333333333331'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='658.8235294117646'
       cy='133.33333333333331'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='705.8823529411764'
       cy='133.33333333333331'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
@@ -4960,49 +4960,49 @@ const wallpaperSVGstrings: SVGstringFn[] = [
       r='3.2894736842105265'
       cx='799.9999999999998'
       cy='133.33333333333331'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='0'
       cy='177.77777777777777'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='47.05882352941177'
       cy='177.77777777777777'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='94.11764705882354'
       cy='177.77777777777777'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='141.1764705882353'
       cy='177.77777777777777'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='188.23529411764707'
       cy='177.77777777777777'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='235.29411764705884'
       cy='177.77777777777777'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
@@ -5015,14 +5015,14 @@ const wallpaperSVGstrings: SVGstringFn[] = [
       r='3.2894736842105265'
       cx='329.4117647058824'
       cy='177.77777777777777'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='376.47058823529414'
       cy='177.77777777777777'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
@@ -5035,7 +5035,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
       r='3.2894736842105265'
       cx='470.5882352941177'
       cy='177.77777777777777'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
@@ -5054,49 +5054,49 @@ const wallpaperSVGstrings: SVGstringFn[] = [
       r='3.2894736842105265'
       cx='611.7647058823529'
       cy='177.77777777777777'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='658.8235294117646'
       cy='177.77777777777777'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='705.8823529411764'
       cy='177.77777777777777'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='752.9411764705881'
       cy='177.77777777777777'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='799.9999999999998'
       cy='177.77777777777777'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='0'
       cy='222.22222222222223'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='47.05882352941177'
       cy='222.22222222222223'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
@@ -5109,14 +5109,14 @@ const wallpaperSVGstrings: SVGstringFn[] = [
       r='3.2894736842105265'
       cx='141.1764705882353'
       cy='222.22222222222223'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='188.23529411764707'
       cy='222.22222222222223'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
@@ -5129,42 +5129,42 @@ const wallpaperSVGstrings: SVGstringFn[] = [
       r='3.2894736842105265'
       cx='282.3529411764706'
       cy='222.22222222222223'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='329.4117647058824'
       cy='222.22222222222223'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='376.47058823529414'
       cy='222.22222222222223'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='423.5294117647059'
       cy='222.22222222222223'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='470.5882352941177'
       cy='222.22222222222223'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='517.6470588235295'
       cy='222.22222222222223'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
@@ -5177,7 +5177,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
       r='3.2894736842105265'
       cx='611.7647058823529'
       cy='222.22222222222223'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
@@ -5190,28 +5190,28 @@ const wallpaperSVGstrings: SVGstringFn[] = [
       r='3.2894736842105265'
       cx='705.8823529411764'
       cy='222.22222222222223'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='752.9411764705881'
       cy='222.22222222222223'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='799.9999999999998'
       cy='222.22222222222223'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='0'
       cy='266.6666666666667'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
@@ -5224,84 +5224,84 @@ const wallpaperSVGstrings: SVGstringFn[] = [
       r='3.2894736842105265'
       cx='94.11764705882354'
       cy='266.6666666666667'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='141.1764705882353'
       cy='266.6666666666667'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='188.23529411764707'
       cy='266.6666666666667'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='235.29411764705884'
       cy='266.6666666666667'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='282.3529411764706'
       cy='266.6666666666667'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='329.4117647058824'
       cy='266.6666666666667'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='376.47058823529414'
       cy='266.6666666666667'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='423.5294117647059'
       cy='266.6666666666667'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='470.5882352941177'
       cy='266.6666666666667'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='517.6470588235295'
       cy='266.6666666666667'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='564.7058823529412'
       cy='266.6666666666667'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='611.7647058823529'
       cy='266.6666666666667'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
@@ -5320,21 +5320,21 @@ const wallpaperSVGstrings: SVGstringFn[] = [
       r='3.2894736842105265'
       cx='752.9411764705881'
       cy='266.6666666666667'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='799.9999999999998'
       cy='266.6666666666667'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='0'
       cy='311.11111111111114'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
@@ -5347,21 +5347,21 @@ const wallpaperSVGstrings: SVGstringFn[] = [
       r='3.2894736842105265'
       cx='94.11764705882354'
       cy='311.11111111111114'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='141.1764705882353'
       cy='311.11111111111114'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='188.23529411764707'
       cy='311.11111111111114'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
@@ -5380,14 +5380,14 @@ const wallpaperSVGstrings: SVGstringFn[] = [
       r='3.2894736842105265'
       cx='329.4117647058824'
       cy='311.11111111111114'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='376.47058823529414'
       cy='311.11111111111114'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
@@ -5400,63 +5400,63 @@ const wallpaperSVGstrings: SVGstringFn[] = [
       r='3.2894736842105265'
       cx='470.5882352941177'
       cy='311.11111111111114'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='517.6470588235295'
       cy='311.11111111111114'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='564.7058823529412'
       cy='311.11111111111114'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='611.7647058823529'
       cy='311.11111111111114'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='658.8235294117646'
       cy='311.11111111111114'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='705.8823529411764'
       cy='311.11111111111114'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='752.9411764705881'
       cy='311.11111111111114'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='799.9999999999998'
       cy='311.11111111111114'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='0'
       cy='355.5555555555556'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
@@ -5469,21 +5469,21 @@ const wallpaperSVGstrings: SVGstringFn[] = [
       r='3.2894736842105265'
       cx='94.11764705882354'
       cy='355.5555555555556'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='141.1764705882353'
       cy='355.5555555555556'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='188.23529411764707'
       cy='355.5555555555556'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
@@ -5496,21 +5496,21 @@ const wallpaperSVGstrings: SVGstringFn[] = [
       r='3.2894736842105265'
       cx='282.3529411764706'
       cy='355.5555555555556'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='329.4117647058824'
       cy='355.5555555555556'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='376.47058823529414'
       cy='355.5555555555556'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
@@ -5523,14 +5523,14 @@ const wallpaperSVGstrings: SVGstringFn[] = [
       r='3.2894736842105265'
       cx='470.5882352941177'
       cy='355.5555555555556'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='517.6470588235295'
       cy='355.5555555555556'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
@@ -5543,112 +5543,112 @@ const wallpaperSVGstrings: SVGstringFn[] = [
       r='3.2894736842105265'
       cx='611.7647058823529'
       cy='355.5555555555556'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='658.8235294117646'
       cy='355.5555555555556'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='705.8823529411764'
       cy='355.5555555555556'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='752.9411764705881'
       cy='355.5555555555556'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='799.9999999999998'
       cy='355.5555555555556'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='0'
       cy='400.00000000000006'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='47.05882352941177'
       cy='400.00000000000006'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='94.11764705882354'
       cy='400.00000000000006'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='141.1764705882353'
       cy='400.00000000000006'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='188.23529411764707'
       cy='400.00000000000006'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='235.29411764705884'
       cy='400.00000000000006'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='282.3529411764706'
       cy='400.00000000000006'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='329.4117647058824'
       cy='400.00000000000006'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='376.47058823529414'
       cy='400.00000000000006'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='423.5294117647059'
       cy='400.00000000000006'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='470.5882352941177'
       cy='400.00000000000006'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
@@ -5661,14 +5661,14 @@ const wallpaperSVGstrings: SVGstringFn[] = [
       r='3.2894736842105265'
       cx='564.7058823529412'
       cy='400.00000000000006'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='611.7647058823529'
       cy='400.00000000000006'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
@@ -5681,49 +5681,49 @@ const wallpaperSVGstrings: SVGstringFn[] = [
       r='3.2894736842105265'
       cx='705.8823529411764'
       cy='400.00000000000006'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='752.9411764705881'
       cy='400.00000000000006'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='799.9999999999998'
       cy='400.00000000000006'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='0'
       cy='444.4444444444445'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='47.05882352941177'
       cy='444.4444444444445'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='94.11764705882354'
       cy='444.4444444444445'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='141.1764705882353'
       cy='444.4444444444445'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
@@ -5736,119 +5736,119 @@ const wallpaperSVGstrings: SVGstringFn[] = [
       r='3.2894736842105265'
       cx='235.29411764705884'
       cy='444.4444444444445'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='282.3529411764706'
       cy='444.4444444444445'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='329.4117647058824'
       cy='444.4444444444445'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='376.47058823529414'
       cy='444.4444444444445'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='423.5294117647059'
       cy='444.4444444444445'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='470.5882352941177'
       cy='444.4444444444445'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='517.6470588235295'
       cy='444.4444444444445'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='564.7058823529412'
       cy='444.4444444444445'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='611.7647058823529'
       cy='444.4444444444445'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='658.8235294117646'
       cy='444.4444444444445'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='705.8823529411764'
       cy='444.4444444444445'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='752.9411764705881'
       cy='444.4444444444445'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='799.9999999999998'
       cy='444.4444444444445'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='0'
       cy='488.88888888888897'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='47.05882352941177'
       cy='488.88888888888897'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='94.11764705882354'
       cy='488.88888888888897'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='141.1764705882353'
       cy='488.88888888888897'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
@@ -5861,7 +5861,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
       r='3.2894736842105265'
       cx='235.29411764705884'
       cy='488.88888888888897'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
@@ -5874,42 +5874,42 @@ const wallpaperSVGstrings: SVGstringFn[] = [
       r='3.2894736842105265'
       cx='329.4117647058824'
       cy='488.88888888888897'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='376.47058823529414'
       cy='488.88888888888897'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='423.5294117647059'
       cy='488.88888888888897'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='470.5882352941177'
       cy='488.88888888888897'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='517.6470588235295'
       cy='488.88888888888897'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='564.7058823529412'
       cy='488.88888888888897'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
@@ -5922,14 +5922,14 @@ const wallpaperSVGstrings: SVGstringFn[] = [
       r='3.2894736842105265'
       cx='658.8235294117646'
       cy='488.88888888888897'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='705.8823529411764'
       cy='488.88888888888897'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
@@ -5942,14 +5942,14 @@ const wallpaperSVGstrings: SVGstringFn[] = [
       r='3.2894736842105265'
       cx='799.9999999999998'
       cy='488.88888888888897'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='0'
       cy='533.3333333333334'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
@@ -5962,7 +5962,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
       r='3.2894736842105265'
       cx='94.11764705882354'
       cy='533.3333333333334'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
@@ -5975,14 +5975,14 @@ const wallpaperSVGstrings: SVGstringFn[] = [
       r='3.2894736842105265'
       cx='188.23529411764707'
       cy='533.3333333333334'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='235.29411764705884'
       cy='533.3333333333334'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
@@ -6001,28 +6001,28 @@ const wallpaperSVGstrings: SVGstringFn[] = [
       r='3.2894736842105265'
       cx='376.47058823529414'
       cy='533.3333333333334'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='423.5294117647059'
       cy='533.3333333333334'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='470.5882352941177'
       cy='533.3333333333334'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='517.6470588235295'
       cy='533.3333333333334'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
@@ -6041,63 +6041,63 @@ const wallpaperSVGstrings: SVGstringFn[] = [
       r='3.2894736842105265'
       cx='658.8235294117646'
       cy='533.3333333333334'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='705.8823529411764'
       cy='533.3333333333334'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='752.9411764705881'
       cy='533.3333333333334'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='799.9999999999998'
       cy='533.3333333333334'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='0'
       cy='577.7777777777778'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='47.05882352941177'
       cy='577.7777777777778'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='94.11764705882354'
       cy='577.7777777777778'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='141.1764705882353'
       cy='577.7777777777778'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='188.23529411764707'
       cy='577.7777777777778'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
@@ -6110,14 +6110,14 @@ const wallpaperSVGstrings: SVGstringFn[] = [
       r='3.2894736842105265'
       cx='282.3529411764706'
       cy='577.7777777777778'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='329.4117647058824'
       cy='577.7777777777778'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
@@ -6130,35 +6130,35 @@ const wallpaperSVGstrings: SVGstringFn[] = [
       r='3.2894736842105265'
       cx='423.5294117647059'
       cy='577.7777777777778'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='470.5882352941177'
       cy='577.7777777777778'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='517.6470588235295'
       cy='577.7777777777778'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='564.7058823529412'
       cy='577.7777777777778'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='611.7647058823529'
       cy='577.7777777777778'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
@@ -6171,28 +6171,28 @@ const wallpaperSVGstrings: SVGstringFn[] = [
       r='3.2894736842105265'
       cx='705.8823529411764'
       cy='577.7777777777778'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='752.9411764705881'
       cy='577.7777777777778'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='799.9999999999998'
       cy='577.7777777777778'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='0'
       cy='622.2222222222223'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
@@ -6205,7 +6205,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
       r='3.2894736842105265'
       cx='94.11764705882354'
       cy='622.2222222222223'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
@@ -6218,14 +6218,14 @@ const wallpaperSVGstrings: SVGstringFn[] = [
       r='3.2894736842105265'
       cx='188.23529411764707'
       cy='622.2222222222223'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='235.29411764705884'
       cy='622.2222222222223'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
@@ -6238,14 +6238,14 @@ const wallpaperSVGstrings: SVGstringFn[] = [
       r='3.2894736842105265'
       cx='329.4117647058824'
       cy='622.2222222222223'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='376.47058823529414'
       cy='622.2222222222223'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
@@ -6258,21 +6258,21 @@ const wallpaperSVGstrings: SVGstringFn[] = [
       r='3.2894736842105265'
       cx='470.5882352941177'
       cy='622.2222222222223'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='517.6470588235295'
       cy='622.2222222222223'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='564.7058823529412'
       cy='622.2222222222223'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
@@ -6285,35 +6285,35 @@ const wallpaperSVGstrings: SVGstringFn[] = [
       r='3.2894736842105265'
       cx='658.8235294117646'
       cy='622.2222222222223'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='705.8823529411764'
       cy='622.2222222222223'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='752.9411764705881'
       cy='622.2222222222223'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='799.9999999999998'
       cy='622.2222222222223'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='0'
       cy='666.6666666666667'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
@@ -6326,49 +6326,49 @@ const wallpaperSVGstrings: SVGstringFn[] = [
       r='3.2894736842105265'
       cx='94.11764705882354'
       cy='666.6666666666667'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='141.1764705882353'
       cy='666.6666666666667'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='188.23529411764707'
       cy='666.6666666666667'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='235.29411764705884'
       cy='666.6666666666667'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='282.3529411764706'
       cy='666.6666666666667'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='329.4117647058824'
       cy='666.6666666666667'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='376.47058823529414'
       cy='666.6666666666667'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
@@ -6393,14 +6393,14 @@ const wallpaperSVGstrings: SVGstringFn[] = [
       r='3.2894736842105265'
       cx='564.7058823529412'
       cy='666.6666666666667'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='611.7647058823529'
       cy='666.6666666666667'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
@@ -6419,21 +6419,21 @@ const wallpaperSVGstrings: SVGstringFn[] = [
       r='3.2894736842105265'
       cx='752.9411764705881'
       cy='666.6666666666667'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='799.9999999999998'
       cy='666.6666666666667'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='0'
       cy='711.1111111111112'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
@@ -6446,56 +6446,56 @@ const wallpaperSVGstrings: SVGstringFn[] = [
       r='3.2894736842105265'
       cx='94.11764705882354'
       cy='711.1111111111112'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='141.1764705882353'
       cy='711.1111111111112'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='188.23529411764707'
       cy='711.1111111111112'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='235.29411764705884'
       cy='711.1111111111112'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='282.3529411764706'
       cy='711.1111111111112'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='329.4117647058824'
       cy='711.1111111111112'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='376.47058823529414'
       cy='711.1111111111112'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='423.5294117647059'
       cy='711.1111111111112'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
@@ -6508,28 +6508,28 @@ const wallpaperSVGstrings: SVGstringFn[] = [
       r='3.2894736842105265'
       cx='517.6470588235295'
       cy='711.1111111111112'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='564.7058823529412'
       cy='711.1111111111112'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='611.7647058823529'
       cy='711.1111111111112'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='658.8235294117646'
       cy='711.1111111111112'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
@@ -6542,49 +6542,49 @@ const wallpaperSVGstrings: SVGstringFn[] = [
       r='3.2894736842105265'
       cx='752.9411764705881'
       cy='711.1111111111112'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='799.9999999999998'
       cy='711.1111111111112'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='0'
       cy='755.5555555555557'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='47.05882352941177'
       cy='755.5555555555557'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='94.11764705882354'
       cy='755.5555555555557'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='141.1764705882353'
       cy='755.5555555555557'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='188.23529411764707'
       cy='755.5555555555557'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
@@ -6597,7 +6597,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
       r='3.2894736842105265'
       cx='282.3529411764706'
       cy='755.5555555555557'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
@@ -6616,7 +6616,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
       r='3.2894736842105265'
       cx='423.5294117647059'
       cy='755.5555555555557'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
@@ -6641,167 +6641,167 @@ const wallpaperSVGstrings: SVGstringFn[] = [
       r='3.2894736842105265'
       cx='611.7647058823529'
       cy='755.5555555555557'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='658.8235294117646'
       cy='755.5555555555557'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='705.8823529411764'
       cy='755.5555555555557'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='752.9411764705881'
       cy='755.5555555555557'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='799.9999999999998'
       cy='755.5555555555557'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='0'
       cy='800.0000000000001'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='47.05882352941177'
       cy='800.0000000000001'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='94.11764705882354'
       cy='800.0000000000001'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='141.1764705882353'
       cy='800.0000000000001'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='188.23529411764707'
       cy='800.0000000000001'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='235.29411764705884'
       cy='800.0000000000001'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='282.3529411764706'
       cy='800.0000000000001'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='329.4117647058824'
       cy='800.0000000000001'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='376.47058823529414'
       cy='800.0000000000001'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='423.5294117647059'
       cy='800.0000000000001'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='470.5882352941177'
       cy='800.0000000000001'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='517.6470588235295'
       cy='800.0000000000001'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='564.7058823529412'
       cy='800.0000000000001'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='611.7647058823529'
       cy='800.0000000000001'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='658.8235294117646'
       cy='800.0000000000001'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='705.8823529411764'
       cy='800.0000000000001'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='752.9411764705881'
       cy='800.0000000000001'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
     <circle
       r='3.2894736842105265'
       cx='799.9999999999998'
       cy='800.0000000000001'
-      fill='${color1}'
+      fill='${color0}'
       stroke='none'
     ></circle>
   </g>
     </svg>`,
 
-  ({ color1 = '#000000', color2 = '#00ff00' }) =>
+  ({ color0 = '#000000', color1 = '#00ff00' }) =>
     `<svg
       xmlns='http://www.w3.org/2000/svg'
       version='1.1'
@@ -6811,7 +6811,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
       width='800'
       height='800'
     >
-      <g stroke-width='1' stroke='${color1}' fill='none'>
+      <g stroke-width='1' stroke='${color0}' fill='none'>
         <rect
           width='6.578947368421053'
           height='6.578947368421053'
@@ -6950,7 +6950,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           height='6.578947368421053'
           x='43.76934984520124'
           y='41.154970760233915'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
           transform='rotate(45, 47.05882352941177, 44.44444444444444)'
         ></rect>
@@ -6959,7 +6959,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           height='6.578947368421053'
           x='90.82817337461302'
           y='41.154970760233915'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
           transform='rotate(45, 94.11764705882354, 44.44444444444444)'
         ></rect>
@@ -7010,7 +7010,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           height='6.578947368421053'
           x='420.2399380804954'
           y='41.154970760233915'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
           transform='rotate(45, 423.5294117647059, 44.44444444444444)'
         ></rect>
@@ -7187,7 +7187,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           height='6.578947368421053'
           x='749.6517027863775'
           y='85.59941520467837'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
           transform='rotate(45, 752.9411764705881, 88.88888888888889)'
         ></rect>
@@ -7231,7 +7231,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           height='6.578947368421053'
           x='184.94582043343655'
           y='130.0438596491228'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
           transform='rotate(45, 188.23529411764707, 133.33333333333331)'
         ></rect>
@@ -7240,7 +7240,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           height='6.578947368421053'
           x='232.00464396284832'
           y='130.0438596491228'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
           transform='rotate(45, 235.29411764705884, 133.33333333333331)'
         ></rect>
@@ -7256,7 +7256,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           height='6.578947368421053'
           x='326.12229102167186'
           y='130.0438596491228'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
           transform='rotate(45, 329.4117647058824, 133.33333333333331)'
         ></rect>
@@ -7265,7 +7265,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           height='6.578947368421053'
           x='373.1811145510836'
           y='130.0438596491228'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
           transform='rotate(45, 376.47058823529414, 133.33333333333331)'
         ></rect>
@@ -7358,7 +7358,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           height='6.578947368421053'
           x='137.88699690402478'
           y='174.48830409356725'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
           transform='rotate(45, 141.1764705882353, 177.77777777777777)'
         ></rect>
@@ -7381,7 +7381,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           height='6.578947368421053'
           x='279.0634674922601'
           y='174.48830409356725'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
           transform='rotate(45, 282.3529411764706, 177.77777777777777)'
         ></rect>
@@ -7439,7 +7439,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           height='6.578947368421053'
           x='655.5340557275541'
           y='174.48830409356725'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
           transform='rotate(45, 658.8235294117646, 177.77777777777777)'
         ></rect>
@@ -7448,7 +7448,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           height='6.578947368421053'
           x='702.5928792569658'
           y='174.48830409356725'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
           transform='rotate(45, 705.8823529411764, 177.77777777777777)'
         ></rect>
@@ -7492,7 +7492,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           height='6.578947368421053'
           x='137.88699690402478'
           y='218.9327485380117'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
           transform='rotate(45, 141.1764705882353, 222.22222222222223)'
         ></rect>
@@ -7508,7 +7508,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           height='6.578947368421053'
           x='232.00464396284832'
           y='218.9327485380117'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
           transform='rotate(45, 235.29411764705884, 222.22222222222223)'
         ></rect>
@@ -7524,7 +7524,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           height='6.578947368421053'
           x='326.12229102167186'
           y='218.9327485380117'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
           transform='rotate(45, 329.4117647058824, 222.22222222222223)'
         ></rect>
@@ -7610,7 +7610,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           height='6.578947368421053'
           x='43.76934984520124'
           y='263.37719298245617'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
           transform='rotate(45, 47.05882352941177, 266.6666666666667)'
         ></rect>
@@ -7640,7 +7640,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           height='6.578947368421053'
           x='232.00464396284832'
           y='263.37719298245617'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
           transform='rotate(45, 235.29411764705884, 266.6666666666667)'
         ></rect>
@@ -7698,7 +7698,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           height='6.578947368421053'
           x='608.4752321981424'
           y='263.37719298245617'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
           transform='rotate(45, 611.7647058823529, 266.6666666666667)'
         ></rect>
@@ -7721,7 +7721,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           height='6.578947368421053'
           x='749.6517027863775'
           y='263.37719298245617'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
           transform='rotate(45, 752.9411764705881, 266.6666666666667)'
         ></rect>
@@ -7744,7 +7744,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           height='6.578947368421053'
           x='43.76934984520124'
           y='307.8216374269006'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
           transform='rotate(45, 47.05882352941177, 311.11111111111114)'
         ></rect>
@@ -7760,7 +7760,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           height='6.578947368421053'
           x='137.88699690402478'
           y='307.8216374269006'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
           transform='rotate(45, 141.1764705882353, 311.11111111111114)'
         ></rect>
@@ -7783,7 +7783,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           height='6.578947368421053'
           x='279.0634674922601'
           y='307.8216374269006'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
           transform='rotate(45, 282.3529411764706, 311.11111111111114)'
         ></rect>
@@ -7792,7 +7792,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           height='6.578947368421053'
           x='326.12229102167186'
           y='307.8216374269006'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
           transform='rotate(45, 329.4117647058824, 311.11111111111114)'
         ></rect>
@@ -7808,7 +7808,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           height='6.578947368421053'
           x='420.2399380804954'
           y='307.8216374269006'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
           transform='rotate(45, 423.5294117647059, 311.11111111111114)'
         ></rect>
@@ -7831,7 +7831,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           height='6.578947368421053'
           x='561.4164086687307'
           y='307.8216374269006'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
           transform='rotate(45, 564.7058823529412, 311.11111111111114)'
         ></rect>
@@ -7840,7 +7840,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           height='6.578947368421053'
           x='608.4752321981424'
           y='307.8216374269006'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
           transform='rotate(45, 611.7647058823529, 311.11111111111114)'
         ></rect>
@@ -7856,7 +7856,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           height='6.578947368421053'
           x='702.5928792569658'
           y='307.8216374269006'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
           transform='rotate(45, 705.8823529411764, 311.11111111111114)'
         ></rect>
@@ -7886,7 +7886,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           height='6.578947368421053'
           x='43.76934984520124'
           y='352.2660818713451'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
           transform='rotate(45, 47.05882352941177, 355.5555555555556)'
         ></rect>
@@ -7958,7 +7958,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           height='6.578947368421053'
           x='514.357585139319'
           y='352.2660818713451'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
           transform='rotate(45, 517.6470588235295, 355.5555555555556)'
         ></rect>
@@ -7981,7 +7981,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           height='6.578947368421053'
           x='655.5340557275541'
           y='352.2660818713451'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
           transform='rotate(45, 658.8235294117646, 355.5555555555556)'
         ></rect>
@@ -8025,7 +8025,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           height='6.578947368421053'
           x='90.82817337461302'
           y='396.71052631578954'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
           transform='rotate(45, 94.11764705882354, 400.00000000000006)'
         ></rect>
@@ -8034,7 +8034,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           height='6.578947368421053'
           x='137.88699690402478'
           y='396.71052631578954'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
           transform='rotate(45, 141.1764705882353, 400.00000000000006)'
         ></rect>
@@ -8043,7 +8043,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           height='6.578947368421053'
           x='184.94582043343655'
           y='396.71052631578954'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
           transform='rotate(45, 188.23529411764707, 400.00000000000006)'
         ></rect>
@@ -8129,7 +8129,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           height='6.578947368421053'
           x='749.6517027863775'
           y='396.71052631578954'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
           transform='rotate(45, 752.9411764705881, 400.00000000000006)'
         ></rect>
@@ -8173,7 +8173,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           height='6.578947368421053'
           x='184.94582043343655'
           y='441.154970760234'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
           transform='rotate(45, 188.23529411764707, 444.4444444444445)'
         ></rect>
@@ -8182,7 +8182,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           height='6.578947368421053'
           x='232.00464396284832'
           y='441.154970760234'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
           transform='rotate(45, 235.29411764705884, 444.4444444444445)'
         ></rect>
@@ -8219,7 +8219,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           height='6.578947368421053'
           x='467.29876160990716'
           y='441.154970760234'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
           transform='rotate(45, 470.5882352941177, 444.4444444444445)'
         ></rect>
@@ -8228,7 +8228,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           height='6.578947368421053'
           x='514.357585139319'
           y='441.154970760234'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
           transform='rotate(45, 517.6470588235295, 444.4444444444445)'
         ></rect>
@@ -8237,7 +8237,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           height='6.578947368421053'
           x='561.4164086687307'
           y='441.154970760234'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
           transform='rotate(45, 564.7058823529412, 444.4444444444445)'
         ></rect>
@@ -8246,7 +8246,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           height='6.578947368421053'
           x='608.4752321981424'
           y='441.154970760234'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
           transform='rotate(45, 611.7647058823529, 444.4444444444445)'
         ></rect>
@@ -8262,7 +8262,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           height='6.578947368421053'
           x='702.5928792569658'
           y='441.154970760234'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
           transform='rotate(45, 705.8823529411764, 444.4444444444445)'
         ></rect>
@@ -8271,7 +8271,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           height='6.578947368421053'
           x='749.6517027863775'
           y='441.154970760234'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
           transform='rotate(45, 752.9411764705881, 444.4444444444445)'
         ></rect>
@@ -8378,7 +8378,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           height='6.578947368421053'
           x='608.4752321981424'
           y='485.59941520467845'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
           transform='rotate(45, 611.7647058823529, 488.88888888888897)'
         ></rect>
@@ -8387,7 +8387,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           height='6.578947368421053'
           x='655.5340557275541'
           y='485.59941520467845'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
           transform='rotate(45, 658.8235294117646, 488.88888888888897)'
         ></rect>
@@ -8438,7 +8438,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           height='6.578947368421053'
           x='137.88699690402478'
           y='530.0438596491229'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
           transform='rotate(45, 141.1764705882353, 533.3333333333334)'
         ></rect>
@@ -8468,7 +8468,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           height='6.578947368421053'
           x='326.12229102167186'
           y='530.0438596491229'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
           transform='rotate(45, 329.4117647058824, 533.3333333333334)'
         ></rect>
@@ -8561,7 +8561,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           height='6.578947368421053'
           x='90.82817337461302'
           y='574.4883040935673'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
           transform='rotate(45, 94.11764705882354, 577.7777777777778)'
         ></rect>
@@ -8570,7 +8570,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           height='6.578947368421053'
           x='137.88699690402478'
           y='574.4883040935673'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
           transform='rotate(45, 141.1764705882353, 577.7777777777778)'
         ></rect>
@@ -8600,7 +8600,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           height='6.578947368421053'
           x='326.12229102167186'
           y='574.4883040935673'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
           transform='rotate(45, 329.4117647058824, 577.7777777777778)'
         ></rect>
@@ -8665,7 +8665,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           height='6.578947368421053'
           x='749.6517027863775'
           y='574.4883040935673'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
           transform='rotate(45, 752.9411764705881, 577.7777777777778)'
         ></rect>
@@ -8695,7 +8695,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           height='6.578947368421053'
           x='90.82817337461302'
           y='618.9327485380118'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
           transform='rotate(45, 94.11764705882354, 622.2222222222223)'
         ></rect>
@@ -8711,7 +8711,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           height='6.578947368421053'
           x='184.94582043343655'
           y='618.9327485380118'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
           transform='rotate(45, 188.23529411764707, 622.2222222222223)'
         ></rect>
@@ -8734,7 +8734,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           height='6.578947368421053'
           x='326.12229102167186'
           y='618.9327485380118'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
           transform='rotate(45, 329.4117647058824, 622.2222222222223)'
         ></rect>
@@ -8757,7 +8757,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           height='6.578947368421053'
           x='467.29876160990716'
           y='618.9327485380118'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
           transform='rotate(45, 470.5882352941177, 622.2222222222223)'
         ></rect>
@@ -8773,7 +8773,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           height='6.578947368421053'
           x='561.4164086687307'
           y='618.9327485380118'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
           transform='rotate(45, 564.7058823529412, 622.2222222222223)'
         ></rect>
@@ -8866,7 +8866,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           height='6.578947368421053'
           x='326.12229102167186'
           y='663.3771929824562'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
           transform='rotate(45, 329.4117647058824, 666.6666666666667)'
         ></rect>
@@ -8896,7 +8896,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           height='6.578947368421053'
           x='514.357585139319'
           y='663.3771929824562'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
           transform='rotate(45, 517.6470588235295, 666.6666666666667)'
         ></rect>
@@ -8912,7 +8912,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           height='6.578947368421053'
           x='608.4752321981424'
           y='663.3771929824562'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
           transform='rotate(45, 611.7647058823529, 666.6666666666667)'
         ></rect>
@@ -8970,7 +8970,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           height='6.578947368421053'
           x='137.88699690402478'
           y='707.8216374269007'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
           transform='rotate(45, 141.1764705882353, 711.1111111111112)'
         ></rect>
@@ -9063,7 +9063,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           height='6.578947368421053'
           x='749.6517027863775'
           y='707.8216374269007'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
           transform='rotate(45, 752.9411764705881, 711.1111111111112)'
         ></rect>
@@ -9121,7 +9121,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           height='6.578947368421053'
           x='279.0634674922601'
           y='752.2660818713451'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
           transform='rotate(45, 282.3529411764706, 755.5555555555557)'
         ></rect>
@@ -9144,7 +9144,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           height='6.578947368421053'
           x='420.2399380804954'
           y='752.2660818713451'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
           transform='rotate(45, 423.5294117647059, 755.5555555555557)'
         ></rect>
@@ -9153,7 +9153,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           height='6.578947368421053'
           x='467.29876160990716'
           y='752.2660818713451'
-          fill='${color2}'
+          fill='${color1}'
           stroke='none'
           transform='rotate(45, 470.5882352941177, 755.5555555555557)'
         ></rect>
@@ -9335,7 +9335,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
       </g>
     </svg>`,
 
-  ({ color1 = '#000000' }) =>
+  ({ color0 = '#000000' }) =>
     `<svg
       xmlns='http://www.w3.org/2000/svg'
       version='1.1'
@@ -9344,7 +9344,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
       width='800'
       height='800'
     >
-      <g stroke-width='0.75' stroke='${color1}' fill='none'>
+      <g stroke-width='0.75' stroke='${color0}' fill='none'>
         <rect
           width='53.333333333333336'
           height='57.142857142857146'
@@ -9356,7 +9356,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='0'
           cy='0'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -9370,7 +9370,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='53.333333333333336'
           cy='0'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -9384,7 +9384,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='106.66666666666667'
           cy='0'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -9398,7 +9398,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='160'
           cy='0'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -9412,7 +9412,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='213.33333333333334'
           cy='0'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -9426,7 +9426,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='266.6666666666667'
           cy='0'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -9440,7 +9440,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='320'
           cy='0'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -9454,7 +9454,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='373.3333333333333'
           cy='0'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -9468,7 +9468,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='426.66666666666663'
           cy='0'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -9482,7 +9482,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='479.99999999999994'
           cy='0'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -9496,7 +9496,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='533.3333333333333'
           cy='0'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -9510,7 +9510,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='586.6666666666666'
           cy='0'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -9524,7 +9524,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='640'
           cy='0'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -9538,7 +9538,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='693.3333333333334'
           cy='0'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -9552,7 +9552,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='746.6666666666667'
           cy='0'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -9566,7 +9566,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='800.0000000000001'
           cy='0'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -9580,7 +9580,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='0'
           cy='57.142857142857146'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -9594,7 +9594,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='53.333333333333336'
           cy='57.142857142857146'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -9608,7 +9608,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='106.66666666666667'
           cy='57.142857142857146'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -9622,7 +9622,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='160'
           cy='57.142857142857146'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -9636,7 +9636,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='213.33333333333334'
           cy='57.142857142857146'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -9650,7 +9650,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='266.6666666666667'
           cy='57.142857142857146'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -9664,7 +9664,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='320'
           cy='57.142857142857146'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -9678,7 +9678,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='373.3333333333333'
           cy='57.142857142857146'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -9692,7 +9692,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='426.66666666666663'
           cy='57.142857142857146'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -9706,7 +9706,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='479.99999999999994'
           cy='57.142857142857146'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -9720,7 +9720,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='533.3333333333333'
           cy='57.142857142857146'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -9734,7 +9734,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='586.6666666666666'
           cy='57.142857142857146'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -9748,7 +9748,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='640'
           cy='57.142857142857146'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -9762,7 +9762,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='693.3333333333334'
           cy='57.142857142857146'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -9776,7 +9776,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='746.6666666666667'
           cy='57.142857142857146'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -9790,7 +9790,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='800.0000000000001'
           cy='57.142857142857146'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -9804,7 +9804,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='0'
           cy='114.28571428571429'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -9818,7 +9818,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='53.333333333333336'
           cy='114.28571428571429'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -9832,7 +9832,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='106.66666666666667'
           cy='114.28571428571429'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -9846,7 +9846,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='160'
           cy='114.28571428571429'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -9860,7 +9860,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='213.33333333333334'
           cy='114.28571428571429'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -9874,7 +9874,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='266.6666666666667'
           cy='114.28571428571429'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -9888,7 +9888,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='320'
           cy='114.28571428571429'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -9902,7 +9902,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='373.3333333333333'
           cy='114.28571428571429'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -9916,7 +9916,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='426.66666666666663'
           cy='114.28571428571429'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -9930,7 +9930,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='479.99999999999994'
           cy='114.28571428571429'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -9944,7 +9944,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='533.3333333333333'
           cy='114.28571428571429'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -9958,7 +9958,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='586.6666666666666'
           cy='114.28571428571429'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -9972,7 +9972,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='640'
           cy='114.28571428571429'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -9986,7 +9986,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='693.3333333333334'
           cy='114.28571428571429'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10000,7 +10000,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='746.6666666666667'
           cy='114.28571428571429'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10014,7 +10014,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='800.0000000000001'
           cy='114.28571428571429'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10028,7 +10028,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='0'
           cy='171.42857142857144'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10042,7 +10042,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='53.333333333333336'
           cy='171.42857142857144'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10056,7 +10056,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='106.66666666666667'
           cy='171.42857142857144'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10070,7 +10070,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='160'
           cy='171.42857142857144'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10084,7 +10084,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='213.33333333333334'
           cy='171.42857142857144'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10098,7 +10098,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='266.6666666666667'
           cy='171.42857142857144'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10112,7 +10112,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='320'
           cy='171.42857142857144'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10126,7 +10126,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='373.3333333333333'
           cy='171.42857142857144'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10140,7 +10140,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='426.66666666666663'
           cy='171.42857142857144'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10154,7 +10154,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='479.99999999999994'
           cy='171.42857142857144'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10168,7 +10168,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='533.3333333333333'
           cy='171.42857142857144'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10182,7 +10182,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='586.6666666666666'
           cy='171.42857142857144'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10196,7 +10196,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='640'
           cy='171.42857142857144'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10210,7 +10210,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='693.3333333333334'
           cy='171.42857142857144'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10224,7 +10224,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='746.6666666666667'
           cy='171.42857142857144'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10238,7 +10238,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='800.0000000000001'
           cy='171.42857142857144'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10252,7 +10252,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='0'
           cy='228.57142857142858'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10266,7 +10266,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='53.333333333333336'
           cy='228.57142857142858'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10280,7 +10280,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='106.66666666666667'
           cy='228.57142857142858'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10294,7 +10294,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='160'
           cy='228.57142857142858'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10308,7 +10308,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='213.33333333333334'
           cy='228.57142857142858'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10322,7 +10322,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='266.6666666666667'
           cy='228.57142857142858'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10336,7 +10336,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='320'
           cy='228.57142857142858'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10350,7 +10350,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='373.3333333333333'
           cy='228.57142857142858'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10364,7 +10364,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='426.66666666666663'
           cy='228.57142857142858'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10378,7 +10378,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='479.99999999999994'
           cy='228.57142857142858'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10392,7 +10392,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='533.3333333333333'
           cy='228.57142857142858'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10406,7 +10406,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='586.6666666666666'
           cy='228.57142857142858'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10420,7 +10420,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='640'
           cy='228.57142857142858'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10434,7 +10434,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='693.3333333333334'
           cy='228.57142857142858'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10448,7 +10448,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='746.6666666666667'
           cy='228.57142857142858'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10462,7 +10462,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='800.0000000000001'
           cy='228.57142857142858'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10476,7 +10476,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='0'
           cy='285.7142857142857'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10490,7 +10490,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='53.333333333333336'
           cy='285.7142857142857'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10504,7 +10504,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='106.66666666666667'
           cy='285.7142857142857'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10518,7 +10518,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='160'
           cy='285.7142857142857'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10532,7 +10532,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='213.33333333333334'
           cy='285.7142857142857'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10546,7 +10546,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='266.6666666666667'
           cy='285.7142857142857'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10560,7 +10560,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='320'
           cy='285.7142857142857'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10574,7 +10574,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='373.3333333333333'
           cy='285.7142857142857'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10588,7 +10588,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='426.66666666666663'
           cy='285.7142857142857'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10602,7 +10602,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='479.99999999999994'
           cy='285.7142857142857'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10616,7 +10616,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='533.3333333333333'
           cy='285.7142857142857'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10630,7 +10630,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='586.6666666666666'
           cy='285.7142857142857'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10644,7 +10644,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='640'
           cy='285.7142857142857'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10658,7 +10658,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='693.3333333333334'
           cy='285.7142857142857'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10672,7 +10672,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='746.6666666666667'
           cy='285.7142857142857'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10686,7 +10686,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='800.0000000000001'
           cy='285.7142857142857'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10700,7 +10700,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='0'
           cy='342.8571428571429'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10714,7 +10714,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='53.333333333333336'
           cy='342.8571428571429'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10728,7 +10728,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='106.66666666666667'
           cy='342.8571428571429'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10742,7 +10742,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='160'
           cy='342.8571428571429'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10756,7 +10756,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='213.33333333333334'
           cy='342.8571428571429'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10770,7 +10770,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='266.6666666666667'
           cy='342.8571428571429'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10784,7 +10784,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='320'
           cy='342.8571428571429'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10798,7 +10798,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='373.3333333333333'
           cy='342.8571428571429'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10812,7 +10812,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='426.66666666666663'
           cy='342.8571428571429'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10826,7 +10826,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='479.99999999999994'
           cy='342.8571428571429'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10840,7 +10840,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='533.3333333333333'
           cy='342.8571428571429'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10854,7 +10854,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='586.6666666666666'
           cy='342.8571428571429'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10868,7 +10868,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='640'
           cy='342.8571428571429'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10882,7 +10882,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='693.3333333333334'
           cy='342.8571428571429'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10896,7 +10896,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='746.6666666666667'
           cy='342.8571428571429'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10910,7 +10910,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='800.0000000000001'
           cy='342.8571428571429'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10924,7 +10924,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='0'
           cy='400.00000000000006'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10938,7 +10938,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='53.333333333333336'
           cy='400.00000000000006'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10952,7 +10952,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='106.66666666666667'
           cy='400.00000000000006'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10966,7 +10966,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='160'
           cy='400.00000000000006'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10980,7 +10980,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='213.33333333333334'
           cy='400.00000000000006'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -10994,7 +10994,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='266.6666666666667'
           cy='400.00000000000006'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11008,7 +11008,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='320'
           cy='400.00000000000006'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11022,7 +11022,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='373.3333333333333'
           cy='400.00000000000006'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11036,7 +11036,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='426.66666666666663'
           cy='400.00000000000006'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11050,7 +11050,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='479.99999999999994'
           cy='400.00000000000006'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11064,7 +11064,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='533.3333333333333'
           cy='400.00000000000006'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11078,7 +11078,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='586.6666666666666'
           cy='400.00000000000006'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11092,7 +11092,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='640'
           cy='400.00000000000006'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11106,7 +11106,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='693.3333333333334'
           cy='400.00000000000006'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11120,7 +11120,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='746.6666666666667'
           cy='400.00000000000006'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11134,7 +11134,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='800.0000000000001'
           cy='400.00000000000006'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11148,7 +11148,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='0'
           cy='457.1428571428572'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11162,7 +11162,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='53.333333333333336'
           cy='457.1428571428572'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11176,7 +11176,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='106.66666666666667'
           cy='457.1428571428572'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11190,7 +11190,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='160'
           cy='457.1428571428572'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11204,7 +11204,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='213.33333333333334'
           cy='457.1428571428572'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11218,7 +11218,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='266.6666666666667'
           cy='457.1428571428572'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11232,7 +11232,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='320'
           cy='457.1428571428572'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11246,7 +11246,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='373.3333333333333'
           cy='457.1428571428572'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11260,7 +11260,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='426.66666666666663'
           cy='457.1428571428572'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11274,7 +11274,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='479.99999999999994'
           cy='457.1428571428572'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11288,7 +11288,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='533.3333333333333'
           cy='457.1428571428572'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11302,7 +11302,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='586.6666666666666'
           cy='457.1428571428572'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11316,7 +11316,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='640'
           cy='457.1428571428572'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11330,7 +11330,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='693.3333333333334'
           cy='457.1428571428572'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11344,7 +11344,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='746.6666666666667'
           cy='457.1428571428572'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11358,7 +11358,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='800.0000000000001'
           cy='457.1428571428572'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11372,7 +11372,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='0'
           cy='514.2857142857143'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11386,7 +11386,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='53.333333333333336'
           cy='514.2857142857143'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11400,7 +11400,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='106.66666666666667'
           cy='514.2857142857143'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11414,7 +11414,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='160'
           cy='514.2857142857143'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11428,7 +11428,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='213.33333333333334'
           cy='514.2857142857143'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11442,7 +11442,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='266.6666666666667'
           cy='514.2857142857143'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11456,7 +11456,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='320'
           cy='514.2857142857143'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11470,7 +11470,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='373.3333333333333'
           cy='514.2857142857143'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11484,7 +11484,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='426.66666666666663'
           cy='514.2857142857143'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11498,7 +11498,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='479.99999999999994'
           cy='514.2857142857143'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11512,7 +11512,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='533.3333333333333'
           cy='514.2857142857143'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11526,7 +11526,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='586.6666666666666'
           cy='514.2857142857143'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11540,7 +11540,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='640'
           cy='514.2857142857143'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11554,7 +11554,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='693.3333333333334'
           cy='514.2857142857143'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11568,7 +11568,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='746.6666666666667'
           cy='514.2857142857143'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11582,7 +11582,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='800.0000000000001'
           cy='514.2857142857143'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11596,7 +11596,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='0'
           cy='571.4285714285714'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11610,7 +11610,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='53.333333333333336'
           cy='571.4285714285714'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11624,7 +11624,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='106.66666666666667'
           cy='571.4285714285714'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11638,7 +11638,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='160'
           cy='571.4285714285714'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11652,7 +11652,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='213.33333333333334'
           cy='571.4285714285714'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11666,7 +11666,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='266.6666666666667'
           cy='571.4285714285714'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11680,7 +11680,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='320'
           cy='571.4285714285714'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11694,7 +11694,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='373.3333333333333'
           cy='571.4285714285714'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11708,7 +11708,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='426.66666666666663'
           cy='571.4285714285714'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11722,7 +11722,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='479.99999999999994'
           cy='571.4285714285714'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11736,7 +11736,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='533.3333333333333'
           cy='571.4285714285714'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11750,7 +11750,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='586.6666666666666'
           cy='571.4285714285714'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11764,7 +11764,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='640'
           cy='571.4285714285714'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11778,7 +11778,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='693.3333333333334'
           cy='571.4285714285714'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11792,7 +11792,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='746.6666666666667'
           cy='571.4285714285714'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11806,7 +11806,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='800.0000000000001'
           cy='571.4285714285714'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11820,7 +11820,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='0'
           cy='628.5714285714286'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11834,7 +11834,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='53.333333333333336'
           cy='628.5714285714286'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11848,7 +11848,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='106.66666666666667'
           cy='628.5714285714286'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11862,7 +11862,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='160'
           cy='628.5714285714286'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11876,7 +11876,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='213.33333333333334'
           cy='628.5714285714286'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11890,7 +11890,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='266.6666666666667'
           cy='628.5714285714286'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11904,7 +11904,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='320'
           cy='628.5714285714286'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11918,7 +11918,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='373.3333333333333'
           cy='628.5714285714286'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11932,7 +11932,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='426.66666666666663'
           cy='628.5714285714286'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11946,7 +11946,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='479.99999999999994'
           cy='628.5714285714286'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11960,7 +11960,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='533.3333333333333'
           cy='628.5714285714286'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11974,7 +11974,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='586.6666666666666'
           cy='628.5714285714286'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -11988,7 +11988,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='640'
           cy='628.5714285714286'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -12002,7 +12002,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='693.3333333333334'
           cy='628.5714285714286'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -12016,7 +12016,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='746.6666666666667'
           cy='628.5714285714286'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -12030,7 +12030,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='800.0000000000001'
           cy='628.5714285714286'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -12044,7 +12044,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='0'
           cy='685.7142857142857'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -12058,7 +12058,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='53.333333333333336'
           cy='685.7142857142857'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -12072,7 +12072,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='106.66666666666667'
           cy='685.7142857142857'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -12086,7 +12086,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='160'
           cy='685.7142857142857'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -12100,7 +12100,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='213.33333333333334'
           cy='685.7142857142857'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -12114,7 +12114,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='266.6666666666667'
           cy='685.7142857142857'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -12128,7 +12128,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='320'
           cy='685.7142857142857'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -12142,7 +12142,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='373.3333333333333'
           cy='685.7142857142857'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -12156,7 +12156,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='426.66666666666663'
           cy='685.7142857142857'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -12170,7 +12170,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='479.99999999999994'
           cy='685.7142857142857'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -12184,7 +12184,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='533.3333333333333'
           cy='685.7142857142857'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -12198,7 +12198,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='586.6666666666666'
           cy='685.7142857142857'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -12212,7 +12212,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='640'
           cy='685.7142857142857'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -12226,7 +12226,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='693.3333333333334'
           cy='685.7142857142857'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -12240,7 +12240,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='746.6666666666667'
           cy='685.7142857142857'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -12254,7 +12254,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='800.0000000000001'
           cy='685.7142857142857'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -12268,7 +12268,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='0'
           cy='742.8571428571428'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -12282,7 +12282,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='53.333333333333336'
           cy='742.8571428571428'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -12296,7 +12296,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='106.66666666666667'
           cy='742.8571428571428'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -12310,7 +12310,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='160'
           cy='742.8571428571428'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -12324,7 +12324,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='213.33333333333334'
           cy='742.8571428571428'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -12338,7 +12338,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='266.6666666666667'
           cy='742.8571428571428'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -12352,7 +12352,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='320'
           cy='742.8571428571428'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -12366,7 +12366,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='373.3333333333333'
           cy='742.8571428571428'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -12380,7 +12380,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='426.66666666666663'
           cy='742.8571428571428'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -12394,7 +12394,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='479.99999999999994'
           cy='742.8571428571428'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -12408,7 +12408,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='533.3333333333333'
           cy='742.8571428571428'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -12422,7 +12422,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='586.6666666666666'
           cy='742.8571428571428'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -12436,7 +12436,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='640'
           cy='742.8571428571428'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -12450,7 +12450,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='693.3333333333334'
           cy='742.8571428571428'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -12464,7 +12464,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='746.6666666666667'
           cy='742.8571428571428'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -12478,7 +12478,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='800.0000000000001'
           cy='742.8571428571428'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -12492,7 +12492,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='0'
           cy='799.9999999999999'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -12506,7 +12506,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='53.333333333333336'
           cy='799.9999999999999'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -12520,7 +12520,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='106.66666666666667'
           cy='799.9999999999999'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -12534,7 +12534,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='160'
           cy='799.9999999999999'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -12548,7 +12548,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='213.33333333333334'
           cy='799.9999999999999'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -12562,7 +12562,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='266.6666666666667'
           cy='799.9999999999999'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -12576,7 +12576,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='320'
           cy='799.9999999999999'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -12590,7 +12590,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='373.3333333333333'
           cy='799.9999999999999'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -12604,7 +12604,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='426.66666666666663'
           cy='799.9999999999999'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -12618,7 +12618,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='479.99999999999994'
           cy='799.9999999999999'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -12632,7 +12632,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='533.3333333333333'
           cy='799.9999999999999'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -12646,7 +12646,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='586.6666666666666'
           cy='799.9999999999999'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -12660,7 +12660,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='640'
           cy='799.9999999999999'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -12674,7 +12674,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='693.3333333333334'
           cy='799.9999999999999'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -12688,7 +12688,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='746.6666666666667'
           cy='799.9999999999999'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
         <rect
@@ -12702,13 +12702,13 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           r='4.342105263157895'
           cx='800.0000000000001'
           cy='799.9999999999999'
-          fill='${color1}'
+          fill='${color0}'
           stroke='none'
         ></circle>
       </g>
     </svg>`,
 
-  ({ color1 = '#000000' }) =>
+  ({ color0 = '#000000' }) =>
     `<svg
       xmlns='http://www.w3.org/2000/svg'
       version='1.1'
@@ -12717,14 +12717,14 @@ const wallpaperSVGstrings: SVGstringFn[] = [
       width='800'
       height='800'
     >
-      <g stroke-width='0.75' stroke='${color1}' fill='none'>
+      <g stroke-width='0.75' stroke='${color0}' fill='none'>
         <rect
           width='26.666666666666668'
           height='1.631578947368421'
           x='-13.333333333333334'
           y='-0.8157894736842105'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -12733,7 +12733,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='-0.8157894736842105'
           y='-13.333333333333334'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -12742,7 +12742,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='40'
           y='-0.8157894736842105'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -12751,7 +12751,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='52.51754385964912'
           y='-13.333333333333334'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -12760,7 +12760,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='93.33333333333334'
           y='-0.8157894736842105'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -12769,7 +12769,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='105.85087719298247'
           y='-13.333333333333334'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -12778,7 +12778,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='146.66666666666666'
           y='-0.8157894736842105'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -12787,7 +12787,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='159.18421052631578'
           y='-13.333333333333334'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -12796,7 +12796,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='200'
           y='-0.8157894736842105'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -12805,7 +12805,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='212.51754385964912'
           y='-13.333333333333334'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -12814,7 +12814,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='253.33333333333334'
           y='-0.8157894736842105'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -12823,7 +12823,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='265.85087719298247'
           y='-13.333333333333334'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -12832,7 +12832,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='306.6666666666667'
           y='-0.8157894736842105'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -12841,7 +12841,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='319.1842105263158'
           y='-13.333333333333334'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -12850,7 +12850,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='360'
           y='-0.8157894736842105'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -12859,7 +12859,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='372.5175438596491'
           y='-13.333333333333334'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -12868,7 +12868,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='413.3333333333333'
           y='-0.8157894736842105'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -12877,7 +12877,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='425.8508771929824'
           y='-13.333333333333334'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -12886,7 +12886,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='466.66666666666663'
           y='-0.8157894736842105'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -12895,7 +12895,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='479.1842105263157'
           y='-13.333333333333334'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -12904,7 +12904,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='519.9999999999999'
           y='-0.8157894736842105'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -12913,7 +12913,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='532.5175438596491'
           y='-13.333333333333334'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -12922,7 +12922,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='573.3333333333333'
           y='-0.8157894736842105'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -12931,7 +12931,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='585.8508771929825'
           y='-13.333333333333334'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -12940,7 +12940,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='626.6666666666666'
           y='-0.8157894736842105'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -12949,7 +12949,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='639.1842105263158'
           y='-13.333333333333334'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -12958,7 +12958,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='680'
           y='-0.8157894736842105'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -12967,7 +12967,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='692.5175438596492'
           y='-13.333333333333334'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -12976,7 +12976,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='733.3333333333334'
           y='-0.8157894736842105'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -12985,7 +12985,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='745.8508771929826'
           y='-13.333333333333334'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -12994,7 +12994,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='786.6666666666667'
           y='-0.8157894736842105'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13003,7 +13003,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='799.184210526316'
           y='-13.333333333333334'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13012,7 +13012,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='-13.333333333333334'
           y='56.32706766917293'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13021,7 +13021,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='-0.8157894736842105'
           y='43.80952380952381'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13030,7 +13030,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='40'
           y='56.32706766917293'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13039,7 +13039,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='52.51754385964912'
           y='43.80952380952381'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13048,7 +13048,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='93.33333333333334'
           y='56.32706766917293'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13057,7 +13057,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='105.85087719298247'
           y='43.80952380952381'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13066,7 +13066,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='146.66666666666666'
           y='56.32706766917293'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13075,7 +13075,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='159.18421052631578'
           y='43.80952380952381'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13084,7 +13084,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='200'
           y='56.32706766917293'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13093,7 +13093,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='212.51754385964912'
           y='43.80952380952381'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13102,7 +13102,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='253.33333333333334'
           y='56.32706766917293'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13111,7 +13111,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='265.85087719298247'
           y='43.80952380952381'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13120,7 +13120,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='306.6666666666667'
           y='56.32706766917293'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13129,7 +13129,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='319.1842105263158'
           y='43.80952380952381'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13138,7 +13138,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='360'
           y='56.32706766917293'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13147,7 +13147,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='372.5175438596491'
           y='43.80952380952381'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13156,7 +13156,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='413.3333333333333'
           y='56.32706766917293'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13165,7 +13165,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='425.8508771929824'
           y='43.80952380952381'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13174,7 +13174,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='466.66666666666663'
           y='56.32706766917293'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13183,7 +13183,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='479.1842105263157'
           y='43.80952380952381'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13192,7 +13192,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='519.9999999999999'
           y='56.32706766917293'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13201,7 +13201,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='532.5175438596491'
           y='43.80952380952381'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13210,7 +13210,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='573.3333333333333'
           y='56.32706766917293'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13219,7 +13219,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='585.8508771929825'
           y='43.80952380952381'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13228,7 +13228,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='626.6666666666666'
           y='56.32706766917293'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13237,7 +13237,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='639.1842105263158'
           y='43.80952380952381'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13246,7 +13246,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='680'
           y='56.32706766917293'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13255,7 +13255,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='692.5175438596492'
           y='43.80952380952381'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13264,7 +13264,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='733.3333333333334'
           y='56.32706766917293'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13273,7 +13273,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='745.8508771929826'
           y='43.80952380952381'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13282,7 +13282,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='786.6666666666667'
           y='56.32706766917293'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13291,7 +13291,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='799.184210526316'
           y='43.80952380952381'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13300,7 +13300,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='-13.333333333333334'
           y='113.46992481203009'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13309,7 +13309,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='-0.8157894736842105'
           y='100.95238095238096'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13318,7 +13318,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='40'
           y='113.46992481203009'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13327,7 +13327,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='52.51754385964912'
           y='100.95238095238096'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13336,7 +13336,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='93.33333333333334'
           y='113.46992481203009'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13345,7 +13345,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='105.85087719298247'
           y='100.95238095238096'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13354,7 +13354,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='146.66666666666666'
           y='113.46992481203009'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13363,7 +13363,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='159.18421052631578'
           y='100.95238095238096'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13372,7 +13372,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='200'
           y='113.46992481203009'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13381,7 +13381,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='212.51754385964912'
           y='100.95238095238096'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13390,7 +13390,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='253.33333333333334'
           y='113.46992481203009'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13399,7 +13399,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='265.85087719298247'
           y='100.95238095238096'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13408,7 +13408,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='306.6666666666667'
           y='113.46992481203009'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13417,7 +13417,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='319.1842105263158'
           y='100.95238095238096'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13426,7 +13426,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='360'
           y='113.46992481203009'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13435,7 +13435,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='372.5175438596491'
           y='100.95238095238096'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13444,7 +13444,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='413.3333333333333'
           y='113.46992481203009'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13453,7 +13453,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='425.8508771929824'
           y='100.95238095238096'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13462,7 +13462,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='466.66666666666663'
           y='113.46992481203009'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13471,7 +13471,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='479.1842105263157'
           y='100.95238095238096'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13480,7 +13480,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='519.9999999999999'
           y='113.46992481203009'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13489,7 +13489,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='532.5175438596491'
           y='100.95238095238096'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13498,7 +13498,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='573.3333333333333'
           y='113.46992481203009'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13507,7 +13507,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='585.8508771929825'
           y='100.95238095238096'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13516,7 +13516,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='626.6666666666666'
           y='113.46992481203009'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13525,7 +13525,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='639.1842105263158'
           y='100.95238095238096'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13534,7 +13534,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='680'
           y='113.46992481203009'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13543,7 +13543,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='692.5175438596492'
           y='100.95238095238096'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13552,7 +13552,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='733.3333333333334'
           y='113.46992481203009'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13561,7 +13561,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='745.8508771929826'
           y='100.95238095238096'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13570,7 +13570,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='786.6666666666667'
           y='113.46992481203009'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13579,7 +13579,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='799.184210526316'
           y='100.95238095238096'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13588,7 +13588,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='-13.333333333333334'
           y='170.61278195488723'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13597,7 +13597,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='-0.8157894736842105'
           y='158.0952380952381'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13606,7 +13606,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='40'
           y='170.61278195488723'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13615,7 +13615,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='52.51754385964912'
           y='158.0952380952381'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13624,7 +13624,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='93.33333333333334'
           y='170.61278195488723'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13633,7 +13633,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='105.85087719298247'
           y='158.0952380952381'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13642,7 +13642,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='146.66666666666666'
           y='170.61278195488723'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13651,7 +13651,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='159.18421052631578'
           y='158.0952380952381'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13660,7 +13660,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='200'
           y='170.61278195488723'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13669,7 +13669,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='212.51754385964912'
           y='158.0952380952381'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13678,7 +13678,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='253.33333333333334'
           y='170.61278195488723'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13687,7 +13687,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='265.85087719298247'
           y='158.0952380952381'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13696,7 +13696,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='306.6666666666667'
           y='170.61278195488723'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13705,7 +13705,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='319.1842105263158'
           y='158.0952380952381'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13714,7 +13714,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='360'
           y='170.61278195488723'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13723,7 +13723,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='372.5175438596491'
           y='158.0952380952381'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13732,7 +13732,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='413.3333333333333'
           y='170.61278195488723'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13741,7 +13741,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='425.8508771929824'
           y='158.0952380952381'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13750,7 +13750,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='466.66666666666663'
           y='170.61278195488723'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13759,7 +13759,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='479.1842105263157'
           y='158.0952380952381'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13768,7 +13768,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='519.9999999999999'
           y='170.61278195488723'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13777,7 +13777,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='532.5175438596491'
           y='158.0952380952381'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13786,7 +13786,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='573.3333333333333'
           y='170.61278195488723'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13795,7 +13795,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='585.8508771929825'
           y='158.0952380952381'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13804,7 +13804,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='626.6666666666666'
           y='170.61278195488723'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13813,7 +13813,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='639.1842105263158'
           y='158.0952380952381'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13822,7 +13822,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='680'
           y='170.61278195488723'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13831,7 +13831,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='692.5175438596492'
           y='158.0952380952381'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13840,7 +13840,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='733.3333333333334'
           y='170.61278195488723'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13849,7 +13849,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='745.8508771929826'
           y='158.0952380952381'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13858,7 +13858,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='786.6666666666667'
           y='170.61278195488723'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13867,7 +13867,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='799.184210526316'
           y='158.0952380952381'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13876,7 +13876,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='-13.333333333333334'
           y='227.75563909774436'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13885,7 +13885,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='-0.8157894736842105'
           y='215.23809523809524'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13894,7 +13894,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='40'
           y='227.75563909774436'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13903,7 +13903,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='52.51754385964912'
           y='215.23809523809524'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13912,7 +13912,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='93.33333333333334'
           y='227.75563909774436'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13921,7 +13921,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='105.85087719298247'
           y='215.23809523809524'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13930,7 +13930,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='146.66666666666666'
           y='227.75563909774436'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13939,7 +13939,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='159.18421052631578'
           y='215.23809523809524'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13948,7 +13948,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='200'
           y='227.75563909774436'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13957,7 +13957,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='212.51754385964912'
           y='215.23809523809524'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13966,7 +13966,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='253.33333333333334'
           y='227.75563909774436'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13975,7 +13975,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='265.85087719298247'
           y='215.23809523809524'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13984,7 +13984,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='306.6666666666667'
           y='227.75563909774436'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -13993,7 +13993,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='319.1842105263158'
           y='215.23809523809524'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14002,7 +14002,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='360'
           y='227.75563909774436'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14011,7 +14011,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='372.5175438596491'
           y='215.23809523809524'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14020,7 +14020,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='413.3333333333333'
           y='227.75563909774436'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14029,7 +14029,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='425.8508771929824'
           y='215.23809523809524'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14038,7 +14038,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='466.66666666666663'
           y='227.75563909774436'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14047,7 +14047,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='479.1842105263157'
           y='215.23809523809524'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14056,7 +14056,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='519.9999999999999'
           y='227.75563909774436'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14065,7 +14065,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='532.5175438596491'
           y='215.23809523809524'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14074,7 +14074,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='573.3333333333333'
           y='227.75563909774436'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14083,7 +14083,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='585.8508771929825'
           y='215.23809523809524'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14092,7 +14092,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='626.6666666666666'
           y='227.75563909774436'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14101,7 +14101,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='639.1842105263158'
           y='215.23809523809524'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14110,7 +14110,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='680'
           y='227.75563909774436'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14119,7 +14119,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='692.5175438596492'
           y='215.23809523809524'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14128,7 +14128,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='733.3333333333334'
           y='227.75563909774436'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14137,7 +14137,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='745.8508771929826'
           y='215.23809523809524'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14146,7 +14146,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='786.6666666666667'
           y='227.75563909774436'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14155,7 +14155,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='799.184210526316'
           y='215.23809523809524'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14164,7 +14164,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='-13.333333333333334'
           y='284.8984962406015'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14173,7 +14173,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='-0.8157894736842105'
           y='272.3809523809524'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14182,7 +14182,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='40'
           y='284.8984962406015'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14191,7 +14191,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='52.51754385964912'
           y='272.3809523809524'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14200,7 +14200,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='93.33333333333334'
           y='284.8984962406015'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14209,7 +14209,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='105.85087719298247'
           y='272.3809523809524'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14218,7 +14218,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='146.66666666666666'
           y='284.8984962406015'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14227,7 +14227,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='159.18421052631578'
           y='272.3809523809524'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14236,7 +14236,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='200'
           y='284.8984962406015'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14245,7 +14245,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='212.51754385964912'
           y='272.3809523809524'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14254,7 +14254,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='253.33333333333334'
           y='284.8984962406015'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14263,7 +14263,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='265.85087719298247'
           y='272.3809523809524'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14272,7 +14272,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='306.6666666666667'
           y='284.8984962406015'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14281,7 +14281,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='319.1842105263158'
           y='272.3809523809524'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14290,7 +14290,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='360'
           y='284.8984962406015'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14299,7 +14299,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='372.5175438596491'
           y='272.3809523809524'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14308,7 +14308,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='413.3333333333333'
           y='284.8984962406015'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14317,7 +14317,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='425.8508771929824'
           y='272.3809523809524'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14326,7 +14326,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='466.66666666666663'
           y='284.8984962406015'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14335,7 +14335,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='479.1842105263157'
           y='272.3809523809524'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14344,7 +14344,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='519.9999999999999'
           y='284.8984962406015'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14353,7 +14353,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='532.5175438596491'
           y='272.3809523809524'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14362,7 +14362,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='573.3333333333333'
           y='284.8984962406015'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14371,7 +14371,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='585.8508771929825'
           y='272.3809523809524'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14380,7 +14380,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='626.6666666666666'
           y='284.8984962406015'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14389,7 +14389,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='639.1842105263158'
           y='272.3809523809524'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14398,7 +14398,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='680'
           y='284.8984962406015'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14407,7 +14407,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='692.5175438596492'
           y='272.3809523809524'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14416,7 +14416,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='733.3333333333334'
           y='284.8984962406015'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14425,7 +14425,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='745.8508771929826'
           y='272.3809523809524'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14434,7 +14434,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='786.6666666666667'
           y='284.8984962406015'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14443,7 +14443,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='799.184210526316'
           y='272.3809523809524'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14452,7 +14452,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='-13.333333333333334'
           y='342.04135338345867'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14461,7 +14461,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='-0.8157894736842105'
           y='329.5238095238096'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14470,7 +14470,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='40'
           y='342.04135338345867'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14479,7 +14479,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='52.51754385964912'
           y='329.5238095238096'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14488,7 +14488,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='93.33333333333334'
           y='342.04135338345867'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14497,7 +14497,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='105.85087719298247'
           y='329.5238095238096'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14506,7 +14506,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='146.66666666666666'
           y='342.04135338345867'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14515,7 +14515,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='159.18421052631578'
           y='329.5238095238096'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14524,7 +14524,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='200'
           y='342.04135338345867'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14533,7 +14533,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='212.51754385964912'
           y='329.5238095238096'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14542,7 +14542,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='253.33333333333334'
           y='342.04135338345867'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14551,7 +14551,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='265.85087719298247'
           y='329.5238095238096'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14560,7 +14560,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='306.6666666666667'
           y='342.04135338345867'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14569,7 +14569,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='319.1842105263158'
           y='329.5238095238096'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14578,7 +14578,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='360'
           y='342.04135338345867'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14587,7 +14587,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='372.5175438596491'
           y='329.5238095238096'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14596,7 +14596,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='413.3333333333333'
           y='342.04135338345867'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14605,7 +14605,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='425.8508771929824'
           y='329.5238095238096'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14614,7 +14614,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='466.66666666666663'
           y='342.04135338345867'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14623,7 +14623,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='479.1842105263157'
           y='329.5238095238096'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14632,7 +14632,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='519.9999999999999'
           y='342.04135338345867'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14641,7 +14641,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='532.5175438596491'
           y='329.5238095238096'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14650,7 +14650,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='573.3333333333333'
           y='342.04135338345867'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14659,7 +14659,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='585.8508771929825'
           y='329.5238095238096'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14668,7 +14668,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='626.6666666666666'
           y='342.04135338345867'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14677,7 +14677,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='639.1842105263158'
           y='329.5238095238096'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14686,7 +14686,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='680'
           y='342.04135338345867'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14695,7 +14695,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='692.5175438596492'
           y='329.5238095238096'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14704,7 +14704,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='733.3333333333334'
           y='342.04135338345867'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14713,7 +14713,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='745.8508771929826'
           y='329.5238095238096'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14722,7 +14722,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='786.6666666666667'
           y='342.04135338345867'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14731,7 +14731,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='799.184210526316'
           y='329.5238095238096'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14740,7 +14740,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='-13.333333333333334'
           y='399.18421052631584'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14749,7 +14749,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='-0.8157894736842105'
           y='386.66666666666674'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14758,7 +14758,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='40'
           y='399.18421052631584'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14767,7 +14767,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='52.51754385964912'
           y='386.66666666666674'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14776,7 +14776,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='93.33333333333334'
           y='399.18421052631584'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14785,7 +14785,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='105.85087719298247'
           y='386.66666666666674'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14794,7 +14794,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='146.66666666666666'
           y='399.18421052631584'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14803,7 +14803,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='159.18421052631578'
           y='386.66666666666674'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14812,7 +14812,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='200'
           y='399.18421052631584'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14821,7 +14821,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='212.51754385964912'
           y='386.66666666666674'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14830,7 +14830,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='253.33333333333334'
           y='399.18421052631584'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14839,7 +14839,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='265.85087719298247'
           y='386.66666666666674'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14848,7 +14848,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='306.6666666666667'
           y='399.18421052631584'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14857,7 +14857,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='319.1842105263158'
           y='386.66666666666674'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14866,7 +14866,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='360'
           y='399.18421052631584'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14875,7 +14875,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='372.5175438596491'
           y='386.66666666666674'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14884,7 +14884,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='413.3333333333333'
           y='399.18421052631584'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14893,7 +14893,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='425.8508771929824'
           y='386.66666666666674'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14902,7 +14902,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='466.66666666666663'
           y='399.18421052631584'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14911,7 +14911,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='479.1842105263157'
           y='386.66666666666674'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14920,7 +14920,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='519.9999999999999'
           y='399.18421052631584'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14929,7 +14929,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='532.5175438596491'
           y='386.66666666666674'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14938,7 +14938,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='573.3333333333333'
           y='399.18421052631584'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14947,7 +14947,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='585.8508771929825'
           y='386.66666666666674'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14956,7 +14956,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='626.6666666666666'
           y='399.18421052631584'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14965,7 +14965,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='639.1842105263158'
           y='386.66666666666674'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14974,7 +14974,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='680'
           y='399.18421052631584'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14983,7 +14983,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='692.5175438596492'
           y='386.66666666666674'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -14992,7 +14992,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='733.3333333333334'
           y='399.18421052631584'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15001,7 +15001,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='745.8508771929826'
           y='386.66666666666674'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15010,7 +15010,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='786.6666666666667'
           y='399.18421052631584'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15019,7 +15019,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='799.184210526316'
           y='386.66666666666674'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15028,7 +15028,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='-13.333333333333334'
           y='456.327067669173'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15037,7 +15037,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='-0.8157894736842105'
           y='443.8095238095239'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15046,7 +15046,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='40'
           y='456.327067669173'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15055,7 +15055,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='52.51754385964912'
           y='443.8095238095239'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15064,7 +15064,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='93.33333333333334'
           y='456.327067669173'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15073,7 +15073,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='105.85087719298247'
           y='443.8095238095239'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15082,7 +15082,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='146.66666666666666'
           y='456.327067669173'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15091,7 +15091,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='159.18421052631578'
           y='443.8095238095239'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15100,7 +15100,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='200'
           y='456.327067669173'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15109,7 +15109,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='212.51754385964912'
           y='443.8095238095239'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15118,7 +15118,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='253.33333333333334'
           y='456.327067669173'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15127,7 +15127,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='265.85087719298247'
           y='443.8095238095239'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15136,7 +15136,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='306.6666666666667'
           y='456.327067669173'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15145,7 +15145,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='319.1842105263158'
           y='443.8095238095239'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15154,7 +15154,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='360'
           y='456.327067669173'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15163,7 +15163,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='372.5175438596491'
           y='443.8095238095239'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15172,7 +15172,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='413.3333333333333'
           y='456.327067669173'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15181,7 +15181,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='425.8508771929824'
           y='443.8095238095239'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15190,7 +15190,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='466.66666666666663'
           y='456.327067669173'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15199,7 +15199,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='479.1842105263157'
           y='443.8095238095239'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15208,7 +15208,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='519.9999999999999'
           y='456.327067669173'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15217,7 +15217,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='532.5175438596491'
           y='443.8095238095239'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15226,7 +15226,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='573.3333333333333'
           y='456.327067669173'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15235,7 +15235,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='585.8508771929825'
           y='443.8095238095239'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15244,7 +15244,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='626.6666666666666'
           y='456.327067669173'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15253,7 +15253,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='639.1842105263158'
           y='443.8095238095239'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15262,7 +15262,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='680'
           y='456.327067669173'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15271,7 +15271,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='692.5175438596492'
           y='443.8095238095239'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15280,7 +15280,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='733.3333333333334'
           y='456.327067669173'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15289,7 +15289,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='745.8508771929826'
           y='443.8095238095239'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15298,7 +15298,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='786.6666666666667'
           y='456.327067669173'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15307,7 +15307,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='799.184210526316'
           y='443.8095238095239'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15316,7 +15316,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='-13.333333333333334'
           y='513.4699248120302'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15325,7 +15325,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='-0.8157894736842105'
           y='500.952380952381'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15334,7 +15334,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='40'
           y='513.4699248120302'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15343,7 +15343,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='52.51754385964912'
           y='500.952380952381'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15352,7 +15352,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='93.33333333333334'
           y='513.4699248120302'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15361,7 +15361,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='105.85087719298247'
           y='500.952380952381'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15370,7 +15370,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='146.66666666666666'
           y='513.4699248120302'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15379,7 +15379,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='159.18421052631578'
           y='500.952380952381'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15388,7 +15388,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='200'
           y='513.4699248120302'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15397,7 +15397,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='212.51754385964912'
           y='500.952380952381'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15406,7 +15406,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='253.33333333333334'
           y='513.4699248120302'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15415,7 +15415,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='265.85087719298247'
           y='500.952380952381'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15424,7 +15424,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='306.6666666666667'
           y='513.4699248120302'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15433,7 +15433,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='319.1842105263158'
           y='500.952380952381'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15442,7 +15442,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='360'
           y='513.4699248120302'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15451,7 +15451,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='372.5175438596491'
           y='500.952380952381'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15460,7 +15460,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='413.3333333333333'
           y='513.4699248120302'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15469,7 +15469,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='425.8508771929824'
           y='500.952380952381'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15478,7 +15478,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='466.66666666666663'
           y='513.4699248120302'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15487,7 +15487,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='479.1842105263157'
           y='500.952380952381'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15496,7 +15496,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='519.9999999999999'
           y='513.4699248120302'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15505,7 +15505,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='532.5175438596491'
           y='500.952380952381'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15514,7 +15514,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='573.3333333333333'
           y='513.4699248120302'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15523,7 +15523,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='585.8508771929825'
           y='500.952380952381'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15532,7 +15532,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='626.6666666666666'
           y='513.4699248120302'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15541,7 +15541,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='639.1842105263158'
           y='500.952380952381'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15550,7 +15550,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='680'
           y='513.4699248120302'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15559,7 +15559,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='692.5175438596492'
           y='500.952380952381'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15568,7 +15568,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='733.3333333333334'
           y='513.4699248120302'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15577,7 +15577,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='745.8508771929826'
           y='500.952380952381'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15586,7 +15586,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='786.6666666666667'
           y='513.4699248120302'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15595,7 +15595,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='799.184210526316'
           y='500.952380952381'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15604,7 +15604,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='-13.333333333333334'
           y='570.6127819548873'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15613,7 +15613,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='-0.8157894736842105'
           y='558.0952380952381'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15622,7 +15622,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='40'
           y='570.6127819548873'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15631,7 +15631,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='52.51754385964912'
           y='558.0952380952381'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15640,7 +15640,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='93.33333333333334'
           y='570.6127819548873'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15649,7 +15649,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='105.85087719298247'
           y='558.0952380952381'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15658,7 +15658,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='146.66666666666666'
           y='570.6127819548873'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15667,7 +15667,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='159.18421052631578'
           y='558.0952380952381'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15676,7 +15676,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='200'
           y='570.6127819548873'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15685,7 +15685,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='212.51754385964912'
           y='558.0952380952381'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15694,7 +15694,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='253.33333333333334'
           y='570.6127819548873'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15703,7 +15703,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='265.85087719298247'
           y='558.0952380952381'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15712,7 +15712,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='306.6666666666667'
           y='570.6127819548873'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15721,7 +15721,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='319.1842105263158'
           y='558.0952380952381'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15730,7 +15730,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='360'
           y='570.6127819548873'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15739,7 +15739,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='372.5175438596491'
           y='558.0952380952381'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15748,7 +15748,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='413.3333333333333'
           y='570.6127819548873'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15757,7 +15757,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='425.8508771929824'
           y='558.0952380952381'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15766,7 +15766,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='466.66666666666663'
           y='570.6127819548873'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15775,7 +15775,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='479.1842105263157'
           y='558.0952380952381'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15784,7 +15784,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='519.9999999999999'
           y='570.6127819548873'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15793,7 +15793,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='532.5175438596491'
           y='558.0952380952381'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15802,7 +15802,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='573.3333333333333'
           y='570.6127819548873'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15811,7 +15811,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='585.8508771929825'
           y='558.0952380952381'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15820,7 +15820,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='626.6666666666666'
           y='570.6127819548873'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15829,7 +15829,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='639.1842105263158'
           y='558.0952380952381'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15838,7 +15838,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='680'
           y='570.6127819548873'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15847,7 +15847,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='692.5175438596492'
           y='558.0952380952381'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15856,7 +15856,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='733.3333333333334'
           y='570.6127819548873'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15865,7 +15865,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='745.8508771929826'
           y='558.0952380952381'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15874,7 +15874,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='786.6666666666667'
           y='570.6127819548873'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15883,7 +15883,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='799.184210526316'
           y='558.0952380952381'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15892,7 +15892,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='-13.333333333333334'
           y='627.7556390977444'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15901,7 +15901,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='-0.8157894736842105'
           y='615.2380952380952'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15910,7 +15910,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='40'
           y='627.7556390977444'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15919,7 +15919,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='52.51754385964912'
           y='615.2380952380952'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15928,7 +15928,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='93.33333333333334'
           y='627.7556390977444'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15937,7 +15937,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='105.85087719298247'
           y='615.2380952380952'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15946,7 +15946,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='146.66666666666666'
           y='627.7556390977444'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15955,7 +15955,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='159.18421052631578'
           y='615.2380952380952'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15964,7 +15964,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='200'
           y='627.7556390977444'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15973,7 +15973,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='212.51754385964912'
           y='615.2380952380952'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15982,7 +15982,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='253.33333333333334'
           y='627.7556390977444'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -15991,7 +15991,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='265.85087719298247'
           y='615.2380952380952'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16000,7 +16000,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='306.6666666666667'
           y='627.7556390977444'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16009,7 +16009,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='319.1842105263158'
           y='615.2380952380952'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16018,7 +16018,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='360'
           y='627.7556390977444'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16027,7 +16027,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='372.5175438596491'
           y='615.2380952380952'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16036,7 +16036,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='413.3333333333333'
           y='627.7556390977444'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16045,7 +16045,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='425.8508771929824'
           y='615.2380952380952'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16054,7 +16054,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='466.66666666666663'
           y='627.7556390977444'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16063,7 +16063,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='479.1842105263157'
           y='615.2380952380952'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16072,7 +16072,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='519.9999999999999'
           y='627.7556390977444'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16081,7 +16081,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='532.5175438596491'
           y='615.2380952380952'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16090,7 +16090,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='573.3333333333333'
           y='627.7556390977444'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16099,7 +16099,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='585.8508771929825'
           y='615.2380952380952'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16108,7 +16108,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='626.6666666666666'
           y='627.7556390977444'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16117,7 +16117,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='639.1842105263158'
           y='615.2380952380952'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16126,7 +16126,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='680'
           y='627.7556390977444'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16135,7 +16135,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='692.5175438596492'
           y='615.2380952380952'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16144,7 +16144,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='733.3333333333334'
           y='627.7556390977444'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16153,7 +16153,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='745.8508771929826'
           y='615.2380952380952'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16162,7 +16162,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='786.6666666666667'
           y='627.7556390977444'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16171,7 +16171,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='799.184210526316'
           y='615.2380952380952'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16180,7 +16180,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='-13.333333333333334'
           y='684.8984962406015'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16189,7 +16189,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='-0.8157894736842105'
           y='672.3809523809523'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16198,7 +16198,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='40'
           y='684.8984962406015'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16207,7 +16207,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='52.51754385964912'
           y='672.3809523809523'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16216,7 +16216,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='93.33333333333334'
           y='684.8984962406015'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16225,7 +16225,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='105.85087719298247'
           y='672.3809523809523'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16234,7 +16234,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='146.66666666666666'
           y='684.8984962406015'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16243,7 +16243,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='159.18421052631578'
           y='672.3809523809523'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16252,7 +16252,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='200'
           y='684.8984962406015'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16261,7 +16261,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='212.51754385964912'
           y='672.3809523809523'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16270,7 +16270,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='253.33333333333334'
           y='684.8984962406015'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16279,7 +16279,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='265.85087719298247'
           y='672.3809523809523'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16288,7 +16288,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='306.6666666666667'
           y='684.8984962406015'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16297,7 +16297,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='319.1842105263158'
           y='672.3809523809523'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16306,7 +16306,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='360'
           y='684.8984962406015'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16315,7 +16315,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='372.5175438596491'
           y='672.3809523809523'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16324,7 +16324,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='413.3333333333333'
           y='684.8984962406015'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16333,7 +16333,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='425.8508771929824'
           y='672.3809523809523'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16342,7 +16342,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='466.66666666666663'
           y='684.8984962406015'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16351,7 +16351,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='479.1842105263157'
           y='672.3809523809523'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16360,7 +16360,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='519.9999999999999'
           y='684.8984962406015'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16369,7 +16369,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='532.5175438596491'
           y='672.3809523809523'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16378,7 +16378,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='573.3333333333333'
           y='684.8984962406015'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16387,7 +16387,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='585.8508771929825'
           y='672.3809523809523'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16396,7 +16396,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='626.6666666666666'
           y='684.8984962406015'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16405,7 +16405,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='639.1842105263158'
           y='672.3809523809523'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16414,7 +16414,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='680'
           y='684.8984962406015'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16423,7 +16423,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='692.5175438596492'
           y='672.3809523809523'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16432,7 +16432,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='733.3333333333334'
           y='684.8984962406015'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16441,7 +16441,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='745.8508771929826'
           y='672.3809523809523'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16450,7 +16450,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='786.6666666666667'
           y='684.8984962406015'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16459,7 +16459,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='799.184210526316'
           y='672.3809523809523'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16468,7 +16468,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='-13.333333333333334'
           y='742.0413533834586'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16477,7 +16477,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='-0.8157894736842105'
           y='729.5238095238094'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16486,7 +16486,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='40'
           y='742.0413533834586'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16495,7 +16495,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='52.51754385964912'
           y='729.5238095238094'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16504,7 +16504,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='93.33333333333334'
           y='742.0413533834586'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16513,7 +16513,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='105.85087719298247'
           y='729.5238095238094'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16522,7 +16522,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='146.66666666666666'
           y='742.0413533834586'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16531,7 +16531,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='159.18421052631578'
           y='729.5238095238094'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16540,7 +16540,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='200'
           y='742.0413533834586'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16549,7 +16549,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='212.51754385964912'
           y='729.5238095238094'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16558,7 +16558,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='253.33333333333334'
           y='742.0413533834586'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16567,7 +16567,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='265.85087719298247'
           y='729.5238095238094'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16576,7 +16576,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='306.6666666666667'
           y='742.0413533834586'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16585,7 +16585,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='319.1842105263158'
           y='729.5238095238094'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16594,7 +16594,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='360'
           y='742.0413533834586'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16603,7 +16603,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='372.5175438596491'
           y='729.5238095238094'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16612,7 +16612,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='413.3333333333333'
           y='742.0413533834586'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16621,7 +16621,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='425.8508771929824'
           y='729.5238095238094'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16630,7 +16630,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='466.66666666666663'
           y='742.0413533834586'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16639,7 +16639,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='479.1842105263157'
           y='729.5238095238094'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16648,7 +16648,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='519.9999999999999'
           y='742.0413533834586'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16657,7 +16657,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='532.5175438596491'
           y='729.5238095238094'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16666,7 +16666,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='573.3333333333333'
           y='742.0413533834586'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16675,7 +16675,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='585.8508771929825'
           y='729.5238095238094'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16684,7 +16684,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='626.6666666666666'
           y='742.0413533834586'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16693,7 +16693,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='639.1842105263158'
           y='729.5238095238094'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16702,7 +16702,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='680'
           y='742.0413533834586'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16711,7 +16711,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='692.5175438596492'
           y='729.5238095238094'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16720,7 +16720,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='733.3333333333334'
           y='742.0413533834586'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16729,7 +16729,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='745.8508771929826'
           y='729.5238095238094'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16738,7 +16738,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='786.6666666666667'
           y='742.0413533834586'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16747,7 +16747,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='799.184210526316'
           y='729.5238095238094'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16756,7 +16756,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='-13.333333333333334'
           y='799.1842105263157'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16765,7 +16765,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='-0.8157894736842105'
           y='786.6666666666665'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16774,7 +16774,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='40'
           y='799.1842105263157'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16783,7 +16783,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='52.51754385964912'
           y='786.6666666666665'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16792,7 +16792,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='93.33333333333334'
           y='799.1842105263157'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16801,7 +16801,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='105.85087719298247'
           y='786.6666666666665'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16810,7 +16810,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='146.66666666666666'
           y='799.1842105263157'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16819,7 +16819,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='159.18421052631578'
           y='786.6666666666665'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16828,7 +16828,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='200'
           y='799.1842105263157'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16837,7 +16837,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='212.51754385964912'
           y='786.6666666666665'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16846,7 +16846,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='253.33333333333334'
           y='799.1842105263157'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16855,7 +16855,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='265.85087719298247'
           y='786.6666666666665'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16864,7 +16864,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='306.6666666666667'
           y='799.1842105263157'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16873,7 +16873,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='319.1842105263158'
           y='786.6666666666665'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16882,7 +16882,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='360'
           y='799.1842105263157'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16891,7 +16891,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='372.5175438596491'
           y='786.6666666666665'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16900,7 +16900,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='413.3333333333333'
           y='799.1842105263157'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16909,7 +16909,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='425.8508771929824'
           y='786.6666666666665'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16918,7 +16918,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='466.66666666666663'
           y='799.1842105263157'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16927,7 +16927,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='479.1842105263157'
           y='786.6666666666665'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16936,7 +16936,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='519.9999999999999'
           y='799.1842105263157'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16945,7 +16945,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='532.5175438596491'
           y='786.6666666666665'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16954,7 +16954,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='573.3333333333333'
           y='799.1842105263157'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16963,7 +16963,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='585.8508771929825'
           y='786.6666666666665'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16972,7 +16972,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='626.6666666666666'
           y='799.1842105263157'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16981,7 +16981,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='639.1842105263158'
           y='786.6666666666665'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16990,7 +16990,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='680'
           y='799.1842105263157'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -16999,7 +16999,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='692.5175438596492'
           y='786.6666666666665'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -17008,7 +17008,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='733.3333333333334'
           y='799.1842105263157'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -17017,7 +17017,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='745.8508771929826'
           y='786.6666666666665'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -17026,7 +17026,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='786.6666666666667'
           y='799.1842105263157'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
         <rect
@@ -17035,13 +17035,13 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           x='799.184210526316'
           y='786.6666666666665'
           stroke='none'
-          fill='${color1}'
+          fill='${color0}'
           rx='0.8157894736842105'
         ></rect>
       </g>
     </svg>`,
 
-  ({ color1 = '#000000', color2 = '#00ff00' }) =>
+  ({ color0 = '#000000', color1 = '#00ff00' }) =>
     `<svg
       xmlns='http://www.w3.org/2000/svg'
       version='1.1'
@@ -17058,8 +17058,8 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           y2='100%'
           id='rrreflection-grad'
         >
-          <stop stop-color='${color1}' stop-opacity='1' offset='45%'></stop>
-          <stop stop-color='${color2}' stop-opacity='1' offset='100%'></stop>
+          <stop stop-color='${color0}' stop-opacity='1' offset='45%'></stop>
+          <stop stop-color='${color1}' stop-opacity='1' offset='100%'></stop>
         </linearGradient>
         <linearGradient
           x1='50%'
@@ -17068,8 +17068,8 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           y2='100%'
           id='rrreflection-grad-2'
         >
-          <stop stop-color='${color2}' stop-opacity='1' offset='0%'></stop>
-          <stop stop-color='${color1}' stop-opacity='1' offset='45%'></stop>
+          <stop stop-color='${color1}' stop-opacity='1' offset='0%'></stop>
+          <stop stop-color='${color0}' stop-opacity='1' offset='45%'></stop>
         </linearGradient>
         <linearGradient
           gradientTransform='rotate(270)'
@@ -17079,8 +17079,8 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           y2='100%'
           id='rrreflection-grad-3'
         >
-          <stop stop-color='${color1}' stop-opacity='1' offset='45%'></stop>
-          <stop stop-color='${color2}' stop-opacity='1' offset='100%'></stop>
+          <stop stop-color='${color0}' stop-opacity='1' offset='45%'></stop>
+          <stop stop-color='${color1}' stop-opacity='1' offset='100%'></stop>
         </linearGradient>
         <linearGradient
           gradientTransform='rotate(270)'
@@ -17090,8 +17090,8 @@ const wallpaperSVGstrings: SVGstringFn[] = [
           y2='100%'
           id='rrreflection-grad-4'
         >
-          <stop stop-color='${color2}' stop-opacity='1' offset='0%'></stop>
-          <stop stop-color='${color1}' stop-opacity='1' offset='45%'></stop>
+          <stop stop-color='${color1}' stop-opacity='1' offset='0%'></stop>
+          <stop stop-color='${color0}' stop-opacity='1' offset='45%'></stop>
         </linearGradient>
       </defs>
       <g stroke-width='1.5' stroke='url(#rrreflection-grad)' fill='none'>

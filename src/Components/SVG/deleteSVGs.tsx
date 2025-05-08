@@ -4,17 +4,17 @@ import type { HexColor } from '../../utils/color';
 type SVGfn = (colors: {
   height: string;
   width?: string;
+  color0?: HexColor;
   color1?: HexColor;
   color2?: HexColor;
-  color3?: HexColor;
 }) => JSX.Element;
 
 const deleteSVGs: SVGfn[] = [
-  ({ height, width = height, color1 = '#000000' }) => (
+  ({ height, width = height, color0 = '#000000' }) => (
     <svg
       data-name='20 Delete'
       xmlns='http://www.w3.org/2000/svg'
-      fill={color1}
+      fill={color0}
       height={height}
       width={width}
       viewBox='0 0 512 512'
@@ -28,7 +28,7 @@ const deleteSVGs: SVGfn[] = [
       />
     </svg>
   ),
-  ({ height, width = height, color1 = '#000000' }) => (
+  ({ height, width = height, color0 = '#000000' }) => (
     <svg
       height={height}
       width={width}
@@ -39,15 +39,15 @@ const deleteSVGs: SVGfn[] = [
     >
       <rect width='16' height='16' id='icon-bound' fill='none' />
       <path
-        fill={color1}
+        fill={color0}
         d='M0,8c0,4.419,3.581,8,8,8s8-3.581,8-8s-3.581-8-8-8S0,3.581,0,8z M12.891,11.478L4.522,3.109C5.531,2.391,6.734,2,8,2 c1.603,0,3.109,0.625,4.244,1.756C13.375,4.891,14,6.397,14,8C14,9.266,13.609,10.469,12.891,11.478z M2,8 c0-1.266,0.391-2.469,1.109-3.478l8.369,8.369C10.469,13.609,9.266,14,8,14c-1.603,0-3.109-0.625-4.244-1.756 C2.625,11.109,2,9.603,2,8z'
       />
     </svg>
   ),
 
-  ({ height, width = height, color1 = '#000000' }) => (
+  ({ height, width = height, color0 = '#000000' }) => (
     <svg
-      fill={color1}
+      fill={color0}
       height={height}
       width={width}
       viewBox='8 9 15 15'
@@ -59,9 +59,9 @@ const deleteSVGs: SVGfn[] = [
     </svg>
   ),
 
-  ({ height, width = height, color1 = '#000000' }) => (
+  ({ height, width = height, color0 = '#000000' }) => (
     <svg
-      fill={color1}
+      fill={color0}
       version='1.1'
       id='Layer_1'
       xmlns='http://www.w3.org/2000/svg'

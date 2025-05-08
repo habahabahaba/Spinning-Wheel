@@ -1,7 +1,7 @@
 // Assets:
-import { PALETTES } from '../../constants/palettes';
 import wallpaperSVGstrings from '../SVG/wallpaperSVGstrings';
 // Utils:
+import { safePaletteColor } from '../../utils/color';
 // 3rd party:
 // Redux, RTK:
 // Store:
@@ -18,34 +18,33 @@ import type { CSSProperties, FC } from 'react';
 
 interface WallpaperProps {
   variant: number;
-  color1: number;
-  color2?: number;
-  color3?: number;
+  colorIdx0: number;
+  colorIdx1?: number;
+  colorIdx2?: number;
   style?: CSSProperties;
 }
 
 const Wallpaper: FC<WallpaperProps> = ({
   variant,
-  color1,
-  color2 = 0,
-  color3 = 0,
+  colorIdx0,
+  colorIdx1 = 0,
+  colorIdx2 = 0,
   style = {},
 }) => {
   // Store:
   const paletteIdx = useBoundStore(
     (state) => state.activeConfig.default_palette_idx
   );
-  const colors = PALETTES[paletteIdx];
 
   const backgroundImage = useMemo(() => {
     const svgString = (wallpaperSVGstrings[variant] || wallpaperSVGstrings[0])({
-      color1: colors[color1 || 0],
-      color2: colors[color2 || 0],
-      color3: colors[color3 || 0],
+      color0: safePaletteColor(paletteIdx, colorIdx0),
+      color1: safePaletteColor(paletteIdx, colorIdx1),
+      color2: safePaletteColor(paletteIdx, colorIdx2),
     });
     const encoded = encodeURIComponent(svgString);
     return `url("data:image/svg+xml,${encoded}")`;
-  }, [variant, color1, color2, color3, colors]);
+  }, [variant, colorIdx0, colorIdx1, colorIdx2, paletteIdx]);
 
   const styleObj: CSSProperties = {
     backgroundPosition: 'center',

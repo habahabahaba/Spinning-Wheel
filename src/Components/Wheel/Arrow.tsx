@@ -1,6 +1,7 @@
-// 3rd party:
+// Utils:
+import { safePaletteColor } from '../../utils/color.ts';
 // Constants:
-import { PALETTES } from '../../constants/palettes.ts';
+// 3rd party:
 // Store:
 import useBoundStore from '../../store/boundStore.ts';
 // React Router:
@@ -39,8 +40,8 @@ const Arrow: FC<ArrowProps> = ({ size, arrowIdx = 0, ref }) => {
       }}
       ref={ref}
     >
-      {arrowSVGs[arrowIdx]({
-        strokeColor: (PALETTES[paletteIdx] || PALETTES[0])[1],
+      {arrowSVGs[arrowIdx % arrowSVGs.length]({
+        strokeColor: safePaletteColor(paletteIdx, 1),
       }) || arrowSVGs[0]({})}
     </div>
   );

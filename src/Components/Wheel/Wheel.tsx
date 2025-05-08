@@ -102,7 +102,7 @@ const Wheel: FC<WheelProps> = ({
     <div
       ref={wheelContainerRef}
       style={{
-        border: `solid 6px ${fillColors[1]}`,
+        border: `solid 6px ${fillColors[1 % fillColors.length]}`,
         borderRadius: '50%',
         padding: '0',
         height: `${diameter}px`,

@@ -1,20 +1,18 @@
 // Constants:
-import { PALETTES } from '../../constants/palettes';
 import { WHEEL_RADII_MAP } from '../../constants/radii';
 // Utils:
-import { contrastColor } from '../../utils/color';
+import { contrastColor, safePaletteColor } from '../../utils/color';
 // 3rd party:
 // Store:
 import useBoundStore from '../../store/boundStore';
 // React Router:
 // React:
-// import { useState } from 'react';
 // Context:
 // Hooks:
 // Components:
-// CSS:
-// Icons:
 import { idleSVGs, windUpSVGs, spinningSVGs } from '../SVG/spinSVGs';
+// CSS:
+
 // Types, interfaces and enumns:
 import type { FC } from 'react';
 interface SpinButtonProps {
@@ -45,16 +43,15 @@ const SpinButton: FC<SpinButtonProps> = ({
   );
 
   // Colors:
-  const colors = PALETTES[paletteIdx];
   const radiusName = useBoundStore((state) => state.activeConfig.radiusName);
 
-  const idleFillColor = colors[3];
+  const idleFillColor = safePaletteColor(paletteIdx, 3);
   const idleIconColor = contrastColor(idleFillColor);
-  const windingUpFillColor = colors[1];
+  const windingUpFillColor = safePaletteColor(paletteIdx, 1);
   const windingUpIconColor = contrastColor(windingUpFillColor);
-  const spinningFillColor = colors[2];
+  const spinningFillColor = safePaletteColor(paletteIdx, 2);
+
   const wheelRadius = WHEEL_RADII_MAP[radiusName];
-  //   const spinningIconColor = contrastColor(spinningFillColor);
 
   // JSX:
   return (
@@ -113,13 +110,19 @@ const SpinButton: FC<SpinButtonProps> = ({
       }`}
     >
       {wheelAnimationState === 'spinning'
-        ? spinningSVGs[1]({ color1: colors[1], color2: colors[3] }) ||
-          spinningSVGs[0]({ color1: colors[1], color2: colors[3] })
+        ? spinningSVGs[1]({
+            color0: safePaletteColor(paletteIdx, 1),
+            color1: safePaletteColor(paletteIdx, 3),
+          }) ||
+          spinningSVGs[0]({
+            color0: safePaletteColor(paletteIdx, 1),
+            color1: safePaletteColor(paletteIdx, 3),
+          })
         : wheelAnimationState === 'windingUp'
-        ? windUpSVGs[0]({ color1: windingUpIconColor }) ||
-          windUpSVGs[0]({ color1: windingUpIconColor })
-        : idleSVGs[0]({ color1: idleIconColor }) ||
-          idleSVGs[0]({ color1: idleIconColor })}
+        ? windUpSVGs[0]({ color0: windingUpIconColor }) ||
+          windUpSVGs[0]({ color0: windingUpIconColor })
+        : idleSVGs[0]({ color0: idleIconColor }) ||
+          idleSVGs[0]({ color0: idleIconColor })}
     </button>
   );
 };

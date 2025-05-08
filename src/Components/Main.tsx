@@ -123,15 +123,15 @@ const Main: FC = () => {
     >
       <Wallpaper
         variant={1}
-        color1={2}
-        color2={0}
+        colorIdx0={2}
+        colorIdx1={0}
         style={{
           opacity: '0.9',
         }}
       />
 
       <div
-        id='wheel-pointer-assembly'
+        id='wheel-arrow-assembly'
         style={{
           width: 'fit-content',
           position: 'relative',

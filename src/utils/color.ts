@@ -1,3 +1,5 @@
+// Constants:
+import { PALETTES } from '../constants/palettes';
 // Types, interfaces and enumns:
 export type HexColor = `#${string}`;
 export function isHexColor(color: string): color is HexColor {
@@ -95,4 +97,14 @@ export function brightness(hexColor: string, amount: number): `#${string}` {
     .map((x) => x.toString(16).padStart(2, '0'))
     .join('')}` as `#${string}`;
   return result;
+}
+
+export function safePaletteColor(
+  paletteIdx: number,
+  colorIdx: number
+): HexColor {
+  const palette = PALETTES[paletteIdx % PALETTES.length];
+  const color = palette[colorIdx % palette.length];
+
+  return color;
 }
