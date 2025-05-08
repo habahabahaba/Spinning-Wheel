@@ -10,22 +10,22 @@ import useBoundStore from '../../store/boundStore';
 // React:
 import { use, useState } from 'react';
 // Context:
-import modalCloseCtx from '../../context/modalCloseCtx';
+import dialogCloseCtx from '../../context/dialogCloseCtx';
 // Hooks:
 // Components:
 import Button from '../UI/Button';
 // CSS:
 // Types, interfaces and enumns:
 import type { FC, FormEvent, ChangeEventHandler } from 'react';
-export interface SaveConfigFormProps {
+export interface SaveConfigProps {
   saveIdx: number;
 }
 
-const SaveConfigForm: FC<SaveConfigFormProps> = ({ saveIdx }) => {
+const SaveConfig: FC<SaveConfigProps> = ({ saveIdx }) => {
   // Modal context For closing:
-  const { handleCloseModal } = use(modalCloseCtx);
+  const { handleCloseDialog } = use(dialogCloseCtx);
   if (saveIdx < 0 || saveIdx > 9) {
-    handleCloseModal();
+    handleCloseDialog();
   }
 
   // Store:
@@ -52,7 +52,7 @@ const SaveConfigForm: FC<SaveConfigFormProps> = ({ saveIdx }) => {
     saveCurrentConfig({ saveIdx, configName });
 
     setInputValue(() => '');
-    handleCloseModal();
+    handleCloseDialog();
   }
 
   // JSX:
@@ -117,7 +117,7 @@ const SaveConfigForm: FC<SaveConfigFormProps> = ({ saveIdx }) => {
         <Button
           id='cancel-save-config-button'
           name='Cancel and close form'
-          onClick={handleCloseModal}
+          onClick={handleCloseDialog}
           type='reset'
         >
           Cancel
@@ -136,4 +136,4 @@ const SaveConfigForm: FC<SaveConfigFormProps> = ({ saveIdx }) => {
   );
 };
 
-export default SaveConfigForm;
+export default SaveConfig;

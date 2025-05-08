@@ -10,19 +10,19 @@ import useBoundStore from '../../store/boundStore';
 // React:
 import { use, useRef, useState } from 'react';
 // Context:
-import modalCloseCtx from '../../context/modalCloseCtx';
+import dialogCloseCtx from '../../context/dialogCloseCtx';
 // Hooks:
 // Components:
 import Button from '../UI/Button';
 // CSS:
-import styles from './ImportConfigDialog.module.css';
+import styles from './ImportConfig.module.css';
 // Types, interfaces and enumns:
 import type { FC } from 'react';
 import type { ValidationResult } from '../../utils/wheelConfig';
 
-const ImportConfigDialog: FC = () => {
+const ImportConfig: FC = () => {
   // Modal context For closing:
-  const { handleCloseModal } = use(modalCloseCtx);
+  const { handleCloseDialog } = use(dialogCloseCtx);
 
   // Store:
 
@@ -57,10 +57,10 @@ const ImportConfigDialog: FC = () => {
     if (!fileInputRef.current || !fileInputRef.current.files || !files) return;
     const file = files[0] as File | null;
 
-    console.log(`[ImportConfigDialog] file: ${JSON.stringify(file, null, 2)}`);
+    console.log(`[ImportConfig] file: ${JSON.stringify(file, null, 2)}`);
 
     if (!file || !(file instanceof File) || file.size === 0) {
-      console.log(`[ImportConfigDialog]: NO FILE !!!`);
+      console.log(`[ImportConfig]: NO FILE !!!`);
 
       setError(() => 'Please select a valid .json file.');
 
@@ -73,7 +73,7 @@ const ImportConfigDialog: FC = () => {
       const jsonData = JSON.parse(fileText);
 
       console.log(
-        `[ImportConfigDialog]: jsonData: ${JSON.stringify(jsonData, null, 2)}`
+        `[ImportConfig]: jsonData: ${JSON.stringify(jsonData, null, 2)}`
       );
 
       const validationResult: ValidationResult = validateWheelConfig(jsonData);
@@ -93,7 +93,7 @@ const ImportConfigDialog: FC = () => {
       fileInputRef.current.value = '';
       setError(() => '');
       if (!validationResult.warnings.length) {
-        handleCloseModal();
+        handleCloseDialog();
       }
     } catch (error) {
       if (error instanceof Error) console.error(error);
@@ -107,7 +107,7 @@ const ImportConfigDialog: FC = () => {
 
   function handleResetAndCancel() {
     resetWarnings();
-    handleCloseModal();
+    handleCloseDialog();
   }
 
   // JSX:
@@ -245,4 +245,4 @@ const ImportConfigDialog: FC = () => {
   );
 };
 
-export default ImportConfigDialog;
+export default ImportConfig;

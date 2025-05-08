@@ -12,12 +12,12 @@ import { useState, useRef } from 'react';
 // Components:
 import Button from '../UI/Button';
 import SaveSlotSelector from '../Selectors/SaveSlotSelector';
-import LoadConfigModal from '../Modals/LoadConfigModal';
-import SaveConfigModal from '../Modals/SaveConfigModal';
+import LoadConfigDialog from '../Dialogs/LoadConfigDialog';
+import SaveConfigDialog from '../Dialogs/SaveConfigDialog';
 // CSS:
 // Types, interfaces and enumns:
 import type { FC, MouseEvent } from 'react';
-import type { ModalHandle } from '../UI/Modal';
+import type { DialogHandle } from '../UI/Dialog';
 // interface SaveLoadConfigMenuProps {}
 
 const SaveLoadConfigMenu: FC = () => {
@@ -28,20 +28,20 @@ const SaveLoadConfigMenu: FC = () => {
   const [saveIdx, setSaveIdx] = useState<number>(-1);
 
   // Refs:
-  const saveConfigModalRef = useRef<ModalHandle>(null);
-  const loadConfigModalRef = useRef<ModalHandle>(null);
+  const saveConfigDialogRef = useRef<DialogHandle>(null);
+  const loadConfigDialogRef = useRef<DialogHandle>(null);
 
   // Handlers:
   function handleOpenSaveModal(ev: MouseEvent<HTMLButtonElement>) {
     ev.preventDefault();
 
-    saveConfigModalRef.current?.handleShowModal();
+    saveConfigDialogRef.current?.handleShowDialog();
   }
 
   function handleOpenLoadModal(ev: MouseEvent<HTMLButtonElement>) {
     ev.preventDefault();
 
-    loadConfigModalRef.current?.handleShowModal();
+    loadConfigDialogRef.current?.handleShowDialog();
   }
   // JSX:
   return (
@@ -82,8 +82,8 @@ const SaveLoadConfigMenu: FC = () => {
           </Button>
         </div>
       </div>
-      <SaveConfigModal saveIdx={saveIdx} ref={saveConfigModalRef} />
-      <LoadConfigModal saveIdx={saveIdx} ref={loadConfigModalRef} />
+      <SaveConfigDialog saveIdx={saveIdx} ref={saveConfigDialogRef} />
+      <LoadConfigDialog saveIdx={saveIdx} ref={loadConfigDialogRef} />
     </>
   );
 };

@@ -10,7 +10,7 @@ import useBoundStore from '../../store/boundStore';
 // React:
 import { use } from 'react';
 // Context:
-import modalCloseCtx from '../../context/modalCloseCtx';
+import dialogCloseCtx from '../../context/dialogCloseCtx';
 // Hooks:
 // Components:
 import ConfettiArray from '../Confetti/ConfettiArray';
@@ -23,7 +23,7 @@ export interface ResultDisplayProps {
 
 const ResultDisplay: FC<ResultDisplayProps> = ({ confettiTrigger }) => {
   // Modal context For closing:
-  const { handleCloseModal } = use(modalCloseCtx);
+  const { handleCloseDialog } = use(dialogCloseCtx);
 
   // Store:
   const winningOutcomeIdx = useBoundStore((state) => state.winningOutcomeIdx);
@@ -40,7 +40,7 @@ const ResultDisplay: FC<ResultDisplayProps> = ({ confettiTrigger }) => {
 
   // Guard:
   if (winningOutcomeIdx === null || !winningOutcome) {
-    handleCloseModal();
+    handleCloseDialog();
     return <></>;
   }
 
@@ -70,7 +70,7 @@ const ResultDisplay: FC<ResultDisplayProps> = ({ confettiTrigger }) => {
           minWidth: '50vw',
           textAlign: 'center',
         }}
-        onClick={handleCloseModal}
+        onClick={handleCloseDialog}
       >
         <h1
           style={{

@@ -14,27 +14,27 @@ import {
 } from 'react';
 import { createPortal } from 'react-dom';
 // Context:
-import modalCloseCtx from '../../context/modalCloseCtx';
+import dialogCloseCtx from '../../context/dialogCloseCtx';
 // Hooks:
 // Components:
 // CSS:
 // Types, interfaces and enumns:
 import type { ReactElement, FC, Ref, CSSProperties } from 'react';
-type ModalProps<P = object> = {
+type DialogProps<P = object> = {
   children: ReactElement<P>;
   childProps?: P;
   className?: string;
   style?: CSSProperties;
-  ref?: Ref<ModalHandle>;
+  ref?: Ref<DialogHandle>;
 };
 
-export type ModalHandle = {
-  handleShowModal: () => void;
-  handleCloseModal: () => void;
+export type DialogHandle = {
+  handleShowDialog: () => void;
+  handleCloseDialog: () => void;
 };
 
-const modalRootEl = document.getElementById('modal-root');
-const Modal: FC<ModalProps> = ({
+const dialogRootEl = document.getElementById('dialog-root');
+const Dialog: FC<DialogProps> = ({
   className = '',
   style = {},
   children,
@@ -48,18 +48,18 @@ const Modal: FC<ModalProps> = ({
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   // Handlers:
-  const handleShowModal = useCallback(() => {
+  const handleShowDialog = useCallback(() => {
     setIsMounted(true);
   }, []);
 
-  const handleCloseModal = useCallback(() => {
+  const handleCloseDialog = useCallback(() => {
     dialogRef.current?.close();
   }, []);
 
   // Expose methods via ref
   useImperativeHandle(ref, () => ({
-    handleShowModal,
-    handleCloseModal,
+    handleShowDialog,
+    handleCloseDialog,
   }));
 
   // Effects:
@@ -81,7 +81,7 @@ const Modal: FC<ModalProps> = ({
   }, [isMounted]);
 
   // JSX:
-  if (!modalRootEl || !isMounted) return null;
+  if (!dialogRootEl || !isMounted) return null;
 
   const childWithProps = isValidElement(children)
     ? cloneElement(children, { ...childProps })
@@ -93,20 +93,20 @@ const Modal: FC<ModalProps> = ({
       role='dialog'
       onClick={(ev) => {
         if (ev.target === dialogRef.current) {
-          handleCloseModal(); // Triggers native close, then unmount
+          handleCloseDialog(); // Triggers native close, then unmount
         }
       }}
       style={style}
       className={className}
     >
       <div>
-        <modalCloseCtx.Provider value={{ handleCloseModal }}>
+        <dialogCloseCtx.Provider value={{ handleCloseDialog }}>
           {childWithProps}
-        </modalCloseCtx.Provider>
+        </dialogCloseCtx.Provider>
       </div>
     </dialog>,
-    modalRootEl
+    dialogRootEl
   );
 };
 
-export default Modal;
+export default Dialog;

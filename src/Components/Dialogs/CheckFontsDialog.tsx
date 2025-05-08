@@ -10,29 +10,29 @@ import { forwardRef } from 'react';
 // Context:
 // Hooks:
 // Components:
-import Modal from '../UI/Modal';
-import CheckFontsDialog from './CheckFontsDialog';
+import Dialog from '../UI/Dialog';
+import CheckFonts from './CheckFonts';
 // CSS:
 // Types, interfaces and enumns:
 import type { ForwardedRef } from 'react';
-import type { ModalHandle } from '../UI/Modal';
+import type { DialogHandle } from '../UI/Dialog';
 
-const CheckFontsModal = forwardRef<ModalHandle>(
-  (_, ref: ForwardedRef<ModalHandle>) => {
+const CheckFontsDialog = forwardRef<DialogHandle>(
+  (_, ref: ForwardedRef<DialogHandle>) => {
     // JSX:
     return (
-      <Modal
+      <Dialog
         ref={ref}
-        // className='drop-down'
+        // className=''
         style={{
           top: '-50%',
           right: '0',
         }}
       >
-        <CheckFontsDialog />
-      </Modal>
+        <CheckFonts />
+      </Dialog>
     );
   }
 );
 
-export default CheckFontsModal;
+export default CheckFontsDialog;

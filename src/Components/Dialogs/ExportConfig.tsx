@@ -6,7 +6,7 @@ import useBoundStore from '../../store/boundStore';
 // React:
 import { use } from 'react';
 // Context:
-import modalCloseCtx from '../../context/modalCloseCtx';
+import dialogCloseCtx from '../../context/dialogCloseCtx';
 // Hooks:
 // Components:
 import Button from '../UI/Button';
@@ -14,9 +14,9 @@ import Button from '../UI/Button';
 // Types, interfaces and enumns:
 import type { FC } from 'react';
 
-const ExportConfigDialog: FC = () => {
+const ExportConfig: FC = () => {
   // Modal context For closing:
-  const { handleCloseModal } = use(modalCloseCtx);
+  const { handleCloseDialog } = use(dialogCloseCtx);
 
   // Store:
   const currentConfig = useBoundStore((state) => state.currentConfig);
@@ -43,7 +43,7 @@ const ExportConfigDialog: FC = () => {
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
 
-    handleCloseModal();
+    handleCloseDialog();
   }
 
   // JSX:
@@ -92,7 +92,7 @@ const ExportConfigDialog: FC = () => {
         <Button
           id='cancel-export-dialog-button'
           name={`cancel export and close dialog`}
-          onClick={handleCloseModal}
+          onClick={handleCloseDialog}
         >
           Cancel
         </Button>
@@ -110,4 +110,4 @@ const ExportConfigDialog: FC = () => {
   );
 };
 
-export default ExportConfigDialog;
+export default ExportConfig;
