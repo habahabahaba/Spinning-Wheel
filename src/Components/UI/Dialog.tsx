@@ -101,7 +101,7 @@ const Dialog: FC<DialogProps> = ({
     >
       <div>
         <dialogCloseCtx.Provider value={{ handleCloseDialog }}>
-          {childWithProps}
+          {isMounted ? childWithProps : null}
         </dialogCloseCtx.Provider>
       </div>
     </dialog>,
