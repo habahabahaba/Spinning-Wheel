@@ -7,7 +7,7 @@ import { WHEEL_RADII_MAP } from '../constants/radii';
 import useBoundStore from '../store/boundStore';
 // React Router:
 // React:
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 // Context:
 // Hooks:
 import { useSpinAnimation } from '../hooks/useSpinAnimation';
@@ -42,9 +42,6 @@ const Main: FC = () => {
   const resetWinningOutcomeIdx = useBoundStore(
     (state) => state.resetWinningOutcomeIdx
   );
-
-  // State:
-  const [confettiTrigger, setConfettiTrigger] = useState<boolean>(false);
 
   // Refs:
   const wheelRef = useRef<SVGSVGElement>(null);
@@ -100,12 +97,6 @@ const Main: FC = () => {
         () => {
           // console.log(`END callback`);
           resultModalRef.current?.handleShowDialog();
-          setTimeout(() => {
-            setConfettiTrigger(true);
-          }, 600);
-          setTimeout(() => {
-            setConfettiTrigger(false);
-          }, 610);
         }
       );
       // console.log(`[Wheel] resultingTurn: ${resultingTurn}`);
@@ -162,12 +153,7 @@ const Main: FC = () => {
           onMouseLeave={handleMouseLeave}
         />
       </div>
-      {wheelAnimationState === 'idle' ? (
-        <ResultDisplayModal
-          ref={resultModalRef}
-          confettiTrigger={confettiTrigger}
-        />
-      ) : null}
+      <ResultDisplayModal ref={resultModalRef} />
     </main>
   );
 };

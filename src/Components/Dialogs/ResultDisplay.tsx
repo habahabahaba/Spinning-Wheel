@@ -8,7 +8,7 @@ import { contrastColor, brightness } from '../../utils/color';
 import useBoundStore from '../../store/boundStore';
 // React Router:
 // React:
-import { use } from 'react';
+import { use, useState, useEffect } from 'react';
 // Context:
 import dialogCloseCtx from '../../context/dialogCloseCtx';
 // Hooks:
@@ -17,11 +17,12 @@ import ConfettiArray from '../Confetti/ConfettiArray';
 // CSS:
 // Types, interfaces and enumns:
 import type { FC } from 'react';
-export interface ResultDisplayProps {
-  confettiTrigger: boolean;
-}
+// export interface ResultDisplayProps {}
 
-const ResultDisplay: FC<ResultDisplayProps> = ({ confettiTrigger }) => {
+// For confetti timeouts:
+let timer: number | null = null;
+
+const ResultDisplay: FC = () => {
   // Modal context For closing:
   const { handleCloseDialog } = use(dialogCloseCtx);
 
@@ -37,6 +38,26 @@ const ResultDisplay: FC<ResultDisplayProps> = ({ confettiTrigger }) => {
     (state) => state.activeConfig.default_fontFamily
   );
   const radiusName = useBoundStore((state) => state.activeConfig.radiusName);
+
+  // Store:
+  const [confettiTrigger, setConfettiTrigger] = useState<boolean>(false);
+
+  // Effects:
+  useEffect(() => {
+    timer = setTimeout(() => {
+      setConfettiTrigger(true);
+      timer = setTimeout(() => {
+        setConfettiTrigger(false);
+      }, 610);
+    }, 600);
+
+    return () => {
+      if (timer !== null) {
+        clearTimeout(timer);
+        timer = null;
+      }
+    };
+  }, []);
 
   // Guard:
   if (winningOutcomeIdx === null || !winningOutcome) {
@@ -82,10 +103,7 @@ const ResultDisplay: FC<ResultDisplayProps> = ({ confettiTrigger }) => {
           {label}
         </h1>
       </div>
-      <ConfettiArray
-        confettiTrigger={confettiTrigger}
-        colors={confettiColors}
-      />
+      <ConfettiArray trigger={confettiTrigger} colors={confettiColors} />
     </>
   );
 };

@@ -15,7 +15,7 @@ import type { FC, Dispatch, SetStateAction, CSSProperties } from 'react';
 import type { HexColor } from '../../utils/color';
 import type { ConfettiOptions } from '../../hooks/useConfetti';
 export interface ConfettiArrayProps {
-  confettiTrigger: boolean;
+  trigger: boolean;
   colors: HexColor[];
 }
 type Setter = Dispatch<SetStateAction<boolean>>;
@@ -42,7 +42,7 @@ function chainFlip(
   }
 }
 
-const ConfettiArray: FC<ConfettiArrayProps> = ({ confettiTrigger, colors }) => {
+const ConfettiArray: FC<ConfettiArrayProps> = ({ trigger, colors }) => {
   // State:
   const [trigger0, setTrigger0] = useState<boolean>(false);
   const [trigger1, setTrigger1] = useState<boolean>(false);
@@ -51,10 +51,10 @@ const ConfettiArray: FC<ConfettiArrayProps> = ({ confettiTrigger, colors }) => {
 
   // Confetti chain:
   useEffect(() => {
-    if (confettiTrigger) {
+    if (trigger) {
       chainFlip([setTrigger0, setTrigger1, setTrigger2, setTrigger3]);
     }
-  }, [confettiTrigger]);
+  }, [trigger]);
 
   // Derived values:
   const [canvasHeight, canvasWidth] = [100, 100];

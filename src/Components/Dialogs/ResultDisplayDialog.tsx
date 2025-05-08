@@ -15,10 +15,9 @@ import ResultDisplay from './ResultDisplay';
 // Types, interfaces and enumns:
 import type { ForwardedRef } from 'react';
 import type { DialogHandle } from '../UI/Dialog';
-import type { ResultDisplayProps } from './ResultDisplay';
 
-const ResultDisplayDialog = forwardRef<DialogHandle, ResultDisplayProps>(
-  ({ confettiTrigger }, ref: ForwardedRef<DialogHandle>) => {
+const ResultDisplayDialog = forwardRef<DialogHandle>(
+  (_, ref: ForwardedRef<DialogHandle>) => {
     // Store:
     const radiusName = useBoundStore((state) => state.activeConfig.radiusName);
     const wheelRadius = WHEEL_RADII_MAP[radiusName];
@@ -41,7 +40,7 @@ const ResultDisplayDialog = forwardRef<DialogHandle, ResultDisplayProps>(
           overflow: 'visible',
         }}
       >
-        <ResultDisplay confettiTrigger={confettiTrigger} />
+        <ResultDisplay />
       </Dialog>
     );
   }
