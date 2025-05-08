@@ -16,4 +16,6 @@ export const PALETTES: HexColor[][] = [
   ['#E6D8A8', '#E6A8A8', '#A8E6CE', '#C7A8E6', '#A8C7E6', '#E6A8D8'],
 
   ['#005E2D', '#5E0035', '#5E4D00', '#003E5E', '#5E0000', '#3D005E'],
+
+  ['#000000', '#ffffff'],
 ] as const;

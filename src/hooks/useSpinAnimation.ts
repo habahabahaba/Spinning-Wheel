@@ -35,9 +35,9 @@ function addAnimation(options: AddAnimationOptions): void {
 
   const animationName = `windUp-${Date.now()}`;
   animationNameRef.current = animationName;
-  console.log(
-    `[useSpinAnimation][addAnimation] animationNameRef.current: ${animationNameRef.current}`
-  );
+  // console.log(
+  //   `[useSpinAnimation][addAnimation] animationNameRef.current: ${animationNameRef.current}`
+  // );
 
   const style = document.createElement('style');
   style.innerHTML = styleFn(animationName);
@@ -152,7 +152,7 @@ export function useSpinAnimation(
       onSpinStart?: () => void,
       onSpinEnd?: () => void
     ) => {
-      console.log(`[useSpinAnimation][spin] numberOfTurns: ${numberOfTurns}`);
+      // console.log(`[useSpinAnimation][spin] numberOfTurns: ${numberOfTurns}`);
       const el = ref.current;
       if (!el || numberOfTurns === 0) return 0;
       if (wheelAnimationState !== 'idle' && wheelAnimationState !== 'windingUp')
