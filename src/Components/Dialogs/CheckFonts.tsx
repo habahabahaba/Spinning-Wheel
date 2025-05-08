@@ -29,7 +29,6 @@ const CheckFontsDialog: FC = () => {
   const default_fontFamily = useBoundStore(
     (state) => state.currentConfig.default_fontFamily
   );
-  const outcomes = useBoundStore((state) => state.currentConfig.outcomes);
 
   const currentConfig = useBoundStore((state) => state.currentConfig);
   // Actions:
@@ -39,7 +38,9 @@ const CheckFontsDialog: FC = () => {
   const applyConfig = useBoundStore((state) => state.applyConfig);
 
   // Derived values:
-  const outcomesFonts = outcomes.map((outcome) => outcome.fontFamily);
+  const outcomesFonts = currentConfig.outcomes.map(
+    (outcome) => outcome.fontFamily
+  );
   const allFonts = [default_fontFamily, ...outcomesFonts] as AllFontNames[];
   const missingFonts = allFonts.filter(
     (font) => font && fontsLoadStates[font] === false
