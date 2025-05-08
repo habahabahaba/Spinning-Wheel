@@ -13,7 +13,7 @@ import { use } from 'react';
 import modalCloseCtx from '../../context/modalCloseCtx';
 // Hooks:
 // Components:
-import ConfettiArray from '../ConfettiArray';
+import ConfettiArray from '../Confetti/ConfettiArray';
 // CSS:
 // Types, interfaces and enumns:
 import type { FC } from 'react';

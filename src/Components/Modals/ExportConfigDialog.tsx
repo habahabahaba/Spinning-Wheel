@@ -56,7 +56,8 @@ const ExportConfigDialog: FC = () => {
         flexDirection: 'column',
         justifyContent: 'space-between',
         position: 'relative',
-        minWidth: '50%',
+        minWidth: '50vw',
+        maxWidth: '80vw',
         minHeight: '8rem',
         padding: '0.25rem',
       }}

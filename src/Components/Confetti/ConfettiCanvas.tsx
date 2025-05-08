@@ -9,13 +9,13 @@ import { useEffect } from 'react';
 // import { createPortal } from 'react-dom';
 // Context:
 // Hooks:
-import useConfetti from '../hooks/useConfetti';
+import useConfetti from '../../hooks/useConfetti';
 // Components:
 // CSS:
 // Types, interfaces and enumns:
 import type { CSSProperties, FC } from 'react';
 // import type { HexColor } from '../utils/color';
-import type { ConfettiOptions } from '../hooks/useConfetti';
+import type { ConfettiOptions } from '../../hooks/useConfetti';
 interface ConfettiCanvasProps {
   trigger: boolean;
   confettiOptions?: ConfettiOptions;
