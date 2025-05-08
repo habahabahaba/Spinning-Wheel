@@ -15,14 +15,14 @@ import { useSpinAnimation } from '../hooks/useSpinAnimation';
 import Wheel from './Wheel/Wheel';
 import Arrow from './Wheel/Arrow';
 import SpinButton from './Wheel/SpinButton';
-import ResultDisplayModal from './Modals/ResultDisplayModal';
+import ResultDisplayModal from './Dialogs/ResultDisplayDialog';
 import Wallpaper from './UI/Wallpaper';
 // import ConfettiCanvas from './ConfettiCanvas';
 // import Modal from './Modal';
 // CSS:
 // Types, interfaces and enumns:
 import type { FC } from 'react';
-import type { ModalHandle } from './UI/Modal';
+import type { DialogHandle } from './UI/Dialog';
 
 const Main: FC = () => {
   // Store:
@@ -48,7 +48,7 @@ const Main: FC = () => {
 
   // Refs:
   const wheelRef = useRef<SVGSVGElement>(null);
-  const resultModalRef = useRef<ModalHandle>(null);
+  const resultModalRef = useRef<DialogHandle>(null);
   const randomRef = useRef<number>(0);
 
   const { windUp, cancelAnimations, spin } = useSpinAnimation(
@@ -99,9 +99,7 @@ const Main: FC = () => {
         },
         () => {
           // console.log(`END callback`);
-          setTimeout(() => {
-            resultModalRef.current?.handleShowModal();
-          }, 1);
+          resultModalRef.current?.handleShowDialog();
           setTimeout(() => {
             setConfettiTrigger(true);
           }, 600);

@@ -9,16 +9,16 @@ import { forwardRef } from 'react';
 // Context:
 // Hooks:
 // Components:
-import Modal from '../UI/Modal';
+import Dialog from '../UI/Dialog';
 import ResultDisplay from './ResultDisplay';
 // CSS:
 // Types, interfaces and enumns:
 import type { ForwardedRef } from 'react';
-import type { ModalHandle } from '../UI/Modal';
+import type { DialogHandle } from '../UI/Dialog';
 import type { ResultDisplayProps } from './ResultDisplay';
 
-const ResultDisplayModal = forwardRef<ModalHandle, ResultDisplayProps>(
-  ({ confettiTrigger }, ref: ForwardedRef<ModalHandle>) => {
+const ResultDisplayDialog = forwardRef<DialogHandle, ResultDisplayProps>(
+  ({ confettiTrigger }, ref: ForwardedRef<DialogHandle>) => {
     // Store:
     const radiusName = useBoundStore((state) => state.activeConfig.radiusName);
     const wheelRadius = WHEEL_RADII_MAP[radiusName];
@@ -27,7 +27,7 @@ const ResultDisplayModal = forwardRef<ModalHandle, ResultDisplayProps>(
 
     // JSX:
     return (
-      <Modal
+      <Dialog
         ref={ref}
         className='drop-down'
         style={{
@@ -42,9 +42,9 @@ const ResultDisplayModal = forwardRef<ModalHandle, ResultDisplayProps>(
         }}
       >
         <ResultDisplay confettiTrigger={confettiTrigger} />
-      </Modal>
+      </Dialog>
     );
   }
 );
 
-export default ResultDisplayModal;
+export default ResultDisplayDialog;

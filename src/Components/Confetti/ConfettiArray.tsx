@@ -12,8 +12,8 @@ import ConfettiCanvas from './ConfettiCanvas';
 // CSS:
 // Types, interfaces and enumns:
 import type { FC, Dispatch, SetStateAction, CSSProperties } from 'react';
-import type { HexColor } from '../utils/color';
-import type { ConfettiOptions } from '../hooks/useConfetti';
+import type { HexColor } from '../../utils/color';
+import type { ConfettiOptions } from '../../hooks/useConfetti';
 export interface ConfettiArrayProps {
   confettiTrigger: boolean;
   colors: HexColor[];

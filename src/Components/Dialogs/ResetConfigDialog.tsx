@@ -6,18 +6,18 @@ import { forwardRef } from 'react';
 // Context:
 // Hooks:
 // Components:
-import Modal from '../UI/Modal';
-import ExportConfigDialog from './ExportConfigDialog';
+import Dialog from '../UI/Dialog';
+import ResetConfig from './ResetConfig';
 // CSS:
 // Types, interfaces and enumns:
 import type { ForwardedRef } from 'react';
-import type { ModalHandle } from '../UI/Modal';
+import type { DialogHandle } from '../UI/Dialog';
 
-const ExportConfigModal = forwardRef<ModalHandle>(
-  (_, ref: ForwardedRef<ModalHandle>) => {
+const ResetConfigDialog = forwardRef<DialogHandle>(
+  (_, ref: ForwardedRef<DialogHandle>) => {
     // JSX:
     return (
-      <Modal
+      <Dialog
         ref={ref}
         // className=''
         style={{
@@ -25,10 +25,10 @@ const ExportConfigModal = forwardRef<ModalHandle>(
           right: '0',
         }}
       >
-        <ExportConfigDialog />
-      </Modal>
+        <ResetConfig />
+      </Dialog>
     );
   }
 );
 
-export default ExportConfigModal;
+export default ResetConfigDialog;

@@ -6,19 +6,19 @@ import { forwardRef } from 'react';
 // Context:
 // Hooks:
 // Components:
-import Modal from '../UI/Modal';
-import LoadConfigDialog from './LoadConfigDialog';
+import Dialog from '../UI/Dialog';
+import LoadConfig from './LoadConfig';
 // CSS:
 // Types, interfaces and enumns:
 import type { ForwardedRef } from 'react';
-import type { ModalHandle } from '../UI/Modal';
-import type { LoadConfigDialogProps } from './LoadConfigDialog';
+import type { DialogHandle } from '../UI/Dialog';
+import type { LoadConfigProps } from './LoadConfig';
 
-const LoadConfigModal = forwardRef<ModalHandle, LoadConfigDialogProps>(
-  ({ saveIdx }, ref: ForwardedRef<ModalHandle>) => {
+const LoadConfigDialog = forwardRef<DialogHandle, LoadConfigProps>(
+  ({ saveIdx }, ref: ForwardedRef<DialogHandle>) => {
     // JSX:
     return (
-      <Modal
+      <Dialog
         ref={ref}
         // className='drop-down'
         childProps={{ saveIdx }}
@@ -28,10 +28,10 @@ const LoadConfigModal = forwardRef<ModalHandle, LoadConfigDialogProps>(
           maxWidth: '75%',
         }}
       >
-        <LoadConfigDialog saveIdx={saveIdx} />
-      </Modal>
+        <LoadConfig saveIdx={saveIdx} />
+      </Dialog>
     );
   }
 );
 
-export default LoadConfigModal;
+export default LoadConfigDialog;

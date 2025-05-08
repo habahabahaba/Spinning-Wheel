@@ -9,7 +9,7 @@ import useBoundStore from '../../store/boundStore';
 // React:
 import { use } from 'react';
 // Context:
-import modalCloseCtx from '../../context/modalCloseCtx';
+import dialogCloseCtx from '../../context/dialogCloseCtx';
 // Hooks:
 // Components:
 import Button from '../UI/Button';
@@ -22,7 +22,7 @@ import type { AllFontNames } from '../../constants/fontFamilies';
 
 const CheckFontsDialog: FC = () => {
   // Modal context For closing:
-  const { handleCloseModal } = use(modalCloseCtx);
+  const { handleCloseDialog } = use(dialogCloseCtx);
 
   // Store:
   const fontsLoadStates = useBoundStore((state) => state.fontsLoadStates);
@@ -53,14 +53,14 @@ const CheckFontsDialog: FC = () => {
     replaceCurrentConfig({ newConfig });
     applyConfig();
 
-    handleCloseModal();
+    handleCloseDialog();
   }
 
   function handleApply() {
     if (missingFonts.length > 0) return;
 
     applyConfig();
-    handleCloseModal();
+    handleCloseDialog();
   }
 
   // JSX:
@@ -105,7 +105,7 @@ const CheckFontsDialog: FC = () => {
           marginTop: '0.5rem',
         }}
       >
-        <Button onClick={handleCloseModal}>Cancel</Button>
+        <Button onClick={handleCloseDialog}>Cancel</Button>
         <Button
           variant='warning'
           disabled={!missingFonts.length}

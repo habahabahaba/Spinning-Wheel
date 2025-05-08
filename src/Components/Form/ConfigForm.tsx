@@ -13,14 +13,14 @@ import RadiusSelector from '../Selectors/RadiusSelector';
 import PaletteSelector from '../Selectors/PaletteSelector';
 import FontSelector from '../Selectors/FontSelector';
 import OutcomeInputs from './OutcomeInputs';
-import ExportConfigModal from '../Modals/ExportConfigModal';
-import ImportConfigModal from '../Modals/ImportConfigModal';
-import CheckFontsModal from '../Modals/CheckFontsModal';
-import ResetConfigModal from '../Modals/ResetConfigModal';
+import ExportConfigDialog from '../Dialogs/ExportConfigDialog';
+import ImportConfigDialog from '../Dialogs/ImportConfigDialog';
+import CheckFontsDialog from '../Dialogs/CheckFontsDialog';
+import ResetConfigDialog from '../Dialogs/ResetConfigDialog';
 // CSS:
 // Types, interfaces and enumns:
 import type { FC, MouseEvent } from 'react';
-import type { ModalHandle } from '../UI/Modal';
+import type { DialogHandle } from '../UI/Dialog';
 // interface ConfigFormProps {}
 
 const ConfigForm: FC = () => {
@@ -42,10 +42,10 @@ const ConfigForm: FC = () => {
   const [addQuantity, setAddQuantity] = useState<number>(1);
 
   // Refs (for modals):
-  const resetConfigModalRef = useRef<ModalHandle>(null);
-  const checkFontsModalRef = useRef<ModalHandle>(null);
-  const exportConfigModalRef = useRef<ModalHandle>(null);
-  const importConfigModalRef = useRef<ModalHandle>(null);
+  const resetConfigDialogRef = useRef<DialogHandle>(null);
+  const checkFontsDialogRef = useRef<DialogHandle>(null);
+  const exportConfigDialogRef = useRef<DialogHandle>(null);
+  const importConfigDialogRef = useRef<DialogHandle>(null);
 
   // Handlers
   function handleAddOutcomes(ev: MouseEvent<HTMLButtonElement>) {
@@ -64,26 +64,26 @@ const ConfigForm: FC = () => {
     if (checkAllFontsReady()) {
       applyConfig();
     } else {
-      checkFontsModalRef?.current?.handleShowModal();
+      checkFontsDialogRef?.current?.handleShowDialog();
     }
   }
 
   function handleOpenExportModal(ev: MouseEvent<HTMLButtonElement>) {
     ev.preventDefault();
 
-    exportConfigModalRef.current?.handleShowModal();
+    exportConfigDialogRef.current?.handleShowDialog();
   }
 
   function handleOpenImportModal(ev: MouseEvent<HTMLButtonElement>) {
     ev.preventDefault();
 
-    importConfigModalRef.current?.handleShowModal();
+    importConfigDialogRef.current?.handleShowDialog();
   }
 
   function handleOpenResetModal(ev: MouseEvent<HTMLButtonElement>) {
     ev.preventDefault();
 
-    resetConfigModalRef.current?.handleShowModal();
+    resetConfigDialogRef.current?.handleShowDialog();
   }
 
   // JSX:
@@ -244,11 +244,11 @@ const ConfigForm: FC = () => {
           </div>
         </div>
       </form>
-      <ExportConfigModal ref={exportConfigModalRef} />
-      <ImportConfigModal ref={importConfigModalRef} />
+      <ExportConfigDialog ref={exportConfigDialogRef} />
+      <ImportConfigDialog ref={importConfigDialogRef} />
 
-      <ResetConfigModal ref={resetConfigModalRef} />
-      <CheckFontsModal ref={checkFontsModalRef} />
+      <ResetConfigDialog ref={resetConfigDialogRef} />
+      <CheckFontsDialog ref={checkFontsDialogRef} />
     </>
   );
 };
