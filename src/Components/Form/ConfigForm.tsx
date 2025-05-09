@@ -5,14 +5,14 @@ import { mergeStyles } from '../../utils/css';
 import useBoundStore from '../../store/boundStore';
 // React Router:
 // React:
-import { useState, useRef } from 'react';
+import { useRef } from 'react';
 // Context:
 // Hooks:
 // Components:
 import Button from '../UI/Button';
 import SaveLoadMenu from './SaveLoadMenu';
 import WheelDefaultsMenu from './WheelDefaultsMenu';
-import OutcomeInputs from './OutcomeInputs';
+import OutcomesMenu from './OutcomesMenu';
 import ExportConfigDialog from '../Dialogs/ExportConfigDialog';
 import ImportConfigDialog from '../Dialogs/ImportConfigDialog';
 import CheckFontsDialog from '../Dialogs/CheckFontsDialog';
@@ -26,13 +26,8 @@ import type { DialogHandle } from '../UI/Dialog';
 
 const ConfigForm: FC = () => {
   // Store:
-  const outcomesLength = useBoundStore(
-    (state) => state.currentConfig.outcomes.length
-  );
-  const validQuantity = 72 - outcomesLength;
 
   // Actions:
-  const addBlankOutcomes = useBoundStore((state) => state.addBlankOutcomes);
   const applyConfig = useBoundStore((state) => state.applyConfig);
   const resetWinningOutcomeIdx = useBoundStore(
     (state) => state.resetWinningOutcomeIdx
@@ -40,7 +35,6 @@ const ConfigForm: FC = () => {
   const checkAllFontsReady = useBoundStore((state) => state.checkAllFontsReady);
 
   // State:
-  const [addQuantity, setAddQuantity] = useState<number>(1);
 
   // Refs (for modals):
   const resetConfigDialogRef = useRef<DialogHandle>(null);
@@ -49,14 +43,6 @@ const ConfigForm: FC = () => {
   const importConfigDialogRef = useRef<DialogHandle>(null);
 
   // Handlers
-  function handleAddOutcomes(ev: MouseEvent<HTMLButtonElement>) {
-    ev.preventDefault();
-    if (outcomesLength > 71) return;
-    const quantity = Math.max(1, Math.min(validQuantity, addQuantity));
-
-    addBlankOutcomes({ quantity });
-  }
-
   function handleApplyConfig(ev: MouseEvent<HTMLButtonElement>) {
     ev.preventDefault();
 
@@ -88,66 +74,12 @@ const ConfigForm: FC = () => {
   }
 
   // JSX:
-  const outcomes = Array.from({ length: outcomesLength }, () => null).map(
-    (_, idx) => <OutcomeInputs index={idx} key={idx} />
-  );
-
   return (
     <>
       <form className={mergeStyles(styles.config_form, styles.glass)}>
         <SaveLoadMenu />
         <WheelDefaultsMenu />
-        <div
-          style={{
-            minHeight: '8rem',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'start',
-            gap: '0.05rem',
-            padding: '0.25rem',
-          }}
-        >
-          {outcomes}
-        </div>
-
-        <div
-          style={{
-            width: '95%',
-            display: 'flex',
-            flexWrap: 'wrap',
-            gap: '0.5rem',
-            justifyContent: 'end',
-            alignItems: 'center',
-            // maxWidth: '100%',
-            margin: '0.5rem',
-          }}
-        >
-          <input
-            style={{
-              minHeight: '1.5rem',
-              paddingLeft: '0.25rem',
-              border: '1px solid',
-              borderRadius: ' 0.1rem',
-              minWidth: '2rem',
-            }}
-            type='number'
-            min={1}
-            max={validQuantity}
-            step={1}
-            value={addQuantity}
-            onChange={(ev) => {
-              setAddQuantity(+ev.target.value);
-            }}
-          />
-          <Button
-            variant='default'
-            shape='rounded'
-            onClick={handleAddOutcomes}
-            disabled={addQuantity > validQuantity}
-          >
-            Add
-          </Button>
-        </div>
+        <OutcomesMenu />
         <div
           style={{
             width: 'auto',
@@ -157,9 +89,10 @@ const ConfigForm: FC = () => {
             justifyContent: 'space-between',
             alignItems: 'center',
             margin: '0.5rem',
-            marginTop: 'auto',
+            // marginTop: 'auto',
             // alignSelf: 'flex-end',
-            justifySelf: 'end',
+            justifySelf: 'last baseline',
+            // justifySelf: 'flex-end',
           }}
         >
           <div
@@ -222,8 +155,8 @@ const ConfigForm: FC = () => {
       </form>
       <ExportConfigDialog ref={exportConfigDialogRef} />
       <ImportConfigDialog ref={importConfigDialogRef} />
-
       <ResetConfigDialog ref={resetConfigDialogRef} />
+
       <CheckFontsDialog ref={checkFontsDialogRef} />
     </>
   );
