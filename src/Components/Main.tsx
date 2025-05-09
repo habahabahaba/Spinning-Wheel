@@ -16,7 +16,7 @@ import Wheel from './Wheel/Wheel';
 import Arrow from './Wheel/Arrow';
 import SpinButton from './Wheel/SpinButton';
 import ResultDisplayModal from './Dialogs/ResultDisplayDialog';
-import Wallpaper from './UI/Wallpaper';
+// import Wallpaper from './UI/Wallpaper';
 // import ConfettiCanvas from './ConfettiCanvas';
 // import Modal from './Modal';
 // CSS:
@@ -121,15 +121,6 @@ const Main: FC = () => {
         // boxSizing: 'content-box',
       }}
     >
-      <Wallpaper
-        variant={1}
-        colorIdx0={2}
-        colorIdx1={0}
-        style={{
-          opacity: '0.9',
-        }}
-      />
-
       <div
         id='wheel-arrow-assembly'
         style={{

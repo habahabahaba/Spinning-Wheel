@@ -1,0 +1,52 @@
+.menu {
+  display: grid;
+  column-gap: 0.5rem;
+  grid-template:
+    'radius_label  palette_label  font_label'
+    'radius_select palette_select font_select' 2fr / 1fr 1fr max-content;
+
+  width: min-content;
+  margin: 1rem 0.5rem;
+  padding: 0;
+}
+
+.label {
+  font-weight: 600;
+  font-size: 0.9rem;
+
+  justify-self: left;
+  margin-left: 0.5rem;
+}
+.radius_select_label {
+  grid-area: radius_label;
+}
+.palette_select_label {
+  grid-area: palette_label;
+}
+.font_select_label {
+  grid-area: font_label;
+}
+
+/* .select {
+
+} */
+.radius_select {
+  grid-area: radius_select;
+}
+.palette_select {
+  grid-area: palette_select;
+}
+.font_select {
+  grid-area: font_select;
+}
+
+@media screen and (max-width: 800px) {
+  .menu {
+    grid-template:
+      'radius_label   radius_select'
+      'palette_label  palette_select'
+      'font_label     font_select' 3fr / max-content 1fr;
+    row-gap: 0.5rem;
+    margin: 1rem 0;
+  }
+}

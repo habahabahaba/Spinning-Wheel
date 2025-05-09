@@ -13,9 +13,11 @@ import { Select, Option } from '../UI/Select';
 // CSS:
 // Types, interfaces and enumns:
 import type { FC } from 'react';
-// interface PaletteSelectorProps{}
+interface PaletteSelectorProps {
+  className?: string;
+}
 
-const PaletteSelector: FC = () => {
+const PaletteSelector: FC<PaletteSelectorProps> = ({ className = '' }) => {
   // Store:
   const currentPalette = useBoundStore(
     (state) => state.currentConfig.default_palette_idx
@@ -39,6 +41,7 @@ const PaletteSelector: FC = () => {
       onChange={(value) => {
         setPalette({ paletteIdx: +value });
       }}
+      className={className}
     >
       {options}
     </Select>

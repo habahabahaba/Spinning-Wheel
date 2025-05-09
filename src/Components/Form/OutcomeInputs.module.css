@@ -1,0 +1,66 @@
+.outcome_inputs {
+  display: grid;
+  column-gap: 0.5rem;
+  row-gap: 0.5rem;
+  grid-template:
+    'label label label color font font duplicate delete' auto
+    / auto auto auto min-content min-content min-content min-content min-content;
+
+  border-radius: 0.1rem;
+  margin: 0.5rem;
+  width: 90%;
+}
+
+.outcome_label_input {
+  grid-area: label;
+  height: 1.5rem;
+  justify-self: stretch;
+  /* margin: auto; */
+
+  padding: 0.2rem;
+  border: 1px solid;
+  border-radius: 0.1rem;
+  min-width: 14rem;
+  /* width: 100%; */
+}
+.outcome_color_input {
+  grid-area: color;
+  min-height: 2rem;
+  min-width: 2rem;
+  justify-self: center;
+  /* justify-self: start; */
+
+  /* width: 100%; */
+  /* margin: auto; */
+  margin-left: 0;
+  padding: 0.15rem;
+  border: 1px solid;
+  border-radius: 0.1rem;
+  background-color: white;
+}
+.outcome_font_input {
+  grid-area: font;
+  /* margin: auto; */
+  /* margin: 0px; */
+  justify-self: stretch;
+  width: 100%;
+  /* grid-column: 1 / -1; */
+}
+.outcome_duplicate_button {
+  grid-area: duplicate;
+  max-width: 3rem;
+  justify-self: center;
+}
+.outcome_delete_button {
+  grid-area: delete;
+  max-width: 3rem;
+  justify-self: center;
+}
+
+@media screen and (max-width: 800px) {
+  .outcome_inputs {
+    grid-template:
+      'label label label delete'
+      'color font  font  duplicate' 2fr / min-content auto max-content min-content;
+  }
+}

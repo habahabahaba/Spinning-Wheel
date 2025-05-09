@@ -1,6 +1,7 @@
 // Assets:
 // Constants:
 // Utils:
+// import { mergeStyles } from '../../utils/css';
 // 3rd party:
 // Store:
 import useBoundStore from '../../store/boundStore';
@@ -15,6 +16,7 @@ import SaveSlotSelector from '../Selectors/SaveSlotSelector';
 import LoadConfigDialog from '../Dialogs/LoadConfigDialog';
 import SaveConfigDialog from '../Dialogs/SaveConfigDialog';
 // CSS:
+import styles from './SaveLoadMenu.module.css';
 // Types, interfaces and enumns:
 import type { FC, MouseEvent } from 'react';
 import type { DialogHandle } from '../UI/Dialog';
@@ -46,42 +48,32 @@ const SaveLoadConfigMenu: FC = () => {
   // JSX:
   return (
     <>
-      <div
-        style={{
-          maxWidth: '100vw',
-          display: 'flex',
-          gap: '0.5rem',
-          justifyContent: 'end',
-          margin: '0.5rem',
-        }}
-      >
-        <span>Save / Load configuration:</span>
+      <menu className={styles.menu}>
+        <span className={styles.label}>Save / Load configuration:</span>
         <SaveSlotSelector
           value={saveIdx}
           onChange={(value) => {
             setSaveIdx(() => +value);
           }}
         />
-        <div style={{ display: 'flex', gap: '0.5rem' }}>
-          <Button
-            variant='warning'
-            id='open-load-config-form'
-            name='Start loading configuration'
-            disabled={!savedConfigs[saveIdx]}
-            onClick={handleOpenLoadModal}
-          >
-            Load
-          </Button>
-          <Button
-            id='open-save-config-form'
-            name='Start saving configuration'
-            disabled={saveIdx < 0 || saveIdx > 9}
-            onClick={handleOpenSaveModal}
-          >
-            Save
-          </Button>
-        </div>
-      </div>
+        <Button
+          variant='warning'
+          id='open-load-config-form'
+          name='Start loading configuration'
+          disabled={!savedConfigs[saveIdx]}
+          onClick={handleOpenLoadModal}
+        >
+          Load
+        </Button>
+        <Button
+          id='open-save-config-form'
+          name='Start saving configuration'
+          disabled={saveIdx < 0 || saveIdx > 9}
+          onClick={handleOpenSaveModal}
+        >
+          Save
+        </Button>
+      </menu>
       <SaveConfigDialog saveIdx={saveIdx} ref={saveConfigDialogRef} />
       <LoadConfigDialog saveIdx={saveIdx} ref={loadConfigDialogRef} />
     </>

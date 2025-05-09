@@ -16,9 +16,13 @@ import type { FC } from 'react';
 // import type { WheelConfigsActions } from '../store/types';
 interface FontSelectorProps {
   outcomeIdx: number;
+  className?: string;
 }
 
-const FontSelector: FC<FontSelectorProps> = ({ outcomeIdx }) => {
+const FontSelector: FC<FontSelectorProps> = ({
+  outcomeIdx,
+  className = '',
+}) => {
   // Store:
   const outcomesLength = useBoundStore(
     (state) => state.currentConfig.outcomes.length
@@ -66,6 +70,7 @@ const FontSelector: FC<FontSelectorProps> = ({ outcomeIdx }) => {
       onChange={
         forOutcome ? outcomeFontChangeHandler : defaultFontChangeHandler
       }
+      className={className}
     >
       {forOutcome ? (
         <Option value={''}>

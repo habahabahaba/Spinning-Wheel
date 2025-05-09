@@ -1,0 +1,21 @@
+.menu {
+  max-width: 100vw;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: end;
+  align-items: center;
+  margin: 0.5rem;
+}
+
+.label {
+  display: initial;
+
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+@media screen and (max-width: 800px) {
+  .label {
+    display: none;
+  }
+}

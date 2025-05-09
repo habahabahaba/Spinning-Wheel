@@ -1,3 +1,5 @@
+// Utils:
+import { mergeStyles } from '../../utils/css';
 // 3rd party:
 // Store:
 import useBoundStore from '../../store/boundStore';
@@ -8,16 +10,15 @@ import { useState, useRef } from 'react';
 // Hooks:
 // Components:
 import Button from '../UI/Button';
-import SaveLoadConfigMenu from './SaveLoadConfigMenu';
-import RadiusSelector from '../Selectors/RadiusSelector';
-import PaletteSelector from '../Selectors/PaletteSelector';
-import FontSelector from '../Selectors/FontSelector';
+import SaveLoadMenu from './SaveLoadMenu';
+import WheelDefaultsMenu from './WheelDefaultsMenu';
 import OutcomeInputs from './OutcomeInputs';
 import ExportConfigDialog from '../Dialogs/ExportConfigDialog';
 import ImportConfigDialog from '../Dialogs/ImportConfigDialog';
 import CheckFontsDialog from '../Dialogs/CheckFontsDialog';
 import ResetConfigDialog from '../Dialogs/ResetConfigDialog';
 // CSS:
+import styles from './ConfigForm.module.css';
 // Types, interfaces and enumns:
 import type { FC, MouseEvent } from 'react';
 import type { DialogHandle } from '../UI/Dialog';
@@ -93,34 +94,9 @@ const ConfigForm: FC = () => {
 
   return (
     <>
-      <form>
-        <SaveLoadConfigMenu />
-        <div
-          style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            gap: '0.5rem',
-            justifyContent: 'start',
-            alignItems: 'center',
-            // maxWidth: '100%',
-            margin: '0.5rem',
-          }}
-        >
-          <label>
-            Wheel size:
-            <RadiusSelector />
-          </label>
-
-          <label>
-            Default colors:
-            <PaletteSelector />
-          </label>
-
-          <label>
-            Default font:
-            <FontSelector outcomeIdx={-1} />{' '}
-          </label>
-        </div>
+      <form className={mergeStyles(styles.config_form, styles.glass)}>
+        <SaveLoadMenu />
+        <WheelDefaultsMenu />
         <div
           style={{
             minHeight: '8rem',
@@ -133,114 +109,114 @@ const ConfigForm: FC = () => {
         >
           {outcomes}
         </div>
-        <div>
+
+        <div
+          style={{
+            width: '95%',
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: '0.5rem',
+            justifyContent: 'end',
+            alignItems: 'center',
+            // maxWidth: '100%',
+            margin: '0.5rem',
+          }}
+        >
+          <input
+            style={{
+              minHeight: '1.5rem',
+              paddingLeft: '0.25rem',
+              border: '1px solid',
+              borderRadius: ' 0.1rem',
+              minWidth: '2rem',
+            }}
+            type='number'
+            min={1}
+            max={validQuantity}
+            step={1}
+            value={addQuantity}
+            onChange={(ev) => {
+              setAddQuantity(+ev.target.value);
+            }}
+          />
+          <Button
+            variant='default'
+            shape='rounded'
+            onClick={handleAddOutcomes}
+            disabled={addQuantity > validQuantity}
+          >
+            Add
+          </Button>
+        </div>
+        <div
+          style={{
+            width: 'auto',
+            display: 'flex',
+            // flexWrap: 'wrap',
+            // gap: '0.5rem',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            margin: '0.5rem',
+            marginTop: 'auto',
+            // alignSelf: 'flex-end',
+            justifySelf: 'end',
+          }}
+        >
           <div
             style={{
-              width: '95%',
               display: 'flex',
-              flexWrap: 'wrap',
+              // flexWrap: 'wrap',
               gap: '0.5rem',
-              justifyContent: 'end',
+              justifyContent: 'space-between',
               alignItems: 'center',
               // maxWidth: '100%',
-              margin: '0.5rem',
+              // margin: '0.5rem',
             }}
           >
-            <input
-              style={{
-                minHeight: '1.5rem',
-                paddingLeft: '0.25rem',
-                border: '1px solid',
-                borderRadius: ' 0.1rem',
-                minWidth: '2rem',
-              }}
-              type='number'
-              min={1}
-              max={validQuantity}
-              step={1}
-              value={addQuantity}
-              onChange={(ev) => {
-                setAddQuantity(+ev.target.value);
-              }}
-            />
             <Button
-              variant='default'
-              shape='rounded'
-              onClick={handleAddOutcomes}
-              disabled={addQuantity > validQuantity}
+              id='config-form-export-button'
+              name='export configuration'
+              onClick={handleOpenExportModal}
             >
-              Add
+              Export
+            </Button>
+            <Button
+              variant='warning'
+              id='config-form-import-button'
+              name='import configuration'
+              onClick={handleOpenImportModal}
+            >
+              Import
             </Button>
           </div>
           <div
             style={{
               // width: '90%',
               display: 'flex',
-              // flexWrap: 'wrap',
-              // gap: '0.5rem',
+              flexWrap: 'wrap',
+              gap: '0.5rem',
               justifyContent: 'space-between',
               alignItems: 'center',
               // maxWidth: '100%',
-              margin: '0.5rem',
+              // margin: '0.5rem',
             }}
           >
-            <div
-              style={{
-                // width: '90%',
-                display: 'flex',
-                flexWrap: 'wrap',
-                gap: '0.5rem',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                // maxWidth: '100%',
-                // margin: '0.5rem',
-              }}
+            <Button
+              variant='warning'
+              id='config-form-reset-button'
+              name='reset configuration'
+              onClick={handleOpenResetModal}
             >
-              <Button
-                id='config-form-export-button'
-                name='export configuration'
-                onClick={handleOpenExportModal}
-              >
-                Export
-              </Button>
-              <Button
-                variant='warning'
-                id='config-form-import-button'
-                name='import configuration'
-                onClick={handleOpenImportModal}
-              >
-                Import
-              </Button>
-            </div>
-            <div
-              style={{
-                // width: '90%',
-                display: 'flex',
-                flexWrap: 'wrap',
-                gap: '0.5rem',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                // maxWidth: '100%',
-                // margin: '0.5rem',
-              }}
+              Reset
+            </Button>
+            <Button
+              variant='success'
+              id='config-form-apply-button'
+              name='apply configuration'
+              onClick={handleApplyConfig}
             >
-              <Button
-                variant='warning'
-                id='config-form-reset-button'
-                name='reset configuration'
-                onClick={handleOpenResetModal}
-              >
-                Reset
-              </Button>
-              <Button
-                variant='success'
-                id='config-form-apply-button'
-                name='apply configuration'
-                onClick={handleApplyConfig}
-              >
-                Apply
-              </Button>
-            </div>
+              Apply
+            </Button>
           </div>
         </div>
       </form>

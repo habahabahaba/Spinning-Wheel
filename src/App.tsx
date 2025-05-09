@@ -6,8 +6,9 @@ import useBoundStore from './store/boundStore';
 // React:
 import { useEffect, useRef } from 'react';
 // Components:
-import Main from './Components/Main';
+// import Main from './Components/Main';
 import ConfigForm from './Components/Form/ConfigForm';
+import Wallpaper from './Components/UI/Wallpaper';
 // import FontsDisplay from './Components/FontsDisplay';
 // Types, interfaces and enumns:
 import type { RemoteFontNames } from './constants/fontFamilies';
@@ -50,9 +51,17 @@ function App() {
 
   return (
     <>
-      <Main />
+      {/* <Main /> */}
       <ConfigForm />
       {/* <FontsDisplay /> */}
+      <Wallpaper
+        variant={1}
+        colorIdx0={2}
+        colorIdx1={0}
+        style={{
+          opacity: '0.9',
+        }}
+      />
     </>
   );
 }

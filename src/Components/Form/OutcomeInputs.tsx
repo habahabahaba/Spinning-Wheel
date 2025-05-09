@@ -12,6 +12,7 @@ import Button from '../UI/Button';
 import FontSelector from '../Selectors/FontSelector';
 import deleteSVGs from '../SVG/deleteSVGs';
 // CSS:
+import styles from './OutcomeInputs.module.css';
 // Types, interfaces and enumns:
 import type { FC } from 'react';
 import type { Outcome } from '../../store/types';
@@ -40,16 +41,7 @@ const OutcomeInputs: FC<OutcomeInputsProps> = ({ index }) => {
 
   // JSX:
   return (
-    <div
-      style={{
-        display: 'flex',
-        width: '90%',
-        justifyContent: 'space-around',
-        margin: '0.5rem',
-        backgroundColor: 'white',
-        borderRadius: '0.1rem',
-      }}
-    >
+    <div className={styles.outcome_inputs}>
       <input
         id={`label-input-Outcome-${index}`}
         type='text'
@@ -59,13 +51,7 @@ const OutcomeInputs: FC<OutcomeInputsProps> = ({ index }) => {
         onChange={(ev) => {
           handleChange('label', ev.target.value);
         }}
-        style={{
-          height: '1.5rem',
-          padding: '0.2rem',
-          border: '1px solid',
-          borderRadius: ' 0.1rem',
-          minWidth: '12rem',
-        }}
+        className={styles.outcome_label_input}
       />
       <input
         type='color'
@@ -77,15 +63,10 @@ const OutcomeInputs: FC<OutcomeInputsProps> = ({ index }) => {
             isHexColor(ev.target.value) ? ev.target.value : ''
           );
         }}
-        style={{
-          minHeight: '2rem',
-          padding: '0.15rem',
-          border: '1px solid',
-          borderRadius: ' 0.1rem',
-          backgroundColor: 'white',
-        }}
+        className={styles.outcome_color_input}
       />
-      <FontSelector outcomeIdx={index} />
+
+      <FontSelector outcomeIdx={index} className={styles.outcome_font_input} />
 
       <Button
         id={`duplicate-outcome-${index}-button`}
@@ -98,6 +79,7 @@ const OutcomeInputs: FC<OutcomeInputsProps> = ({ index }) => {
           duplicateOutcome({ outcomeIdx: index });
         }}
         disabled={outcomesLength > 71}
+        className={styles.outcome_duplicate_button}
       >
         <b>x2</b>
       </Button>
@@ -112,6 +94,7 @@ const OutcomeInputs: FC<OutcomeInputsProps> = ({ index }) => {
           removeOutcome({ outcomeIdx: index });
         }}
         disabled={outcomesLength < 3}
+        className={styles.outcome_delete_button}
       >
         {deleteSVGs[2]({ height: '1rem', color0: '#000000' })}
       </Button>

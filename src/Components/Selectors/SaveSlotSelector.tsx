@@ -17,8 +17,13 @@ import type { FC } from 'react';
 interface SaveSlotSelectorProps {
   value: number;
   onChange: (value: string | number) => void;
+  className?: string;
 }
-const SaveSlotSelector: FC<SaveSlotSelectorProps> = ({ value, onChange }) => {
+const SaveSlotSelector: FC<SaveSlotSelectorProps> = ({
+  value,
+  onChange,
+  className = '',
+}) => {
   // JSX:
   const options = Array.from({ length: 10 }, () => 0).map((_, idx) => (
     <Option value={idx} key={idx}>
@@ -32,7 +37,7 @@ const SaveSlotSelector: FC<SaveSlotSelectorProps> = ({ value, onChange }) => {
       placeholder='Select a save slot'
       value={value}
       onChange={onChange}
-      className=''
+      className={className}
     >
       {options}
     </Select>
