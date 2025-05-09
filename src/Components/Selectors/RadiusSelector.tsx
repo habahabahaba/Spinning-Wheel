@@ -10,6 +10,7 @@ import useBoundStore from '../../store/boundStore';
 // Components:
 import { Select, Option } from '../UI/Select';
 // CSS:
+import styles from './RadiusSelector.module.css';
 // Types, interfaces and enumns:
 import type { FC } from 'react';
 import type { Radius } from '../../constants/radii';
@@ -26,7 +27,7 @@ const RadiusSelector: FC = () => {
   // JSX:
   const options = Object.keys(WHEEL_RADII_MAP).map((key) => (
     <Option value={key} key={key}>
-      <b> {key}</b>
+      <span className={styles.radius_option}>{key}</span>
     </Option>
   ));
 

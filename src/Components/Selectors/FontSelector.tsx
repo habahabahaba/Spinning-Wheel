@@ -11,6 +11,7 @@ import useBoundStore from '../../store/boundStore';
 import FontPreview from './FontPreview';
 import { Select, Option } from '../UI/Select';
 // CSS:
+import styles from './FontSelector.module.css';
 // Types, interfaces and enumns:
 import type { FC } from 'react';
 // import type { WheelConfigsActions } from '../store/types';
@@ -74,9 +75,7 @@ const FontSelector: FC<FontSelectorProps> = ({
     >
       {forOutcome ? (
         <Option value={''}>
-          <span style={{ fontStyle: 'italic', color: 'gray' }}>
-            Default font
-          </span>
+          <span className={styles.default_font_option}>Default font</span>
         </Option>
       ) : null}
       {options}

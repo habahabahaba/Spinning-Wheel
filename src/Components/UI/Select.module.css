@@ -5,7 +5,7 @@
 .selectButton {
   border: 1px solid;
   border-radius: 0.1rem;
-  padding: 0.2rem 0.3rem;
+  padding: 0.2rem 0.4rem;
   cursor: pointer;
   background-color: white;
   display: flex;
@@ -43,7 +43,7 @@
 }
 
 .option {
-  padding: 0.5rem 0.75rem;
+  padding: 0.5rem 0.6rem;
   cursor: pointer;
 }
 

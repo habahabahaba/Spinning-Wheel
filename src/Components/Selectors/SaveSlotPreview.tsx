@@ -11,6 +11,7 @@ import useBoundStore from '../../store/boundStore';
 // Hooks:
 // Components:
 // CSS:
+import styles from './SaveSlotPreview.module.css';
 // Types, interfaces and enumns:
 import type { FC } from 'react';
 interface SaveSlotPreviewProps {
@@ -20,16 +21,18 @@ interface SaveSlotPreviewProps {
 const SaveSlotPreview: FC<SaveSlotPreviewProps> = ({ saveIdx }) => {
   // Store:
   const saveSlot = useBoundStore((state) => state.savedConfigs[saveIdx]);
-  const preview = saveSlot ? (
-    saveSlot.configName
-  ) : (
-    <i style={{ color: 'gray' }}> empty slot </i>
-  );
+
   // JSX:
+  const preview = saveSlot ? (
+    <span>{saveSlot.configName}</span>
+  ) : (
+    <span className={styles.empty_save_slot_preview}> empty slot </span>
+  );
+
   return (
-    <span>
-      <b style={{ paddingRight: '0.15rem' }}>{saveIdx + 1}.</b> {preview}
-    </span>
+    <div className={styles.save_slot_option}>
+      <span className={styles.save_slot_index}>{saveIdx + 1}.</span> {preview}
+    </div>
   );
 };
 

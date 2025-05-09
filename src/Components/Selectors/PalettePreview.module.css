@@ -1,0 +1,16 @@
+.color_preview {
+  /* display: inline-block; */
+  height: 90%;
+  aspect-ratio: 1;
+  border: 1px solid black;
+}
+.palette_option {
+  height: 1.3rem;
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.1rem;
+  border-radius: 0.1rem;
+}

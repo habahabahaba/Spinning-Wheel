@@ -9,6 +9,7 @@ import { PALETTES } from '../../constants/palettes';
 // Hooks:
 // Components:
 // CSS:
+import styles from './PalettePreview.module.css';
 // Types, interfaces and enumns:
 import type { FC } from 'react';
 interface PalettePreviewProps {
@@ -25,11 +26,9 @@ const PalettePreview: FC<PalettePreviewProps> = ({ palette_idx }) => {
         <span
           key={idx}
           style={{
-            // display: 'inline-block',
             backgroundColor: color,
-            height: `90%`,
-            aspectRatio: '1',
           }}
+          className={styles.color_preview}
         />
       ))}
     </>
@@ -39,21 +38,7 @@ const PalettePreview: FC<PalettePreviewProps> = ({ palette_idx }) => {
 
   return (
     <>
-      <div
-        style={{
-          height: '1.3rem',
-          width: '100%',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          gap: '0.2rem',
-          padding: '0.1rem',
-          // transition: 'width 0.3s',
-          //   border: '1px solid black',
-        }}
-      >
-        {colors}
-      </div>
+      <div className={styles.palette_option}>{colors}</div>
       {/* {palette_idx < PALETTES.length - 1 ? <hr /> : null} */}
     </>
   );
