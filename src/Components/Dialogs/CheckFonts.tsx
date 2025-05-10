@@ -18,9 +18,9 @@ import Button from '../UI/Button';
 import type { FC } from 'react';
 import type { WheelConfig } from '../../store/types';
 import type { AllFontNames } from '../../constants/fontFamilies';
-// interface CheckFontsDialogProps {}
+// interface CheckFontsProps {}
 
-const CheckFontsDialog: FC = () => {
+const CheckFonts: FC = () => {
   // Modal context For closing:
   const { handleCloseDialog } = use(dialogCloseCtx);
 
@@ -126,7 +126,7 @@ const CheckFontsDialog: FC = () => {
   );
 };
 
-export default CheckFontsDialog;
+export default CheckFonts;
 
 function replaceFonts(
   config: WheelConfig,

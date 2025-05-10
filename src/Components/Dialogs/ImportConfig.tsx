@@ -8,7 +8,7 @@ import { validateWheelConfig } from '../../utils/wheelConfig';
 import useBoundStore from '../../store/boundStore';
 // Router:
 // React:
-import { use, useRef, useState } from 'react';
+import { use, useRef, useState, useEffect } from 'react';
 // Context:
 import dialogCloseCtx from '../../context/dialogCloseCtx';
 // Hooks:
@@ -43,6 +43,13 @@ const ImportConfig: FC = () => {
     setError(() => '');
     setWarnings(() => []);
   }
+
+  // Effects:
+  useEffect(() => {
+    return () => {
+      resetWarnings();
+    };
+  }, []);
 
   // Handlers:
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -111,6 +118,17 @@ const ImportConfig: FC = () => {
   }
 
   // JSX:
+  const defaultWarning =
+    !error && !warnings.length ? (
+      <>
+        <h3>Warning:</h3>
+        <p>
+          This will discard your current configuration, but will not affect the
+          wheel, until applied.
+        </p>
+      </>
+    ) : null;
+
   const errorMessage = error ? (
     <>
       <div
@@ -208,11 +226,7 @@ const ImportConfig: FC = () => {
       }}
     >
       <div style={{ padding: '0.5rem' }}>
-        <h3>Warning:</h3>
-        <p>
-          This will discard your current configuration, but will not affect the
-          wheel, until applied.
-        </p>
+        {defaultWarning}
         <label htmlFor='configuration-file-input' className=''>
           Select a file:
           <br />

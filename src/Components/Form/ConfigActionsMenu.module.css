@@ -1,0 +1,18 @@
+.config_actions_menu {
+  width: auto;
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.5rem;
+
+  justify-self: last baseline;
+}
+
+.buttons_container {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.5rem;
+  justify-content: space-between;
+  align-items: center;
+}

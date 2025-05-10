@@ -56,23 +56,25 @@ const SaveLoadConfigMenu: FC = () => {
             setSaveIdx(() => +value);
           }}
         />
-        <Button
-          variant='warning'
-          id='open-load-config-form'
-          name='Start loading configuration'
-          disabled={!savedConfigs[saveIdx]}
-          onClick={handleOpenLoadModal}
-        >
-          Load
-        </Button>
-        <Button
-          id='open-save-config-form'
-          name='Start saving configuration'
-          disabled={saveIdx < 0 || saveIdx > 9}
-          onClick={handleOpenSaveModal}
-        >
-          Save
-        </Button>
+        <div className={styles.save_load_buttons_container}>
+          <Button
+            variant='warning'
+            id='open-load-config-form'
+            name='Start loading configuration'
+            disabled={!savedConfigs[saveIdx]}
+            onClick={handleOpenLoadModal}
+          >
+            Load
+          </Button>
+          <Button
+            id='open-save-config-form'
+            name='Start saving configuration'
+            disabled={saveIdx < 0 || saveIdx > 9}
+            onClick={handleOpenSaveModal}
+          >
+            Save
+          </Button>
+        </div>
       </menu>
       <SaveConfigDialog saveIdx={saveIdx} ref={saveConfigDialogRef} />
       <LoadConfigDialog saveIdx={saveIdx} ref={loadConfigDialogRef} />
