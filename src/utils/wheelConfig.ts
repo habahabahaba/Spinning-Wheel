@@ -1,9 +1,9 @@
 // Assets:
 // Constants:
 import {
-  FONT_FAMILIES_LOCAL,
+  // FONT_FAMILIES_LOCAL,
   FONT_FAMILIES_ALL,
-} from '../constants/fontFamilies';
+} from '../constants/fonts';
 import { WHEEL_RADII_MAP } from '../constants/radii';
 import { PALETTES } from '../constants/palettes';
 // Utils:
@@ -13,8 +13,8 @@ import { isHexColor } from './color';
 import type { Outcome, WheelConfig, WheelConfigsState } from '../store/types';
 import { OutcomeModel } from '../store/types';
 import type { AllFontNames } from '../store/types';
-import type { Radius } from '../constants/radii';
-import type { HexColor } from './color';
+// import type { Radius } from '../constants/radii';
+// import type { HexColor } from './color';
 
 // Type Guards:
 function isOutcome(obj: unknown): obj is Outcome {
@@ -206,65 +206,67 @@ export function validateWheelConfig(raw: unknown): ValidationResult {
     };
   }
 
-  const fallbackFont: AllFontNames = FONT_FAMILIES_LOCAL[0];
+  // const fallbackFont: AllFontNames = FONT_FAMILIES_LOCAL[0];
   const warnings: string[] = [];
 
-  const safeString = (val: unknown): string =>
-    typeof val === 'string' ? val : '';
+  // const safeString = (val: unknown): string =>
+  //   typeof val === 'string' ? val : '';
 
-  const validFont = (font: unknown): AllFontNames => {
-    if (
-      typeof font === 'string' &&
-      FONT_FAMILIES_ALL.includes(font as AllFontNames)
-    ) {
-      return font as AllFontNames;
-    }
-    warnings.push(`Invalid font "${font}", replaced with "${fallbackFont}"`);
-    return fallbackFont;
-  };
+  // const validFont = (font: unknown): AllFontNames => {
+  //   if (
+  //     typeof font === 'string' &&
+  //     FONT_FAMILIES_ALL.includes(font as AllFontNames)
+  //   ) {
+  //     return font as AllFontNames;
+  //   }
+  //   warnings.push(`Invalid font "${font}", replaced with "${fallbackFont}"`);
+  //   return fallbackFont;
+  // };
 
-  const validRadius = (radius: unknown): Radius => {
-    if (typeof radius === 'string' && radius in WHEEL_RADII_MAP) {
-      return radius as Radius;
-    }
-    warnings.push(`Invalid radius "${radius}", defaulted to "Medium"`);
-    return 'Medium';
-  };
+  // const validRadius = (radius: unknown): Radius => {
+  //   if (typeof radius === 'string' && radius in WHEEL_RADII_MAP) {
+  //     return radius as Radius;
+  //   }
+  //   warnings.push(`Invalid radius "${radius}", defaulted to "Medium"`);
+  //   return 'Medium';
+  // };
 
   const validPaletteIndex = (index: unknown): number => {
     if (typeof index === 'number' && index >= 0 && index < PALETTES.length) {
       return index;
     }
-    warnings.push(`Invalid palette index "${index}", defaulted to 0`);
+    warnings.push(
+      `'The file had invalid wheel colors, that were set to default.`
+    );
     return 0;
   };
 
-  const isValidHexColor = (value: unknown): value is HexColor =>
-    typeof value === 'string' && isHexColor(value);
+  // const isValidHexColor = (value: unknown): value is HexColor =>
+  //   typeof value === 'string' && isHexColor(value);
 
-  const parseOutcome = (data: Outcome, index: number): Outcome => {
-    const label = safeString(data.label).trim() || `Outcome ${index + 1}`;
+  // const parseOutcome = (data: Outcome, index: number): Outcome => {
+  //   const label = safeString(data.label).trim() || `Outcome ${index + 1}`;
 
-    const fillColor =
-      data.fillColor === '' || isValidHexColor(data.fillColor)
-        ? data.fillColor
-        : '';
+  //   const fillColor =
+  //     data.fillColor === '' || isValidHexColor(data.fillColor)
+  //       ? data.fillColor
+  //       : '';
 
-    if (
-      data.fillColor !== '' &&
-      (typeof data.fillColor !== 'string' || !isHexColor(data.fillColor))
-    ) {
-      warnings.push(
-        `Outcome number ${index + 1}, ${label} had an invalid fill-color "${
-          data.fillColor
-        }" that was set to default color`
-      );
-    }
+  //   if (
+  //     data.fillColor !== '' &&
+  //     (typeof data.fillColor !== 'string' || !isHexColor(data.fillColor))
+  //   ) {
+  //     warnings.push(
+  //       `Outcome number ${index + 1}, ${label} had an invalid fill-color "${
+  //         data.fillColor
+  //       }" that was set to default color`
+  //     );
+  //   }
 
-    const fontFamily = data.fontFamily !== '' ? validFont(data.fontFamily) : '';
+  //   const fontFamily = data.fontFamily !== '' ? validFont(data.fontFamily) : '';
 
-    return new OutcomeModel({ label, fillColor, fontFamily });
-  };
+  //   return new OutcomeModel({ label, fillColor, fontFamily });
+  // };
 
   // Start validation of config properties
   const outcomesRaw = raw.outcomes;
@@ -276,27 +278,27 @@ export function validateWheelConfig(raw: unknown): ValidationResult {
     );
   }
 
-  const parsedOutcomes: Outcome[] = trimmedOutcomes.map(parseOutcome);
+  // const parsedOutcomes: Outcome[] = trimmedOutcomes.map(parseOutcome);
 
-  if (parsedOutcomes.length === 0) {
+  if (outcomesRaw.length === 0) {
     warnings.push('No outcomes were found. Added Outcome 1 and Outcome 2.');
-    parsedOutcomes.push(
+    outcomesRaw.push(
       new OutcomeModel({ label: 'Outcome 1', fillColor: '', fontFamily: '' }),
       new OutcomeModel({ label: 'Outcome 2', fillColor: '', fontFamily: '' })
     );
-  } else if (parsedOutcomes.length === 1) {
+  } else if (outcomesRaw.length === 1) {
     warnings.push('Only one outcome was found. Added Outcome 2.');
-    parsedOutcomes.push(
+    outcomesRaw.push(
       new OutcomeModel({ label: 'Outcome 2', fillColor: '', fontFamily: '' })
     );
   }
 
   const validated: WheelConfig = {
-    configName: safeString(raw.configName),
-    radiusName: validRadius(raw.radiusName),
+    configName: raw.configName,
+    radiusName: raw.radiusName,
     default_palette_idx: validPaletteIndex(raw.default_palette_idx),
-    default_fontFamily: validFont(raw.default_fontFamily),
-    outcomes: parsedOutcomes,
+    default_fontFamily: raw.default_fontFamily,
+    outcomes: trimmedOutcomes,
   };
 
   return { valid: true, config: validated, error: '', warnings };

@@ -32,7 +32,7 @@ const Arrow: FC<ArrowProps> = ({ size, arrowIdx = 0, ref }) => {
       style={{
         position: 'absolute',
         right: `-${size / 2.5}px`,
-        top: `calc(50% + ${size / 7}px)`,
+        top: `calc(50% + ${size / 15}px)`,
         transform: 'translate(50%, -50%)',
         // transformOrigin: 'center left',
         width: `${size}px`,

@@ -15,6 +15,7 @@ import dialogCloseCtx from '../../context/dialogCloseCtx';
 // Components:
 import ConfettiArray from '../Confetti/ConfettiArray';
 // CSS:
+import styles from './ResultDisplay.module.css';
 // Types, interfaces and enumns:
 import type { FC } from 'react';
 // export interface ResultDisplayProps {}
@@ -73,23 +74,19 @@ const ResultDisplay: FC = () => {
   const brightBGColor = brightness(backgroundColor, 1.4);
 
   const radius = WHEEL_RADII_MAP[radiusName];
-  const fontSize = Math.floor(radius / 4.5);
+  const fontSize = Math.floor(radius / 4);
   const font = fontFamily || default_fontFamily;
   const textColor = contrastColor(brightBGColor);
 
   const confettiColors = palette.map((color) => brightness(color, 1.1));
+
   // JSX:
   return (
     <>
       <div
+        className={styles.result_display}
         style={{
           backgroundColor: `${brightBGColor}`,
-          margin: '0',
-          padding: '1px 2rem',
-          cursor: 'pointer',
-          // border: 'solid black 1px',
-          minWidth: '50vw',
-          textAlign: 'center',
         }}
         onClick={handleCloseDialog}
       >
@@ -97,7 +94,7 @@ const ResultDisplay: FC = () => {
           style={{
             color: `${textColor}`,
             fontFamily: `${font}`,
-            fontSize: `clamp(1rem, ${fontSize}px, 7rem)`,
+            fontSize: `clamp(1.5rem, ${fontSize}px, 7rem)`,
           }}
         >
           {label}

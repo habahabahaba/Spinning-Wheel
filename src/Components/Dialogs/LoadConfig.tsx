@@ -13,6 +13,7 @@ import dialogCloseCtx from '../../context/dialogCloseCtx';
 // Components:
 import Button from '../UI/Button';
 // CSS:
+import styles from './LoadConfig.module.css';
 // Types, interfaces and enumns:
 import type { FC } from 'react';
 export interface LoadConfigProps {
@@ -42,32 +43,15 @@ const LoadConfig: FC<LoadConfigProps> = ({ saveIdx }) => {
   }
   // JSX:
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        position: 'relative',
-        minWidth: '50%',
-        minHeight: '8rem',
-        padding: '0.25rem',
-      }}
-    >
-      <div style={{ padding: '0.5rem' }}>
-        <h3 style={{ color: '#ef4444' }}>Warning</h3>
+    <div className={styles.load_config_dialog}>
+      <div className={styles.load_config_warning}>
+        <h3>Warning</h3>
         <p>
           This will discard the current configuration, but will not affect the
           wheel until applied.
         </p>
       </div>
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'end',
-          gap: '1rem',
-          marginTop: '1rem',
-        }}
-      >
+      <div className={styles.cancel_load_buttons_container}>
         <Button
           id='cancel-load-config-button'
           name='Cancel and close form'
@@ -80,7 +64,6 @@ const LoadConfig: FC<LoadConfigProps> = ({ saveIdx }) => {
           id='load-config-button'
           name='Load configuration'
           onClick={handleLoadConfig}
-          style={{ minWidth: '5rem' }}
         >
           Load
         </Button>

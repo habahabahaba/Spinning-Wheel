@@ -11,8 +11,9 @@ import dialogCloseCtx from '../../context/dialogCloseCtx';
 // Components:
 import Button from '../UI/Button';
 // CSS:
+import styles from './ExportConfig.module.css';
 // Types, interfaces and enumns:
-import type { FC } from 'react';
+import type { FC, FormEvent } from 'react';
 
 const ExportConfig: FC = () => {
   // Modal context For closing:
@@ -25,8 +26,10 @@ const ExportConfig: FC = () => {
   const setConfigName = useBoundStore((state) => state.setConfigName);
 
   // Handlers:
-  // Function to prepare the download link
-  function handleDownload() {
+  function handleDownload(ev: FormEvent) {
+    ev.preventDefault();
+    ev.stopPropagation();
+
     const configName = currentConfig.configName.trim();
     if (!configName) return;
 
@@ -48,51 +51,33 @@ const ExportConfig: FC = () => {
 
   // JSX:
   return (
-    <div
-      id={`export-dialog`}
-      className=''
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        position: 'relative',
-        minWidth: '50vw',
-        maxWidth: '80vw',
-        minHeight: '8rem',
-        padding: '0.25rem',
-      }}
-    >
-      <p className=''>File name:</p>
-      <input
-        id={`export-dialog-config-name`}
-        name={`configuration name`}
-        type='text'
-        maxLength={30}
-        placeholder={`Enter file name`}
-        value={currentConfig.configName}
-        onChange={(ev) => {
-          setConfigName({ configName: ev.target.value });
-        }}
-        style={{
-          height: '1.5rem',
-          padding: '0.2rem',
-          border: '1px solid',
-          borderRadius: ' 0.1rem',
-          minWidth: '12rem',
-        }}
-      />
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'end',
-          gap: '1rem',
-          marginTop: '1rem',
-        }}
-      >
+    <form id={`export-dialog`} className={styles.export_config_form}>
+      <div>
+        <label
+          className={styles.config_name_label}
+          htmlFor='configuration name'
+        >
+          File name
+        </label>
+        <input
+          id={`export-config-file-name`}
+          name={`configuration name`}
+          type='text'
+          maxLength={30}
+          placeholder={`Enter a file name`}
+          value={currentConfig.configName}
+          onChange={(ev) => {
+            setConfigName({ configName: ev.target.value });
+          }}
+          className={styles.config_name_input}
+        />
+      </div>
+      <div className={styles.cancel_export_buttons_container}>
         <Button
           id='cancel-export-dialog-button'
           name={`cancel export and close dialog`}
           onClick={handleCloseDialog}
+          type='reset'
         >
           Cancel
         </Button>
@@ -106,7 +91,7 @@ const ExportConfig: FC = () => {
           Export
         </Button>
       </div>
-    </div>
+    </form>
   );
 };
 

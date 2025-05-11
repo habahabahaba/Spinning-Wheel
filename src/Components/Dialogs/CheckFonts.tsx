@@ -1,6 +1,6 @@
 // Assets:
 // Constants:
-import { FONT_FAMILIES_LOCAL } from '../../constants/fontFamilies';
+import { FONT_FAMILIES_LOCAL } from '../../constants/fonts';
 // Utils:
 // 3rd party:
 // Store:
@@ -14,10 +14,11 @@ import dialogCloseCtx from '../../context/dialogCloseCtx';
 // Components:
 import Button from '../UI/Button';
 // CSS:
+import styles from './CheckFonts.module.css';
 // Types, interfaces and enumns:
 import type { FC } from 'react';
 import type { WheelConfig } from '../../store/types';
-import type { AllFontNames } from '../../constants/fontFamilies';
+import type { AllFontNames } from '../../constants/fonts';
 // interface CheckFontsProps {}
 
 const CheckFonts: FC = () => {
@@ -66,7 +67,7 @@ const CheckFonts: FC = () => {
 
   // JSX:
   const missingFontsList = (
-    <ul>
+    <ul className={styles.loading_fonts_list}>
       {[...missingFontsSet].map((font) => (
         <li key={font}>{font}</li>
       ))}
@@ -74,38 +75,17 @@ const CheckFonts: FC = () => {
   );
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        position: 'relative',
-        gap: '0.25rem',
-        width: 'clamp(20rem, auto, 90vw)',
-        minHeight: '8rem',
-        padding: '0.25rem',
-      }}
-    >
-      <div style={{ margin: '0.25rem', width: 'max-content' }}>
-        {missingFonts.length ? (
-          <>
-            <h3>Loading missing fonts:</h3> {missingFontsList}
-          </>
-        ) : (
-          <h3>All configuration fonts were successfully downloaded ! </h3>
-        )}
+    <div className={styles.check_fonts_dialog}>
+      <div className={styles.notifications_container}>
+        <h3>
+          {missingFonts.length
+            ? 'Loading missing fonts:'
+            : 'All configuration fonts were successfully downloaded !'}
+        </h3>
+        {missingFonts.length ? missingFontsList : null}
       </div>
 
-      <div
-        style={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          gap: '0.5rem',
-          justifyContent: 'end',
-          alignItems: 'center',
-          marginTop: '0.5rem',
-        }}
-      >
+      <div className={styles.cancel_default_apply_buttons_container}>
         <Button onClick={handleCloseDialog}>Cancel</Button>
         <Button
           variant='warning'

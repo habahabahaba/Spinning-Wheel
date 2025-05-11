@@ -20,10 +20,6 @@ const ResetConfigDialog = forwardRef<DialogHandle>(
       <Dialog
         ref={ref}
         // className=''
-        style={{
-          top: '-50%',
-          right: '0',
-        }}
       >
         <ResetConfig />
       </Dialog>

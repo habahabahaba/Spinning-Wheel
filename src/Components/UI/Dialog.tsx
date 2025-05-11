@@ -34,6 +34,7 @@ export type DialogHandle = {
 };
 
 const dialogRootEl = document.getElementById('dialog-root');
+
 const Dialog: FC<DialogProps> = ({
   className = '',
   style = {},

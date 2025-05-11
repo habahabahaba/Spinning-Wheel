@@ -24,14 +24,14 @@ const SaveSlotPreview: FC<SaveSlotPreviewProps> = ({ saveIdx }) => {
 
   // JSX:
   const preview = saveSlot ? (
-    <span>{saveSlot.configName}</span>
+    <span className={styles.save_slot_name}>{saveSlot.configName}</span>
   ) : (
     <span className={styles.empty_save_slot_preview}> empty slot </span>
   );
 
   return (
     <div className={styles.save_slot_option}>
-      <span className={styles.save_slot_index}>{saveIdx + 1}.</span> {preview}
+      <span className={styles.save_slot_index}>{saveIdx + 1}. </span> {preview}
     </div>
   );
 };

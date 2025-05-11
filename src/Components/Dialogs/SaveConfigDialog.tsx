@@ -23,8 +23,8 @@ const SaveConfigDialog = forwardRef<DialogHandle, SaveConfigProps>(
         // className=''
         childProps={{ saveIdx }}
         style={{
-          top: '-50%',
-          right: '0',
+          // top: '-50%',
+          // right: '0',
           maxWidth: '80%',
         }}
       >

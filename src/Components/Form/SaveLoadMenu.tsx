@@ -48,13 +48,14 @@ const SaveLoadConfigMenu: FC = () => {
   // JSX:
   return (
     <>
-      <menu className={styles.menu}>
+      <div className={styles.save_load_menu}>
         <span className={styles.label}>Save / Load configuration:</span>
         <SaveSlotSelector
           value={saveIdx}
           onChange={(value) => {
             setSaveIdx(() => +value);
           }}
+          className={styles.save_load_select}
         />
         <div className={styles.save_load_buttons_container}>
           <Button
@@ -75,7 +76,7 @@ const SaveLoadConfigMenu: FC = () => {
             Save
           </Button>
         </div>
-      </menu>
+      </div>
       <SaveConfigDialog saveIdx={saveIdx} ref={saveConfigDialogRef} />
       <LoadConfigDialog saveIdx={saveIdx} ref={loadConfigDialogRef} />
     </>

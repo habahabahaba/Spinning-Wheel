@@ -17,7 +17,7 @@ import Button from '../UI/Button';
 // CSS:
 import styles from './ImportConfig.module.css';
 // Types, interfaces and enumns:
-import type { FC } from 'react';
+import type { FC, FormEvent, ChangeEvent } from 'react';
 import type { ValidationResult } from '../../utils/wheelConfig';
 
 const ImportConfig: FC = () => {
@@ -52,13 +52,16 @@ const ImportConfig: FC = () => {
   }, []);
 
   // Handlers:
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = (ev: ChangeEvent<HTMLInputElement>) => {
     resetWarnings();
 
-    setFiles(e.target.files);
+    setFiles(ev.target.files);
   };
 
-  async function handleImportConfig() {
+  async function handleImportConfig(ev: FormEvent) {
+    ev.preventDefault();
+    ev.stopPropagation();
+
     resetWarnings();
 
     if (!fileInputRef.current || !fileInputRef.current.files || !files) return;
@@ -112,68 +115,48 @@ const ImportConfig: FC = () => {
     }
   }
 
-  function handleResetAndCancel() {
+  function handleResetAndCancel(ev: FormEvent) {
+    ev.preventDefault();
+    ev.stopPropagation();
+
     resetWarnings();
     handleCloseDialog();
   }
 
   // JSX:
-  const defaultWarning =
-    !error && !warnings.length ? (
-      <>
-        <h3>Warning:</h3>
-        <p>
-          This will discard your current configuration, but will not affect the
-          wheel, until applied.
-        </p>
-      </>
-    ) : null;
+  const introWarning = (
+    <div className={styles.import_config_intro_warning}>
+      <h3>Warning:</h3>
+      <p>
+        This will discard your current configuration, but will not affect the
+        wheel, until applied.
+      </p>
+    </div>
+  );
 
   const errorMessage = error ? (
     <>
-      <div
-        style={{
-          padding: '0 0.5rem',
-          marginTop: '1rem',
-          fontStyle: 'italic',
-          color: '#ef4444',
-          border: '2px solid #ef4444',
-          borderRadius: '0.1rem',
-          fontWeight: 'bold',
-        }}
-      >
+      <div className={styles.import_config_error}>
         <h3 style={{ color: '#ef4444', marginTop: '0.5rem' }}>Error:</h3>
-        <p className='' style={{}}>
+        <p className=''>
           {error}
+          <span> Please select another file.</span>
         </p>
       </div>
-      <p>Please select another file.</p>
     </>
   ) : null;
 
   const warningsList = warnings.length ? (
-    <>
-      <p style={{ fontWeight: 'bold' }}>
-        Configuration file contained some errors, that were automatically
-        corrected:
-      </p>
-      <div
-        style={{
-          padding: '0.1rem',
-          border: '1px solid black',
-          borderRadius: '0.1rem',
-          backgroundColor: '#fbbf24',
-          fontStyle: 'italic',
-          // fontWeight: '500',
-        }}
-      >
-        <ul>
-          {warnings.map((w, idx) => (
-            <li key={`${idx}-${w}`}>{w}</li>
-          ))}
-        </ul>
-      </div>
-    </>
+    <div className={styles.import_config_warnings_list}>
+      <h3 style={{ fontWeight: 'bold' }}>
+        The file contained some errors, that were automatically corrected:
+      </h3>
+      <ul>
+        {warnings.map((w, idx) => (
+          <li key={`${idx}-${w}`}>{w}</li>
+        ))}
+      </ul>
+    </div>
   ) : null;
 
   const Buttons = warnings.length ? (
@@ -190,6 +173,7 @@ const ImportConfig: FC = () => {
       <Button
         id='import-config-dialog-cancel-button'
         name='Cancel and close dialog'
+        type='reset'
         onClick={handleResetAndCancel}
       >
         Cancel
@@ -205,7 +189,6 @@ const ImportConfig: FC = () => {
           !fileInputRef.current.value
         }
         onClick={handleImportConfig}
-        style={{ minWidth: '5rem' }}
       >
         Import
       </Button>
@@ -213,49 +196,32 @@ const ImportConfig: FC = () => {
   );
 
   return (
-    <div
-      id='import-config-dialog'
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        position: 'relative',
-        minWidth: '50%',
-        minHeight: '8rem',
-        padding: '0.25rem',
-      }}
-    >
-      <div style={{ padding: '0.5rem' }}>
-        {defaultWarning}
-        <label htmlFor='configuration-file-input' className=''>
-          Select a file:
-          <br />
-          <input
-            ref={fileInputRef}
-            onChange={handleFileChange}
-            id='configuration-file-input'
-            name='select configuration file'
-            type='file'
-            accept='.json'
-            className={[styles.button, styles.default, styles.rectangle].join(
-              ' '
-            )}
-          />
+    <form id='import-config-dialog' className={styles.import_config_dialog}>
+      <div>
+        <label
+          htmlFor='configuration-file-input'
+          className={styles.file_input_label}
+        >
+          Select a json file
         </label>
-        {errorMessage}
-        {warningsList}
+
+        <input
+          ref={fileInputRef}
+          onChange={handleFileChange}
+          id='configuration-file-input'
+          name='select configuration file'
+          type='file'
+          accept='.json'
+          className={[styles.file_input, styles.default, styles.rectangle].join(
+            ' '
+          )}
+        />
       </div>
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'end',
-          gap: '1rem',
-          marginTop: '1rem',
-        }}
-      >
-        {Buttons}
+      <div className={styles.warnings_container}>
+        {error ? errorMessage : warnings.length ? warningsList : introWarning}
       </div>
-    </div>
+      <div className={styles.cancel_import_buttons_container}>{Buttons}</div>
+    </form>
   );
 };
 

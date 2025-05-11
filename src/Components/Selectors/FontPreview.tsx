@@ -13,7 +13,7 @@ import useBoundStore from '../../store/boundStore';
 import styles from './FontPreview.module.css';
 // Types, interfaces and enumns:
 import type { CSSProperties, FC } from 'react';
-import type { AllFontNames } from '../../constants/fontFamilies';
+import type { AllFontNames } from '../../constants/fonts';
 interface FontPreviewProps {
   fontFamily: AllFontNames;
 }

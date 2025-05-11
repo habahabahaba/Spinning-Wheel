@@ -1,0 +1,36 @@
+.reset_config_dialog {
+  position: relative;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.75rem;
+  height: max-content;
+  min-height: 6.5rem;
+  width: min(80svw, 20rem);
+  margin-right: -0.1rem;
+
+  overflow-x: hidden;
+  overscroll-behavior-block: none;
+}
+
+.reset_config_warning {
+  overflow-x: scroll;
+  font-style: italic;
+
+  & h3 {
+    line-height: 0rem;
+    color: #ef4444;
+  }
+}
+
+.cancel_reset_buttons_container {
+  display: flex;
+  justify-content: end;
+  gap: 0.5rem;
+  margin-left: auto;
+
+  & button {
+    min-width: 4.5rem;
+  }
+}

@@ -4,10 +4,20 @@
 }
 
 .save_slot_option {
-  padding: 0 0;
+  padding: 0;
   margin: 0;
+
+  white-space: nowrap;
+  /* width: 38%; */
 }
 .save_slot_index {
-  padding-right: 0.25rem;
+  display: inline-block;
+  margin-right: 0.25rem;
   font-weight: bold;
+  /* white-space: nowrap; */
+}
+.save_slot_name {
+  white-space: normal;
+  word-wrap: break-word;
+  hyphens: auto;
 }

@@ -1,5 +1,5 @@
 // Constants:
-import { AllFontNames, FONT_FAMILIES_ALL } from '../../constants/fontFamilies';
+import { AllFontNames, FONT_FAMILIES_ALL } from '../../constants/fonts';
 // 3rd party:
 // Store:
 import useBoundStore from '../../store/boundStore';

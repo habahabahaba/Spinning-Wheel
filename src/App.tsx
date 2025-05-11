@@ -1,17 +1,17 @@
 // Constants:
 // Fonts:
-import { FONT_IMPORTS } from './constants/fontFamilies';
+import { FONT_IMPORTS } from './constants/fonts';
 // Store:
 import useBoundStore from './store/boundStore';
 // React:
 import { useEffect, useRef } from 'react';
 // Components:
-// import Main from './Components/Main';
+import Main from './Components/Main';
 import ConfigForm from './Components/Form/ConfigForm';
 import Wallpaper from './Components/UI/Wallpaper';
 // import FontsDisplay from './Components/FontsDisplay';
 // Types, interfaces and enumns:
-import type { RemoteFontNames } from './constants/fontFamilies';
+import type { RemoteFontNames } from './constants/fonts';
 
 function App() {
   // Actions:
@@ -51,7 +51,7 @@ function App() {
 
   return (
     <>
-      {/* <Main /> */}
+      <Main />
       <ConfigForm />
       {/* <FontsDisplay /> */}
       <Wallpaper

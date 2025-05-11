@@ -44,13 +44,13 @@ const WheelDefaultsMenu: FC = () => {
       </span>
       <RadiusSelector />
       <span className={mergeStyles(styles.label, styles.palette_select_label)}>
-        Default colors
+        Wheel colors
       </span>
       <PaletteSelector />
       <span className={mergeStyles(styles.label, styles.font_select_label)}>
         Default font
       </span>
-      <FontSelector outcomeIdx={-1} />
+      <FontSelector outcomeIdx={-1} className={styles.default_font_select} />
     </menu>
   );
 };

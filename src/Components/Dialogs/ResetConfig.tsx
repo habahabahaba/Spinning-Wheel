@@ -13,6 +13,7 @@ import dialogCloseCtx from '../../context/dialogCloseCtx';
 // Components:
 import Button from '../UI/Button';
 // CSS:
+import styles from './ResetConfig.module.css';
 // Types, interfaces and enumns:
 import type { FC } from 'react';
 // interface ResetConfigProps{}
@@ -31,33 +32,15 @@ const ResetConfig: FC = () => {
   }
   // JSX:
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        position: 'relative',
-        minWidth: '50%',
-        maxWidth: '80vw',
-        minHeight: '8rem',
-        padding: '0.5rem',
-      }}
-    >
-      <div>
-        <h3>Warning:</h3>
+    <div className={styles.reset_config_dialog}>
+      <div className={styles.reset_config_warning}>
+        <h3>Warning</h3>
         <p>
           This will discard your current configuration, but will not affect the
           wheel, until applied.
         </p>
       </div>
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'end',
-          gap: '1rem',
-          marginTop: '1rem',
-        }}
-      >
+      <div className={styles.cancel_reset_buttons_container}>
         <Button
           id='cancel-load-config-button'
           name='Cancel and close form'
@@ -70,7 +53,6 @@ const ResetConfig: FC = () => {
           id='load-config-button'
           name='Load configuration'
           onClick={handleResetConfig}
-          style={{ minWidth: '5rem' }}
         >
           Reset
         </Button>

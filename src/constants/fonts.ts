@@ -114,3 +114,17 @@ export const initFontsState = {
   fontsLoadStates: initFontsLoadStates,
   allFontsReady: false,
 };
+
+export const FLAKY_FONTS: RemoteFontNames[] = [
+  'Alkatra',
+  'Anybody',
+  'EB Garamond',
+  'Grenze Gotisch',
+  'Marhey',
+  'Mohave',
+  'Oswald',
+  'Overpass',
+  'Roboto Slab',
+  'Sansita Swashed',
+  'Teko',
+];

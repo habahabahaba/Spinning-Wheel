@@ -17,12 +17,13 @@
   justify-self: left;
   margin-left: 0.5rem;
 
-  transform: translateY(0.35rem);
+  line-height: 0.9rem;
   background-color: white;
   padding: 0 0.15rem;
+  border-radius: 1.1rem;
+
+  transform: translateY(0.25rem);
   z-index: 5;
-  /* border: 1px solid black; */
-  /* border-radius: 0.1rem; */
 }
 .radius_select_label {
   grid-area: radius_label;
@@ -43,8 +44,9 @@
 .palette_select {
   grid-area: palette_select;
 }
-.font_select {
+.default_font_select {
   grid-area: font_select;
+  max-width: 12rem;
 }
 
 @media screen and (max-width: 820px) {

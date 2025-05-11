@@ -4,7 +4,7 @@ import type {
   LocalFontNames,
   RemoteFontNames,
   AllFontNames,
-} from '../constants/fontFamilies';
+} from '../constants/fonts';
 
 // Fonts:
 export { LocalFontNames, RemoteFontNames, AllFontNames };

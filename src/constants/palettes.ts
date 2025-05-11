@@ -9,7 +9,7 @@ export const PALETTES: HexColor[][] = [
 
   ['#e8f3fd', '#ed4d41', '#5764ad', '#ede73b', '#d0e7fb', '#574d6c'],
 
-  ['#f300ea', '#fd597e', '#fbee88', '#a800d5', '#fafbc3', '#ff00cb'],
+  ['#7EFDD0', '#fd597e', '#fbee88', '#a800d5', '#fafbc3', '#ff00cb'],
 
   ['#00D1D1', '#FF3E3E', '#FF00FF', '#B0FF00', '#0066FF', '#FFEE00'],
 

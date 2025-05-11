@@ -12,6 +12,7 @@ import { forwardRef } from 'react';
 import Dialog from '../UI/Dialog';
 import ResultDisplay from './ResultDisplay';
 // CSS:
+import styles from './ResultDisplay.module.css';
 // Types, interfaces and enumns:
 import type { ForwardedRef } from 'react';
 import type { DialogHandle } from '../UI/Dialog';
@@ -28,16 +29,13 @@ const ResultDisplayDialog = forwardRef<DialogHandle>(
     return (
       <Dialog
         ref={ref}
-        className='drop-down'
+        className={styles.drop_down}
         style={{
           position: 'relative',
           // position: 'absolute',
-          // top: '0%',
-          // right: '0%',
           top: `min(calc(${dY}px - 100vh), 50vh)`,
           right: `calc(100vw - ${dX}px)`,
           // zIndex: -1,
-          overflow: 'visible',
         }}
       >
         <ResultDisplay />

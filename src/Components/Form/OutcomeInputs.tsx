@@ -66,7 +66,7 @@ const OutcomeInputs: FC<OutcomeInputsProps> = ({ index }) => {
         className={styles.outcome_color_input}
       />
 
-      <FontSelector outcomeIdx={index} className={styles.outcome_font_input} />
+      <FontSelector outcomeIdx={index} className={styles.outcome_font_select} />
 
       <Button
         id={`duplicate-outcome-${index}-button`}

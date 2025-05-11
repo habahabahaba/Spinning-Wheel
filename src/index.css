@@ -46,45 +46,11 @@ h1 {
   }
 }
 
-.drop-down {
-  animation: drop-down 0.6s forwards;
-  padding: 0;
-}
-.drop-down::backdrop {
-  backdrop-filter: blur(2px);
-}
 .button-spin {
   animation: button-spin 2s linear infinite;
 }
 .button-wind-up {
   animation: button-wind-up 5s linear forwards;
-}
-
-@keyframes drop-down {
-  0% {
-    transform: translateY(-100%);
-    /* opacity: 0; */
-    /* animation-timing-function: ease-in; */
-  }
-  10% {
-    transform: translateY(-100%);
-    /* opacity: 0; */
-    animation-timing-function: ease-in;
-  }
-  75% {
-    transform: translateY(0%);
-    /* opacity: 1; */
-    animation-timing-function: ease-out;
-  }
-  90% {
-    transform: translateY(-10%);
-    /* opacity: 0; */
-    animation-timing-function: ease-in;
-  }
-  100% {
-    transform: translateY(0%);
-    /* opacity: 1; */
-  }
 }
 
 @keyframes button-spin {

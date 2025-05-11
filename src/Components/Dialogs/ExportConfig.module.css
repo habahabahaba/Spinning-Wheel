@@ -1,0 +1,49 @@
+.export_config_form {
+  position: relative;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.75rem;
+  height: max-content;
+  min-height: 6.5rem;
+  width: min(80svw, 20rem);
+  margin-right: -0.1rem;
+
+  overflow-x: hidden;
+}
+
+.config_name_label {
+  font-weight: 600;
+  font-size: 0.9rem;
+
+  display: block;
+  width: fit-content;
+  margin-left: 1rem;
+  transform: translateY(0.25rem);
+  line-height: 0.9rem;
+
+  background-color: white;
+  border-radius: 1.1rem;
+  padding: 0 0.15rem;
+  z-index: 5;
+}
+.config_name_input {
+  min-width: 15rem;
+  height: 1.5rem;
+  margin-left: 0.5rem;
+  padding: 0.2rem 0.5rem;
+  border: 1px solid black;
+  border-radius: 0.1rem;
+}
+
+.cancel_export_buttons_container {
+  display: flex;
+  justify-content: end;
+  gap: 0.5rem;
+  margin-left: auto;
+
+  & button {
+    min-width: 4.5rem;
+  }
+}

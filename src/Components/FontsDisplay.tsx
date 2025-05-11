@@ -1,6 +1,6 @@
 // Assets:
 // Constants:
-import { FONT_FAMILIES_ALL } from '../constants/fontFamilies';
+import { FONT_FAMILIES_ALL } from '../constants/fonts';
 // Utils:
 // 3rd party:
 // Redux, RTK:
