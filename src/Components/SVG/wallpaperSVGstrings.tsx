@@ -13,9 +13,9 @@ const wallpaperSVGstrings: SVGstringFn[] = [
       xmlns='http://www.w3.org/2000/svg'
       xmlnsXlink='http://www.w3.org/1999/xlink'
       version='1.1'
-      viewBox='0 0 1422 800'
-      width='1422'
+      viewBox='0 0 800 800'
       height='800'
+      width='800'
     >
       <g strokeWidth='2' stroke='${color0}' fill='none' strokeLinecap='square'>
         <line x1='0' y1='0' x2='20' y2='20'></line>

@@ -47,9 +47,12 @@ const Wallpaper: FC<WallpaperProps> = ({
   }, [variant, colorIdx0, colorIdx1, colorIdx2, paletteIdx]);
 
   const styleObj: CSSProperties = {
-    backgroundPosition: 'center',
-    backgroundSize: 'contain',
+    // backgroundPosition: 'center',
+    backgroundPosition: 'top left',
+    // backgroundSize: 'contain',
+    backgroundSize: '800px 800px',
     backgroundRepeat: 'repeat',
+    backgroundAttachment: 'local',
     backgroundOrigin: 'initial',
 
     ...style,

@@ -30,7 +30,7 @@ const ConfigForm: FC = () => {
 
   // JSX:
   return (
-    <form className={mergeStyles(styles.config_form, styles.glass)}>
+    <form className={mergeStyles(styles.config_form, 'glass')}>
       <SaveLoadMenu />
       <WheelDefaultsMenu />
       <OutcomesMenu />

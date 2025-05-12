@@ -114,11 +114,14 @@ const Main: FC = () => {
       style={{
         position: 'relative',
         // height: '100vh',
-        width: `${wheelRadius * 2}px`,
-        minWidth: '100%',
+        // width: `${wheelRadius * 2}px`,
+        // minWidth: '100%',
         padding: `${wheelRadius / 5}px`,
-        // overflow: 'visible',
+        overflow: 'visible',
         // boxSizing: 'content-box',
+        // margin: 'auto',
+        display: 'flex',
+        justifyContent: 'center',
       }}
     >
       <div

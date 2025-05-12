@@ -30,13 +30,13 @@ const CheckFonts: FC = () => {
   const default_fontFamily = useBoundStore(
     (state) => state.currentConfig.default_fontFamily
   );
-
   const currentConfig = useBoundStore((state) => state.currentConfig);
   // Actions:
   const replaceCurrentConfig = useBoundStore(
     (state) => state.replaceCurrentConfig
   );
   const applyConfig = useBoundStore((state) => state.applyConfig);
+  const setCurrentLocation = useBoundStore((state) => state.setCurrentLocation);
 
   // Derived values:
   const outcomesFonts = currentConfig.outcomes.map(
@@ -62,6 +62,7 @@ const CheckFonts: FC = () => {
     if (missingFonts.length > 0) return;
 
     applyConfig();
+    setCurrentLocation({ newLocation: 'Main' });
     handleCloseDialog();
   }
 

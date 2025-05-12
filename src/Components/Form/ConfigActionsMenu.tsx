@@ -26,13 +26,13 @@ const ConfigActionsMenu: FC = () => {
   // Context:
 
   // Store:
-
   // Actions:
   const applyConfig = useBoundStore((state) => state.applyConfig);
   const resetWinningOutcomeIdx = useBoundStore(
     (state) => state.resetWinningOutcomeIdx
   );
   const checkAllFontsReady = useBoundStore((state) => state.checkAllFontsReady);
+  const setCurrentLocation = useBoundStore((state) => state.setCurrentLocation);
 
   // State:
 
@@ -72,6 +72,7 @@ const ConfigActionsMenu: FC = () => {
 
     if (checkAllFontsReady()) {
       applyConfig();
+      setCurrentLocation({ newLocation: 'Main' });
     } else {
       checkFontsDialogRef?.current?.handleShowDialog();
     }

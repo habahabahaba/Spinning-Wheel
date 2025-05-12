@@ -1,8 +1,8 @@
 // Constants:
-import { WHEEL_RADII_MAP } from '../../constants/radii';
+// import { WHEEL_RADII_MAP } from '../../constants/radii';
 // 3rd party:
 // Store:
-import useBoundStore from '../../store/boundStore';
+// import useBoundStore from '../../store/boundStore';
 // React Router:
 // React:
 import { forwardRef } from 'react';
@@ -20,10 +20,10 @@ import type { DialogHandle } from '../UI/Dialog';
 const ResultDisplayDialog = forwardRef<DialogHandle>(
   (_, ref: ForwardedRef<DialogHandle>) => {
     // Store:
-    const radiusName = useBoundStore((state) => state.activeConfig.radiusName);
-    const wheelRadius = WHEEL_RADII_MAP[radiusName];
-    const dY = (wheelRadius * 12) / 5;
-    const dX = (wheelRadius * 73) / 30;
+    // const radiusName = useBoundStore((state) => state.activeConfig.radiusName);
+    // const wheelRadius = WHEEL_RADII_MAP[radiusName];
+    // const dY = 59.5 + (wheelRadius * 12) / 5;
+    // const dX = (wheelRadius * 73) / 30;
 
     // JSX:
     return (
@@ -33,8 +33,8 @@ const ResultDisplayDialog = forwardRef<DialogHandle>(
         style={{
           position: 'relative',
           // position: 'absolute',
-          top: `min(calc(${dY}px - 100vh), 50vh)`,
-          right: `calc(100vw - ${dX}px)`,
+          top: `15px`,
+          // right: `calc(100vw - ${dX}px)`,
           // zIndex: -1,
         }}
       >
