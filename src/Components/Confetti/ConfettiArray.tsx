@@ -4,57 +4,50 @@
 // Store:
 // React Router:
 // React:
-import { useEffect, useState } from 'react';
+import { useEffect, useRef } from 'react';
 // Context:
 // Hooks:
 // Components:
 import ConfettiCanvas from './ConfettiCanvas';
 // CSS:
 // Types, interfaces and enumns:
-import type { FC, Dispatch, SetStateAction, CSSProperties } from 'react';
+import type { FC, CSSProperties } from 'react';
 import type { HexColor } from '../../utils/color';
 import type { ConfettiOptions } from '../../hooks/useConfetti';
-export interface ConfettiArrayProps {
-  trigger: boolean;
+interface ConfettiArrayProps {
+  delayMs?: number;
   colors: HexColor[];
 }
-type Setter = Dispatch<SetStateAction<boolean>>;
 
-function chainFlip(
-  settersArr: Setter[],
-  interval: number = 240,
+// To trigger confetti with the delay:
+const CONFETTI_DELAYS = [350, 250, 125];
+function chainTrigger(
+  triggerFnArr: Array<(() => void) | undefined>,
+  delayMsArr: Array<number>,
   step: number = 0
 ): void {
-  if (step === settersArr.length) {
-    settersArr[step - 1]((state) => !state);
-    return;
-  }
-  settersArr[step]((state) => !state);
-  setTimeout(() => {
-    chainFlip(
-      settersArr,
-      interval - interval / (settersArr.length - step),
-      step + 1
-    );
-  }, interval);
-  if (step > 0) {
-    settersArr[step - 1]((state) => !state);
+  if (step >= triggerFnArr.length) return;
+
+  const trigger = triggerFnArr[step];
+  const delay = delayMsArr[step] || delayMsArr[delayMsArr.length - 1] || 0;
+  if (trigger) {
+    setTimeout(() => {
+      trigger();
+      chainTrigger(triggerFnArr, delayMsArr, ++step);
+    }, delay);
   }
 }
 
-const ConfettiArray: FC<ConfettiArrayProps> = ({ trigger, colors }) => {
-  // State:
-  const [trigger0, setTrigger0] = useState<boolean>(false);
-  const [trigger1, setTrigger1] = useState<boolean>(false);
-  const [trigger2, setTrigger2] = useState<boolean>(false);
-  const [trigger3, setTrigger3] = useState<boolean>(false);
+const ConfettiArray: FC<ConfettiArrayProps> = ({ delayMs = 0, colors }) => {
+  // Refs:
+  const triggerArrayRef = useRef<Array<(() => void) | undefined>>([]);
 
   // Confetti chain:
   useEffect(() => {
-    if (trigger) {
-      chainFlip([setTrigger0, setTrigger1, setTrigger2, setTrigger3]);
+    if (triggerArrayRef.current && triggerArrayRef.current.length) {
+      chainTrigger(triggerArrayRef.current, [delayMs, ...CONFETTI_DELAYS]);
     }
-  }, [trigger]);
+  }, [triggerArrayRef, delayMs]);
 
   // Derived values:
   const [canvasHeight, canvasWidth] = [100, 100];
@@ -65,6 +58,7 @@ const ConfettiArray: FC<ConfettiArrayProps> = ({ trigger, colors }) => {
     // width: `${canvasWidth}vw`,
     // transform: 'none',
   };
+
   const commonOptions: ConfettiOptions = {
     colors,
     particleCount: 320,
@@ -79,7 +73,9 @@ const ConfettiArray: FC<ConfettiArrayProps> = ({ trigger, colors }) => {
   return (
     <>
       <ConfettiCanvas
-        trigger={trigger0}
+        ref={(handle) => {
+          triggerArrayRef.current[0] = handle?.launch;
+        }}
         confettiOptions={{
           ...commonOptions,
           // direction: 'N',
@@ -92,7 +88,9 @@ const ConfettiArray: FC<ConfettiArrayProps> = ({ trigger, colors }) => {
         }}
       />
       <ConfettiCanvas
-        trigger={trigger1}
+        ref={(handle) => {
+          triggerArrayRef.current[1] = handle?.launch;
+        }}
         confettiOptions={{
           ...commonOptions,
           //   direction: 'N',
@@ -105,7 +103,9 @@ const ConfettiArray: FC<ConfettiArrayProps> = ({ trigger, colors }) => {
         }}
       />
       <ConfettiCanvas
-        trigger={trigger2}
+        ref={(handle) => {
+          triggerArrayRef.current[2] = handle?.launch;
+        }}
         confettiOptions={{
           ...commonOptions,
           //   direction: 'NE',
@@ -118,7 +118,9 @@ const ConfettiArray: FC<ConfettiArrayProps> = ({ trigger, colors }) => {
         }}
       />
       <ConfettiCanvas
-        trigger={trigger3}
+        ref={(handle) => {
+          triggerArrayRef.current[3] = handle?.launch;
+        }}
         confettiOptions={{
           ...commonOptions,
           //   direction: 'NW',

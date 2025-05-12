@@ -1,14 +1,14 @@
 .result_display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin: 0;
-  padding: 1px 2rem;
-  cursor: pointer;
-  min-width: 50vw;
   text-align: center;
 
   overflow: hidden;
-  word-break: break-all;
   text-overflow: ellipsis;
-  /* white-space: nowrap; */
+
+  cursor: pointer;
 }
 
 .drop_down {

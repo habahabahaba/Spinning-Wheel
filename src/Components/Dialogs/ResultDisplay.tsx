@@ -3,12 +3,14 @@ import { PALETTES } from '../../constants/palettes';
 import { WHEEL_RADII_MAP } from '../../constants/radii';
 // Utils:
 import { contrastColor, brightness } from '../../utils/color';
+import { fontSizeForTextInElement } from '../../utils/text';
 // 3rd party:
+import { useShallow } from 'zustand/shallow';
 // Store:
 import useBoundStore from '../../store/boundStore';
 // React Router:
 // React:
-import { use, useState, useEffect } from 'react';
+import { use, useMemo } from 'react';
 // Context:
 import dialogCloseCtx from '../../context/dialogCloseCtx';
 // Hooks:
@@ -20,8 +22,17 @@ import styles from './ResultDisplay.module.css';
 import type { FC } from 'react';
 // export interface ResultDisplayProps {}
 
-// For confetti timeouts:
-let timer: number | null = null;
+// For proper font rendering (must match actual elements styles):
+const fontWeight = 600;
+const lineHeight = 1.25;
+const boxSizing = 'border-box';
+const h1Margin = 0;
+const h1Padding = 0;
+const wordBreak = 'break-word';
+const whiteSpace = 'normal';
+const divHeightPx = (radius: number) => radius;
+const divWidthPx = (radius: number) => radius * 1.8;
+const divPaddingPx = (radius: number) => radius / 25;
 
 const ResultDisplay: FC = () => {
   // Modal context For closing:
@@ -30,7 +41,7 @@ const ResultDisplay: FC = () => {
   // Store:
   const winningOutcomeIdx = useBoundStore((state) => state.winningOutcomeIdx);
   const winningOutcome = useBoundStore(
-    (state) => state.activeConfig.outcomes[winningOutcomeIdx ?? -1]
+    useShallow((state) => state.activeConfig.outcomes[winningOutcomeIdx ?? -1])
   );
   const palette_idx = useBoundStore(
     (state) => state.activeConfig.default_palette_idx
@@ -40,25 +51,35 @@ const ResultDisplay: FC = () => {
   );
   const radiusName = useBoundStore((state) => state.activeConfig.radiusName);
 
-  // Store:
-  const [confettiTrigger, setConfettiTrigger] = useState<boolean>(false);
+  // console.log(`[ResultDisplay] winningOutcomeIdx: ${winningOutcomeIdx}`);
+  // console.log(
+  //   `[ResultDisplay] winningOutcome: ${JSON.stringify(winningOutcome)}`
+  // );
 
-  // Effects:
-  useEffect(() => {
-    timer = setTimeout(() => {
-      setConfettiTrigger(true);
-      timer = setTimeout(() => {
-        setConfettiTrigger(false);
-      }, 610);
-    }, 600);
+  const { label, fillColor, fontFamily } = winningOutcome;
+  const font = fontFamily || default_fontFamily;
+  const radius = WHEEL_RADII_MAP[radiusName];
 
-    return () => {
-      if (timer !== null) {
-        clearTimeout(timer);
-        timer = null;
-      }
-    };
-  }, []);
+  // Finding the optimal font size:
+  const fontSize: number = useMemo(
+    () =>
+      fontSizeForTextInElement({
+        text: label,
+        fontFamily: font,
+        containerHeight: divHeightPx(radius),
+        containerWidth: divWidthPx(radius),
+        fontWeight,
+        lineHeight,
+        boxSizing,
+        containerPadding: divPaddingPx(radius),
+        childMargin: h1Margin,
+        childPadding: h1Padding,
+        wordBreak,
+        whiteSpace,
+      }) || Math.floor((radius / label.length) * 1.3),
+    [radius, label, font]
+  );
+  console.log(`[ResultDisplay] fontSizeForTextInElement: ${fontSize}`);
 
   // Guard:
   if (winningOutcomeIdx === null || !winningOutcome) {
@@ -67,17 +88,12 @@ const ResultDisplay: FC = () => {
   }
 
   // Derived values:
-  const { label, fillColor, fontFamily } = winningOutcome;
   const palette = PALETTES[palette_idx];
   const backgroundColor =
     fillColor || palette[winningOutcomeIdx % palette.length];
   const brightBGColor = brightness(backgroundColor, 1.4);
 
-  const radius = WHEEL_RADII_MAP[radiusName];
-  const fontSize = Math.floor(radius / 4);
-  const font = fontFamily || default_fontFamily;
   const textColor = contrastColor(brightBGColor);
-
   const confettiColors = palette.map((color) => brightness(color, 1.1));
 
   // JSX:
@@ -87,6 +103,12 @@ const ResultDisplay: FC = () => {
         className={styles.result_display}
         style={{
           backgroundColor: `${brightBGColor}`,
+          height: `${divHeightPx(radius)}px`,
+          width: `${divWidthPx(radius)}px`,
+          padding: `${divPaddingPx(radius)}px`,
+          boxSizing,
+          wordBreak,
+          whiteSpace,
         }}
         onClick={handleCloseDialog}
       >
@@ -94,13 +116,17 @@ const ResultDisplay: FC = () => {
           style={{
             color: `${textColor}`,
             fontFamily: `${font}`,
-            fontSize: `clamp(1.5rem, ${fontSize}px, 7rem)`,
+            fontWeight,
+            fontSize: `${fontSize}px`,
+            margin: h1Margin,
+            padding: `${h1Padding}px`,
+            lineHeight,
           }}
         >
           {label}
         </h1>
       </div>
-      <ConfettiArray trigger={confettiTrigger} colors={confettiColors} />
+      <ConfettiArray delayMs={600} colors={confettiColors} />
     </>
   );
 };

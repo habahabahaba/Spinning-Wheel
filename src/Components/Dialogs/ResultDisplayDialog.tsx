@@ -23,7 +23,7 @@ const ResultDisplayDialog = forwardRef<DialogHandle>(
     const radiusName = useBoundStore((state) => state.activeConfig.radiusName);
     const wheelRadius = WHEEL_RADII_MAP[radiusName];
     const dY = (wheelRadius * 12) / 5;
-    const dX = (wheelRadius * 71) / 30;
+    const dX = (wheelRadius * 73) / 30;
 
     // JSX:
     return (

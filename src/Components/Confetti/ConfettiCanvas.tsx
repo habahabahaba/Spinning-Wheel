@@ -5,7 +5,7 @@
 // Store:
 // Router:
 // React:
-import { useEffect } from 'react';
+import { useImperativeHandle } from 'react';
 // import { createPortal } from 'react-dom';
 // Context:
 // Hooks:
@@ -13,25 +13,29 @@ import useConfetti from '../../hooks/useConfetti';
 // Components:
 // CSS:
 // Types, interfaces and enumns:
-import type { CSSProperties, FC } from 'react';
+import type { CSSProperties, FC, Ref } from 'react';
 // import type { HexColor } from '../utils/color';
 import type { ConfettiOptions } from '../../hooks/useConfetti';
+export type ConfettiHandle = {
+  launch: () => void;
+};
 interface ConfettiCanvasProps {
-  trigger: boolean;
+  ref: Ref<ConfettiHandle>;
   confettiOptions?: ConfettiOptions;
   style?: CSSProperties;
 }
 
 const ConfettiCanvas: FC<ConfettiCanvasProps> = ({
-  trigger,
+  ref,
   confettiOptions = {},
   style = {},
 }) => {
   const { launch, setCanvasRef } = useConfetti(confettiOptions);
 
-  useEffect(() => {
-    if (trigger) launch();
-  }, [trigger, launch]);
+  useImperativeHandle(ref, () => ({
+    launch,
+  }));
+  // Effects:
 
   const canvas = (
     <canvas

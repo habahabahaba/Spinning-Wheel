@@ -22,7 +22,8 @@
   /* height: min(25rem, 70%); */
   overflow-y: scroll;
   padding: 0.25rem 0.5rem;
-
+  border-top: 4px dashed #e2e8f0;
+  border-bottom: 4px dashed #e2e8f0;
   /* background-color: blue; */
 }
 .add_outcomes_container {

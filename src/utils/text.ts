@@ -1,6 +1,7 @@
 // Utils:
 import { maxInscribedRectangle, evaluateRectangleInSector } from './geometry';
 import { polarToCartesian } from './geometry';
+import { parseCssUnit, normalizeBoxValue } from './css';
 
 const MIN_FONT_SIZE = 14;
 const FONT_FAMILY = 'monospace';
@@ -386,4 +387,159 @@ export function calculateTextLayout(
     fontSize: maxFontSize,
     distanceFromApex,
   };
+}
+
+/**
+ * Calculates the maximum font size that fits a given text within a specified rectangle.
+ * The text is rendered and resized to fit within the provided width and height, with support for multi-line wrapping.
+ *
+ * @param text - The text content to be evaluated.
+ * @param fontFamily - The font family to be applied to the text.
+ * @param fontWeight - The font weight to be applied to the text (e.g., 400 for normal, 700 for bold).
+ * @param width - The width of the container (e.g., "80vw", "300px", "15em").
+ * @param height - The height of the container (e.g., "40vh", "200px", "15em").
+ * @param lineHeight - The line height for the text (default is 1.2, typical for headings).
+ *
+ * @returns A Promise that resolves to the maximum font size (in pixels) that fits within the container.
+ *
+ * @example
+ * const maxFontSize = await evaluateTextInRectangle("My Awesome Title", "Arial", 700, "80vw", "20vh", 1.1);
+ * console.log(maxFontSize);  // Maximum font size in pixels
+ */
+export function fontSizeInRectangle({
+  text,
+  fontFamily,
+  width,
+  height,
+  fontWeight = 600,
+  lineHeight = 1.25,
+}: {
+  text: string;
+  fontFamily: string;
+  width: string | number;
+  height: string | number;
+  fontWeight?: number | string;
+  lineHeight?: number;
+}): number {
+  const parsedWidth = parseCssUnit(width);
+  const parsedHeight = parseCssUnit(height);
+
+  const span = document.createElement('div');
+  span.style.position = 'absolute';
+  span.style.visibility = 'hidden';
+  span.style.pointerEvents = 'none';
+  span.style.whiteSpace = 'normal';
+  span.style.overflowWrap = 'break-word';
+  span.style.wordBreak = 'break-word';
+  span.style.fontFamily = fontFamily;
+  span.style.fontWeight = fontWeight.toString();
+  span.style.width = `${parsedWidth}px`;
+  span.style.lineHeight = lineHeight.toString();
+
+  document.body.appendChild(span);
+
+  let low = 1;
+  let high = 1000;
+  let bestFit = 0;
+
+  while (low <= high) {
+    const mid = Math.floor((low + high) / 2);
+    span.style.fontSize = `${mid}px`;
+    span.textContent = text;
+
+    const { height: measuredHeight } = span.getBoundingClientRect();
+    if (measuredHeight <= parsedHeight) {
+      bestFit = mid;
+      low = mid + 1;
+    } else {
+      high = mid - 1;
+    }
+  }
+
+  document.body.removeChild(span);
+  return bestFit;
+}
+
+interface FontSizeCalculationOptions {
+  text: string;
+  fontFamily: string;
+  containerHeight: number;
+  containerWidth: number;
+  fontWeight?: number;
+  lineHeight?: number;
+  boxSizing?: 'content-box' | 'border-box';
+  containerPadding?:
+    | number
+    | [number, number]
+    | [number, number, number, number];
+  wordBreak?: 'normal' | 'break-all' | 'keep-all' | 'break-word';
+  childMargin?: number | [number, number] | [number, number, number, number];
+  childPadding?: number | [number, number] | [number, number, number, number];
+  whiteSpace?: 'normal' | 'nowrap' | 'pre' | 'pre-wrap' | 'pre-line';
+}
+
+/**
+ * Calculates the maximum font size for text to fit within a container while respecting all CSS constraints
+ */
+export function fontSizeForTextInElement({
+  text,
+  fontFamily,
+  containerHeight,
+  containerWidth,
+  fontWeight = 600,
+  lineHeight = 1.25,
+  boxSizing = 'border-box',
+  containerPadding = 0,
+  childMargin = 0,
+  childPadding = 0,
+  wordBreak = 'break-word',
+  whiteSpace = 'normal',
+}: FontSizeCalculationOptions): number {
+  // Create measurement container
+  const container = document.createElement('div');
+  container.style.position = 'absolute';
+  container.style.visibility = 'hidden';
+  container.style.boxSizing = boxSizing;
+  container.style.width = `${containerWidth}px`;
+  container.style.wordBreak = wordBreak;
+  container.style.whiteSpace = whiteSpace;
+
+  // Apply container padding
+  const padding = normalizeBoxValue(containerPadding);
+  container.style.padding = padding.map((v) => `${v}px`).join(' ');
+
+  // Create measurement child element
+  const child = document.createElement('div');
+  child.style.fontFamily = fontFamily;
+  child.style.fontWeight = fontWeight.toString();
+  child.style.lineHeight = lineHeight.toString();
+  child.textContent = text;
+  child.style.margin = normalizeBoxValue(childMargin)
+    .map((v) => `${v}px`)
+    .join(' ');
+  child.style.padding = normalizeBoxValue(childPadding)
+    .map((v) => `${v}px`)
+    .join(' ');
+  container.appendChild(child);
+  document.body.appendChild(container);
+
+  // Binary search implementation
+  let minSize = 1;
+  let maxSize = Math.min(containerHeight, 1000);
+  let optimalSize = minSize;
+
+  while (minSize <= maxSize) {
+    const midSize = Math.floor((minSize + maxSize) / 2);
+    child.style.fontSize = `${midSize}px`;
+
+    if (container.scrollHeight <= containerHeight) {
+      optimalSize = midSize;
+      minSize = midSize + 1;
+    } else {
+      maxSize = midSize - 1;
+    }
+  }
+
+  document.body.removeChild(container);
+  return optimalSize;
 }
