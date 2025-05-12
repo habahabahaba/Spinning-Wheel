@@ -1,105 +1,27 @@
 // Utils:
 import { maxInscribedRectangle, evaluateRectangleInSector } from './geometry';
-import { polarToCartesian } from './geometry';
-import { parseCssUnit, normalizeBoxValue } from './css';
+// import { polarToCartesian } from './geometry';
+import { normalizeBoxValue } from './css';
 
-const MIN_FONT_SIZE = 14;
-const FONT_FAMILY = 'monospace';
-const fontCache = new Map<string, number>();
-
-// Canvas for measuring text
-const canvas = document.createElement('canvas');
-const ctx = canvas.getContext('2d')!;
-
-function getTextWidth(
-  label: string,
-  fontSize: number,
-  fontFamily: string
-): number {
-  const cacheKey = `${label}_${fontSize}_${fontFamily}`;
-  if (fontCache.has(cacheKey)) return fontCache.get(cacheKey)!;
-
-  ctx.font = `${fontSize}px ${fontFamily}`;
-  const width = ctx.measureText(label).width;
-  fontCache.set(cacheKey, width);
-  return width;
+// Types, interfaces and enumns:
+interface FontSizeCalculationOptions {
+  text: string;
+  fontFamily: string;
+  containerHeight: number;
+  containerWidth: number;
+  fontWeight?: number;
+  lineHeight?: number;
+  boxSizing?: 'content-box' | 'border-box';
+  containerPadding?:
+    | number
+    | [number, number]
+    | [number, number, number, number];
+  wordBreak?: 'normal' | 'break-all' | 'keep-all' | 'break-word';
+  childMargin?: number | [number, number] | [number, number, number, number];
+  childPadding?: number | [number, number] | [number, number, number, number];
+  whiteSpace?: 'normal' | 'nowrap' | 'pre' | 'pre-wrap' | 'pre-line';
 }
 
-function getLineHeight(fontSize: number): number {
-  return fontSize * 1.2; // Approximate for most fonts
-}
-
-export function calculateLabelPlacement({
-  label,
-  totalSectors,
-  radius,
-  center,
-}: {
-  label: string;
-  totalSectors: number;
-  radius: number;
-  center: { x: number; y: number };
-}) {
-  const anglePerSector = 360 / totalSectors;
-  const midAngle = anglePerSector / 2;
-
-  // Step 1: Determine min safe distance for MIN_FONT_SIZE
-  const lineHeight = getLineHeight(MIN_FONT_SIZE);
-  const minSafeDistance =
-    lineHeight / (2 * Math.tan((anglePerSector / 2) * (Math.PI / 180)));
-
-  // Step 2: Determine label width at font size 14
-  const labelWidthAtMinSize = getTextWidth(label, MIN_FONT_SIZE, FONT_FAMILY);
-  const availableLength = radius - minSafeDistance;
-
-  let finalLabel = label;
-  let fontSize = MIN_FONT_SIZE;
-  let startDistance = minSafeDistance;
-
-  if (availableLength < labelWidthAtMinSize) {
-    // Truncate to fit
-    const avgCharWidth = getTextWidth('W', MIN_FONT_SIZE, FONT_FAMILY);
-    const maxChars = Math.floor(availableLength / avgCharWidth);
-
-    if (maxChars <= 1) {
-      finalLabel = '…';
-    } else {
-      finalLabel = label.slice(0, maxChars - 1) + '…';
-    }
-  } else {
-    // Step 3: scale label to largest possible size
-    const aspectRatio = labelWidthAtMinSize / lineHeight;
-    const maxRectHeight = Math.min(
-      (2 * radius * Math.sin((anglePerSector / 2) * (Math.PI / 180))) /
-        Math.sqrt(1 + aspectRatio ** 2),
-      radius
-    );
-
-    fontSize = Math.floor(maxRectHeight / 1.2);
-    const scaledWidth = getTextWidth(label, fontSize, FONT_FAMILY);
-    const scaledLineHeight = getLineHeight(fontSize);
-    // const scaledMinSafeDistance =
-    //   scaledLineHeight / (2 * Math.tan((anglePerSector / 2) * (Math.PI / 180)));
-
-    // Step 4: try to move label outward
-    const maxSafeRadius = radius - scaledLineHeight / 2;
-    startDistance = Math.min(radius - scaledWidth / 2, maxSafeRadius);
-  }
-
-  const { x, y } = polarToCartesian(
-    center.x,
-    center.y,
-    startDistance,
-    midAngle
-  );
-
-  return {
-    fontSize,
-    label: finalLabel,
-    position: { x, y },
-    rotation: midAngle - 90,
-  };
-}
 /**
  * Measures text dimensions accounting for precise font metrics
  * @param text - Text to measure
@@ -349,7 +271,7 @@ export function calculateTextLayout(
   const maxRect = maxInscribedRectangle(sectorAngleDeg, radius, aspectRatio);
 
   let maxFontSize: number;
-  const fontKey = `${maxRect.maxHeight}-${fontFamily}-${fontWeight}`;
+  const fontKey = `${maxRect.maxHeight}-${fontFamily}-${fontWeight}-${label}`;
   const cachedFontSize = fontSizeCache.get(fontKey);
   if (cachedFontSize) {
     maxFontSize = cachedFontSize;
@@ -387,95 +309,6 @@ export function calculateTextLayout(
     fontSize: maxFontSize,
     distanceFromApex,
   };
-}
-
-/**
- * Calculates the maximum font size that fits a given text within a specified rectangle.
- * The text is rendered and resized to fit within the provided width and height, with support for multi-line wrapping.
- *
- * @param text - The text content to be evaluated.
- * @param fontFamily - The font family to be applied to the text.
- * @param fontWeight - The font weight to be applied to the text (e.g., 400 for normal, 700 for bold).
- * @param width - The width of the container (e.g., "80vw", "300px", "15em").
- * @param height - The height of the container (e.g., "40vh", "200px", "15em").
- * @param lineHeight - The line height for the text (default is 1.2, typical for headings).
- *
- * @returns A Promise that resolves to the maximum font size (in pixels) that fits within the container.
- *
- * @example
- * const maxFontSize = await evaluateTextInRectangle("My Awesome Title", "Arial", 700, "80vw", "20vh", 1.1);
- * console.log(maxFontSize);  // Maximum font size in pixels
- */
-export function fontSizeInRectangle({
-  text,
-  fontFamily,
-  width,
-  height,
-  fontWeight = 600,
-  lineHeight = 1.25,
-}: {
-  text: string;
-  fontFamily: string;
-  width: string | number;
-  height: string | number;
-  fontWeight?: number | string;
-  lineHeight?: number;
-}): number {
-  const parsedWidth = parseCssUnit(width);
-  const parsedHeight = parseCssUnit(height);
-
-  const span = document.createElement('div');
-  span.style.position = 'absolute';
-  span.style.visibility = 'hidden';
-  span.style.pointerEvents = 'none';
-  span.style.whiteSpace = 'normal';
-  span.style.overflowWrap = 'break-word';
-  span.style.wordBreak = 'break-word';
-  span.style.fontFamily = fontFamily;
-  span.style.fontWeight = fontWeight.toString();
-  span.style.width = `${parsedWidth}px`;
-  span.style.lineHeight = lineHeight.toString();
-
-  document.body.appendChild(span);
-
-  let low = 1;
-  let high = 1000;
-  let bestFit = 0;
-
-  while (low <= high) {
-    const mid = Math.floor((low + high) / 2);
-    span.style.fontSize = `${mid}px`;
-    span.textContent = text;
-
-    const { height: measuredHeight } = span.getBoundingClientRect();
-    if (measuredHeight <= parsedHeight) {
-      bestFit = mid;
-      low = mid + 1;
-    } else {
-      high = mid - 1;
-    }
-  }
-
-  document.body.removeChild(span);
-  return bestFit;
-}
-
-interface FontSizeCalculationOptions {
-  text: string;
-  fontFamily: string;
-  containerHeight: number;
-  containerWidth: number;
-  fontWeight?: number;
-  lineHeight?: number;
-  boxSizing?: 'content-box' | 'border-box';
-  containerPadding?:
-    | number
-    | [number, number]
-    | [number, number, number, number];
-  wordBreak?: 'normal' | 'break-all' | 'keep-all' | 'break-word';
-  childMargin?: number | [number, number] | [number, number, number, number];
-  childPadding?: number | [number, number] | [number, number, number, number];
-  whiteSpace?: 'normal' | 'nowrap' | 'pre' | 'pre-wrap' | 'pre-line';
 }
 
 /**
