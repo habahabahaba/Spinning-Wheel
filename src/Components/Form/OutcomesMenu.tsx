@@ -25,6 +25,7 @@ const OutcomesMenu: FC = () => {
   const outcomesLength = useBoundStore(
     (state) => state.currentConfig.outcomes.length
   );
+  //   const outcomes = useBoundStore((state) => state.currentConfig.outcomes);
   // Actions:
   const addBlankOutcomes = useBoundStore((state) => state.addBlankOutcomes);
   // State:
@@ -45,13 +46,13 @@ const OutcomesMenu: FC = () => {
   }
 
   // JSX:
-  const outcomes = Array.from({ length: outcomesLength }, () => null).map(
+  const outcomesList = Array.from({ length: outcomesLength }, () => null).map(
     (_, idx) => <OutcomeInputs index={idx} key={idx} />
   );
 
   return (
     <div className={styles.outcomes_menu}>
-      <menu className={styles.outcomes_list}>{outcomes}</menu>
+      <menu className={styles.outcomes_list}>{outcomesList}</menu>
       <div className={styles.add_outcomes_container}>
         <input
           className={styles.add_outcomes_number_input}
