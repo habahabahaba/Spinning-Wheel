@@ -8,15 +8,16 @@ import { initFontsState } from '../constants/fonts';
 import type { StateCreator } from 'zustand';
 import type {
   FontState,
+  FontSlice,
   RemoteFontNames,
   AllFontNames,
   WheelConfigsSlice,
   WheelSpinSlice,
-  FontSlice,
+  NavigationSlice,
 } from './types';
 
 const createFontSlice: StateCreator<
-  FontSlice & WheelConfigsSlice & WheelSpinSlice,
+  FontSlice & WheelConfigsSlice & WheelSpinSlice & NavigationSlice,
   [],
   [],
   FontSlice

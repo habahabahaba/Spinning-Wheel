@@ -19,8 +19,9 @@ import type {
   WheelConfigsState,
   WheelConfig,
   WheelConfigsSlice,
-  WheelSpinSlice,
   FontSlice,
+  WheelSpinSlice,
+  NavigationSlice,
 } from './types';
 import { Radius } from '../constants/radii';
 import type { AllFontNames } from './types';
@@ -190,7 +191,7 @@ import type { AllFontNames } from './types';
 // );
 
 const createWheelConfigsSlice: StateCreator<
-  FontSlice & WheelConfigsSlice & WheelSpinSlice,
+  FontSlice & WheelConfigsSlice & WheelSpinSlice & NavigationSlice,
   [],
   [],
   WheelConfigsSlice

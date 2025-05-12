@@ -4,8 +4,9 @@ import type {
   WheelSpinState,
   WheelAnimationState,
   WheelSpinSlice,
-  WheelConfigsSlice,
   FontSlice,
+  WheelConfigsSlice,
+  NavigationSlice,
 } from './types';
 
 const initWheelSpinState: WheelSpinState = {
@@ -14,7 +15,7 @@ const initWheelSpinState: WheelSpinState = {
 };
 
 const createWheelSpinSlice: StateCreator<
-  WheelSpinSlice & FontSlice & WheelConfigsSlice,
+  WheelSpinSlice & FontSlice & WheelConfigsSlice & NavigationSlice,
   [],
   [],
   WheelSpinSlice

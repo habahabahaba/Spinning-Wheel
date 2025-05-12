@@ -5,15 +5,24 @@ import { persist } from 'zustand/middleware';
 import createFontSlice from './fontSlice';
 import createWheelConfigsSlice from './wheelConfigsSlice';
 import createWheelSpinSlice from './wheelSpinSlice';
+import createNavigationSlice from './navigationSlice';
 // Types, interfaces and enumns:
-import type { FontSlice, WheelConfigsSlice, WheelSpinSlice } from './types';
+import type {
+  FontSlice,
+  WheelConfigsSlice,
+  WheelSpinSlice,
+  NavigationSlice,
+} from './types';
 
-const useBoundStore = create<FontSlice & WheelConfigsSlice & WheelSpinSlice>()(
+const useBoundStore = create<
+  FontSlice & WheelConfigsSlice & WheelSpinSlice & NavigationSlice
+>()(
   persist(
     (...a) => ({
       ...createFontSlice(...a),
       ...createWheelConfigsSlice(...a),
       ...createWheelSpinSlice(...a),
+      ...createNavigationSlice(...a),
     }),
     {
       name: 'Wheel-store',

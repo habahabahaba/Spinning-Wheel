@@ -140,3 +140,20 @@ interface WheelSpinActions {
 }
 
 export type WheelSpinSlice = WheelSpinState & WheelSpinActions;
+
+// Navigation:
+export type NavigationLocation = 'ConfigForm' | 'Main';
+
+export interface NavigationState {
+  currentLocation: NavigationLocation;
+}
+
+interface NavigationActions {
+  setCurrentLocation: ({
+    newLocation,
+  }: {
+    newLocation: NavigationLocation;
+  }) => void;
+}
+
+export type NavigationSlice = NavigationState & NavigationActions;
