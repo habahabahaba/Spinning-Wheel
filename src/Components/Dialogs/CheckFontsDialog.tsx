@@ -23,11 +23,10 @@ const CheckFontsDialog = forwardRef<DialogHandle>(
     return (
       <Dialog
         ref={ref}
-        // className=''
-        // style={{
-        //   top: '-50%',
-        //   right: '0',
-        // }}
+        className='top-shadow'
+        style={{
+          top: '-50%',
+        }}
       >
         <CheckFonts />
       </Dialog>

@@ -48,36 +48,16 @@ h1 {
 
 .glass {
   background-color: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(2px);
+  backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(2px);
   border-radius: 0.2rem;
   border: 1px solid rgba(255, 255, 255, 0.2);
 
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.1);
   /* color: white; */
   padding: 0.5rem 0 0 0;
 }
 
-.button-spin {
-  animation: button-spin 2s linear infinite;
-}
-.button-wind-up {
-  animation: button-wind-up 5s linear forwards;
-}
-
-@keyframes button-spin {
-  0% {
-    transform: translate(-50%, -50%);
-  }
-  100% {
-    transform: translate(-50%, -50%) rotate(1turn);
-  }
-}
-@keyframes button-wind-up {
-  0% {
-    transform: translate(-50%, -50%);
-  }
-  100% {
-    transform: translate(-50%, -50%) rotate(-0.25turn);
-  }
+.top-shadow {
+  box-shadow: 0px 0px 50px 4px rgba(0, 0, 0, 0.25);
 }

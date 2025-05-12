@@ -1,3 +1,5 @@
+// Utils:
+import { mergeStyles } from '../../utils/css';
 // Constants:
 // import { WHEEL_RADII_MAP } from '../../constants/radii';
 // 3rd party:
@@ -29,13 +31,12 @@ const ResultDisplayDialog = forwardRef<DialogHandle>(
     return (
       <Dialog
         ref={ref}
-        className={styles.drop_down}
+        className={mergeStyles(styles.drop_down, 'top-shadow')}
         style={{
           position: 'relative',
-          // position: 'absolute',
           top: `15px`,
-          // right: `calc(100vw - ${dX}px)`,
-          // zIndex: -1,
+          border: 'none',
+          padding: 0,
         }}
       >
         <ResultDisplay />

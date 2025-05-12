@@ -17,14 +17,7 @@ const ExportConfigDialog = forwardRef<DialogHandle>(
   (_, ref: ForwardedRef<DialogHandle>) => {
     // JSX:
     return (
-      <Dialog
-        ref={ref}
-        // className=''
-        style={{
-          top: '-50%',
-          right: '0',
-        }}
-      >
+      <Dialog ref={ref} className='top-shadow'>
         <ExportConfig />
       </Dialog>
     );

@@ -74,6 +74,8 @@ const SpinButton: FC<SpinButtonProps> = ({
 
         width: `${wheelRadius * 0.2}px`,
         height: `${wheelRadius * 0.2}px`,
+        border: '2px solid',
+        padding: ' 2px',
         borderRadius: '50%',
 
         backgroundColor: `${

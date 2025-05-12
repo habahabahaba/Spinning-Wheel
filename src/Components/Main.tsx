@@ -16,10 +16,8 @@ import Wheel from './Wheel/Wheel';
 import Arrow from './Wheel/Arrow';
 import SpinButton from './Wheel/SpinButton';
 import ResultDisplayModal from './Dialogs/ResultDisplayDialog';
-// import Wallpaper from './UI/Wallpaper';
-// import ConfettiCanvas from './ConfettiCanvas';
-// import Modal from './Modal';
 // CSS:
+import styles from './Main.module.css';
 // Types, interfaces and enumns:
 import type { FC } from 'react';
 import type { DialogHandle } from './UI/Dialog';
@@ -30,7 +28,6 @@ const Main: FC = () => {
   const wheelAnimationState = useBoundStore(
     (state) => state.wheelAnimationState
   );
-  // const winningOutcomeIdx = useBoundStore((state) => state.winningOutcomeIdx);
 
   // Actions:
   const setWheelAnimationState = useBoundStore(
@@ -112,27 +109,18 @@ const Main: FC = () => {
   return (
     <main
       style={{
-        position: 'relative',
-        // height: '100vh',
-        // width: `${wheelRadius * 2}px`,
-        // minWidth: '100%',
         padding: `${wheelRadius / 5}px`,
-        overflow: 'visible',
-        // boxSizing: 'content-box',
-        // margin: 'auto',
-        display: 'flex',
-        justifyContent: 'center',
       }}
+      className={styles.main}
     >
       <div
         id='wheel-arrow-assembly'
         style={{
           width: 'fit-content',
           position: 'relative',
-          border: '1px solid black',
           borderRadius: '50%',
-          boxShadow: '0px 0px 10px 0px black',
         }}
+        className={styles.wheel_arrow_container}
       >
         <Wheel
           radius={wheelRadius}

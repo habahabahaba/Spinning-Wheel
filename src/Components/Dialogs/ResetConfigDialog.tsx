@@ -17,10 +17,7 @@ const ResetConfigDialog = forwardRef<DialogHandle>(
   (_, ref: ForwardedRef<DialogHandle>) => {
     // JSX:
     return (
-      <Dialog
-        ref={ref}
-        // className=''
-      >
+      <Dialog ref={ref} className='top-shadow'>
         <ResetConfig />
       </Dialog>
     );
