@@ -6,6 +6,7 @@ import useBoundStore from './store/boundStore';
 // React:
 import { useEffect, useRef } from 'react';
 // Components:
+import NavBar from './Components/NavBar';
 import Main from './Components/Main';
 import ConfigForm from './Components/Form/ConfigForm';
 import Wallpaper from './Components/UI/Wallpaper';
@@ -14,6 +15,8 @@ import Wallpaper from './Components/UI/Wallpaper';
 import type { RemoteFontNames } from './constants/fonts';
 
 function App() {
+  // Store:
+  const location = useBoundStore((state) => state.currentLocation);
   // Actions:
   const markLoadedFont = useBoundStore((state) => state.markLoadedFont);
   const markAllFontsReady = useBoundStore((state) => state.markAllFontsReady);
@@ -51,12 +54,12 @@ function App() {
 
   return (
     <>
-      <Main />
-      <ConfigForm />
+      <NavBar />
+      {location === 'Main' ? <Main /> : <ConfigForm />}
       {/* <FontsDisplay /> */}
       <Wallpaper
-        variant={1}
-        colorIdx0={2}
+        variant={location === 'Main' ? 2 : 3}
+        colorIdx0={location === 'Main' ? 0 : 2}
         colorIdx1={0}
         style={{
           opacity: '0.9',

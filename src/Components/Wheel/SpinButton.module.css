@@ -1,0 +1,30 @@
+.spin_button {
+  border: 2px solid;
+  padding: 2px;
+
+  cursor: pointer;
+}
+
+.spin_button_spin {
+  animation: button-spin 2s linear infinite;
+}
+.spin_button_wind_up {
+  animation: button-wind-up 5s linear forwards;
+}
+
+@keyframes button-spin {
+  0% {
+    transform: translate(-50%, -50%);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(1turn);
+  }
+}
+@keyframes button-wind-up {
+  0% {
+    transform: translate(-50%, -50%);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(-0.25turn);
+  }
+}

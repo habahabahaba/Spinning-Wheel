@@ -12,7 +12,7 @@ import useBoundStore from '../../store/boundStore';
 // Components:
 import { idleSVGs, windUpSVGs, spinningSVGs } from '../SVG/spinSVGs';
 // CSS:
-
+import styles from './SpinButton.module.css';
 // Types, interfaces and enumns:
 import type { FC } from 'react';
 interface SpinButtonProps {
@@ -74,11 +74,7 @@ const SpinButton: FC<SpinButtonProps> = ({
 
         width: `${wheelRadius * 0.2}px`,
         height: `${wheelRadius * 0.2}px`,
-        border: '2px solid',
         borderRadius: '50%',
-        padding: '2px',
-
-        cursor: 'pointer',
 
         backgroundColor: `${
           wheelAnimationState === 'windingUp'
@@ -101,11 +97,11 @@ const SpinButton: FC<SpinButtonProps> = ({
         }`,
         transition: 'filter 6s, box-shadow 6s, background-color 2s',
       }}
-      className={`${
+      className={`${styles.spin_button} ${
         wheelAnimationState === 'spinning'
-          ? 'button-spin'
+          ? styles.spin_button_spin
           : wheelAnimationState === 'windingUp'
-          ? 'button-wind-up'
+          ? styles.spin_button_wind_up
           : ''
       }`}
     >

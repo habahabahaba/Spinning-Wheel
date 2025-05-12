@@ -18,7 +18,11 @@ const createNavigationSlice: StateCreator<
 
   // Actions:
   setCurrentLocation: ({ newLocation }: { newLocation: NavigationLocation }) =>
-    set({ currentLocation: newLocation }),
+    set((state) =>
+      state.wheelAnimationState === 'idle'
+        ? { currentLocation: newLocation }
+        : state
+    ),
 });
 
 export default createNavigationSlice;
