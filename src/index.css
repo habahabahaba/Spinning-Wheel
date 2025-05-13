@@ -1,6 +1,6 @@
 :root {
   font-family: system-ui, Arial, sans-serif, serif;
-  line-height: 1.5;
+  line-height: 1.25;
   font-weight: 400;
 
   color-scheme: light dark;
@@ -11,6 +11,36 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* Light Theme – Explicit Variables */
+  --color-light-bg: #f8fafc;
+  --color-light-fg: #1e293b;
+  --color-light-muted: #64748b;
+  --color-light-border: #e2e8f0;
+  --color-light-hover: #cbd5e1;
+  --color-light-accent: #3b82f6;
+  --color-light-accent-hover: #2563eb;
+  --color-light-subtle-bg: #f1f5f9;
+
+  /* Dark Theme – Explicit Variables */
+  --color-dark-bg: #0f172a;
+  --color-dark-fg: #f8fafc;
+  --color-dark-muted: #94a3b8;
+  --color-dark-border: #334155;
+  --color-dark-hover: #1e293b;
+  --color-dark-accent: #60a5fa;
+  --color-dark-accent-hover: #3b82f6;
+  --color-dark-subtle-bg: #1e293b;
+
+  /* Dynamic Theme Variables (default to Light) */
+  --color-bg: var(--color-light-bg);
+  --color-fg: var(--color-light-fg);
+  --color-muted: var(--color-light-muted);
+  --color-border: var(--color-light-border);
+  --color-hover: var(--color-light-hover);
+  --color-accent: var(--color-light-accent);
+  --color-accent-hover: var(--color-light-accent-hover);
+  --color-subtle-bg: var(--color-light-subtle-bg);
 }
 
 a {
@@ -27,22 +57,17 @@ body {
   min-width: 320px;
   min-height: 100vh;
 }
-/* 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-} */
 
-@media (prefers-color-scheme: light) {
+@media (prefers-color-scheme: dark) {
   :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
+    --color-bg: var(--color-dark-bg);
+    --color-fg: var(--color-dark-fg);
+    --color-muted: var(--color-dark-muted);
+    --color-border: var(--color-dark-border);
+    --color-hover: var(--color-dark-hover);
+    --color-accent: var(--color-dark-accent);
+    --color-accent-hover: var(--color-dark-accent-hover);
+    --color-subtle-bg: var(--color-dark-subtle-bg);
   }
 }
 
