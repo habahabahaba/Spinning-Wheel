@@ -113,11 +113,12 @@ export const initConfigs: WheelConfigsState = {
   savedConfigs: new Array(10).fill(undefined),
 };
 
-export const blankOutcome: Outcome = new OutcomeModel({
-  label: '',
-  fillColor: '',
-  fontFamily: '',
-});
+export const blankOutcome: () => Outcome = () =>
+  new OutcomeModel({
+    label: '',
+    fillColor: '',
+    fontFamily: '',
+  });
 
 export function createOutcomes(
   quantity: number,

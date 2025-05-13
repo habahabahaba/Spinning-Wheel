@@ -87,7 +87,7 @@ const createWheelConfigsSlice: StateCreator<
       const clampedQuantity = Math.max(1, Math.min(quantity, 72 - length));
 
       const blankOutcomes = Array.from({ length: clampedQuantity }, () => ({
-        ...blankOutcome,
+        ...blankOutcome(),
       }));
 
       return {

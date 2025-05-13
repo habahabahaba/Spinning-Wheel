@@ -2,6 +2,7 @@
 // Constants:
 // Utils:
 // 3rd party:
+import { useShallow } from 'zustand/shallow';
 // Store:
 import useBoundStore from '../../store/boundStore';
 // Router:
@@ -25,7 +26,10 @@ const OutcomesMenu: FC = () => {
   const outcomesLength = useBoundStore(
     (state) => state.currentConfig.outcomes.length
   );
-  //   const outcomes = useBoundStore((state) => state.currentConfig.outcomes);
+  const outcomeIds = useBoundStore(
+    useShallow((state) => state.currentConfig.outcomes.map(({ id }) => id))
+  );
+
   // Actions:
   const addBlankOutcomes = useBoundStore((state) => state.addBlankOutcomes);
   // State:
@@ -46,9 +50,9 @@ const OutcomesMenu: FC = () => {
   }
 
   // JSX:
-  const outcomesList = Array.from({ length: outcomesLength }, () => null).map(
-    (_, idx) => <OutcomeInputs index={idx} key={idx} />
-  );
+  const outcomesList = outcomeIds.map((id, idx) => (
+    <OutcomeInputs index={idx} key={id} />
+  ));
 
   return (
     <div className={styles.outcomes_menu}>
