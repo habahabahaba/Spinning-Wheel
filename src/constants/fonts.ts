@@ -55,8 +55,8 @@ export const FONT_FAMILIES_ALL: AllFontNames[] = [
 
 const initFontsLoadStates: Record<AllFontNames, boolean> = {
   // System fonts:
-  'sans-serif': true,
   Arial: true,
+  'sans-serif': true,
   serif: true,
 
   // Remote fonts:

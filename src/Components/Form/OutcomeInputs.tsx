@@ -32,7 +32,7 @@ const OutcomeInputs: FC<OutcomeInputsProps> = ({ index }) => {
   const removeOutcome = useBoundStore((state) => state.removeOutcome);
 
   // Handlers:
-  function handleChange<K extends keyof Outcome>(
+  function handleChange<K extends keyof Omit<Outcome, 'id'>>(
     key: K,
     value: Outcome[K]
   ): void {

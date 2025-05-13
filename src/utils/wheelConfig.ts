@@ -24,13 +24,17 @@ function isOutcome(obj: unknown): obj is Outcome {
 
   const keys = Object.keys(o);
   if (
-    keys.length !== 3 ||
+    keys.length !== 4 ||
+    !keys.includes('id') ||
     !keys.includes('label') ||
     !keys.includes('fillColor') ||
     !keys.includes('fontFamily')
   ) {
     return false;
   }
+
+  if (typeof o.id !== 'string') return false;
+  if (!/^\d{13}-\d{8}$/.test(o.id)) return false;
 
   if (typeof o.label !== 'string') return false;
 
@@ -109,11 +113,11 @@ export const initConfigs: WheelConfigsState = {
   savedConfigs: new Array(10).fill(undefined),
 };
 
-export const blankOutcome: Outcome = {
+export const blankOutcome: Outcome = new OutcomeModel({
   label: '',
   fillColor: '',
   fontFamily: '',
-};
+});
 
 export function createOutcomes(
   quantity: number,
@@ -134,7 +138,8 @@ export function prepareConfig(wheelConfig: WheelConfig): WheelConfig {
 
   // Trim values:
   preparedConfig.outcomes = preparedConfig.outcomes.map(
-    ({ label, fillColor, fontFamily }: Outcome) => ({
+    ({ label, fillColor, fontFamily, id }: Outcome) => ({
+      id,
       label: label.trim(),
       fillColor: isHexColor(fillColor) ? fillColor : '',
       fontFamily: fontFamily,

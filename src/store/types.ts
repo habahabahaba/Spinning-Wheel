@@ -31,18 +31,22 @@ export type FontSlice = FontState & FontActions;
 
 // Wheel configs:
 export interface Outcome {
+  id: string;
   label: string;
   fillColor: HexColor | '';
   fontFamily: AllFontNames | '';
 }
 
 export class OutcomeModel implements Outcome {
-  constructor({ label, fillColor, fontFamily }: Outcome) {
+  constructor({ label, fillColor, fontFamily }: Outcome | Omit<Outcome, 'id'>) {
     this.label = label;
     this.fillColor = fillColor;
     this.fontFamily = fontFamily;
+
+    this.id = generateId();
   }
 
+  readonly id: string;
   public label: string;
   public fillColor: HexColor | '';
   public fontFamily: AllFontNames | '';
@@ -86,7 +90,7 @@ export interface WheelConfigsActions {
 
   removeOutcome: ({ outcomeIdx }: { outcomeIdx: number }) => void;
 
-  modifyOutcome: <K extends keyof Outcome>({
+  modifyOutcome: <K extends keyof Omit<Outcome, 'id'>>({
     outcomeIdx,
     key,
     value,
