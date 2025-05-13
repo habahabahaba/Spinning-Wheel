@@ -1,4 +1,8 @@
-import { HexColor } from '../utils/color';
+// Utils:
+import { generateId } from '../utils/random';
+
+// Types, interfaces and enumns:
+import type { HexColor } from '../utils/color';
 import type { Radius } from '../constants/radii';
 import type {
   LocalFontNames,
