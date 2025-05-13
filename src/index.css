@@ -3,10 +3,6 @@
   line-height: 1.25;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -14,33 +10,38 @@
 
   /* Light Theme – Explicit Variables */
   --color-light-bg: #f8fafc;
+  --color-light-subtle-bg: #f1f5f9;
+  --color-light-input-bg: #ffffff;
   --color-light-fg: #1e293b;
   --color-light-muted: #64748b;
-  --color-light-border: #e2e8f0;
-  --color-light-hover: #cbd5e1;
+  --color-light-border: #cbd5e1;
+  --color-light-contrast-border: #334155;
+  --color-light-hover: #e2e8f0;
   --color-light-accent: #3b82f6;
   --color-light-accent-hover: #2563eb;
-  --color-light-subtle-bg: #f1f5f9;
-
   /* Dark Theme – Explicit Variables */
-  --color-dark-bg: #0f172a;
+  --color-dark-bg: #1e293b;
+  --color-dark-subtle-bg: #475569;
+  --color-dark-input-bg: #0f172a;
   --color-dark-fg: #f8fafc;
   --color-dark-muted: #94a3b8;
   --color-dark-border: #334155;
-  --color-dark-hover: #1e293b;
-  --color-dark-accent: #60a5fa;
-  --color-dark-accent-hover: #3b82f6;
-  --color-dark-subtle-bg: #1e293b;
+  --color-dark-contrast-border: #cbd5e1;
+  --color-dark-hover: #334155;
+  --color-dark-accent: #a5b4fc;
+  --color-dark-accent-hover: #818cf8;
 
   /* Dynamic Theme Variables (default to Light) */
   --color-bg: var(--color-light-bg);
+  --color-subtle-bg: var(--color-light-subtle-bg);
+  --color-input-bg: var(--color-light-input-bg);
   --color-fg: var(--color-light-fg);
   --color-muted: var(--color-light-muted);
   --color-border: var(--color-light-border);
+  --color-contrast-border: var(--color-light-contrast-border);
   --color-hover: var(--color-light-hover);
   --color-accent: var(--color-light-accent);
   --color-accent-hover: var(--color-light-accent-hover);
-  --color-subtle-bg: var(--color-light-subtle-bg);
 }
 
 a {
@@ -56,33 +57,85 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-bg: var(--color-dark-bg);
-    --color-fg: var(--color-dark-fg);
-    --color-muted: var(--color-dark-muted);
-    --color-border: var(--color-dark-border);
-    --color-hover: var(--color-dark-hover);
-    --color-accent: var(--color-dark-accent);
-    --color-accent-hover: var(--color-dark-accent-hover);
-    --color-subtle-bg: var(--color-dark-subtle-bg);
+  color: var(--color-fg);
+}
+input {
+  color: var(--color-fg);
+  background-color: var(--color-input-bg);
+  border-color: var(--color-contrast-border);
+  border-radius: 0.1rem;
+}
+button:focus,
+input:focus {
+  outline: 1px solid var(--color-accent);
+  &:hover {
+    outline: 2px solid var(--color-accent-hover);
   }
 }
 
+::placeholder {
+  color: var(--color-muted, #94a3b8);
+}
+
 .glass {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: #f8fafc64;
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(2px);
   border-radius: 0.2rem;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(var(--color-bg), 0.25);
 
   box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.1);
-  /* color: white; */
   padding: 0.5rem 0 0 0;
 }
 
 .top-shadow {
   box-shadow: 0px 0px 50px 4px rgba(0, 0, 0, 0.25);
+}
+
+/* ELEMENT STYLES */
+.dialog {
+  background-color: var(--color-bg);
+  color: var(--color-fg);
+  border-color: var(--color-border);
+  border-radius: 0.1rem;
+}
+.input-text {
+  color: var(--color-fg);
+  background-color: var(--color-bg);
+  border-color: var(--color-contrast-border);
+  border-radius: 0.1rem;
+}
+.input-color {
+  background-color: var(--color-bg);
+  border-color: var(--color-contrast-border);
+  border-radius: 0.1rem;
+}
+.label {
+  color: var(--color-fg);
+}
+.select {
+  & > div {
+    min-height: 1.5rem;
+    border-color: var(--color-contrast-border);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: var(--color-dark-bg);
+    --color-subtle-bg: var(--color-dark-subtle-bg);
+    --color-input-bg: var(--color-dark-input-bg);
+    --color-fg: var(--color-dark-fg);
+    --color-muted: var(--color-dark-muted);
+    --color-border: var(--color-dark-border);
+    --color-contrast-border: var(--color-dark-contrast-border);
+    --color-hover: var(--color-dark-hover);
+    --color-accent: var(--color-dark-accent);
+    --color-accent-hover: var(--color-dark-accent-hover);
+  }
+
+  .glass {
+    background-color: #1e293bf0;
+  }
 }

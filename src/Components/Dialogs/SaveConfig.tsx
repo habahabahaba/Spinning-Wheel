@@ -2,6 +2,7 @@
 // Constants:
 // Utils:
 import { getCurrentDate } from '../../utils/date';
+import { mergeStyles } from '../../utils/css';
 // 3rd party:
 // Redux, RTK:
 // Store:
@@ -70,7 +71,10 @@ const SaveConfig: FC<SaveConfigProps> = ({ saveIdx }) => {
   return (
     <form className={styles.save_config_form} onSubmit={handleSaveConfig}>
       <div>
-        <label className={styles.config_name_label} htmlFor='config-name-input'>
+        <label
+          className={mergeStyles(styles.config_name_label, 'label')}
+          htmlFor='config-name-input'
+        >
           Configuration name
         </label>
         <input
@@ -83,7 +87,7 @@ const SaveConfig: FC<SaveConfigProps> = ({ saveIdx }) => {
           value={inputValue || prevConfig?.configName || ''}
           onChange={handleInputChange}
           // defaultValue={prevConfig ? prevConfig.configName : undefined}
-          className={styles.config_name_input}
+          className={mergeStyles(styles.config_name_input, 'input-text')}
         />
       </div>
       {warning}

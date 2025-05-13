@@ -1,4 +1,5 @@
 // Utils:
+import { mergeStyles } from '../../utils/css';
 // 3rd party:
 // Store:
 import useBoundStore from '../../store/boundStore';
@@ -54,7 +55,7 @@ const ExportConfig: FC = () => {
     <form id={`export-dialog`} className={styles.export_config_form}>
       <div>
         <label
-          className={styles.config_name_label}
+          className={mergeStyles(styles.config_name_label, 'label')}
           htmlFor='configuration name'
         >
           File name
@@ -69,7 +70,7 @@ const ExportConfig: FC = () => {
           onChange={(ev) => {
             setConfigName({ configName: ev.target.value });
           }}
-          className={styles.config_name_input}
+          className={mergeStyles(styles.config_name_input, 'input-text')}
         />
       </div>
       <div className={styles.cancel_export_buttons_container}>

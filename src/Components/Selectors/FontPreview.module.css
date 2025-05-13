@@ -1,4 +1,6 @@
 .font_option {
   min-height: 1.5rem;
   padding: 0.25.rem;
+  color: var(--color-fg, black);
+  /* background-color: var(--color-bg, white); */
 }

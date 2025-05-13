@@ -20,7 +20,7 @@ const LoadConfigDialog = forwardRef<DialogHandle, LoadConfigProps>(
     return (
       <Dialog
         ref={ref}
-        className='top-shadow'
+        className='dialog top-shadow'
         childProps={{ saveIdx }}
         style={{
           top: '-50%',

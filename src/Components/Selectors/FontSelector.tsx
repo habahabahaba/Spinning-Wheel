@@ -1,3 +1,5 @@
+// Utils:
+import { mergeStyles } from '../../utils/css';
 // Constants:
 import { AllFontNames, FONT_FAMILIES_ALL } from '../../constants/fonts';
 // 3rd party:
@@ -71,7 +73,7 @@ const FontSelector: FC<FontSelectorProps> = ({
       onChange={
         forOutcome ? outcomeFontChangeHandler : defaultFontChangeHandler
       }
-      className={className}
+      className={mergeStyles(className, styles.font_selector)}
     >
       {forOutcome ? (
         <Option value={''}>

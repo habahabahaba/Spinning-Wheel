@@ -1,4 +1,6 @@
-// Assets:
+// Utils:
+import { mergeStyles } from '../../utils/css';
+// Constants:
 import { PALETTES } from '../../constants/palettes';
 // 3rd party:
 // Store:
@@ -11,6 +13,7 @@ import useBoundStore from '../../store/boundStore';
 import PalettePreview from './PalettePreview';
 import { Select, Option } from '../UI/Select';
 // CSS:
+import styles from './PaletteSelector.module.css';
 // Types, interfaces and enumns:
 import type { FC } from 'react';
 interface PaletteSelectorProps {
@@ -41,7 +44,7 @@ const PaletteSelector: FC<PaletteSelectorProps> = ({ className = '' }) => {
       onChange={(value) => {
         setPalette({ paletteIdx: +value });
       }}
-      className={className}
+      className={mergeStyles(className, styles.palette_selector)}
     >
       {options}
     </Select>

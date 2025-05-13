@@ -1,5 +1,12 @@
 .spin_button {
   cursor: pointer;
+
+  &:focus {
+    outline: none;
+    &:hover {
+      outline: none;
+    }
+  }
 }
 
 .spin_button_spin {

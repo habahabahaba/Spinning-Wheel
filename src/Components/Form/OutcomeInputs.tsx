@@ -56,7 +56,7 @@ const OutcomeInputs: FC<OutcomeInputsProps> = ({ index }) => {
       <input
         type='color'
         id={`fillColor-input-Outcome-${index}`}
-        value={outcome.fillColor || '#eeeeee'}
+        value={outcome.fillColor || '#f1f5f9'}
         onChange={(ev) => {
           handleChange(
             'fillColor',

@@ -1,6 +1,14 @@
 .selectContainer {
   position: relative;
   min-width: 12rem;
+
+  &:focus {
+    outline: 2px solid var(--color-accent, blue);
+
+    &:hover {
+      outline: 2px solid var(--color-accent-hover, darkblue);
+    }
+  }
 }
 
 .selectButton {
@@ -38,11 +46,13 @@
 }
 
 .dropdown {
+  box-sizing: border-box;
+  padding: 0.15rem;
   position: absolute;
   z-index: 100;
   width: 100%;
   margin-top: 0.25rem;
-  background-color: white;
+  background-color: var(--color-input-bg, white);
   border: 1px solid;
   border-radius: 0.1rem;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
@@ -54,8 +64,16 @@
 .option {
   padding: 0.5rem 0.6rem;
   cursor: pointer;
+
+  &:focus {
+    outline: 2px solid var(--color-accent, blue);
+
+    &:hover {
+      outline: 2px solid var(--color-accent-hover, darkblue);
+    }
+  }
 }
 
 .option:hover {
-  background-color: #f1f5f9;
+  background-color: var(--color-hover, #f1f5f9);
 }

@@ -7,24 +7,24 @@
     'label color font duplicate delete' 1fr
     / auto min-content 12.8rem min-content min-content;
 
-  border-radius: 0.1rem;
   margin: 0.5rem 0;
   margin-right: 0.5rem;
+  padding: 0.25rem;
+
+  border: 1px solid var(--color-border);
+  border-radius: 0.1rem 1.25rem 1.25rem 0.1rem;
+  background-color: var(--color-subtle-bg, white);
+
+  box-shadow: 0px 0px 5px 0px rgba(29, 40, 61, 0.25);
 
   animation: slide-in 0.124s ease-out;
-
-  /* border: 1px solid orange; */
-  border-radius: 0.1rem 1.1rem 1.1rem 0.1rem;
-  background-color: white;
-
-  /* box-shadow: 1px 1px 11px 3px rgba(0, 0, 0, 0.25); */
 }
 
 .outcome_label_input {
   grid-area: label;
   height: 1.5rem;
   padding: 0.2rem 0.5rem;
-  border: 1px solid;
+  border: 1px solid var(--color-contrast-border, black);
   border-radius: 0.1rem;
   min-width: 14rem;
 }
@@ -34,9 +34,9 @@
   min-width: 2rem;
   margin: 0;
   padding: 0.15rem;
-  border: 1px solid;
+  border: 1px solid var(--color-contrast-border);
   border-radius: 0.1rem;
-  background-color: white;
+  background-color: var(--color-subtle-bg, white);
 }
 .outcome_font_select {
   grid-area: font;

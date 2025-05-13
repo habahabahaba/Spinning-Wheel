@@ -7,11 +7,9 @@
   align-items: center;
   gap: 0.5rem;
   height: min(80svh, 15rem);
-  /* min-height: 6rem; */
   width: min(80svw, 18.5rem);
 
   overflow-x: hidden;
-  /* overscroll-behavior-block: none; */
 }
 
 .notifications_container {

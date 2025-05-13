@@ -2,6 +2,7 @@
 // Constants:
 // Utils:
 import { validateWheelConfig } from '../../utils/wheelConfig';
+import { mergeStyles } from '../../utils/css';
 // 3rd party:
 // Redux, RTK:
 // Store:
@@ -46,6 +47,9 @@ const ImportConfig: FC = () => {
 
   // Effects:
   useEffect(() => {
+    if (fileInputRef && fileInputRef.current) {
+      fileInputRef.current.focus();
+    }
     return () => {
       resetWarnings();
     };
@@ -200,7 +204,7 @@ const ImportConfig: FC = () => {
       <div>
         <label
           htmlFor='configuration-file-input'
-          className={styles.file_input_label}
+          className={mergeStyles(styles.file_input_label, 'label')}
         >
           Select a json file
         </label>
@@ -212,8 +216,11 @@ const ImportConfig: FC = () => {
           name='select configuration file'
           type='file'
           accept='.json'
-          className={[styles.file_input, styles.default, styles.rectangle].join(
-            ' '
+          className={mergeStyles(
+            styles.file_input,
+            styles.default,
+            styles.rectangle,
+            'input-text'
           )}
         />
       </div>

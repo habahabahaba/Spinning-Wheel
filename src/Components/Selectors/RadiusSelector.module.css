@@ -1,3 +1,10 @@
+.radius_selector {
+  & > div {
+    min-height: 1.5rem;
+    background-color: var(--color-input-bg, white);
+    border-color: var(--color-contrast-border, black);
+  }
+}
 .radius_option {
   font-weight: bold;
 }

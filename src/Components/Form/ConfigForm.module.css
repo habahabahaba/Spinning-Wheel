@@ -1,8 +1,5 @@
 .config_form {
   position: relative;
-  /* min-height: 90vh; */
-  /* min-height: max(25rem, 40svh); */
-  /* height: fit-content; */
   height: max(85svh, 30rem);
   max-width: 900px;
   margin: 1rem auto;
@@ -10,21 +7,8 @@
   flex-direction: column;
   justify-content: space-between;
   justify-items: start;
-  /* gap: 1rem; */
 
   animation: slide-up 225ms ease-out;
-}
-
-.glass {
-  background-color: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
-  border-radius: 0.2rem;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  /* color: white; */
-  padding: 0.5rem 0 0 0;
 }
 
 @keyframes slide-up {

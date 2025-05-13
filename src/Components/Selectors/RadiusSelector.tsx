@@ -38,6 +38,7 @@ const RadiusSelector: FC = () => {
       onChange={(value) => {
         setRadius({ radiusName: value as Radius });
       }}
+      className={styles.radius_selector}
     >
       {options}
     </Select>

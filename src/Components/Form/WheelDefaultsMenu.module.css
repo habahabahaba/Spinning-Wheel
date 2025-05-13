@@ -18,7 +18,7 @@
   margin-left: 0.5rem;
 
   line-height: 0.9rem;
-  background-color: white;
+  background-color: var(--color-bg, white);
   padding: 0 0.15rem;
   border-radius: 1.1rem;
 
@@ -59,7 +59,7 @@
     margin: 0.25rem 0;
   }
 
-  .label {
+  .label span {
     transform: none;
     align-self: center;
     padding: 0;

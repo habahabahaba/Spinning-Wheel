@@ -1,5 +1,8 @@
 .wallpaper_container {
   animation: fade-in 800ms ease-out forwards;
+  background-color: var(--color-bg);
+
+  transition: background-image 1000ms, background-color 1000ms;
 }
 
 @keyframes fade-in {

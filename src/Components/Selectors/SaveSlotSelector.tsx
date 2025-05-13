@@ -1,8 +1,8 @@
 // Assets:
 // Constants:
 // Utils:
+import { mergeStyles } from '../../utils/css';
 // 3rd party:
-// Redux, RTK:
 // Store:
 // Router:
 // React:
@@ -12,6 +12,7 @@
 import { Select, Option } from '../UI/Select';
 import SaveSlotPreview from './SaveSlotPreview';
 // CSS:
+import styles from './SaveSlotSelector.module.css';
 // Types, interfaces and enumns:
 import type { FC } from 'react';
 interface SaveSlotSelectorProps {
@@ -22,7 +23,7 @@ interface SaveSlotSelectorProps {
 const SaveSlotSelector: FC<SaveSlotSelectorProps> = ({
   value,
   onChange,
-  className = '',
+  className = 'select',
 }) => {
   // JSX:
   const options = Array.from({ length: 10 }, () => 0).map((_, idx) => (
@@ -37,7 +38,7 @@ const SaveSlotSelector: FC<SaveSlotSelectorProps> = ({
       placeholder='Select a save slot'
       value={value}
       onChange={onChange}
-      className={className}
+      className={mergeStyles(styles.save_slot_selector, className)}
     >
       {options}
     </Select>
