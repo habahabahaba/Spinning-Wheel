@@ -37,6 +37,7 @@ const OutcomesMenu: FC = () => {
   // Refs:
 
   // Effects:
+  //   console.log(`[OutcomesMenu] rendered`);
 
   // Derived values:
   const validQuantity = 72 - outcomesLength;

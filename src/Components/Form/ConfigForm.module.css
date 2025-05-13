@@ -11,6 +11,8 @@
   justify-content: space-between;
   justify-items: start;
   /* gap: 1rem; */
+
+  animation: slide-up 225ms ease-out;
 }
 
 .glass {
@@ -23,6 +25,12 @@
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   /* color: white; */
   padding: 0.5rem 0 0 0;
+}
+
+@keyframes slide-up {
+  from {
+    transform: translateY(100%);
+  }
 }
 
 @media screen and (max-width: 820px) {

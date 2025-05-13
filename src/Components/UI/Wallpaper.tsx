@@ -13,6 +13,7 @@ import { useMemo } from 'react';
 // Hooks:
 // Components:
 // CSS:
+import styles from './Wallpaper.module.css';
 // Types, interfaces and enumns:
 import type { CSSProperties, FC } from 'react';
 
@@ -69,7 +70,7 @@ const Wallpaper: FC<WallpaperProps> = ({
   };
 
   // JSX:
-  return <div style={styleObj}></div>;
+  return <div style={styleObj} className={styles.wallpaper_container}></div>;
 };
 
 export default Wallpaper;

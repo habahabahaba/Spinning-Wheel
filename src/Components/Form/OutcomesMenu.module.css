@@ -1,16 +1,8 @@
 .outcomes_menu {
   position: relative;
-  /* display: block; */
-  /* background-color: white; */
-  /* border-radius: 0.1rem; */
-  /* height: max(90rem, 90vh); */
-  /* height: max(34.5rem, 70%); */
-  /* height: clamp(9rem, fit-content, min(34.5rem, 70%)); */
   height: calc(100% - 11rem);
   max-width: 40.5rem;
-  /* height: max(26rem, 70svh); */
-  /* flex-grow: 2; */
-  /* flex-shrink: 4; */
+
   padding: 0 1rem;
   /* background-color: yellow; */
 }
@@ -24,6 +16,11 @@
   padding: 0.25rem 0.5rem;
   border-top: 4px dashed #e2e8f0;
   border-bottom: 4px dashed #e2e8f0;
+
+  /* box-shadow: 1px 1px 11px 3px rgba(0, 0, 0, 0.25) inset;
+  -webkit-box-shadow: 1px 1px 11px 3px rgba(0, 0, 0, 0.25) inset;
+  -moz-box-shadow: 1px 1px 11px 3px rgba(0, 0, 0, 0.25) inset; */
+
   /* background-color: blue; */
 }
 .add_outcomes_container {

@@ -47,8 +47,8 @@ const LoadConfig: FC<LoadConfigProps> = ({ saveIdx }) => {
       <div className={styles.load_config_warning}>
         <h3>Warning</h3>
         <p>
-          This will discard the current configuration, but will not affect the
-          wheel until applied.
+          This will discard your current configuration, but will not affect the
+          wheel, until applied.
         </p>
       </div>
       <div className={styles.cancel_load_buttons_container}>

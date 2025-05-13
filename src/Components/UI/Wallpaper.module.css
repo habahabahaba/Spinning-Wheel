@@ -1,0 +1,9 @@
+.wallpaper_container {
+  animation: fade-in 800ms ease-out forwards;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
