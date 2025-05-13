@@ -8,25 +8,13 @@ importers:
 
   .:
     dependencies:
-      '@fontsource/alkatra':
-        specifier: ^5.2.5
-        version: 5.2.5
-      '@fontsource/anybody':
-        specifier: ^5.2.5
-        version: 5.2.5
       '@fontsource/archivo-narrow':
         specifier: ^5.2.5
         version: 5.2.5
       '@fontsource/dynapuff':
         specifier: ^5.2.5
         version: 5.2.5
-      '@fontsource/eb-garamond':
-        specifier: ^5.2.5
-        version: 5.2.5
       '@fontsource/expletus-sans':
-        specifier: ^5.2.5
-        version: 5.2.5
-      '@fontsource/grenze-gotisch':
         specifier: ^5.2.5
         version: 5.2.5
       '@fontsource/handjet':
@@ -35,19 +23,7 @@ importers:
       '@fontsource/manrope':
         specifier: ^5.2.5
         version: 5.2.5
-      '@fontsource/marhey':
-        specifier: ^5.2.5
-        version: 5.2.5
-      '@fontsource/mohave':
-        specifier: ^5.2.7
-        version: 5.2.7
       '@fontsource/museomoderno':
-        specifier: ^5.2.5
-        version: 5.2.5
-      '@fontsource/oswald':
-        specifier: ^5.2.5
-        version: 5.2.5
-      '@fontsource/overpass':
         specifier: ^5.2.5
         version: 5.2.5
       '@fontsource/pixelify-sans':
@@ -59,18 +35,9 @@ importers:
       '@fontsource/roboto-condensed':
         specifier: ^5.2.5
         version: 5.2.5
-      '@fontsource/roboto-slab':
-        specifier: ^5.2.5
-        version: 5.2.5
-      '@fontsource/sansita-swashed':
-        specifier: ^5.2.5
-        version: 5.2.5
       '@fontsource/sofia-sans-semi-condensed':
         specifier: ^5.2.5
         version: 5.2.5
-      '@fontsource/teko':
-        specifier: ^5.2.6
-        version: 5.2.6
       '@fontsource/tektur':
         specifier: ^5.2.5
         version: 5.2.5
@@ -320,26 +287,14 @@ packages:
     resolution: {integrity: sha512-ZAoA40rNMPwSm+AeHpCq8STiNAwzWLJuP8Xv4CHIc9wv/PSuExjMrmjfYNj682vW0OOiZ1HKxzvjQr9XZIisQA==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@fontsource/alkatra@5.2.5':
-    resolution: {integrity: sha512-pGWHnPckcxuJSF2106E307SHEhNqnQX+Ptq3Kvcu/88cHBeYFSedo+l3BEh4OxZQ0gt1/ntzm27nz7Vu14+rmw==}
-
-  '@fontsource/anybody@5.2.5':
-    resolution: {integrity: sha512-2OVNH8DibzrQa8vDua3zWadGQF9YMm6ROnbV5zJtvj7G0lhqs/Jyhen80J5UlvqHId/T/1pU+mdbc5o5/sbHvA==}
-
   '@fontsource/archivo-narrow@5.2.5':
     resolution: {integrity: sha512-4jRDlFjtQYAJzRbBN9lDJ73sDaL5u3e34ogQfz81DsYav0iGjrs3xlehteG7c5zk2l6/YiukOihC3iosdjXLNg==}
 
   '@fontsource/dynapuff@5.2.5':
     resolution: {integrity: sha512-7xb26IJwL8kpx2aIrxYv/vA/Xyi6dzkAbHQo97frZ5XfJJ7/mV0lzwNkBy4N6jZwF4wXKriFNJBHjCrjMlUB/A==}
 
-  '@fontsource/eb-garamond@5.2.5':
-    resolution: {integrity: sha512-1c2I2QjDu7sEzs7Pb/fc3aX8mKrVwlBm05KttfrAQK11GYBXLSBS7KpcGB8IgQj/b/WH7sxP1XtYRsKTfNpvWQ==}
-
   '@fontsource/expletus-sans@5.2.5':
     resolution: {integrity: sha512-hMkdxdQs3Yn8w/3fdOU7rHQ1hMjpnD/HuS+ztvET8Mgh47fcRjfvCEot3W6vq0GPTVxJVrtWzgB9Ys3PV3amJA==}
-
-  '@fontsource/grenze-gotisch@5.2.5':
-    resolution: {integrity: sha512-0i71Tf9eso5IGcaAhKimvwzaNvclB2Kwuv7r8tQ6CkpNL2b3xHtr5XVzQanC4yvOLPKeskpmTRAFwxQCBdLNGQ==}
 
   '@fontsource/handjet@5.2.5':
     resolution: {integrity: sha512-4kXnxkXQyjQj5l0PKeL8YyWIWYOai27M2hk358s//9RlBjP7m/L6vXtibbp1xTebwWpjU3JUvUyJqCweI9l9Zw==}
@@ -347,20 +302,8 @@ packages:
   '@fontsource/manrope@5.2.5':
     resolution: {integrity: sha512-4mYUAhsuF8KoXseG8T9woWUc/foznUVluFtE6fCKAqe76WM3kmDNedaINWjzWB73+wly0duFvVpDBma3NXXT0g==}
 
-  '@fontsource/marhey@5.2.5':
-    resolution: {integrity: sha512-J25p6wL6f21gMVGx2bDAoPEQ7ag8OzLZD9FZ5KsFFWH4LXvAYcXCzHAAb2jyO0ZDrUT6kdAyCuekR3THrnKrVQ==}
-
-  '@fontsource/mohave@5.2.7':
-    resolution: {integrity: sha512-M7EX73j6f2o/Vz9qHtW7iGLtMQljZOC5fbTvY9rcOXSl8w66bi+swNe1xaqBoCk32/bonheAx6IHHS98gDbjOQ==}
-
   '@fontsource/museomoderno@5.2.5':
     resolution: {integrity: sha512-HIRBu9hCUeYdJy7kyeOK5FMxx9JagUS4kPUznYkZ9O3hYHL8+Ru0qkjp+StY7UGNbAKaOG+A1mpbFlhf7xN2jQ==}
-
-  '@fontsource/oswald@5.2.5':
-    resolution: {integrity: sha512-Sw8ayEYCoOzG2ISw5HaX3d5ILt3OEG2VFX2nzHaGywYD9p0WvVfO4SBK5/y9JGuOty3jA6OhptxOYZgwjTTPLQ==}
-
-  '@fontsource/overpass@5.2.5':
-    resolution: {integrity: sha512-xwxYbZXc4lDQi1z0r9LiJhHTJm4UqprdYcdIZVi7C4lVtWZOTX0nvyto6Be8wWJMeu+sHb9fzLN3byldibSF4A==}
 
   '@fontsource/pixelify-sans@5.2.5':
     resolution: {integrity: sha512-f1NppiY7A2OnVdEZLpszJj7uUFwdNmNvZnuEQUcdr4w1dOJSL2K0SbTTmh7H/lZDcU453X7oQ6wPOg+qiC3Xdg==}
@@ -371,17 +314,8 @@ packages:
   '@fontsource/roboto-condensed@5.2.5':
     resolution: {integrity: sha512-FVubmVJpZ2js2+nCBEA3IOHhAgWmZ2/YKvTae0X25jlxbd85umOOvUIY6FL6OMpUvIgvwOImS9l0GJjzEPk+mg==}
 
-  '@fontsource/roboto-slab@5.2.5':
-    resolution: {integrity: sha512-pOWJaBy+i4bI10Q5aSXqXxfF5Oow1wq07+5QFX3O15QkQ0TwTXDQR4yxFUjmVYR2p8tZOe408FbR25AQx8mqwg==}
-
-  '@fontsource/sansita-swashed@5.2.5':
-    resolution: {integrity: sha512-llYTvwqI8SDmkL1otbaUiTexJdfcGbDpyAxKRWbr9HZ+wcNXXodJ6YPMwyxdpYUTpvhBmdQwSx9Ragfppfq9Ww==}
-
   '@fontsource/sofia-sans-semi-condensed@5.2.5':
     resolution: {integrity: sha512-2KUkqrYAyFWyMVsw5NO8FE1xB/rAx0QwFz44LCRQsRLwNDTr7S+59ZdxA2j3uQG7Gft/gPCbex6jDCwofqXzcQ==}
-
-  '@fontsource/teko@5.2.6':
-    resolution: {integrity: sha512-LuFwJBi29aDvmyjTUz4Y8+JfAbLbuCWRE0bQ6+iabFCtu89losr04mUT+XpPOA8AgN074P54KIwfBAxaPZ8HFg==}
 
   '@fontsource/tektur@5.2.5':
     resolution: {integrity: sha512-YBE3TP2Y5lhn/wJCx/WDFfM34Mhf42L4VWhjtwcE6cArL5+3HAvRP53brfexStU5wFmgf4WGrJutmMW7mFR08g==}
@@ -1566,33 +1500,17 @@ snapshots:
       '@eslint/core': 0.13.0
       levn: 0.4.1
 
-  '@fontsource/alkatra@5.2.5': {}
-
-  '@fontsource/anybody@5.2.5': {}
-
   '@fontsource/archivo-narrow@5.2.5': {}
 
   '@fontsource/dynapuff@5.2.5': {}
 
-  '@fontsource/eb-garamond@5.2.5': {}
-
   '@fontsource/expletus-sans@5.2.5': {}
-
-  '@fontsource/grenze-gotisch@5.2.5': {}
 
   '@fontsource/handjet@5.2.5': {}
 
   '@fontsource/manrope@5.2.5': {}
 
-  '@fontsource/marhey@5.2.5': {}
-
-  '@fontsource/mohave@5.2.7': {}
-
   '@fontsource/museomoderno@5.2.5': {}
-
-  '@fontsource/oswald@5.2.5': {}
-
-  '@fontsource/overpass@5.2.5': {}
 
   '@fontsource/pixelify-sans@5.2.5': {}
 
@@ -1600,13 +1518,7 @@ snapshots:
 
   '@fontsource/roboto-condensed@5.2.5': {}
 
-  '@fontsource/roboto-slab@5.2.5': {}
-
-  '@fontsource/sansita-swashed@5.2.5': {}
-
   '@fontsource/sofia-sans-semi-condensed@5.2.5': {}
-
-  '@fontsource/teko@5.2.6': {}
 
   '@fontsource/tektur@5.2.5': {}
 

@@ -1,33 +1,17 @@
 export const FONT_FAMILIES_LOCAL = ['sans-serif', 'Arial', 'serif'] as const;
 
 export const FONT_IMPORTS = {
-  Alkatra: () => import('@fontsource/alkatra/600.css'),
-
-  Anybody: () => import('@fontsource/anybody/600.css'),
-
   'Archivo Narrow': () => import('@fontsource/archivo-narrow/600.css'),
 
   DynaPuff: () => import('@fontsource/dynapuff/600.css'),
 
-  'EB Garamond': () => import('@fontsource/eb-garamond/600.css'),
-
   'Expletus Sans': () => import('@fontsource/expletus-sans/600.css'),
-
-  'Grenze Gotisch': () => import('@fontsource/grenze-gotisch/600.css'),
 
   Handjet: () => import('@fontsource/handjet/600.css'),
 
   Manrope: () => import('@fontsource/manrope/600.css'),
 
-  Marhey: () => import('@fontsource/marhey/600.css'),
-
-  Mohave: () => import('@fontsource/mohave/600.css'),
-
   MuseoModerno: () => import('@fontsource/museomoderno/600.css'),
-
-  Oswald: () => import('@fontsource/oswald/600.css'),
-
-  Overpass: () => import('@fontsource/overpass/600.css'),
 
   'Pixelify Sans': () => import('@fontsource/pixelify-sans/600.css'),
 
@@ -36,14 +20,8 @@ export const FONT_IMPORTS = {
 
   'Roboto Condensed': () => import('@fontsource/roboto-condensed/600.css'),
 
-  'Roboto Slab': () => import('@fontsource/roboto-slab/600.css'),
-
-  'Sansita Swashed': () => import('@fontsource/sansita-swashed/600.css'),
-
   'Sofia Sans Semi Condensed': () =>
     import('@fontsource/sofia-sans-semi-condensed/600.css'),
-
-  Teko: () => import('@fontsource/teko/600.css'),
 
   Tektur: () => import('@fontsource/tektur/600.css'),
 
@@ -82,27 +60,16 @@ const initFontsLoadStates: Record<AllFontNames, boolean> = {
   serif: true,
 
   // Remote fonts:
-  Alkatra: false,
-  Anybody: false,
   'Archivo Narrow': false,
   DynaPuff: false,
-  'EB Garamond': false,
   'Expletus Sans': false,
-  'Grenze Gotisch': false,
   Handjet: false,
   Manrope: false,
-  Marhey: false,
-  Mohave: false,
   MuseoModerno: false,
-  Oswald: false,
-  Overpass: false,
   'Pixelify Sans': false,
   'Reddit Sans Condensed': false,
   'Roboto Condensed': false,
-  'Roboto Slab': false,
-  'Sansita Swashed': false,
   'Sofia Sans Semi Condensed': false,
-  Teko: false,
   Tektur: false,
   Tourney: false,
   Truculenta: false,
@@ -114,17 +81,3 @@ export const initFontsState = {
   fontsLoadStates: initFontsLoadStates,
   allFontsReady: false,
 };
-
-export const FLAKY_FONTS: RemoteFontNames[] = [
-  'Alkatra',
-  'Anybody',
-  'EB Garamond',
-  'Grenze Gotisch',
-  'Marhey',
-  'Mohave',
-  'Oswald',
-  'Overpass',
-  'Roboto Slab',
-  'Sansita Swashed',
-  'Teko',
-];
