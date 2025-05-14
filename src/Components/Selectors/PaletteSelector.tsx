@@ -13,7 +13,7 @@ import useBoundStore from '../../store/boundStore';
 import PalettePreview from './PalettePreview';
 import { Select, Option } from '../UI/Select';
 // CSS:
-import styles from './PaletteSelector.module.css';
+import styles from './Selectors.module.css';
 // Types, interfaces and enumns:
 import type { FC } from 'react';
 interface PaletteSelectorProps {
@@ -32,7 +32,7 @@ const PaletteSelector: FC<PaletteSelectorProps> = ({ className = '' }) => {
   const options = Array(PALETTES.length)
     .fill(0)
     .map((_, idx) => (
-      <Option value={idx} key={idx}>
+      <Option value={idx} key={idx} className={styles.option}>
         <PalettePreview palette_idx={idx} key={idx} />
       </Option>
     ));
@@ -44,7 +44,7 @@ const PaletteSelector: FC<PaletteSelectorProps> = ({ className = '' }) => {
       onChange={(value) => {
         setPalette({ paletteIdx: +value });
       }}
-      className={mergeStyles(className, styles.palette_selector)}
+      className={mergeStyles(className, styles.selector)}
     >
       {options}
     </Select>

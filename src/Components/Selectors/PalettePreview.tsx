@@ -9,7 +9,7 @@ import { PALETTES } from '../../constants/palettes';
 // Hooks:
 // Components:
 // CSS:
-import styles from './PalettePreview.module.css';
+import styles from './Selectors.module.css';
 // Types, interfaces and enumns:
 import type { FC } from 'react';
 interface PalettePreviewProps {
@@ -38,8 +38,7 @@ const PalettePreview: FC<PalettePreviewProps> = ({ palette_idx }) => {
 
   return (
     <>
-      <div className={styles.palette_option}>{colors}</div>
-      {/* {palette_idx < PALETTES.length - 1 ? <hr /> : null} */}
+      <div className={styles.palette_preview}>{colors}</div>
     </>
   );
 };

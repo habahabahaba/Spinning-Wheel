@@ -10,7 +10,7 @@ import useBoundStore from '../../store/boundStore';
 // Hooks:
 // Components:
 // CSS:
-import styles from './FontPreview.module.css';
+import styles from './Selectors.module.css';
 // Types, interfaces and enumns:
 import type { CSSProperties, FC } from 'react';
 import type { AllFontNames } from '../../constants/fonts';
@@ -29,16 +29,14 @@ const FontPreview: FC<FontPreviewProps> = ({ fontFamily }) => {
         fontSize: '1rem',
       }
     : {
-        // fontFamily: 'system-ui',
         fontStyle: 'italic',
         fontWeight: '400',
         fontSize: '0.75rem',
-        color: 'gray',
       };
 
   // JSX:
   return (
-    <span style={style} className={styles.font_option}>
+    <span style={style} className={`${isLoaded ? '' : styles.greyed_out}`}>
       {isLoaded ? `${fontFamily}` : 'Loading font...'}
     </span>
   );

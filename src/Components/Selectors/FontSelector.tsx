@@ -13,7 +13,7 @@ import useBoundStore from '../../store/boundStore';
 import FontPreview from './FontPreview';
 import { Select, Option } from '../UI/Select';
 // CSS:
-import styles from './FontSelector.module.css';
+import styles from './Selectors.module.css';
 // Types, interfaces and enumns:
 import type { FC } from 'react';
 // import type { WheelConfigsActions } from '../store/types';
@@ -60,7 +60,7 @@ const FontSelector: FC<FontSelectorProps> = ({
 
   // JSX:
   const options = FONT_FAMILIES_ALL.map((font, idx) => (
-    <Option value={font} key={idx}>
+    <Option value={font} key={idx} className={styles.option}>
       <FontPreview fontFamily={font} />
     </Option>
   ));
@@ -73,11 +73,11 @@ const FontSelector: FC<FontSelectorProps> = ({
       onChange={
         forOutcome ? outcomeFontChangeHandler : defaultFontChangeHandler
       }
-      className={mergeStyles(className, styles.font_selector)}
+      className={mergeStyles(className, styles.selector)}
     >
       {forOutcome ? (
-        <Option value={''}>
-          <span className={styles.default_font_option}>Default font</span>
+        <Option value={''} className={styles.option}>
+          <span className={styles.greyed_out}>Default font</span>
         </Option>
       ) : null}
       {options}

@@ -12,7 +12,7 @@ import { mergeStyles } from '../../utils/css';
 import { Select, Option } from '../UI/Select';
 import SaveSlotPreview from './SaveSlotPreview';
 // CSS:
-import styles from './SaveSlotSelector.module.css';
+import styles from './Selectors.module.css';
 // Types, interfaces and enumns:
 import type { FC } from 'react';
 interface SaveSlotSelectorProps {
@@ -27,7 +27,7 @@ const SaveSlotSelector: FC<SaveSlotSelectorProps> = ({
 }) => {
   // JSX:
   const options = Array.from({ length: 10 }, () => 0).map((_, idx) => (
-    <Option value={idx} key={idx}>
+    <Option value={idx} key={idx} className={styles.option}>
       <SaveSlotPreview saveIdx={idx} />
     </Option>
   ));
@@ -38,7 +38,7 @@ const SaveSlotSelector: FC<SaveSlotSelectorProps> = ({
       placeholder='Select a save slot'
       value={value}
       onChange={onChange}
-      className={mergeStyles(styles.save_slot_selector, className)}
+      className={mergeStyles(styles.selector, className)}
     >
       {options}
     </Select>

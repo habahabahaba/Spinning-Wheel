@@ -21,7 +21,8 @@ interface SelectProps {
   id?: string;
 }
 
-interface OptionProps extends Pick<ComponentProps<'div'>, 'children'> {
+interface OptionProps
+  extends Pick<ComponentProps<'div'>, 'children' | 'className'> {
   readonly value: string | number;
 }
 
@@ -166,6 +167,7 @@ const Select: FC<SelectProps> = ({
     }
   }
 
+  // JSX:
   // For Accessibility:
   const dropdownId = `${id || 'custom-select'}-dropdown`;
 
@@ -178,11 +180,15 @@ const Select: FC<SelectProps> = ({
       {Children.map(children, (child, idx) => {
         if (!React.isValidElement<OptionProps>(child)) return null;
 
-        const { value: childValue, children: childLabel } = child.props;
+        const {
+          value: childValue,
+          children: childLabel,
+          className: optionClass,
+        } = child.props;
 
         return (
           <div
-            className={styles.option}
+            className={`${styles.option} ${optionClass ?? ''}`}
             tabIndex={-1}
             id={`${dropdownId}-option-${idx}`}
             role='option'
@@ -250,8 +256,7 @@ const Select: FC<SelectProps> = ({
   );
 };
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const Option = ({ value: _value, children }: OptionProps) => {
+const Option = ({ children }: OptionProps) => {
   return <>{children}</>;
 };
 

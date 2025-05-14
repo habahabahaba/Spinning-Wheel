@@ -1,7 +1,0 @@
-.save_slot_selector {
-  & > div {
-    min-height: 1.5rem;
-    border-color: var(--color-contrast-border);
-    background-color: var(--color-input-bg);
-  }
-}

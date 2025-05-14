@@ -9,27 +9,28 @@
   -moz-osx-font-smoothing: grayscale;
 
   /* Light Theme – Explicit Variables */
+  --color-light-input-bg: #ffffff;
   --color-light-bg: #f8fafc;
   --color-light-subtle-bg: #f1f5f9;
-  --color-light-input-bg: #ffffff;
-  --color-light-fg: #1e293b;
-  --color-light-muted: #64748b;
-  --color-light-border: #cbd5e1;
-  --color-light-contrast-border: #334155;
   --color-light-hover: #e2e8f0;
-  --color-light-accent: #3b82f6;
+  --color-light-border: #94a3b8;
+  --color-light-muted: #64748b;
+  --color-light-contrast-border: #334155;
+  --color-light-fg: #1e293b;
   --color-light-accent-hover: #2563eb;
+  --color-light-accent: #3b82f6;
+
   /* Dark Theme – Explicit Variables */
+  --color-dark-input-bg: #0f172a;
   --color-dark-bg: #1e293b;
   --color-dark-subtle-bg: #475569;
-  --color-dark-input-bg: #0f172a;
-  --color-dark-fg: #f8fafc;
-  --color-dark-muted: #94a3b8;
-  --color-dark-border: #334155;
-  --color-dark-contrast-border: #cbd5e1;
   --color-dark-hover: #334155;
-  --color-dark-accent: #a5b4fc;
+  --color-dark-border: #334155;
+  --color-dark-muted: #94a3b8;
+  --color-dark-contrast-border: #cbd5e1;
+  --color-dark-fg: #f8fafc;
   --color-dark-accent-hover: #818cf8;
+  --color-dark-accent: #a5b4fc;
 
   /* Dynamic Theme Variables (default to Light) */
   --color-bg: var(--color-light-bg);

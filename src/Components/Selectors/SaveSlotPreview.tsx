@@ -1,6 +1,7 @@
 // Assets:
 // Constants:
 // Utils:
+import { mergeStyles } from '../../utils/css';
 // 3rd party:
 // Redux, RTK:
 // Store:
@@ -11,7 +12,7 @@ import useBoundStore from '../../store/boundStore';
 // Hooks:
 // Components:
 // CSS:
-import styles from './SaveSlotPreview.module.css';
+import styles from './Selectors.module.css';
 // Types, interfaces and enumns:
 import type { FC } from 'react';
 interface SaveSlotPreviewProps {
@@ -26,11 +27,13 @@ const SaveSlotPreview: FC<SaveSlotPreviewProps> = ({ saveIdx }) => {
   const preview = saveSlot ? (
     <span className={styles.save_slot_name}>{saveSlot.configName}</span>
   ) : (
-    <span className={styles.empty_save_slot_preview}> empty slot </span>
+    <span className={mergeStyles(styles.save_slot_name, styles.greyed_out)}>
+      empty slot
+    </span>
   );
 
   return (
-    <div className={styles.save_slot_option}>
+    <div className={mergeStyles(styles.save_slot_preview, styles.option)}>
       <span className={styles.save_slot_index}>{saveIdx + 1}. </span> {preview}
     </div>
   );
