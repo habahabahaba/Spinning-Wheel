@@ -1,10 +1,11 @@
 .navbar {
-  width: 100%;
+  width: auto;
   display: grid;
   grid-template: 'left right' 1fr / calc(50svw - 0.5rem) calc(50svw - 0.5rem);
 
-  /* background-color: blue; */
   padding: 0.5rem;
+
+  /* background-color: blue; */
 }
 .navbar > div {
   display: flex;

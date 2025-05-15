@@ -25,7 +25,7 @@ import type { FC } from 'react';
 // For proper font rendering (must match actual elements styles):
 const fontWeight = 600;
 const lineHeight = 1.25;
-const boxSizing = 'border-box';
+const boxSizing = 'content-box';
 const h1Margin = 0;
 const h1Padding = 0;
 const wordBreak = 'break-word';
@@ -79,7 +79,7 @@ const ResultDisplay: FC = () => {
       }) || Math.floor((radius / label.length) * 1.3),
     [radius, label, font]
   );
-  console.log(`[ResultDisplay] fontSizeForTextInElement: ${fontSize}`);
+  // console.log(`[ResultDisplay] fontSizeForTextInElement: ${fontSize}`);
 
   // Guard:
   if (winningOutcomeIdx === null || !winningOutcome) {

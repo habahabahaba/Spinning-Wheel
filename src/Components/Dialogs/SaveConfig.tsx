@@ -16,7 +16,7 @@ import dialogCloseCtx from '../../context/dialogCloseCtx';
 // Components:
 import Button from '../UI/Button';
 // CSS:
-import styles from './SaveConfig.module.css';
+import styles from './Dialogs.module.css';
 // Types, interfaces and enumns:
 import type { FC, FormEvent, ChangeEventHandler } from 'react';
 export interface SaveConfigProps {
@@ -59,7 +59,7 @@ const SaveConfig: FC<SaveConfigProps> = ({ saveIdx }) => {
 
   // JSX:
   const warning = prevConfig ? (
-    <div className={styles.save_config_warning}>
+    <div className={styles.warning_danger}>
       <h3>Warning</h3>
       <p>
         This will overwrite your older configuration:
@@ -69,10 +69,13 @@ const SaveConfig: FC<SaveConfigProps> = ({ saveIdx }) => {
   ) : null;
 
   return (
-    <form className={styles.save_config_form} onSubmit={handleSaveConfig}>
+    <form
+      className={mergeStyles(styles.container, styles.small)}
+      onSubmit={handleSaveConfig}
+    >
       <div>
         <label
-          className={mergeStyles(styles.config_name_label, 'label')}
+          className={mergeStyles(styles.label)}
           htmlFor='config-name-input'
         >
           Configuration name
@@ -83,15 +86,17 @@ const SaveConfig: FC<SaveConfigProps> = ({ saveIdx }) => {
           type='text'
           minLength={1}
           maxLength={35}
-          placeholder='Enter configuration name'
-          value={inputValue || prevConfig?.configName || ''}
+          placeholder='Provide a configuration name'
+          value={inputValue}
           onChange={handleInputChange}
           // defaultValue={prevConfig ? prevConfig.configName : undefined}
-          className={mergeStyles(styles.config_name_input, 'input-text')}
+          className={mergeStyles(styles.name_input)}
         />
       </div>
-      {warning}
-      <div className={styles.cancel_save_buttons_container}>
+      <div className={styles.warning_container}> {warning}</div>
+      <div
+        className={mergeStyles(styles.buttons_container, styles.buttons_wide)}
+      >
         <Button
           id='cancel-save-config-button'
           name='Cancel and close form'
@@ -104,6 +109,7 @@ const SaveConfig: FC<SaveConfigProps> = ({ saveIdx }) => {
           variant={prevConfig ? 'danger' : 'success'}
           id='save-config-button'
           name='Save configuration'
+          disabled={!inputValue.trim()}
         >
           {prevConfig ? 'Overwrite' : 'Save'}
         </Button>

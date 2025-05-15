@@ -1,3 +1,5 @@
+// Utils:
+import { mergeStyles } from '../../utils/css';
 // 3rd party:
 // Store:
 // React Router:
@@ -9,6 +11,7 @@ import { forwardRef } from 'react';
 import Dialog from '../UI/Dialog';
 import LoadConfig from './LoadConfig';
 // CSS:
+import styles from './Dialogs.module.css';
 // Types, interfaces and enumns:
 import type { ForwardedRef } from 'react';
 import type { DialogHandle } from '../UI/Dialog';
@@ -20,11 +23,8 @@ const LoadConfigDialog = forwardRef<DialogHandle, LoadConfigProps>(
     return (
       <Dialog
         ref={ref}
-        className='dialog top-shadow'
+        className={mergeStyles(styles.dialog, styles.top, 'center-shadow')}
         childProps={{ saveIdx }}
-        style={{
-          top: '-50%',
-        }}
       >
         <LoadConfig saveIdx={saveIdx} />
       </Dialog>

@@ -1,6 +1,7 @@
 // Assets:
 // Constants:
 // Utils:
+import { mergeStyles } from '../../utils/css';
 // 3rd party:
 // Store:
 import useBoundStore from '../../store/boundStore';
@@ -13,7 +14,7 @@ import dialogCloseCtx from '../../context/dialogCloseCtx';
 // Components:
 import Button from '../UI/Button';
 // CSS:
-import styles from './LoadConfig.module.css';
+import styles from './Dialogs.module.css';
 // Types, interfaces and enumns:
 import type { FC } from 'react';
 export interface LoadConfigProps {
@@ -43,15 +44,19 @@ const LoadConfig: FC<LoadConfigProps> = ({ saveIdx }) => {
   }
   // JSX:
   return (
-    <div className={styles.load_config_dialog}>
-      <div className={styles.load_config_warning}>
-        <h3>Warning</h3>
-        <p>
-          This will discard your current configuration, but will not affect the
-          wheel, until applied.
-        </p>
+    <div className={mergeStyles(styles.container, styles.x_small)}>
+      <div className={styles.warning_container}>
+        <div className={styles.warning_danger}>
+          <h3>Warning</h3>
+          <p>
+            This will discard your current configuration, but will not affect
+            the wheel, until applied.
+          </p>
+        </div>
       </div>
-      <div className={styles.cancel_load_buttons_container}>
+      <div
+        className={mergeStyles(styles.buttons_container, styles.buttons_wide)}
+      >
         <Button
           id='cancel-load-config-button'
           name='Cancel and close form'

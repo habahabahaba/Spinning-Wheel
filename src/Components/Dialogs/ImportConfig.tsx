@@ -16,7 +16,7 @@ import dialogCloseCtx from '../../context/dialogCloseCtx';
 // Components:
 import Button from '../UI/Button';
 // CSS:
-import styles from './ImportConfig.module.css';
+import styles from './Dialogs.module.css';
 // Types, interfaces and enumns:
 import type { FC, FormEvent, ChangeEvent } from 'react';
 import type { ValidationResult } from '../../utils/wheelConfig';
@@ -129,7 +129,7 @@ const ImportConfig: FC = () => {
 
   // JSX:
   const introWarning = (
-    <div className={styles.import_config_intro_warning}>
+    <div className={styles.warning_danger}>
       <h3>Warning:</h3>
       <p>
         This will discard your current configuration, but will not affect the
@@ -140,7 +140,7 @@ const ImportConfig: FC = () => {
 
   const errorMessage = error ? (
     <>
-      <div className={styles.import_config_error}>
+      <div className={styles.warning_error}>
         <h3 style={{ color: '#ef4444', marginTop: '0.5rem' }}>Error:</h3>
         <p className=''>
           {error}
@@ -151,7 +151,7 @@ const ImportConfig: FC = () => {
   ) : null;
 
   const warningsList = warnings.length ? (
-    <div className={styles.import_config_warnings_list}>
+    <div className={mergeStyles(styles.warning_notification, styles.centered)}>
       <h3 style={{ fontWeight: 'bold' }}>
         The file contained some errors, that were automatically corrected:
       </h3>
@@ -200,11 +200,14 @@ const ImportConfig: FC = () => {
   );
 
   return (
-    <form id='import-config-dialog' className={styles.import_config_dialog}>
+    <form
+      id='import-config-dialog'
+      className={mergeStyles(styles.container, styles.large)}
+    >
       <div>
         <label
           htmlFor='configuration-file-input'
-          className={mergeStyles(styles.file_input_label, 'label')}
+          className={mergeStyles(styles.label, 'label')}
         >
           Select a json file
         </label>
@@ -224,10 +227,14 @@ const ImportConfig: FC = () => {
           )}
         />
       </div>
-      <div className={styles.warnings_container}>
+      <div className={styles.warning_container}>
         {error ? errorMessage : warnings.length ? warningsList : introWarning}
       </div>
-      <div className={styles.cancel_import_buttons_container}>{Buttons}</div>
+      <div
+        className={mergeStyles(styles.buttons_container, styles.buttons_wide)}
+      >
+        {Buttons}
+      </div>
     </form>
   );
 };

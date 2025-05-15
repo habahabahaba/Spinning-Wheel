@@ -1,13 +1,16 @@
 .config_form {
   position: relative;
-  height: max(85svh, 30rem);
-  max-width: 900px;
+  height: max(85svh, 31rem);
+  max-width: 888px;
   margin: 1rem auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   justify-items: start;
 
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-subtle-bg);
+  border-radius: 0.25rem;
   animation: slide-up 225ms ease-out;
 }
 

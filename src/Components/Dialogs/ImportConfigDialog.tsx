@@ -1,3 +1,5 @@
+// Utils:
+import { mergeStyles } from '../../utils/css';
 // 3rd party:
 // Store:
 // React Router:
@@ -9,6 +11,7 @@ import { forwardRef } from 'react';
 import Dialog from '../UI/Dialog';
 import ImportConfig from './ImportConfig';
 // CSS:
+import styles from './Dialogs.module.css';
 // Types, interfaces and enumns:
 import type { ForwardedRef } from 'react';
 import type { DialogHandle } from '../UI/Dialog';
@@ -17,7 +20,7 @@ const ImportConfigDialog = forwardRef<DialogHandle>(
   (_, ref: ForwardedRef<DialogHandle>) => {
     // JSX:
     return (
-      <Dialog ref={ref} className='dialog top-shadow'>
+      <Dialog ref={ref} className={mergeStyles(styles.dialog, 'center-shadow')}>
         <ImportConfig />
       </Dialog>
     );

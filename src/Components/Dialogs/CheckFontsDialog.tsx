@@ -1,6 +1,7 @@
 // Assets:
 // Constants:
 // Utils:
+import { mergeStyles } from '../../utils/css';
 // 3rd party:
 // Redux, RTK:
 // Store:
@@ -13,6 +14,7 @@ import { forwardRef } from 'react';
 import Dialog from '../UI/Dialog';
 import CheckFonts from './CheckFonts';
 // CSS:
+import styles from './Dialogs.module.css';
 // Types, interfaces and enumns:
 import type { ForwardedRef } from 'react';
 import type { DialogHandle } from '../UI/Dialog';
@@ -23,10 +25,7 @@ const CheckFontsDialog = forwardRef<DialogHandle>(
     return (
       <Dialog
         ref={ref}
-        className='top-shadow'
-        style={{
-          top: '-50%',
-        }}
+        className={mergeStyles(styles.dialog, styles.top, 'center-shadow')}
       >
         <CheckFonts />
       </Dialog>

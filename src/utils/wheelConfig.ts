@@ -7,7 +7,7 @@ import {
 import { WHEEL_RADII_MAP } from '../constants/radii';
 import { PALETTES } from '../constants/palettes';
 // Utils:
-import { uniqueRandomsInRange } from './random';
+import { generateId, uniqueRandomsInRange } from './random';
 import { isHexColor } from './color';
 // Types, interfaces and enumns:
 import type { Outcome, WheelConfig, WheelConfigsState } from '../store/types';
@@ -242,7 +242,7 @@ export function validateWheelConfig(raw: unknown): ValidationResult {
       return index;
     }
     warnings.push(
-      `'The file had invalid wheel colors, that were set to default.`
+      `The file had invalid wheel colors, that were set to default.`
     );
     return 0;
   };
@@ -306,6 +306,26 @@ export function validateWheelConfig(raw: unknown): ValidationResult {
     default_fontFamily: raw.default_fontFamily,
     outcomes: trimmedOutcomes,
   };
+
+  // Check if all outcomes have distinct id's:
+  const ids = new Set<string>();
+  let newId: string;
+  validated.outcomes.forEach(({ id }, index) => {
+    if (ids.has(id)) {
+      newId = '';
+      while (!newId || ids.has(newId)) {
+        newId = generateId();
+      }
+      validated.outcomes[index].id = newId;
+
+      warnings.push(
+        `Outcome ${
+          index + 1
+        } had a non-unique id, which was replaced with ${newId}.`
+      );
+    }
+    ids.add(validated.outcomes[index].id);
+  });
 
   return { valid: true, config: validated, error: '', warnings };
 }

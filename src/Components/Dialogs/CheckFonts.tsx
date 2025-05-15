@@ -2,6 +2,7 @@
 // Constants:
 import { FONT_FAMILIES_LOCAL } from '../../constants/fonts';
 // Utils:
+import { mergeStyles } from '../../utils/css';
 // 3rd party:
 // Store:
 import useBoundStore from '../../store/boundStore';
@@ -14,7 +15,7 @@ import dialogCloseCtx from '../../context/dialogCloseCtx';
 // Components:
 import Button from '../UI/Button';
 // CSS:
-import styles from './CheckFonts.module.css';
+import styles from './Dialogs.module.css';
 // Types, interfaces and enumns:
 import type { FC } from 'react';
 import type { WheelConfig } from '../../store/types';
@@ -68,7 +69,7 @@ const CheckFonts: FC = () => {
 
   // JSX:
   const missingFontsList = (
-    <ul className={styles.loading_fonts_list}>
+    <ul>
       {[...missingFontsSet].map((font) => (
         <li key={font}>{font}</li>
       ))}
@@ -76,17 +77,21 @@ const CheckFonts: FC = () => {
   );
 
   return (
-    <div className={styles.check_fonts_dialog}>
-      <div className={styles.notifications_container}>
-        <h3>
-          {missingFonts.length
-            ? 'Loading missing fonts:'
-            : 'All configuration fonts were successfully downloaded !'}
-        </h3>
-        {missingFonts.length ? missingFontsList : null}
+    <div className={mergeStyles(styles.container, styles.small)}>
+      <div className={styles.warning_container}>
+        <div
+          className={mergeStyles(styles.warning_notification, styles.centered)}
+        >
+          <h3>
+            {missingFonts.length
+              ? 'Loading missing fonts:'
+              : 'All configuration fonts were successfully downloaded !'}
+          </h3>
+          {missingFonts.length ? missingFontsList : null}
+        </div>
       </div>
 
-      <div className={styles.cancel_default_apply_buttons_container}>
+      <div className={mergeStyles(styles.buttons_container, styles.centered)}>
         <Button onClick={handleCloseDialog}>Cancel</Button>
         <Button
           variant='warning'

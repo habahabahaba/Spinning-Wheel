@@ -1,15 +1,14 @@
 .greyed_out {
   font-style: italic;
-  color: var(--color-light-border, gray);
+  color: var(--color-muted, gray);
 }
 
 /* SELECTORS */
 .selector {
   & > div {
     min-height: 1.5rem;
-    border-color: var(--color-contrast-border);
-    background-color: var(--color-input-bg);
     border-color: var(--color-contrast-border, black);
+    background-color: var(--color-input-bg);
   }
 
   &:focus {
@@ -32,9 +31,6 @@
       outline: 2px solid var(--color-accent-hover, darkblue);
     }
   }
-}
-
-.font_preview {
 }
 
 .palette_preview {

@@ -11,6 +11,7 @@ import Main from './Components/Main';
 import ConfigForm from './Components/Form/ConfigForm';
 import Wallpaper from './Components/UI/Wallpaper';
 // import FontsDisplay from './Components/FontsDisplay';
+
 // Types, interfaces and enumns:
 import type { RemoteFontNames } from './constants/fonts';
 

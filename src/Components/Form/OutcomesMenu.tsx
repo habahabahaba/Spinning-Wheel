@@ -57,7 +57,9 @@ const OutcomesMenu: FC = () => {
 
   return (
     <div className={styles.outcomes_menu}>
+      <div className={styles.top_shadow} />
       <menu className={styles.outcomes_list}>{outcomesList}</menu>
+
       <div className={styles.add_outcomes_container}>
         <input
           className={styles.add_outcomes_number_input}
@@ -71,8 +73,9 @@ const OutcomesMenu: FC = () => {
           }}
         />
         <Button
-          variant='default'
+          variant='success'
           shape='rounded'
+          // outlined
           onClick={handleAddOutcomes}
           disabled={addQuantity > validQuantity}
         >

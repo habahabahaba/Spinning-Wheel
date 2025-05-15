@@ -31,7 +31,7 @@ const ResultDisplayDialog = forwardRef<DialogHandle>(
     return (
       <Dialog
         ref={ref}
-        className={mergeStyles(styles.drop_down, 'top-shadow')}
+        className={mergeStyles(styles.drop_down, 'center-shadow')}
         style={{
           position: 'relative',
           top: `15px`,

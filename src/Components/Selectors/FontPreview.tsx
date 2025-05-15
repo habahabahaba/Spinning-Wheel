@@ -31,7 +31,7 @@ const FontPreview: FC<FontPreviewProps> = ({ fontFamily }) => {
     : {
         fontStyle: 'italic',
         fontWeight: '400',
-        fontSize: '0.75rem',
+        fontSize: '0.8rem',
       };
 
   // JSX:

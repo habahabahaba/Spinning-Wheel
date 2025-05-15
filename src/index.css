@@ -9,11 +9,11 @@
   -moz-osx-font-smoothing: grayscale;
 
   /* Light Theme – Explicit Variables */
-  --color-light-input-bg: #ffffff;
-  --color-light-bg: #f8fafc;
-  --color-light-subtle-bg: #f1f5f9;
-  --color-light-hover: #e2e8f0;
-  --color-light-border: #94a3b8;
+  --color-light-input-bg: #f8fafc;
+  --color-light-bg: #f1f5f9;
+  --color-light-subtle-bg: #e2e8f0;
+  --color-light-border: #cbd5e1;
+  --color-light-hover: #94a3b8;
   --color-light-muted: #64748b;
   --color-light-contrast-border: #334155;
   --color-light-fg: #1e293b;
@@ -23,14 +23,14 @@
   /* Dark Theme – Explicit Variables */
   --color-dark-input-bg: #0f172a;
   --color-dark-bg: #1e293b;
-  --color-dark-subtle-bg: #475569;
-  --color-dark-hover: #334155;
-  --color-dark-border: #334155;
+  --color-dark-subtle-bg: #334155;
+  --color-dark-hover: #475569;
+  --color-dark-border: #64748b;
   --color-dark-muted: #94a3b8;
   --color-dark-contrast-border: #cbd5e1;
   --color-dark-fg: #f8fafc;
-  --color-dark-accent-hover: #818cf8;
-  --color-dark-accent: #a5b4fc;
+  --color-dark-accent: #fbbf24;
+  --color-dark-accent-hover: #fef3c7;
 
   /* Dynamic Theme Variables (default to Light) */
   --color-bg: var(--color-light-bg);
@@ -69,7 +69,7 @@ input {
 }
 button:focus,
 input:focus {
-  outline: 1px solid var(--color-accent);
+  outline: 2px solid var(--color-accent);
   &:hover {
     outline: 2px solid var(--color-accent-hover);
   }
@@ -80,7 +80,7 @@ input:focus {
 }
 
 .glass {
-  background-color: #f8fafc64;
+  background-color: color-mix(in srgb, var(--color-subtle-bg) 25%, transparent);
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(2px);
   border-radius: 0.2rem;
@@ -90,17 +90,11 @@ input:focus {
   padding: 0.5rem 0 0 0;
 }
 
-.top-shadow {
+.center-shadow {
   box-shadow: 0px 0px 50px 4px rgba(0, 0, 0, 0.25);
 }
 
 /* ELEMENT STYLES */
-.dialog {
-  background-color: var(--color-bg);
-  color: var(--color-fg);
-  border-color: var(--color-border);
-  border-radius: 0.1rem;
-}
 .input-text {
   color: var(--color-fg);
   background-color: var(--color-bg);
@@ -111,15 +105,6 @@ input:focus {
   background-color: var(--color-bg);
   border-color: var(--color-contrast-border);
   border-radius: 0.1rem;
-}
-.label {
-  color: var(--color-fg);
-}
-.select {
-  & > div {
-    min-height: 1.5rem;
-    border-color: var(--color-contrast-border);
-  }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -137,6 +122,6 @@ input:focus {
   }
 
   .glass {
-    background-color: #1e293bf0;
+    background-color: #1e293ba9;
   }
 }

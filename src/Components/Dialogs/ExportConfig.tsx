@@ -12,7 +12,7 @@ import dialogCloseCtx from '../../context/dialogCloseCtx';
 // Components:
 import Button from '../UI/Button';
 // CSS:
-import styles from './ExportConfig.module.css';
+import styles from './Dialogs.module.css';
 // Types, interfaces and enumns:
 import type { FC, FormEvent } from 'react';
 
@@ -52,11 +52,16 @@ const ExportConfig: FC = () => {
 
   // JSX:
   return (
-    <form id={`export-dialog`} className={styles.export_config_form}>
-      <div>
+    <form
+      id={`export-dialog`}
+      className={mergeStyles(styles.container, styles.x_small)}
+    >
+      <div
+      // className={styles.centered}
+      >
         <label
-          className={mergeStyles(styles.config_name_label, 'label')}
-          htmlFor='configuration name'
+          className={mergeStyles(styles.label)}
+          htmlFor='export-config-file-name'
         >
           File name
         </label>
@@ -65,15 +70,17 @@ const ExportConfig: FC = () => {
           name={`configuration name`}
           type='text'
           maxLength={30}
-          placeholder={`Enter a file name`}
+          placeholder={`Provide a file name`}
           value={currentConfig.configName}
           onChange={(ev) => {
             setConfigName({ configName: ev.target.value });
           }}
-          className={mergeStyles(styles.config_name_input, 'input-text')}
+          className={mergeStyles(styles.name_input)}
         />
       </div>
-      <div className={styles.cancel_export_buttons_container}>
+      <div
+        className={mergeStyles(styles.buttons_container, styles.buttons_wide)}
+      >
         <Button
           id='cancel-export-dialog-button'
           name={`cancel export and close dialog`}
