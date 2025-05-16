@@ -2,23 +2,19 @@
 import type { JSX } from 'react';
 import type { HexColor } from '../../utils/color';
 type SVGfn = (colors: {
-  height: string;
-  width?: string;
   color0?: HexColor;
   color1?: HexColor;
   color2?: HexColor;
 }) => JSX.Element;
 
 const deleteSVGs: SVGfn[] = [
-  ({ height, width = height, color0 = '#000000' }) => (
+  ({ color0 = '#000000' }) => (
     <svg
       data-name='20 Delete'
       xmlns='http://www.w3.org/2000/svg'
       fill={color0}
-      height={height}
-      width={width}
       viewBox='0 0 512 512'
-      id='_20_Forbid'
+      aria-hidden='true'
     >
       <path
         id='Path_27'
@@ -28,14 +24,13 @@ const deleteSVGs: SVGfn[] = [
       />
     </svg>
   ),
-  ({ height, width = height, color0 = '#000000' }) => (
+  ({ color0 = '#000000' }) => (
     <svg
-      height={height}
-      width={width}
       viewBox='0 0 16 16'
       version='1.1'
       xmlns='http://www.w3.org/2000/svg'
       xmlnsXlink='http://www.w3.org/1999/xlink'
+      aria-hidden='true'
     >
       <rect width='16' height='16' id='icon-bound' fill='none' />
       <path
@@ -45,32 +40,30 @@ const deleteSVGs: SVGfn[] = [
     </svg>
   ),
 
-  ({ height, width = height, color0 = '#000000' }) => (
+  ({ color0 = '#000000' }) => (
     <svg
       fill={color0}
-      height={height}
-      width={width}
       viewBox='8 9 15 15'
       version='1.1'
       xmlns='http://www.w3.org/2000/svg'
+      aria-hidden='true'
     >
       <title>Delete</title>
       <path d='M18.828 16l4.243 4.243-2.828 2.828-4.243-4.243-4.243 4.243-2.828-2.828 4.243-4.243-4.243-4.243 2.828-2.828 4.243 4.243 4.243-4.243 2.828 2.828-4.243 4.243z'></path>
     </svg>
   ),
 
-  ({ height, width = height, color0 = '#000000' }) => (
+  ({ color0 = '#000000' }) => (
     <svg
       fill={color0}
       version='1.1'
       id='Layer_1'
       xmlns='http://www.w3.org/2000/svg'
       xmlnsXlink='http://www.w3.org/1999/xlink'
-      height={height}
-      width={width}
       viewBox='0 0 100 100'
       enableBackground='new 0 0 100 100'
       xmlSpace='preserve'
+      aria-hidden='true'
     >
       <g>
         <path

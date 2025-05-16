@@ -170,6 +170,11 @@
 .outcome_delete_button {
   grid-area: delete;
   max-width: 3rem;
+  font-size: 1rem;
+  & > svg {
+    height: 1em;
+    width: 1em;
+  }
 }
 
 /* LABELS */

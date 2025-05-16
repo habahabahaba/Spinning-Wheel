@@ -103,7 +103,14 @@ const OutcomeInputs: FC<OutcomeInputsProps> = ({ index }) => {
         disabled={outcomesLength < 3}
         className={styles.outcome_delete_button}
       >
-        {deleteSVGs[2]({ height: '1rem', color0: '#000000' })}
+        {/* <div
+          style={{
+            height: '1rem',
+            width: '1rem',
+          }}
+        > */}
+        {deleteSVGs[2]({ color0: '#000000' })}
+        {/* </div> */}
       </Button>
     </div>
   );
