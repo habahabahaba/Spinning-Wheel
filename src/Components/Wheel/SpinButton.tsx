@@ -111,16 +111,10 @@ const SpinButton: FC<SpinButtonProps> = ({
         ? spinningSVGs[1]({
             color0: safePaletteColor(paletteIdx, 1),
             color1: safePaletteColor(paletteIdx, 3),
-          }) ||
-          spinningSVGs[0]({
-            color0: safePaletteColor(paletteIdx, 1),
-            color1: safePaletteColor(paletteIdx, 3),
           })
         : wheelAnimationState === 'windingUp'
-        ? windUpSVGs[0]({ color0: windingUpIconColor }) ||
-          windUpSVGs[0]({ color0: windingUpIconColor })
-        : idleSVGs[0]({ color0: idleIconColor }) ||
-          idleSVGs[0]({ color0: idleIconColor })}
+        ? windUpSVGs[0]({ color0: windingUpIconColor })
+        : idleSVGs[0]({ color0: idleIconColor })}
     </button>
   );
 };
