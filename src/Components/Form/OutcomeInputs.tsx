@@ -1,5 +1,6 @@
 // Utils:
 import { isHexColor } from '../../utils/color';
+import { mergeStyles } from '../../utils/css';
 // 3rd party:
 // Store:
 import useBoundStore from '../../store/boundStore';
@@ -31,6 +32,7 @@ const OutcomeInputs: FC<OutcomeInputsProps> = ({ index }) => {
   const duplicateOutcome = useBoundStore((state) => state.duplicateOutcome);
   const removeOutcome = useBoundStore((state) => state.removeOutcome);
 
+  // Derived values:
   // For color input default value:
   const colorValue = window.matchMedia('(prefers-color-scheme: dark)').matches
     ? '#334155'
@@ -46,7 +48,7 @@ const OutcomeInputs: FC<OutcomeInputsProps> = ({ index }) => {
 
   // JSX:
   return (
-    <div className={styles.outcome_inputs}>
+    <div className={mergeStyles(styles.outcome_inputs, 'bottom-right-shadow')}>
       <input
         id={`label-input-Outcome-${index}`}
         type='text'

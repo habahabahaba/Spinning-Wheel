@@ -74,10 +74,7 @@ const SaveConfig: FC<SaveConfigProps> = ({ saveIdx }) => {
       onSubmit={handleSaveConfig}
     >
       <div>
-        <label
-          className={mergeStyles(styles.label)}
-          htmlFor='config-name-input'
-        >
+        <label className={styles.label} htmlFor='config-name-input'>
           Configuration name
         </label>
         <input
@@ -90,7 +87,7 @@ const SaveConfig: FC<SaveConfigProps> = ({ saveIdx }) => {
           value={inputValue}
           onChange={handleInputChange}
           // defaultValue={prevConfig ? prevConfig.configName : undefined}
-          className={mergeStyles(styles.name_input)}
+          className={styles.name_input}
         />
       </div>
       <div className={styles.warning_container}> {warning}</div>

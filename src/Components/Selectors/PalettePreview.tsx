@@ -17,8 +17,6 @@ interface PalettePreviewProps {
 }
 
 const PalettePreview: FC<PalettePreviewProps> = ({ palette_idx }) => {
-  // const colorsLength = PALETTES[palette_idx].length;
-
   // JSX:
   const colors = PALETTES[palette_idx] ? (
     <>
@@ -27,6 +25,7 @@ const PalettePreview: FC<PalettePreviewProps> = ({ palette_idx }) => {
           key={idx}
           style={{
             backgroundColor: color,
+            borderColor: 'var(--color-contrast-border, gray)',
           }}
           className={styles.color_preview}
         />

@@ -107,7 +107,7 @@ const ResultDisplay: FC = () => {
           width: `${divWidthPx(radius)}px`,
           padding: `${divPaddingPx(radius)}px
           ${divPaddingPx(radius)}px 
-          ${divPaddingPx(radius * 1.4)}px 
+          ${divPaddingPx(radius * 1.5)}px 
           ${divPaddingPx(radius)}px
           `,
           boxSizing,
