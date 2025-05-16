@@ -20,38 +20,39 @@ function App() {
   const location = useBoundStore((state) => state.currentLocation);
   // Actions:
   const markLoadedFont = useBoundStore((state) => state.markLoadedFont);
-  const markAllFontsReady = useBoundStore((state) => state.markAllFontsReady);
+  // const markAllFontsReady = useBoundStore((state) => state.markAllFontsReady);
   // const checkFont = useBoundStore((state) => state.checkFont);
 
   // Refs:
-  const numberOfPendingRef = useRef<number>(Object.keys(FONT_IMPORTS).length);
+  // const numberOfPendingRef = useRef<number>(Object.keys(FONT_IMPORTS).length);
 
   // Loading additional fonts:
   useEffect(() => {
-    Object.entries(FONT_IMPORTS).forEach(async function loadRemoteFonts([
-      font,
-      loader,
-    ]) {
-      try {
-        await loader();
-        await document.fonts.load(`600 1em "${font}"`);
-        if (document.fonts.check(`600 1em "${font}"`)) {
-          markLoadedFont(font as RemoteFontNames);
-          numberOfPendingRef.current--;
-        }
-        if (numberOfPendingRef.current === 0) {
-          markAllFontsReady(true);
-        }
-      } catch (err) {
-        console.error(`Failed to load font: ${font}`, err);
+    Object.entries(FONT_IMPORTS).forEach(([font, loader]) => {
+      const loadFont = async () => {
+        try {
+          await loader();
+          await document.fonts.load(`600 1em "${font}"`);
 
-        // Retry download after a cool-down:
-        setTimeout(() => {
-          loadRemoteFonts([font, loader]);
-        }, 2000 + Math.floor(Math.random() * 1000));
-      }
+          if (document.fonts.check(`600 1em "${font}"`)) {
+            markLoadedFont(font as RemoteFontNames);
+          } else {
+            console.warn(
+              `Font "${font}" loaded but didn't pass document.fonts.check`
+            );
+          }
+        } catch (err) {
+          console.error(`Failed to load font: ${font}`, err);
+
+          // Retry with backoff
+          setTimeout(loadFont, 2000 + Math.floor(Math.random() * 1000));
+        }
+      };
+
+      // Immediately run loader
+      loadFont();
     });
-  }, [markLoadedFont, markAllFontsReady]);
+  }, [markLoadedFont]);
 
   return (
     <>
