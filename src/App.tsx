@@ -40,8 +40,14 @@ function App() {
           await document.fonts.load(`600 1em "${font}"`);
 
           // await document.fonts.ready;
+          const normalizedFontName = font.replace(/\s+/g, '');
+          const fontCheck = `600 1em "${font}"`;
+          const fallbackFontCheck = `600 1em "${normalizedFontName}"`;
 
-          if (document.fonts.check(`600 1em "${font}"`)) {
+          if (
+            document.fonts.check(fontCheck) ||
+            document.fonts.check(fallbackFontCheck)
+          ) {
             markLoadedFont(font as RemoteFontNames);
             numberOfPendingRef.current--;
           } else {
