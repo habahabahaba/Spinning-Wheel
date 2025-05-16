@@ -36,8 +36,8 @@ function App() {
           );
           await loader();
           // Wait a tick to allow the browser to register @font-face from the injected <style>
-          await new Promise((resolve) => setTimeout(resolve, 10));
           await document.fonts.load(`600 1em "${font}"`);
+          await new Promise((resolve) => setTimeout(resolve, 10));
 
           if (document.fonts.check(`600 1em "${font}"`)) {
             markLoadedFont(font as RemoteFontNames);
