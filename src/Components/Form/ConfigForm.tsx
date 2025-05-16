@@ -7,10 +7,10 @@ import { mergeStyles } from '../../utils/css';
 // Context:
 // Hooks:
 // Components:
-import SaveLoadMenu from './SaveLoadMenu';
-import WheelDefaultsMenu from './WheelDefaultsMenu';
-import OutcomesMenu from './OutcomesMenu';
-import ConfigActionsMenu from './ConfigActionsMenu';
+import SaveLoadMenu from './SaveLoadConfigPanel';
+import WheelDefaultsMenu from './WheelDefaultsPanel';
+import OutcomesMenu from './OutcomesPanel';
+import ConfigActionsMenu from './ConfigActionsPanel';
 // CSS:
 import styles from './ConfigForm.module.css';
 // Types, interfaces and enumns:

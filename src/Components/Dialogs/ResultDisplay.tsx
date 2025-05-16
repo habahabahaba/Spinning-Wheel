@@ -105,7 +105,11 @@ const ResultDisplay: FC = () => {
           backgroundColor: `${brightBGColor}`,
           height: `${divHeightPx(radius)}px`,
           width: `${divWidthPx(radius)}px`,
-          padding: `${divPaddingPx(radius)}px`,
+          padding: `${divPaddingPx(radius)}px
+          ${divPaddingPx(radius)}px 
+          ${divPaddingPx(radius * 1.4)}px 
+          ${divPaddingPx(radius)}px
+          `,
           boxSizing,
           wordBreak,
           whiteSpace,

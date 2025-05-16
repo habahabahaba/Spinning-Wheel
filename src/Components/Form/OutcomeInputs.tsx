@@ -12,7 +12,7 @@ import Button from '../UI/Button';
 import FontSelector from '../Selectors/FontSelector';
 import deleteSVGs from '../SVG/deleteSVGs';
 // CSS:
-import styles from './OutcomeInputs.module.css';
+import styles from './ConfigForm.module.css';
 // Types, interfaces and enumns:
 import type { FC } from 'react';
 import type { Outcome } from '../../store/types';
@@ -30,6 +30,11 @@ const OutcomeInputs: FC<OutcomeInputsProps> = ({ index }) => {
   const modifyOutcome = useBoundStore((state) => state.modifyOutcome);
   const duplicateOutcome = useBoundStore((state) => state.duplicateOutcome);
   const removeOutcome = useBoundStore((state) => state.removeOutcome);
+
+  // For color input default value:
+  const colorValue = window.matchMedia('(prefers-color-scheme: dark)').matches
+    ? '#334155'
+    : '#e2e8f0';
 
   // Handlers:
   function handleChange<K extends keyof Omit<Outcome, 'id'>>(
@@ -56,7 +61,7 @@ const OutcomeInputs: FC<OutcomeInputsProps> = ({ index }) => {
       <input
         type='color'
         id={`fillColor-input-Outcome-${index}`}
-        value={outcome.fillColor || '#f1f5f9'}
+        value={outcome.fillColor || colorValue}
         onChange={(ev) => {
           handleChange(
             'fillColor',

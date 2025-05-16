@@ -1,6 +1,7 @@
 // Assets:
 // Constants:
 // Utils:
+import { mergeStyles } from '../../utils/css';
 // 3rd party:
 // Store:
 import useBoundStore from '../../store/boundStore';
@@ -16,16 +17,13 @@ import ImportConfigDialog from '../Dialogs/ImportConfigDialog';
 import ResetConfigDialog from '../Dialogs/ResetConfigDialog';
 import CheckFontsDialog from '../Dialogs/CheckFontsDialog';
 // CSS:
-import styles from './ConfigActionsMenu.module.css';
+import styles from './ConfigForm.module.css';
 // Types, interfaces and enumns:
 import type { FC, MouseEvent } from 'react';
 import type { DialogHandle } from '../UI/Dialog';
-// interface ConfigActionsMenuProps {}
+// interface ConfigActionsPanelProps {}
 
-const ConfigActionsMenu: FC = () => {
-  // Context:
-
-  // Store:
+const ConfigActionsPanel: FC = () => {
   // Actions:
   const applyConfig = useBoundStore((state) => state.applyConfig);
   const resetWinningOutcomeIdx = useBoundStore(
@@ -34,17 +32,11 @@ const ConfigActionsMenu: FC = () => {
   const checkAllFontsReady = useBoundStore((state) => state.checkAllFontsReady);
   const setCurrentLocation = useBoundStore((state) => state.setCurrentLocation);
 
-  // State:
-
   // Refs (for modals):
   const exportConfigDialogRef = useRef<DialogHandle>(null);
   const importConfigDialogRef = useRef<DialogHandle>(null);
   const resetConfigDialogRef = useRef<DialogHandle>(null);
   const checkFontsDialogRef = useRef<DialogHandle>(null);
-
-  // Effects:
-
-  // Derived values:
 
   // Handlers:
   function handleOpenExportDialog(ev: MouseEvent<HTMLButtonElement>) {
@@ -81,7 +73,12 @@ const ConfigActionsMenu: FC = () => {
   // JSX:
   return (
     <>
-      <div className={styles.config_actions_menu}>
+      <div
+        className={mergeStyles(
+          styles.buttons_container,
+          styles.config_actions_panel
+        )}
+      >
         <div className={styles.buttons_container}>
           <Button
             id='config-form-export-button'
@@ -128,4 +125,4 @@ const ConfigActionsMenu: FC = () => {
   );
 };
 
-export default ConfigActionsMenu;
+export default ConfigActionsPanel;

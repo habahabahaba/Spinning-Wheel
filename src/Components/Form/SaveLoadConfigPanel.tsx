@@ -1,6 +1,7 @@
 // Assets:
 // Constants:
 // Utils:
+import { mergeStyles } from '../../utils/css';
 // import { mergeStyles } from '../../utils/css';
 // 3rd party:
 // Store:
@@ -16,13 +17,13 @@ import SaveSlotSelector from '../Selectors/SaveSlotSelector';
 import LoadConfigDialog from '../Dialogs/LoadConfigDialog';
 import SaveConfigDialog from '../Dialogs/SaveConfigDialog';
 // CSS:
-import styles from './SaveLoadMenu.module.css';
+import styles from './ConfigForm.module.css';
 // Types, interfaces and enumns:
 import type { FC, MouseEvent } from 'react';
 import type { DialogHandle } from '../UI/Dialog';
-// interface SaveLoadConfigMenuProps {}
+// interface SaveLoadConfigPanelProps {}
 
-const SaveLoadConfigMenu: FC = () => {
+const SaveLoadConfigPanel: FC = () => {
   // Store:
   const savedConfigs = useBoundStore((state) => state.savedConfigs);
 
@@ -48,8 +49,10 @@ const SaveLoadConfigMenu: FC = () => {
   // JSX:
   return (
     <>
-      <div className={styles.save_load_menu}>
-        <span className={styles.label}>Save / Load configuration:</span>
+      <div className={styles.save_load_panel}>
+        <span className={mergeStyles(styles.label, styles.save_load_label)}>
+          Save / Load configuration:
+        </span>
         <SaveSlotSelector
           value={saveIdx}
           onChange={(value) => {
@@ -57,7 +60,12 @@ const SaveLoadConfigMenu: FC = () => {
           }}
           className={styles.save_load_select}
         />
-        <div className={styles.save_load_buttons_container}>
+        <div
+          className={mergeStyles(
+            styles.buttons_container,
+            styles.save_load_buttons_container
+          )}
+        >
           <Button
             variant='warning'
             id='open-load-config-form'
@@ -83,4 +91,4 @@ const SaveLoadConfigMenu: FC = () => {
   );
 };
 
-export default SaveLoadConfigMenu;
+export default SaveLoadConfigPanel;

@@ -14,12 +14,12 @@ import RadiusSelector from '../Selectors/RadiusSelector';
 import PaletteSelector from '../Selectors/PaletteSelector';
 import FontSelector from '../Selectors/FontSelector';
 // CSS:
-import styles from './WheelDefaultsMenu.module.css';
+import styles from './ConfigForm.module.css';
 // Types, interfaces and enumns:
 import type { FC } from 'react';
 // interface WheelDefaultsMenuProps {}
 
-const WheelDefaultsMenu: FC = () => {
+const WheelDefaultsPanel: FC = () => {
   // Context:
 
   // Store:
@@ -38,16 +38,34 @@ const WheelDefaultsMenu: FC = () => {
 
   // JSX:
   return (
-    <menu className={styles.menu}>
-      <span className={mergeStyles(styles.label, styles.radius_select_label)}>
+    <menu className={styles.wheel_defaults_panel}>
+      <span
+        className={mergeStyles(
+          styles.label,
+          styles.label_offset,
+          styles.radius_select_label
+        )}
+      >
         Wheel size
       </span>
       <RadiusSelector />
-      <span className={mergeStyles(styles.label, styles.palette_select_label)}>
+      <span
+        className={mergeStyles(
+          styles.label,
+          styles.label_offset,
+          styles.palette_select_label
+        )}
+      >
         Wheel colors
       </span>
       <PaletteSelector />
-      <span className={mergeStyles(styles.label, styles.font_select_label)}>
+      <span
+        className={mergeStyles(
+          styles.label,
+          styles.label_offset,
+          styles.font_select_label
+        )}
+      >
         Default font
       </span>
       <FontSelector outcomeIdx={-1} className={styles.default_font_select} />
@@ -55,4 +73,4 @@ const WheelDefaultsMenu: FC = () => {
   );
 };
 
-export default WheelDefaultsMenu;
+export default WheelDefaultsPanel;

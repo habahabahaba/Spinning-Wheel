@@ -1,6 +1,7 @@
 // Assets:
 // Constants:
 // Utils:
+import { mergeStyles } from '../../utils/css';
 // 3rd party:
 import { useShallow } from 'zustand/shallow';
 // Store:
@@ -14,12 +15,12 @@ import { useState } from 'react';
 import Button from '../UI/Button';
 import OutcomeInputs from './OutcomeInputs';
 // CSS:
-import styles from './OutcomesMenu.module.css';
+import styles from './ConfigForm.module.css';
 // Types, interfaces and enumns:
 import type { FC, MouseEvent } from 'react';
-// interface OutcomesMenuProps {}
+// interface OutcomesPanelProps {}
 
-const OutcomesMenu: FC = () => {
+const OutcomesPanel: FC = () => {
   // Context:
 
   // Store:
@@ -37,7 +38,7 @@ const OutcomesMenu: FC = () => {
   // Refs:
 
   // Effects:
-  //   console.log(`[OutcomesMenu] rendered`);
+  //   console.log(`[OutcomesPanel] rendered`);
 
   // Derived values:
   const validQuantity = 72 - outcomesLength;
@@ -56,11 +57,16 @@ const OutcomesMenu: FC = () => {
   ));
 
   return (
-    <div className={styles.outcomes_menu}>
-      <div className={styles.top_shadow} />
+    <div className={styles.outcomes_panel}>
+      {/* <div className={styles.top_shadow} /> */}
       <menu className={styles.outcomes_list}>{outcomesList}</menu>
 
-      <div className={styles.add_outcomes_container}>
+      <div
+        className={mergeStyles(
+          styles.buttons_container,
+          styles.add_outcomes_container
+        )}
+      >
         <input
           className={styles.add_outcomes_number_input}
           type='number'
@@ -86,4 +92,4 @@ const OutcomesMenu: FC = () => {
   );
 };
 
-export default OutcomesMenu;
+export default OutcomesPanel;
