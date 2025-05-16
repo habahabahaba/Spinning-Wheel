@@ -1,5 +1,5 @@
 :root {
-  font-family: system-ui, Arial, sans-serif, serif;
+  font-family: Arial, sans-serif, serif, system-ui;
   line-height: 1.25;
   font-weight: 400;
 
@@ -79,7 +79,7 @@ input {
   border-radius: 0.1rem;
 }
 button:focus-visible,
-input:focus {
+input:focus-visible {
   outline: 2px solid var(--color-accent);
   &:hover {
     outline: 2px solid var(--color-accent-hover);
@@ -90,6 +90,7 @@ input:focus {
 }
 
 button {
+  font-family: 'Arial';
   box-shadow: 0px 2px 2px 0px
     color-mix(in srgb, var(--color-fg) 25%, transparent);
 
@@ -138,7 +139,13 @@ button {
 
 /* FIREFOX FIX */
 @supports (-moz-appearance: none) {
-  svg {
-    text-underline-offset: 0.1em;
+  svg text {
+    text-underline-offset: 0.2em;
+  }
+
+  svg text[font-family='serif'],
+  svg text[font-family='sans-serif'],
+  svg text[font-family='Yanone Kaffeesatz'] {
+    text-underline-offset: initial;
   }
 }

@@ -85,7 +85,7 @@ const CheckFonts: FC = () => {
           <h3>
             {missingFonts.length
               ? 'Loading missing fonts:'
-              : 'All configuration fonts were successfully downloaded !'}
+              : 'All fonts for this configuration were successfully downloaded!'}
           </h3>
           {missingFonts.length ? missingFontsList : null}
         </div>
