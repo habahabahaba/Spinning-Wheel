@@ -70,6 +70,9 @@ function App() {
       // Immediately run loader
       loadFont();
     });
+    document.fonts.forEach((fontFace) =>
+      console.log('Registered font:', fontFace.family, fontFace.weight)
+    );
   }, [markLoadedFont, markAllFontsReady]);
 
   return (
