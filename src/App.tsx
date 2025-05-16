@@ -31,6 +31,7 @@ function App() {
     Object.entries(FONT_IMPORTS).forEach(([font, loader]) => {
       const loadFont = async () => {
         try {
+          document.fonts.forEach((f) => console.log(f.family, f.weight));
           await loader();
           // Wait a tick to allow the browser to register @font-face from the injected <style>
           await new Promise((resolve) => setTimeout(resolve, 0));
