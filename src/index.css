@@ -138,14 +138,4 @@ button {
 }
 
 /* FIREFOX FIX */
-@supports (-moz-appearance: none) {
-  svg text {
-    text-underline-offset: 0.2em;
-  }
-
-  svg text[font-family='serif'],
-  svg text[font-family='sans-serif'],
-  svg text[font-family='Yanone Kaffeesatz'] {
-    text-underline-offset: initial;
-  }
-}
+/* moved to Sector.tsx */

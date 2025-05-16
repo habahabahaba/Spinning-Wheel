@@ -22,6 +22,16 @@ interface FontSizeCalculationOptions {
   whiteSpace?: 'normal' | 'nowrap' | 'pre' | 'pre-wrap' | 'pre-line';
 }
 
+let measurementCanvas: HTMLCanvasElement | null = null;
+let measurementCtx: CanvasRenderingContext2D | null = null;
+
+function getMeasurementContext() {
+  if (!measurementCanvas) {
+    measurementCanvas = document.createElement('canvas');
+    measurementCtx = measurementCanvas.getContext('2d')!;
+  }
+  return measurementCtx!;
+}
 /**
  * Measures text dimensions accounting for precise font metrics
  * @param text - Text to measure
@@ -36,8 +46,7 @@ function measureTextBox(
   fontFamily: string,
   fontWeight: string
 ): { width: number; height: number } {
-  const canvas = document.createElement('canvas');
-  const ctx = canvas.getContext('2d')!;
+  const ctx = getMeasurementContext();
   ctx.font = `${fontWeight} ${fontSize} ${fontFamily}`;
 
   // Measure width

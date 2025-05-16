@@ -2,6 +2,7 @@
 import { PALETTES } from '../../constants/palettes';
 // Utils:
 import { contrastColor, brightness } from '../../utils/color';
+import { isFirefox } from '../../utils/browser';
 // 3rd party:
 // Store:
 import useBoundStore from '../../store/boundStore';
@@ -81,6 +82,7 @@ const Wheel: FC<WheelProps> = ({
             label={outcome.label}
             fillColor={fillColor}
             fontFamily={outcome.fontFamily || fontFamily}
+            isFirefox={isFirefox}
             textColor={textColor}
             isHighlighted={isHighlighted}
           />

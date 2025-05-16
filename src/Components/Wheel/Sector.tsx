@@ -23,6 +23,7 @@ interface SectorProps {
   label?: string;
   fontFamily?: string;
   fontWeight?: string;
+  isFirefox?: boolean;
   isHighlighted?: boolean;
 }
 
@@ -36,13 +37,13 @@ const Sector: FC<SectorProps> = ({
   label = '',
   fontFamily = 'Arial',
   fontWeight = '600',
+  isFirefox = false,
   isHighlighted = false,
 }) => {
   const sectorAngle = endAngle - startAngle;
   const midAngle = (startAngle + endAngle) / 2;
 
-  // console.log(`[Sector] fontFamily: ${fontFamily}`);
-
+  // Derived values:
   const describeSector = useMemo(() => {
     const start = polarToCartesian(center.x, center.y, radius, endAngle);
     const end = polarToCartesian(center.x, center.y, radius, startAngle);
@@ -68,6 +69,19 @@ const Sector: FC<SectorProps> = ({
     [center, distanceFromApex, midAngle]
   );
 
+  const textDecoration = isHighlighted ? 'underline' : '';
+  // Fixing Firefox text rendering:
+  const fontSizeAdjusted = isFirefox ? fontSize * 1.15 : fontSize;
+  const dy =
+    isFirefox && ['serif', 'arial', 'sans-serif'].includes(fontFamily)
+      ? '0.06em'
+      : 0;
+  const textUnderlineOffset =
+    isFirefox &&
+    !['sans-serif', 'serif', 'Yanone Kaffeesatz'].includes(fontFamily)
+      ? '0.2em'
+      : 'initial';
+
   return (
     <g>
       <path
@@ -89,11 +103,13 @@ const Sector: FC<SectorProps> = ({
         dominantBaseline='central'
         fontFamily={fontFamily}
         fontWeight={fontWeight}
-        fontSize={`${fontSize}px`}
+        fontSize={`${fontSizeAdjusted}px`}
+        dy={dy}
         fill={textColor}
         style={{
           willChange: 'transform',
-          textDecoration: `${isHighlighted ? 'underline' : ''}`,
+          textUnderlineOffset,
+          textDecoration,
         }}
         transform={`rotate(${midAngle - 90} ${textPos.x} ${textPos.y})`}
       >
