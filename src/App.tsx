@@ -29,6 +29,18 @@ function App() {
   // Loading additional fonts:
   useEffect(() => {
     Object.entries(FONT_IMPORTS).forEach(([font, loader]) => {
+      const checkFont = async () => {
+        if (document.fonts.check(`600 1em "${font}"`)) {
+          markLoadedFont(font as RemoteFontNames);
+          numberOfPendingRef.current--;
+        } else {
+          console.warn(
+            `Font "${font}" loaded but didn't pass document.fonts.check`
+          );
+
+          setTimeout(checkFont, 10);
+        }
+      };
       const loadFont = async () => {
         try {
           document.fonts.forEach((f) =>
@@ -37,20 +49,11 @@ function App() {
           await loader();
           // Wait a tick to allow the browser to register @font-face from the injected <style>
           // await new Promise((resolve) => setTimeout(resolve, 100));
-          const loadedFonts = await document.fonts.load(`600 1em "${font}"`);
-          console.log(
-            `[loadFont] loadedFonts: ${JSON.stringify(loadedFonts, null, 2)}`
-          );
+          await document.fonts.load(`600 1em "${font}"`);
+
           // await document.fonts.ready;
 
-          if (document.fonts.check(`600 1em "${font}"`)) {
-            markLoadedFont(font as RemoteFontNames);
-            numberOfPendingRef.current--;
-          } else {
-            console.warn(
-              `Font "${font}" loaded but didn't pass document.fonts.check`
-            );
-          }
+          checkFont();
         } catch (err) {
           console.error(`Failed to load font: ${font}`, err);
 
