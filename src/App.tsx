@@ -29,42 +29,29 @@ function App() {
   // Loading additional fonts:
   useEffect(() => {
     Object.entries(FONT_IMPORTS).forEach(([font, loader]) => {
-      const loadFont = async () => {
-        try {
-          document.fonts.forEach((f) =>
-            console.log('[ document.fonts]', f.family, f.weight)
-          );
-          await loader();
-          // Wait a tick to allow the browser to register @font-face from the injected <style>
-          // await new Promise((resolve) => setTimeout(resolve, 100));
-          await document.fonts.load(`600 1em "${font}"`);
-
-          // await document.fonts.ready;
-          const normalizedFontName = font.replace(/\s+/g, '');
-          const fontCheck = `600 1em "${font}"`;
-          const fallbackFontCheck = `600 1em "${normalizedFontName}"`;
-
-          if (
-            document.fonts.check(fontCheck) ||
-            document.fonts.check(fallbackFontCheck)
-          ) {
-            markLoadedFont(font as RemoteFontNames);
-            numberOfPendingRef.current--;
-          } else {
-            console.warn(
-              `Font "${font}" loaded but didn't pass document.fonts.check`
-            );
-          }
-        } catch (err) {
-          console.error(`Failed to load font: ${font}`, err);
-
-          // Retry with backoff
-          setTimeout(loadFont, 2000 + Math.floor(Math.random() * 1000));
-        } finally {
-          if (numberOfPendingRef.current <= 0) {
-            markAllFontsReady(true);
-          }
-        }
+      const loadFont = () => {
+        loader() // dynamic import triggers side effects
+          .then(() => {
+            return document.fonts.load(`600 1em "${font}"`);
+          })
+          .then(() => {
+            if (document.fonts.check(`600 1em "${font}"`)) {
+              markLoadedFont(font as RemoteFontNames);
+            } else {
+              throw new Error(
+                `Font "${font}" failed to load or is not available`
+              );
+            }
+          })
+          .catch((err) => {
+            console.error(`Failed to load font: ${font}`, err);
+            setTimeout(loadFont, 2000 + Math.random() * 1000); // Retry with delay
+          })
+          .finally(() => {
+            if (--numberOfPendingRef.current <= 0) {
+              markAllFontsReady(true);
+            }
+          });
       };
 
       // Immediately run loader
