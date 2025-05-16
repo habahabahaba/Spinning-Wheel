@@ -38,7 +38,7 @@ function App() {
 
           await document.fonts.load(`600 1em "${font}"`);
           markLoadedFont(font as RemoteFontNames);
-          if (numberOfPendingRef.current-- <= 0) {
+          if (--numberOfPendingRef.current <= 0) {
             markAllFontsReady(true);
           }
         } catch (err) {
