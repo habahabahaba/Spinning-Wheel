@@ -36,7 +36,7 @@ function App() {
           );
           await loader();
           // Wait a tick to allow the browser to register @font-face from the injected <style>
-          // await new Promise((resolve) => setTimeout(resolve, 10));
+          await new Promise((resolve) => setTimeout(resolve, 10));
           await document.fonts.load(`600 1em "${font}"`);
 
           if (document.fonts.check(`600 1em "${font}"`)) {
@@ -53,7 +53,7 @@ function App() {
           // Retry with backoff
           setTimeout(loadFont, 2000 + Math.floor(Math.random() * 1000));
         } finally {
-          if (numberOfPendingRef.current === 0) {
+          if (numberOfPendingRef.current <= 0) {
             markAllFontsReady(true);
           }
         }
@@ -62,7 +62,7 @@ function App() {
       // Immediately run loader
       loadFont();
     });
-  }, [markLoadedFont]);
+  }, [markLoadedFont, markAllFontsReady]);
 
   return (
     <>
