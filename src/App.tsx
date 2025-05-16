@@ -4,7 +4,7 @@ import { FONT_IMPORTS } from './constants/fonts';
 // Store:
 import useBoundStore from './store/boundStore';
 // React:
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 // Components:
 import NavBar from './Components/NavBar';
 import Main from './Components/Main';
