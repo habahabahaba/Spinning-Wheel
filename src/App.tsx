@@ -38,15 +38,14 @@ function App() {
 
           await document.fonts.load(`600 1em "${font}"`);
           markLoadedFont(font as RemoteFontNames);
+          if (numberOfPendingRef.current-- <= 0) {
+            markAllFontsReady(true);
+          }
         } catch (err) {
           console.error(`Failed to load font: ${font}`, err);
 
           // Retry with backoff
           setTimeout(loadFont, 2000 + Math.floor(Math.random() * 1000));
-        } finally {
-          if (numberOfPendingRef.current <= 0) {
-            markAllFontsReady(true);
-          }
         }
       };
 
