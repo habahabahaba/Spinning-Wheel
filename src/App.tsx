@@ -4,7 +4,7 @@ import { FONT_IMPORTS } from './constants/fonts';
 // Store:
 import useBoundStore from './store/boundStore';
 // React:
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 // Components:
 import NavBar from './Components/NavBar';
 import Main from './Components/Main';
@@ -20,11 +20,11 @@ function App() {
   const location = useBoundStore((state) => state.currentLocation);
   // Actions:
   const markLoadedFont = useBoundStore((state) => state.markLoadedFont);
-  // const markAllFontsReady = useBoundStore((state) => state.markAllFontsReady);
+  const markAllFontsReady = useBoundStore((state) => state.markAllFontsReady);
   // const checkFont = useBoundStore((state) => state.checkFont);
 
   // Refs:
-  // const numberOfPendingRef = useRef<number>(Object.keys(FONT_IMPORTS).length);
+  const numberOfPendingRef = useRef<number>(Object.keys(FONT_IMPORTS).length);
 
   // Loading additional fonts:
   useEffect(() => {
@@ -36,11 +36,12 @@ function App() {
           );
           await loader();
           // Wait a tick to allow the browser to register @font-face from the injected <style>
-          await new Promise((resolve) => setTimeout(resolve, 10));
+          // await new Promise((resolve) => setTimeout(resolve, 10));
           await document.fonts.load(`600 1em "${font}"`);
 
           if (document.fonts.check(`600 1em "${font}"`)) {
             markLoadedFont(font as RemoteFontNames);
+            numberOfPendingRef.current--;
           } else {
             console.warn(
               `Font "${font}" loaded but didn't pass document.fonts.check`
@@ -51,6 +52,10 @@ function App() {
 
           // Retry with backoff
           setTimeout(loadFont, 2000 + Math.floor(Math.random() * 1000));
+        } finally {
+          if (numberOfPendingRef.current === 0) {
+            markAllFontsReady(true);
+          }
         }
       };
 
