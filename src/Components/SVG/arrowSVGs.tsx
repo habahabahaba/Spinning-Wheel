@@ -629,4 +629,4 @@ const arrowSVGs: SVGfn[] = [
   ),
 ];
 
-export default arrowSVGs;
+export default arrowSVGs[0];

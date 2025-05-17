@@ -7,7 +7,7 @@ type SVGfn = (colors: {
   color2?: HexColor;
 }) => JSX.Element;
 
-export const idleSVGs: SVGfn[] = [
+const idleSVGs: SVGfn[] = [
   ({ color0 = '#000' }) => (
     <svg
       version='1.1'
@@ -93,7 +93,7 @@ export const idleSVGs: SVGfn[] = [
   ),
 ];
 
-export const windUpSVGs: SVGfn[] = [
+const windUpSVGs: SVGfn[] = [
   ({ color0 = '#000' }) => (
     <svg
       version='1.1'
@@ -146,7 +146,7 @@ export const windUpSVGs: SVGfn[] = [
   ),
 ];
 
-export const spinningSVGs: SVGfn[] = [
+const spinningSVGs: SVGfn[] = [
   ({ color0 = '#000' }) => (
     <svg
       fill={color0}
@@ -760,3 +760,7 @@ export const spinningSVGs: SVGfn[] = [
     </svg>
   ),
 ];
+
+export const idleSVG = idleSVGs[0];
+export const windUpSVG = windUpSVGs[0];
+export const spinningSVG = spinningSVGs[1];

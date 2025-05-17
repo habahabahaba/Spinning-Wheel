@@ -1,5 +1,8 @@
 // Assets:
-import wallpaperSVGstrings from '../SVG/wallpaperSVGstrings';
+import {
+  wallpaperSVGstringFn0,
+  wallpaperSVGstringFn1,
+} from '../SVG/wallpaperSVGstrings';
 // Utils:
 import { safePaletteColor } from '../../utils/color';
 // 3rd party:
@@ -18,7 +21,7 @@ import styles from './Wallpaper.module.css';
 import type { CSSProperties, FC } from 'react';
 
 interface WallpaperProps {
-  variant: number;
+  variant: 0 | 1;
   colorIdx0: number;
   colorIdx1?: number;
   colorIdx2?: number;
@@ -38,7 +41,9 @@ const Wallpaper: FC<WallpaperProps> = ({
   );
 
   const backgroundImage = useMemo(() => {
-    const svgString = (wallpaperSVGstrings[variant] || wallpaperSVGstrings[0])({
+    const svgString = (
+      variant === 0 ? wallpaperSVGstringFn0 : wallpaperSVGstringFn1
+    )({
       color0: safePaletteColor(paletteIdx, colorIdx0),
       color1: safePaletteColor(paletteIdx, colorIdx1),
       color2: safePaletteColor(paletteIdx, colorIdx2),

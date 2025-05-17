@@ -11,7 +11,7 @@ import useBoundStore from '../../store/boundStore';
 // Components:
 import Button from '../UI/Button';
 import FontSelector from '../Selectors/FontSelector';
-import deleteSVGs from '../SVG/deleteSVGs';
+import deleteSVG from '../SVG/deleteSVGs';
 // CSS:
 import styles from './ConfigForm.module.css';
 // Types, interfaces and enumns:
@@ -103,14 +103,7 @@ const OutcomeInputs: FC<OutcomeInputsProps> = ({ index }) => {
         disabled={outcomesLength < 3}
         className={styles.outcome_delete_button}
       >
-        {/* <div
-          style={{
-            height: '1rem',
-            width: '1rem',
-          }}
-        > */}
-        {deleteSVGs[2]({ color0: '#000000' })}
-        {/* </div> */}
+        {deleteSVG({ color0: '#000000' })}
       </Button>
     </div>
   );

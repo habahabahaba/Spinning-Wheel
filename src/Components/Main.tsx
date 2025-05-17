@@ -127,7 +127,7 @@ const Main: FC = () => {
           wheelAnimationState={wheelAnimationState}
           wheelRef={wheelRef}
         />
-        <Arrow size={wheelRadius / 6} arrowIdx={0} />
+        <Arrow size={wheelRadius / 6} />
         <SpinButton
           onClick={handleClick}
           onMouseDown={handleMouseDown}

@@ -7,7 +7,7 @@ type SVGstringFn = (colors: {
   color2?: HexColor;
 }) => string;
 
-const wallpaperSVGstrings: SVGstringFn[] = [
+const wallpaperSVGStringFns: SVGstringFn[] = [
   ({ color0 = '#000000' }) =>
     `<svg
       xmlns='http://www.w3.org/2000/svg'
@@ -17177,4 +17177,7 @@ const wallpaperSVGstrings: SVGstringFn[] = [
     </svg>`,
 ];
 
-export default wallpaperSVGstrings;
+// export default wallpaperSVGstrings;
+
+export const wallpaperSVGstringFn0 = wallpaperSVGStringFns[2];
+export const wallpaperSVGstringFn1 = wallpaperSVGStringFns[3];

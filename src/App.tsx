@@ -60,7 +60,7 @@ function App() {
       {location === 'Main' ? <Main /> : <ConfigForm />}
       {/* <FontsDisplay /> */}
       <Wallpaper
-        variant={location === 'Main' ? 2 : 3}
+        variant={location === 'Main' ? 0 : 1}
         colorIdx0={location === 'Main' ? 0 : 2}
         colorIdx1={0}
         style={{

@@ -78,4 +78,4 @@ const deleteSVGs: SVGfn[] = [
   ),
 ];
 
-export default deleteSVGs;
+export default deleteSVGs[2];

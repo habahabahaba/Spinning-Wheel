@@ -10,7 +10,7 @@ import useBoundStore from '../../store/boundStore';
 // Context:
 // Hooks:
 // Components:
-import { idleSVGs, windUpSVGs, spinningSVGs } from '../SVG/spinSVGs';
+import { idleSVG, windUpSVG, spinningSVG } from '../SVG/spinSVGs';
 // CSS:
 import styles from './SpinButton.module.css';
 // Types, interfaces and enumns:
@@ -108,13 +108,13 @@ const SpinButton: FC<SpinButtonProps> = ({
       }`}
     >
       {wheelAnimationState === 'spinning'
-        ? spinningSVGs[1]({
+        ? spinningSVG({
             color0: safePaletteColor(paletteIdx, 1),
             color1: safePaletteColor(paletteIdx, 3),
           })
         : wheelAnimationState === 'windingUp'
-        ? windUpSVGs[0]({ color0: windingUpIconColor })
-        : idleSVGs[0]({ color0: idleIconColor })}
+        ? windUpSVG({ color0: windingUpIconColor })
+        : idleSVG({ color0: idleIconColor })}
     </button>
   );
 };

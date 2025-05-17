@@ -9,18 +9,16 @@ import useBoundStore from '../../store/boundStore.ts';
 // Context:
 // Hooks:
 // Components:
+import arrowSVG from '../SVG/arrowSVGs.tsx';
 // CSS:
-// Arrow icons:
-import arrowSVGs from '../SVG/arrowSVGs.tsx';
 // Types, interfaces and enumns:
 import type { FC, Ref } from 'react';
 interface ArrowProps {
   size: number;
-  arrowIdx?: number;
   ref?: Ref<HTMLDivElement>;
 }
 
-const Arrow: FC<ArrowProps> = ({ size, arrowIdx = 0, ref }) => {
+const Arrow: FC<ArrowProps> = ({ size, ref }) => {
   // Store:
   const paletteIdx = useBoundStore(
     (state) => state.activeConfig.default_palette_idx
@@ -40,9 +38,9 @@ const Arrow: FC<ArrowProps> = ({ size, arrowIdx = 0, ref }) => {
       }}
       ref={ref}
     >
-      {arrowSVGs[arrowIdx % arrowSVGs.length]({
+      {arrowSVG({
         strokeColor: safePaletteColor(paletteIdx, 1),
-      }) || arrowSVGs[0]({})}
+      })}
     </div>
   );
 };
