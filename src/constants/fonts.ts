@@ -74,14 +74,6 @@ export const REMOTE_FONT_SUBSETS: Record<RemoteFontNames, AllSubsets[]> = {
   'Winky Rough': ['latin'],
 };
 
-export function createFontUrl(
-  fontName: RemoteFontNames,
-  subset: AllSubsets
-): string {
-  const fontId = fontName.toLowerCase().replace(/\s+/g, '-');
-  return `url(https://cdn.jsdelivr.net/npm/@fontsource/${fontId}@latest/files/${fontId}-${subset}-600-normal.woff2) format('woff2')`;
-}
-
 export type LocalFontNames = (typeof FONT_FAMILIES_LOCAL)[number];
 
 export type AllFontNames = LocalFontNames | RemoteFontNames;
