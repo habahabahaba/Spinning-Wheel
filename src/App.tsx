@@ -1,6 +1,8 @@
+// Utils:
 // Constants:
-// Fonts:
-import { FONT_IMPORTS } from './constants/fonts';
+import { FONT_FAMILIES_REMOTE, createFontUrl } from './constants/fonts';
+// 3rd party:
+import { useShallow } from 'zustand/shallow';
 // Store:
 import useBoundStore from './store/boundStore';
 // React:
@@ -15,44 +17,47 @@ import Wallpaper from './Components/UI/Wallpaper';
 // Types, interfaces and enumns:
 import type { RemoteFontNames } from './constants/fonts';
 
-const FONT_LOAD_CACHE = new Map<string, boolean>();
-
 function App() {
   // Store:
   const location = useBoundStore((state) => state.currentLocation);
+  const fontsLoadStates = useBoundStore(
+    useShallow((state) => state.fontsLoadStates)
+  );
   // Actions:
   const markLoadedFont = useBoundStore((state) => state.markLoadedFont);
   const markAllFontsReady = useBoundStore((state) => state.markAllFontsReady);
   // const checkFont = useBoundStore((state) => state.checkFont);
 
   // Refs:
-  const numberOfPendingRef = useRef<number>(Object.keys(FONT_IMPORTS).length);
+  const numberOfPendingRef = useRef<number>(FONT_FAMILIES_REMOTE.length);
+  const activeRetries = useRef<Record<string, number>>({});
 
   // Loading additional fonts:
   useEffect(() => {
-    // Block rendering immediately
-    document.documentElement.style.visibility = 'hidden';
-
     const loadFontWithRetry = async (
       fontName: RemoteFontNames,
-      loader: () => Promise<void>,
       attempt = 1
     ): Promise<void> => {
+      if (fontsLoadStates[fontName]) return;
+      activeRetries.current[fontName] = attempt;
+
       try {
-        if (FONT_LOAD_CACHE.has(fontName)) return;
+        const fontFace = new FontFace(fontName, createFontUrl(fontName), {
+          weight: '600',
+          display: 'block',
+        });
 
-        // 1. Load the font face
-        await loader();
+        const loadedFace = await fontFace.load();
+        document.fonts.add(loadedFace);
 
-        // 2. Verify the font is actually loaded
+        // Verify font is actually loaded
         await new Promise<void>((resolve) => {
           const check = () => {
             if (document.fonts.check(`600 16px "${fontName}"`)) {
-              FONT_LOAD_CACHE.set(fontName, true);
               markLoadedFont(fontName);
+              delete activeRetries.current[fontName];
               if (--numberOfPendingRef.current <= 0) {
                 markAllFontsReady(true);
-                document.documentElement.style.visibility = '';
               }
               resolve();
             } else {
@@ -67,35 +72,39 @@ function App() {
           err
         );
 
-        // Exponential backoff with jitter
+        // Exponential backoff with jitter: 2s, 4s, 8s, etc. max 30s
         const delay = Math.min(2000 * Math.pow(2, attempt - 1), 30000);
-        const jitter = Math.random() * 1000;
+        const jitter = Math.random() * 1000; // 0-1s random variation
 
         await new Promise((resolve) => setTimeout(resolve, delay + jitter));
-        return loadFontWithRetry(fontName, loader, attempt + 1);
+        return loadFontWithRetry(fontName, attempt + 1);
       }
     };
 
-    // Load fonts in small batches (3 at a time)
-    const fontEntries = Object.entries(FONT_IMPORTS) as [
-      RemoteFontNames,
-      { load: () => Promise<void> }
-    ][];
+    const getBatchSize = () => {
+      const ua = navigator.userAgent;
+      if (/firefox/i.test(ua)) return 1;
+      if (/chrome/i.test(ua)) return 6;
+      return 5;
+    };
 
-    const BATCH_SIZE = 3;
-    for (let i = 0; i < fontEntries.length; i += BATCH_SIZE) {
-      const batch = fontEntries.slice(i, i + BATCH_SIZE);
-      Promise.all(
-        batch.map(([fontName, { load }]) => loadFontWithRetry(fontName, load))
-      ).catch(() => {
-        /* Batch errors handled individually */
+    // Load fonts in batches with retry support
+    const batchSize = getBatchSize();
+    for (let i = 0; i < FONT_FAMILIES_REMOTE.length; i += batchSize) {
+      const batch = FONT_FAMILIES_REMOTE.slice(i, i + batchSize);
+
+      batch.forEach((fontName) => {
+        loadFontWithRetry(fontName);
       });
     }
 
     return () => {
-      document.documentElement.style.visibility = '';
+      // Cleanup any pending retries on unmount
+      Object.keys(activeRetries.current).forEach((fontName) => {
+        delete activeRetries.current[fontName];
+      });
     };
-  }, [markLoadedFont, markAllFontsReady]);
+  }, [fontsLoadStates, markLoadedFont, markAllFontsReady]);
   return (
     <>
       <NavBar />
