@@ -1,6 +1,10 @@
 // Utils:
 // Constants:
-import { FONT_FAMILIES_REMOTE, createFontUrl } from './constants/fonts';
+import {
+  FONT_FAMILIES_REMOTE,
+  createFontUrl,
+  REMOTE_FONT_SUBSETS,
+} from './constants/fonts';
 // 3rd party:
 import { useShallow } from 'zustand/shallow';
 // Store:
@@ -15,7 +19,7 @@ import Wallpaper from './Components/UI/Wallpaper';
 // import FontsDisplay from './Components/FontsDisplay';
 
 // Types, interfaces and enumns:
-import type { RemoteFontNames } from './constants/fonts';
+import type { RemoteFontNames, AllSubsets } from './constants/fonts';
 
 function App() {
   // Store:
@@ -34,31 +38,33 @@ function App() {
 
   // Loading additional fonts:
   useEffect(() => {
-    const loadFontWithRetry = async (
+    const fontEntries = Object.entries(REMOTE_FONT_SUBSETS) as [
+      RemoteFontNames,
+      AllSubsets[]
+    ][];
+
+    const loadSubsetWithRetry = async (
       fontName: RemoteFontNames,
+      subset: AllSubsets,
       attempt = 1
     ): Promise<void> => {
-      if (fontsLoadStates[fontName]) return;
-      activeRetries.current[fontName] = attempt;
-
       try {
-        const fontFace = new FontFace(fontName, createFontUrl(fontName), {
-          weight: '600',
-          display: 'block',
-        });
+        const fontFace = new FontFace(
+          fontName,
+          createFontUrl(fontName, subset),
+          {
+            weight: '600',
+            display: 'block',
+          }
+        );
 
         const loadedFace = await fontFace.load();
         document.fonts.add(loadedFace);
 
-        // Verify font is actually loaded
+        // Verify font is actually available
         await new Promise<void>((resolve) => {
           const check = () => {
             if (document.fonts.check(`600 16px "${fontName}"`)) {
-              markLoadedFont(fontName);
-              delete activeRetries.current[fontName];
-              if (--numberOfPendingRef.current <= 0) {
-                markAllFontsReady(true);
-              }
               resolve();
             } else {
               requestAnimationFrame(check);
@@ -68,43 +74,85 @@ function App() {
         });
       } catch (err) {
         console.error(
-          `Font load failed (attempt ${attempt}): ${fontName}`,
+          `Subset load failed (attempt ${attempt}): ${fontName} - ${subset}`,
           err
         );
 
-        // Exponential backoff with jitter: 2s, 4s, 8s, etc. max 30s
         const delay = Math.min(2000 * Math.pow(2, attempt - 1), 30000);
-        const jitter = Math.random() * 1000; // 0-1s random variation
+        const jitter = Math.random() * 1000;
 
         await new Promise((resolve) => setTimeout(resolve, delay + jitter));
-        return loadFontWithRetry(fontName, attempt + 1);
+        return loadSubsetWithRetry(fontName, subset, attempt + 1);
       }
     };
 
-    const getBatchSize = () => {
+    const loadFontWithAllSubsets = async (
+      fontName: RemoteFontNames,
+      subsets: AllSubsets[]
+    ): Promise<void> => {
+      if (fontsLoadStates[fontName]) return;
+      activeRetries.current[fontName] = 1;
+
+      try {
+        await Promise.all(
+          subsets.map((subset) => loadSubsetWithRetry(fontName, subset))
+        );
+
+        // Final check after all subsets are loaded
+        if (document.fonts.check(`600 16px "${fontName}"`)) {
+          markLoadedFont(fontName);
+          delete activeRetries.current[fontName];
+          if (--numberOfPendingRef.current <= 0) {
+            markAllFontsReady(true);
+          }
+        }
+      } catch (err) {
+        console.error(`Failed to load all subsets for ${fontName}`, err);
+      }
+    };
+
+    const getBatchSubsetLimit = () => {
       const ua = navigator.userAgent;
       if (/firefox/i.test(ua)) return 1;
       if (/chrome/i.test(ua)) return 6;
       return 5;
     };
 
-    // Load fonts in batches with retry support
-    const batchSize = getBatchSize();
-    for (let i = 0; i < FONT_FAMILIES_REMOTE.length; i += batchSize) {
-      const batch = FONT_FAMILIES_REMOTE.slice(i, i + batchSize);
+    const batchLimit = getBatchSubsetLimit();
+    let currentBatchSubsetCount = 0;
+    let batch: [RemoteFontNames, AllSubsets[]][] = [];
 
-      batch.forEach((fontName) => {
-        loadFontWithRetry(fontName);
+    const flushBatch = () => {
+      batch.forEach(([fontName, subsets]) => {
+        loadFontWithAllSubsets(fontName, subsets);
       });
+      batch = [];
+      currentBatchSubsetCount = 0;
+    };
+
+    for (const [fontName, subsets] of fontEntries) {
+      const subsetCount = subsets.length;
+
+      if (currentBatchSubsetCount + subsetCount > batchLimit) {
+        flushBatch();
+      }
+
+      batch.push([fontName, subsets]);
+      currentBatchSubsetCount += subsetCount;
+    }
+
+    if (batch.length > 0) {
+      flushBatch();
     }
 
     return () => {
-      // Cleanup any pending retries on unmount
       Object.keys(activeRetries.current).forEach((fontName) => {
         delete activeRetries.current[fontName];
       });
     };
   }, [fontsLoadStates, markLoadedFont, markAllFontsReady]);
+
+  // JSX:
   return (
     <>
       <NavBar />

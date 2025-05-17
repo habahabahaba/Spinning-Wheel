@@ -71,7 +71,7 @@ const Sector: FC<SectorProps> = ({
 
   const textDecoration = isHighlighted ? 'underline' : '';
   // Fixing Firefox text rendering:
-  const fontSizeAdjusted = isFirefox ? fontSize * 1.18 : fontSize;
+  const fontSizeAdjusted = isFirefox ? fontSize * 1.17 : fontSize;
   const dy =
     isFirefox && ['serif', 'arial', 'sans-serif'].includes(fontFamily)
       ? '0.06em'

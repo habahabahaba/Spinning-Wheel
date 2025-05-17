@@ -1,3 +1,15 @@
+export type AllSubsets =
+  | 'arabic'
+  | 'armenian'
+  | 'cyrillic'
+  | 'cyrillic-ext'
+  | 'greek'
+  | 'greek-ext'
+  | 'hebrew'
+  | 'latin'
+  | 'latin-ext'
+  | 'vietnamese';
+
 export const FONT_FAMILIES_LOCAL = ['sans-serif', 'Arial', 'serif'] as const;
 
 export const FONT_FAMILIES_REMOTE = [
@@ -20,18 +32,58 @@ export const FONT_FAMILIES_REMOTE = [
 
 export type RemoteFontNames = (typeof FONT_FAMILIES_REMOTE)[number];
 
-export function createFontUrl(fontName: RemoteFontNames): string {
+export const REMOTE_FONT_SUBSETS: Record<RemoteFontNames, AllSubsets[]> = {
+  'Archivo Narrow': ['latin'],
+  DynaPuff: ['latin'],
+  'Expletus Sans': ['latin'],
+  Handjet: [
+    'arabic',
+    'armenian',
+    'cyrillic',
+    'cyrillic-ext',
+    'greek',
+    'hebrew',
+    'latin',
+    'latin-ext',
+    'vietnamese',
+  ],
+  Manrope: ['latin', 'latin-ext', 'cyrillic', 'cyrillic-ext'],
+  MuseoModerno: ['latin', 'latin-ext', 'vietnamese'],
+  'Pixelify Sans': ['latin'],
+  'Reddit Sans Condensed': ['latin'],
+  'Roboto Condensed': [
+    'latin',
+    'latin-ext',
+    'cyrillic',
+    'cyrillic-ext',
+    'greek',
+    'greek-ext',
+  ],
+  'Sofia Sans Semi Condensed': [
+    'latin',
+    'latin-ext',
+    'cyrillic',
+    'cyrillic-ext',
+    'greek',
+    // 'greek-ext',
+  ],
+  Tektur: ['latin'],
+  Tourney: ['latin'],
+  Truculenta: ['latin', 'latin-ext'],
+  'Yanone Kaffeesatz': ['latin'],
+  'Winky Rough': ['latin'],
+};
+
+export function createFontUrl(
+  fontName: RemoteFontNames,
+  subset: AllSubsets
+): string {
   const fontId = fontName.toLowerCase().replace(/\s+/g, '-');
-  return `url(https://cdn.jsdelivr.net/npm/@fontsource/${fontId}@latest/files/${fontId}-latin-600-normal.woff2) format('woff2')`;
+  return `url(https://cdn.jsdelivr.net/npm/@fontsource/${fontId}@latest/files/${fontId}-${subset}-600-normal.woff2) format('woff2')`;
 }
 
-// Types
-// export type FontLoader = () => Promise<Blob>;
-
-// Types, interfaces and enumns:
 export type LocalFontNames = (typeof FONT_FAMILIES_LOCAL)[number];
 
-// export type FontLoader = () => Promise<void>;
 export type AllFontNames = LocalFontNames | RemoteFontNames;
 
 export const FONT_FAMILIES_REMOTE_SET: Set<AllFontNames> = new Set(
@@ -71,9 +123,3 @@ export const initFontsState = {
   fontsLoadStates: initFontsLoadStates,
   allFontsReady: false,
 };
-
-export function createUrl(fontName: RemoteFontNames): string {
-  const fontId = fontName.toLowerCase().split(' ').join('-');
-
-  return `https://cdn.jsdelivr.net/npm/@fontsource/${fontId}@latest/files/${fontId}-latin-600-normal.woff2`;
-}
