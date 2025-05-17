@@ -61,7 +61,9 @@ export default function useFontsLoader() {
       subset: AllSubsets;
     }[] = [];
 
-    for (const [fontName, subsets] of Object.entries(pendingSubsetsPerFont)) {
+    for (const [fontName, subsets] of Object.entries(
+      pendingSubsetsPerFont.current
+    ) as [RemoteFontNames, Set<AllSubsets>][]) {
       if (!fontsLoadStates[fontName as RemoteFontNames]) {
         for (const subset of subsets) {
           allFontSubsetPairs.push({

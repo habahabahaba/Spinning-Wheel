@@ -34,7 +34,7 @@ export function createFontUrl(
   subset: AllSubsets
 ): string {
   const fontId = fontName.toLowerCase().replace(/\s+/g, '-');
-  return `url(${fontId}@latest/files/${fontId}-${subset}-600-normal.woff2) format('woff2')`;
+  return `url(https://cdn.jsdelivr.net/fontsource/fonts/${fontId}@latest/${subset}-600-normal.woff2) format('woff2')`;
 }
 
 // Load a font subset with retry logic
