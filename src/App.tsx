@@ -15,6 +15,8 @@ import Wallpaper from './Components/UI/Wallpaper';
 // Types, interfaces and enumns:
 import type { RemoteFontNames } from './constants/fonts';
 
+const FONT_LOAD_CACHE = new Map<string, boolean>();
+
 function App() {
   // Store:
   const location = useBoundStore((state) => state.currentLocation);
@@ -28,32 +30,72 @@ function App() {
 
   // Loading additional fonts:
   useEffect(() => {
-    Object.entries(FONT_IMPORTS).forEach(([font, loader]) => {
-      const loadFont = async () => {
-        try {
-          document.fonts.forEach((f) =>
-            console.log('[ document.fonts]', f.family, f.weight)
-          );
-          await loader();
+    // Block rendering immediately
+    document.documentElement.style.visibility = 'hidden';
 
-          await document.fonts.load(`600 1em "${font}"`);
-          markLoadedFont(font as RemoteFontNames);
-          if (--numberOfPendingRef.current <= 0) {
-            markAllFontsReady(true);
-          }
-        } catch (err) {
-          console.error(`Failed to load font: ${font}`, err);
+    const loadFontWithRetry = async (
+      fontName: RemoteFontNames,
+      loader: () => Promise<void>,
+      attempt = 1
+    ): Promise<void> => {
+      try {
+        if (FONT_LOAD_CACHE.has(fontName)) return;
 
-          // Retry with backoff
-          setTimeout(loadFont, 2000 + Math.floor(Math.random() * 1000));
-        }
-      };
+        // 1. Load the font face
+        await loader();
 
-      // Immediately run loader
-      loadFont();
-    });
+        // 2. Verify the font is actually loaded
+        await new Promise<void>((resolve) => {
+          const check = () => {
+            if (document.fonts.check(`600 16px "${fontName}"`)) {
+              FONT_LOAD_CACHE.set(fontName, true);
+              markLoadedFont(fontName);
+              if (--numberOfPendingRef.current <= 0) {
+                markAllFontsReady(true);
+                document.documentElement.style.visibility = '';
+              }
+              resolve();
+            } else {
+              requestAnimationFrame(check);
+            }
+          };
+          check();
+        });
+      } catch (err) {
+        console.error(
+          `Font load failed (attempt ${attempt}): ${fontName}`,
+          err
+        );
+
+        // Exponential backoff with jitter
+        const delay = Math.min(2000 * Math.pow(2, attempt - 1), 30000);
+        const jitter = Math.random() * 1000;
+
+        await new Promise((resolve) => setTimeout(resolve, delay + jitter));
+        return loadFontWithRetry(fontName, loader, attempt + 1);
+      }
+    };
+
+    // Load fonts in small batches (3 at a time)
+    const fontEntries = Object.entries(FONT_IMPORTS) as [
+      RemoteFontNames,
+      { load: () => Promise<void> }
+    ][];
+
+    const BATCH_SIZE = 3;
+    for (let i = 0; i < fontEntries.length; i += BATCH_SIZE) {
+      const batch = fontEntries.slice(i, i + BATCH_SIZE);
+      Promise.all(
+        batch.map(([fontName, { load }]) => loadFontWithRetry(fontName, load))
+      ).catch(() => {
+        /* Batch errors handled individually */
+      });
+    }
+
+    return () => {
+      document.documentElement.style.visibility = '';
+    };
   }, [markLoadedFont, markAllFontsReady]);
-
   return (
     <>
       <NavBar />

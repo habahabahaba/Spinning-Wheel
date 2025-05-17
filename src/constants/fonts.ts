@@ -1,43 +1,120 @@
 export const FONT_FAMILIES_LOCAL = ['sans-serif', 'Arial', 'serif'] as const;
 
 export const FONT_IMPORTS = {
-  'Archivo Narrow': () => import('@fontsource/archivo-narrow/600.css'),
-
-  DynaPuff: () => import('@fontsource/dynapuff/600.css'),
-
-  'Expletus Sans': () => import('@fontsource/expletus-sans/600.css'),
-
-  Handjet: () => import('@fontsource/handjet/600.css'),
-
-  Manrope: () => import('@fontsource/manrope/600.css'),
-
-  MuseoModerno: () => import('@fontsource/museomoderno/600.css'),
-
-  'Pixelify Sans': () => import('@fontsource/pixelify-sans/600.css'),
-
-  'Reddit Sans Condensed': () =>
-    import('@fontsource/reddit-sans-condensed/600.css'),
-
-  'Roboto Condensed': () => import('@fontsource/roboto-condensed/600.css'),
-
-  'Sofia Sans Semi Condensed': () =>
-    import('@fontsource/sofia-sans-semi-condensed/600.css'),
-
-  Tektur: () => import('@fontsource/tektur/600.css'),
-
-  Tourney: () => import('@fontsource/tourney/600.css'),
-
-  Truculenta: () => import('@fontsource/truculenta/600.css'),
-
-  'Yanone Kaffeesatz': () => import('@fontsource/yanone-kaffeesatz/600.css'),
-
-  'Winky Rough': () => import('@fontsource/winky-rough/600.css'),
+  'Archivo Narrow': {
+    id: 'archivo-narrow',
+    load: () => loadFontBlocking('archivo-narrow', 'Archivo Narrow'),
+  },
+  DynaPuff: {
+    id: 'dynapuff',
+    load: () => loadFontBlocking('dynapuff', 'DynaPuff'),
+  },
+  'Expletus Sans': {
+    id: 'expletus-sans',
+    load: () => loadFontBlocking('expletus-sans', 'Expletus Sans'),
+  },
+  Handjet: {
+    id: 'handjet',
+    load: () => loadFontBlocking('handjet', 'Handjet'),
+  },
+  Manrope: {
+    id: 'manrope',
+    load: () => loadFontBlocking('manrope', 'Manrope'),
+  },
+  MuseoModerno: {
+    id: 'museomoderno',
+    load: () => loadFontBlocking('museomoderno', 'MuseoModerno'),
+  },
+  'Pixelify Sans': {
+    id: 'pixelify-sans',
+    load: () => loadFontBlocking('pixelify-sans', 'Pixelify Sans'),
+  },
+  'Reddit Sans Condensed': {
+    id: 'reddit-sans-condensed',
+    load: () =>
+      loadFontBlocking('reddit-sans-condensed', 'Reddit Sans Condensed'),
+  },
+  'Roboto Condensed': {
+    id: 'roboto-condensed',
+    load: () => loadFontBlocking('roboto-condensed', 'Roboto Condensed'),
+  },
+  'Sofia Sans Semi Condensed': {
+    id: 'sofia-sans-semi-condensed',
+    load: () =>
+      loadFontBlocking(
+        'sofia-sans-semi-condensed',
+        'Sofia Sans Semi Condensed'
+      ),
+  },
+  Tektur: {
+    id: 'tektur',
+    load: () => loadFontBlocking('tektur', 'Tektur'),
+  },
+  Tourney: {
+    id: 'tourney',
+    load: () => loadFontBlocking('tourney', 'Tourney'),
+  },
+  Truculenta: {
+    id: 'truculenta',
+    load: () => loadFontBlocking('truculenta', 'Truculenta'),
+  },
+  'Yanone Kaffeesatz': {
+    id: 'yanone-kaffeesatz',
+    load: () => loadFontBlocking('yanone-kaffeesatz', 'Yanone Kaffeesatz'),
+  },
+  'Winky Rough': {
+    id: 'winky-rough',
+    load: () => loadFontBlocking('winky-rough', 'Winky Rough'),
+  },
 } as const;
+
+const FONT_CACHE = new Map<string, boolean>();
+
+async function loadFontBlocking(
+  fontId: string,
+  fontName: string
+): Promise<void> {
+  if (FONT_CACHE.has(fontName)) return;
+
+  const url = `https://cdn.jsdelivr.net/npm/@fontsource/${fontId}@latest/files/${fontId}-latin-600-normal.woff2`;
+
+  // 1. Load font with hard blocking
+  const fontFace = new FontFace(fontName, `url(${url}) format('woff2')`, {
+    weight: '600',
+    display: 'block', // Hard block
+    stretch: 'normal',
+  });
+
+  // 2. Atomic load-and-verify
+  try {
+    const loadedFace = await fontFace.load();
+    document.fonts.add(loadedFace);
+
+    // 3. Verify without DOM - uses FontFaceSet check
+    await new Promise<void>((resolve) => {
+      const check = () => {
+        if (document.fonts.check(`600 16px "${fontName}"`)) {
+          FONT_CACHE.set(fontName, true);
+          resolve();
+        } else {
+          requestAnimationFrame(check);
+        }
+      };
+      check();
+    });
+  } catch (err) {
+    FONT_CACHE.delete(fontName);
+    throw err;
+  }
+}
+
+// Types
+export type FontLoader = () => Promise<Blob>;
 
 // Types, interfaces and enumns:
 export type LocalFontNames = (typeof FONT_FAMILIES_LOCAL)[number];
 export type RemoteFontNames = keyof typeof FONT_IMPORTS;
-export type FontLoader = () => Promise<void>;
+// export type FontLoader = () => Promise<void>;
 export type AllFontNames = LocalFontNames | RemoteFontNames;
 
 export const FONT_FAMILIES_REMOTE = Object.keys(
