@@ -96,30 +96,3 @@ export async function loadSubset(
   // Optionally, check it's visible:
   await document.fonts.load('600 1em ' + fontName);
 }
-
-// Retry helper with exponential backoff
-// export async function loadFontSubsetWithRetry(
-//   fontName: RemoteFontNames,
-//   subset: AllSubsets,
-//   attempt: number = 1
-// ): Promise<void> {
-//   try {
-//     await loadSubset(fontName, subset);
-//   } catch (error) {
-//     const maxAttempts = 4;
-
-//     if (attempt >= maxAttempts) {
-//       throw new Error(`Max retry attempts reached for ${fontName} - ${subset}`);
-//     }
-
-//     const delay = Math.min(500 * 2 ** (attempt - 1), 5000); // cap at 5s
-
-//     console.warn(
-//       `Retrying ${fontName} (${subset}) [attempt ${attempt}] after ${delay}ms`
-//     );
-
-//     await new Promise((resolve) => setTimeout(resolve, delay));
-
-//     return loadFontSubsetWithRetry(fontName, subset, attempt + 1);
-//   }
-// }
