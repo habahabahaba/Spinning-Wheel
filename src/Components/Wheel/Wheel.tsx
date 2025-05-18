@@ -55,7 +55,6 @@ const Wheel: FC<WheelProps> = ({
   const diameter = 2 * radius;
 
   const anglePerSector = 360 / outcomes.length;
-
   // JSX:
   const sectors = useMemo(
     () =>
