@@ -14,7 +14,18 @@
   border-radius: 0.25rem;
   animation: slide-up 225ms ease-out;
 }
-
+/* Firefox zoom fix */
+@supports (-moz-appearance: none) {
+  .config_form {
+    min-width: max-content;
+  }
+}
+/* Safari width fix */
+@supports (-webkit-hyphens: none) and (not (-moz-appearance: none)) {
+  .config_form {
+    max-width: min(888px, 44rem);
+  }
+}
 /* PANELS (top-down) */
 /* Save/Load configuration */
 .save_load_panel {
@@ -46,13 +57,13 @@
   position: relative;
   height: calc(100% - 11rem);
   /* max-width: 40.5rem; */
-  max-width: 100%;
+  max-width: max-content;
 
   padding: 0 1rem;
   color: var(--color-fg, black);
 }
 /* Shadow over outcomes list: */
-.outcomes_panel::after {
+.outcomes_panel::before {
   pointer-events: none;
   content: '';
 
@@ -66,6 +77,19 @@
   background-color: transparent;
   box-shadow: 0px 10px 20px -13px color-mix(in srgb, var(--color-fg) 75%, transparent);
 }
+/* Safari shadow fix */
+@supports (-webkit-hyphens: none) and (not (-moz-appearance: none)) {
+  .outcomes_panel::before {
+    top: -14px;
+  }
+}
+/* Firefox shadow fix */
+@supports (-moz-appearance: none) {
+  .outcomes_panel::before {
+    top: -0px;
+  }
+}
+
 .outcomes_list {
   position: relative;
   min-height: 5rem;
