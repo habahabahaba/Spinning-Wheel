@@ -23,7 +23,7 @@ interface SectorProps {
   label?: string;
   fontFamily?: string;
   fontWeight?: string;
-  isFirefox?: boolean;
+  firefoxScale?: number | false;
   isHighlighted?: boolean;
 }
 
@@ -37,7 +37,7 @@ const Sector: FC<SectorProps> = ({
   label = '',
   fontFamily = 'Arial',
   fontWeight = '600',
-  isFirefox = false,
+  firefoxScale = false,
   isHighlighted = false,
 }) => {
   const sectorAngle = endAngle - startAngle;
@@ -72,13 +72,13 @@ const Sector: FC<SectorProps> = ({
   const textDecoration = isHighlighted ? 'underline' : '';
 
   // Fixing Firefox text rendering:
-  // const fontSizeAdjusted = isFirefox ? Math.floor(fontSize * 1.1) : fontSize;
+  const fontSizeAdjusted = firefoxScale !== false ? fontSize * 1 : fontSize;
   const dy =
-    isFirefox && ['serif', 'arial', 'sans-serif'].includes(fontFamily)
+    firefoxScale && ['serif', 'arial', 'sans-serif'].includes(fontFamily)
       ? '0.06em'
       : 0;
   const textUnderlineOffset =
-    isFirefox &&
+    firefoxScale &&
     !['sans-serif', 'serif', 'Yanone Kaffeesatz'].includes(fontFamily)
       ? '0.2em'
       : 'initial';
@@ -104,7 +104,7 @@ const Sector: FC<SectorProps> = ({
         dominantBaseline='central'
         fontFamily={fontFamily}
         fontWeight={fontWeight}
-        fontSize={fontSize}
+        fontSize={fontSizeAdjusted}
         dy={dy}
         fill={textColor}
         style={{

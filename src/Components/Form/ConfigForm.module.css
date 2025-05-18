@@ -48,7 +48,7 @@
     'radius_select palette_select font_select' 2fr / 1fr 1fr max-content;
 
   width: min-content;
-  margin: 0.25rem 0.5rem;
+  margin: 0.25rem 1rem;
   padding: 0;
 }
 

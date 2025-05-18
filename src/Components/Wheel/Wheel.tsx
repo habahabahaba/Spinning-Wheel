@@ -2,8 +2,8 @@
 import { PALETTES } from '../../constants/palettes';
 // Utils:
 import { contrastColor, brightness } from '../../utils/color';
-import { isFirefox } from '../../utils/browser';
 // 3rd party:
+import { useShallow } from 'zustand/shallow';
 // Store:
 import useBoundStore from '../../store/boundStore';
 // React Router:
@@ -11,6 +11,7 @@ import useBoundStore from '../../store/boundStore';
 import { useMemo } from 'react';
 // Context:
 // Hooks:
+import useFirefoxTextScale from '../../hooks/useFirefoxTextScale';
 // Components:
 import Sector from './Sector';
 // CSS:
@@ -38,7 +39,9 @@ const Wheel: FC<WheelProps> = ({
   wheelRef,
 }) => {
   // Store:
-  const outcomes = useBoundStore((state) => state.activeConfig.outcomes);
+  const outcomes = useBoundStore(
+    useShallow((state) => state.activeConfig.outcomes)
+  );
   const default_palette_idx = useBoundStore(
     (state) => state.activeConfig.default_palette_idx
   );
@@ -47,6 +50,8 @@ const Wheel: FC<WheelProps> = ({
   );
   const winningOutcomeIdx = useBoundStore((state) => state.winningOutcomeIdx);
 
+  const firefoxScale = 777;
+  console.log('firefoxScale: ', firefoxScale);
   const fillColors = PALETTES[default_palette_idx];
   const fontFamily = default_fontFamily;
 
@@ -81,7 +86,7 @@ const Wheel: FC<WheelProps> = ({
             label={outcome.label}
             fillColor={fillColor}
             fontFamily={outcome.fontFamily || fontFamily}
-            isFirefox={isFirefox}
+            firefoxScale={firefoxScale}
             textColor={textColor}
             isHighlighted={isHighlighted}
           />
@@ -92,6 +97,7 @@ const Wheel: FC<WheelProps> = ({
       fontFamily,
       outcomes,
       center,
+      firefoxScale,
       radius,
       anglePerSector,
       winningOutcomeIdx,

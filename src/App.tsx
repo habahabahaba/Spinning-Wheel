@@ -12,7 +12,7 @@ import useBoundStore from './store/boundStore';
 // React:
 // import { useEffect, useRef } from 'react';
 // Hooks:
-import useFontsLoader from './hooks/useFontsLoader';
+// import useFontsLoader from './hooks/useFontsLoader';
 // Components:
 import NavBar from './Components/NavBar';
 import Main from './Components/Main';
@@ -28,7 +28,8 @@ function App() {
   const location = useBoundStore((state) => state.currentLocation);
 
   // Start loading fonts:
-  useFontsLoader();
+  // useFontsLoader();
+  console.log('[App]');
   // JSX:
   return (
     <>
