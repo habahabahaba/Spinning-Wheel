@@ -46,7 +46,7 @@ const createFontSlice: StateCreator<
     set((state) => {
       const newURLs = new Set(state.fontURLSets[fontName]);
       newURLs.delete(url);
-
+      console.log('markLoadedURL');
       return {
         fontURLSets: { ...state.fontURLSets, [fontName]: newURLs },
         fontLoadState: newURLs.size
