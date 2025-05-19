@@ -1,5 +1,5 @@
 // Constants:
-import { initFontsState } from '../constants/fonts';
+import { initFontState } from '../constants/fonts';
 // Utils:
 // 3rd party:
 // import { create } from 'zustand';
@@ -22,25 +22,46 @@ const createFontSlice: StateCreator<
   [],
   FontSlice
 > = (set, get) => ({
-  ...initFontsState,
+  ...initFontState,
 
   // Actions:
   resetFontState: () => {
-    set(initFontsState);
+    set(initFontState);
   },
 
   replaceFontState: (newState: FontState) => set(newState),
 
   markLoadedFont: (loadedFont: RemoteFontNames) =>
     set((state) => ({
-      fontsLoadStates: { ...state.fontsLoadStates, [loadedFont]: true },
+      fontLoadState: { ...state.fontLoadState, [loadedFont]: true },
     })),
 
-  checkFont: (fontName: AllFontNames) => get().fontsLoadStates[fontName],
+  markLoadedURL: ({
+    fontName,
+    url,
+  }: {
+    fontName: RemoteFontNames;
+    url: string;
+  }): void =>
+    set((state) => {
+      const newURLs = new Set(state.fontURLSets[fontName]);
+      newURLs.delete(url);
 
-  markAllFontsReady: (boolean: boolean) => set({ allFontsReady: boolean }),
+      return {
+        fontURLSets: { ...state.fontURLSets, [fontName]: newURLs },
+        fontLoadState: newURLs.size
+          ? state.fontLoadState
+          : { ...state.fontLoadState, [fontName]: true },
+      };
+    }),
 
-  checkAllFontsReady: () => get().allFontsReady,
+  checkFont: (fontName: AllFontNames) => get().fontLoadState[fontName],
+
+  checkAllFontsReady: () => {
+    const states = Object.values(get().fontLoadState);
+
+    return states.every((loaded) => loaded);
+  },
 });
 
 export default createFontSlice;

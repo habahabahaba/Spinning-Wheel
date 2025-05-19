@@ -20,7 +20,7 @@ interface FontPreviewProps {
 
 const FontPreview: FC<FontPreviewProps> = ({ fontFamily }) => {
   // Store:
-  const isLoaded = useBoundStore((state) => state.fontsLoadStates[fontFamily]);
+  const isLoaded = useBoundStore((state) => state.fontLoadState[fontFamily]);
 
   const style: CSSProperties = isLoaded
     ? {

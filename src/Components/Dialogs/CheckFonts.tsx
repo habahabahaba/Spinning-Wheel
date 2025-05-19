@@ -27,7 +27,7 @@ const CheckFonts: FC = () => {
   const { handleCloseDialog } = use(dialogCloseCtx);
 
   // Store:
-  const fontsLoadStates = useBoundStore((state) => state.fontsLoadStates);
+  const fontLoadState = useBoundStore((state) => state.fontLoadState);
   const default_fontFamily = useBoundStore(
     (state) => state.currentConfig.default_fontFamily
   );
@@ -45,7 +45,7 @@ const CheckFonts: FC = () => {
   );
   const allFonts = [default_fontFamily, ...outcomesFonts] as AllFontNames[];
   const missingFonts = allFonts.filter(
-    (font) => font && fontsLoadStates[font] === false
+    (font) => font && fontLoadState[font] === false
   ) as AllFontNames[];
   const missingFontsSet = new Set<AllFontNames>(missingFonts);
   // Handlers:

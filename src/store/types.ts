@@ -8,22 +8,29 @@ import type {
   LocalFontNames,
   RemoteFontNames,
   AllFontNames,
+  RemoteFontURLSets,
 } from '../constants/fonts';
 
 // Fonts:
 export { LocalFontNames, RemoteFontNames, AllFontNames };
 
 export interface FontState {
-  fontsLoadStates: Record<AllFontNames, boolean>;
-  allFontsReady: boolean;
+  fontLoadState: Record<AllFontNames, boolean>;
+  fontURLSets: RemoteFontURLSets;
 }
 
 export interface FontActions {
   resetFontState: () => void;
   replaceFontState: (newState: FontState) => void;
   markLoadedFont: (loadedFont: RemoteFontNames) => void;
+  markLoadedURL: ({
+    fontName,
+    url,
+  }: {
+    fontName: RemoteFontNames;
+    url: string;
+  }) => void;
   checkFont: (fontName: AllFontNames) => boolean;
-  markAllFontsReady: (boolean: boolean) => void;
   checkAllFontsReady: () => boolean;
 }
 
