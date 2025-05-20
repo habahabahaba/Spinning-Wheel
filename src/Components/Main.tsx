@@ -10,12 +10,13 @@ import useBoundStore from '../store/boundStore';
 import { useRef } from 'react';
 // Context:
 // Hooks:
-import { useSpinAnimation } from '../hooks/useSpinAnimation';
+import useSpinAnimation from '../hooks/useSpinAnimation';
 // Components:
 import Wheel from './Wheel/Wheel';
 import Arrow from './Wheel/Arrow';
 import SpinButton from './Wheel/SpinButton';
-import ResultDisplayModal from './Dialogs/ResultDisplayDialog';
+import ResultDisplayDialog from './Dialogs/ResultDisplayDialog';
+
 // CSS:
 import styles from './Main.module.css';
 // Types, interfaces and enumns:
@@ -42,7 +43,7 @@ const Main: FC = () => {
 
   // Refs:
   const wheelRef = useRef<SVGSVGElement>(null);
-  const resultModalRef = useRef<DialogHandle>(null);
+  const resultDialogRef = useRef<DialogHandle>(null);
   const randomRef = useRef<number>(0);
 
   const { windUp, cancelAnimations, spin } = useSpinAnimation(
@@ -52,6 +53,7 @@ const Main: FC = () => {
   );
 
   // Handlers
+
   function handleClick() {
     if (wheelAnimationState !== 'idle') return;
   }
@@ -93,7 +95,7 @@ const Main: FC = () => {
         },
         () => {
           // console.log(`END callback`);
-          resultModalRef.current?.handleShowDialog();
+          resultDialogRef.current?.handleShowDialog();
         }
       );
       // console.log(`[Wheel] resultingTurn: ${resultingTurn}`);
@@ -135,7 +137,7 @@ const Main: FC = () => {
           onMouseLeave={handleMouseLeave}
         />
       </div>
-      <ResultDisplayModal ref={resultModalRef} />
+      <ResultDisplayDialog ref={resultDialogRef} />
     </main>
   );
 };

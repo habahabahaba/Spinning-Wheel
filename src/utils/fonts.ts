@@ -25,7 +25,8 @@ async function loadFontSubsetWithRetry(
       return new Promise<void>((resolve) => {
         const check = () => {
           if (document.fonts.check(`600 16px "${fontName}"`)) {
-            resolve(console.log(`Font variant (${url}) was installed.`));
+            resolve();
+            // console.log(`Font variant (${url}) was installed.`)
           } else {
             requestAnimationFrame(check);
           }

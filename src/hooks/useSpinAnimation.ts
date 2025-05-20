@@ -74,7 +74,7 @@ const spinVelocity = (numberOfTurns: number) => {
   return numberOfTurns * 3 + 1;
 };
 
-export function useSpinAnimation(
+export default function useSpinAnimation(
   ref: RefObject<HTMLElement | SVGSVGElement | null>,
   wheelAnimationState: WheelAnimationState,
   setWheelAnimationState: ({
