@@ -13,12 +13,16 @@ import { mergeStyles } from '../../utils/css';
 // CSS:
 import styles from './Dialogs.module.css';
 // Types, interfaces and enumns:
-import type { FC } from 'react';
+import type { FC, Dispatch, SetStateAction } from 'react';
 export interface FirefoxWarningProps {
-  setShowWarning: (boolean: boolean) => void;
+  disableWarning: boolean;
+  setDisableWarning: Dispatch<SetStateAction<boolean>>;
 }
 
-const FirefoxWarning: FC<FirefoxWarningProps> = ({ setShowWarning }) => {
+const FirefoxWarning: FC<FirefoxWarningProps> = ({
+  disableWarning,
+  setDisableWarning,
+}) => {
   // Context:
 
   // Store:
@@ -37,32 +41,33 @@ const FirefoxWarning: FC<FirefoxWarningProps> = ({ setShowWarning }) => {
 
   // JSX:
   return (
-    <div className={mergeStyles(styles.container, styles.x_small)}>
+    <div className={mergeStyles(styles.container, styles.small)}>
       <div className={styles.warning_container}>
         <div className={styles.warning_danger}>
           <h3>Warning</h3>
           <p>
-            Please consider disabling "Zoom text only" mode (View: Zoom), as it
-            will conflict with the text inside the wheel.
+            Please consider disabling "<b>Zoom text only</b>" mode (
+            <b>Menu: View: Zoom: Zoom text only</b>), as it will conflict with
+            how the text inside the wheel is rendered.
           </p>
         </div>
       </div>
       <div
         className={mergeStyles(styles.buttons_container, styles.buttons_wide)}
       >
-        Don't show this again{' '}
-        <input
-          type='checkbox'
-          value='disable'
-          onChange={(ev) => {
-            console.log(ev);
-            if (ev.target.value === 'disable') {
-              setShowWarning(false);
-            } else {
-              setShowWarning(true);
-            }
-          }}
-        />
+        <span>
+          Don't show this again
+          <input
+            type='checkbox'
+            name='show-warning'
+            value='disable'
+            checked={disableWarning}
+            onChange={() => {
+              setDisableWarning((prev) => !prev);
+            }}
+            className={styles.checkbox_input}
+          />
+        </span>
       </div>
     </div>
   );

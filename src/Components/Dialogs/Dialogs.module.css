@@ -187,7 +187,9 @@
     cursor: not-allowed;
   }
 }
-
+.checkbox_input {
+  margin-left: 1rem;
+}
 /* BUTTONS */
 
 .buttons_container {

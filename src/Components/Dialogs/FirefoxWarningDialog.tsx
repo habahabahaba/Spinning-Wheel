@@ -18,15 +18,18 @@ import type { DialogHandle } from '../UI/Dialog';
 import type { FirefoxWarningProps } from './FirefoxWarning';
 
 const FirefoxWarningDialog = forwardRef<DialogHandle, FirefoxWarningProps>(
-  ({ setShowWarning }, ref: ForwardedRef<DialogHandle>) => {
+  ({ disableWarning, setDisableWarning }, ref: ForwardedRef<DialogHandle>) => {
     // JSX:
     return (
       <Dialog
         ref={ref}
         className={mergeStyles(styles.dialog, styles.top, 'center-shadow')}
-        childProps={{ setShowWarning }}
+        childProps={{ setDisableWarning }}
       >
-        <FirefoxWarning setShowWarning={setShowWarning} />
+        <FirefoxWarning
+          disableWarning={disableWarning}
+          setDisableWarning={setDisableWarning}
+        />
       </Dialog>
     );
   }
