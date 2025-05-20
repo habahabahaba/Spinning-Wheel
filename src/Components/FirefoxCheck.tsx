@@ -32,7 +32,7 @@ const FirefoxCheck: FC<FirefoxCheckProps> = ({ location }) => {
   // Check for "Zoom text only" in FIREFOX:
   // State:
   const [disableWarning, setDisableWarning] = useState<boolean>(false);
-  console.log(`[Main] disableWarning: ${disableWarning}`);
+
   const firefoxTextZoomActive = useFirefoxTextZoom();
   // Refs:
   const warningDialogRef = useRef<DialogHandle>(null);

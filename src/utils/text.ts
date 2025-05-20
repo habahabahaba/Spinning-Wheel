@@ -32,6 +32,40 @@ function getMeasurementContext() {
   }
   return measurementCtx!;
 }
+
+export function detectFirefoxTextZoomRatio({
+  font = '600 16px Arial',
+  text = 'mmmmmmmmmm',
+  calibratedWidth = 142.8000030517578,
+}: {
+  font?: string;
+  text?: string;
+  calibratedWidth?: number;
+} = {}): number {
+  const isFirefox =
+    typeof navigator !== 'undefined' && /firefox/i.test(navigator.userAgent);
+  if (!isFirefox) return 1;
+
+  const canvas = document.createElement('canvas');
+  const ctx = canvas.getContext('2d');
+  if (!ctx) {
+    console.warn('Canvas 2D context not available');
+    return 1;
+  }
+
+  ctx.font = font;
+  const actualWidth = ctx.measureText(text).width;
+
+  // Clean up
+  canvas.width = 0;
+  canvas.height = 0;
+
+  console.log(
+    `[detectFirefoxTextZoomRatio] ratio: ${calibratedWidth / actualWidth}`
+  );
+
+  return calibratedWidth / actualWidth;
+}
 /**
  * Measures text dimensions accounting for precise font metrics
  * @param text - Text to measure
@@ -44,22 +78,25 @@ function measureTextBox(
   text: string,
   fontSize: string,
   fontFamily: string,
-  fontWeight: string
+  fontWeight: string,
+  textScale: number = 1
 ): { width: number; height: number } {
   const ctx = getMeasurementContext();
   ctx.font = `${fontWeight} ${fontSize} ${fontFamily}`;
 
   // Measure width
-  const width = ctx.measureText(text).width;
+  const width = ctx.measureText(text).width / 1;
 
   // Measure height using actual bounding boxes
   const metrics = ctx.measureText(text);
   const height =
-    metrics.actualBoundingBoxAscent + metrics.actualBoundingBoxDescent;
+    (metrics.actualBoundingBoxAscent + metrics.actualBoundingBoxDescent) / 1;
+
+  // Correction for text-only-zoom in FIREFOX:
 
   return {
-    width: Math.ceil(width),
-    height: Math.ceil(height),
+    width: Math.ceil(width * textScale),
+    height: Math.ceil(height * textScale),
   };
 }
 
@@ -211,8 +248,14 @@ export function calculateTextLayout(
   fontFamily: string,
   fontWeight: string,
   radius: number,
-  sectorAngleDeg: number
-): { text: string; fontSize: number; distanceFromApex: number } {
+  sectorAngleDeg: number,
+  textScale: number = 1
+): {
+  text: string;
+  fontSize: number;
+  distanceFromApex: number;
+  textScale?: number;
+} {
   // Pick reasonable minimal font size
   const FontRadiusRatio = 0.035;
   const minFontSize = Math.max(12, Math.ceil(radius * FontRadiusRatio));
@@ -222,7 +265,8 @@ export function calculateTextLayout(
     label,
     `${minFontSize}px`,
     fontFamily,
-    fontWeight
+    fontWeight,
+    textScale
   );
 
   const minFitEvaluation = evaluateRectangleInSector(
@@ -254,7 +298,8 @@ export function calculateTextLayout(
       truncated,
       `${minFontSize}px`,
       fontFamily,
-      fontWeight
+      fontWeight,
+      textScale
     );
     const truncatedFit = evaluateRectangleInSector(
       sectorAngleDeg,
@@ -295,7 +340,8 @@ export function calculateTextLayout(
     label,
     `${maxFontSize}px`,
     fontFamily,
-    fontWeight
+    fontWeight,
+    textScale
   );
 
   // Final positioning with arcOvershoot awareness

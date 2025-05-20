@@ -24,6 +24,7 @@ interface SectorProps {
   fontFamily?: string;
   fontWeight?: string;
   isFirefox?: boolean;
+  textScale?: number;
   isHighlighted?: boolean;
 }
 
@@ -38,6 +39,7 @@ const Sector: FC<SectorProps> = ({
   fontFamily = 'Arial',
   fontWeight = '600',
   isFirefox = false,
+  textScale = 1,
   isHighlighted = false,
 }) => {
   const sectorAngle = endAngle - startAngle;
@@ -60,8 +62,15 @@ const Sector: FC<SectorProps> = ({
   // Calculate sector geometry
   const { text, fontSize, distanceFromApex } = useMemo(
     () =>
-      calculateTextLayout(label, fontFamily, fontWeight, radius, sectorAngle),
-    [label, fontFamily, fontWeight, radius, sectorAngle]
+      calculateTextLayout(
+        label,
+        fontFamily,
+        fontWeight,
+        radius,
+        sectorAngle,
+        textScale
+      ),
+    [label, fontFamily, fontWeight, radius, sectorAngle, textScale]
   );
 
   const textPos = useMemo(
@@ -73,8 +82,10 @@ const Sector: FC<SectorProps> = ({
 
   // Fixing Firefox text rendering:
   const dy =
-    isFirefox && ['serif', 'arial', 'sans-serif'].includes(fontFamily)
+    isFirefox && fontFamily === 'arial'
       ? '0.06em'
+      : ['serif', 'sans-serif'].includes(fontFamily)
+      ? '0.5rem'
       : 0;
   const textUnderlineOffset =
     isFirefox &&

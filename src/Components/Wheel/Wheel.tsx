@@ -2,6 +2,7 @@
 import { PALETTES } from '../../constants/palettes';
 // Utils:
 import { contrastColor, brightness } from '../../utils/color';
+import { detectFirefoxTextZoomRatio } from '../../utils/text';
 import { isFirefox } from '../../utils/browser';
 // 3rd party:
 import { useShallow } from 'zustand/shallow';
@@ -57,6 +58,8 @@ const Wheel: FC<WheelProps> = ({
 
   const center = useMemo(() => ({ x: radius, y: radius }), [radius]);
 
+  const textScale = isFirefox ? detectFirefoxTextZoomRatio() : 1;
+  // Derived values;
   const diameter = 2 * radius;
 
   const anglePerSector = 360 / outcomes.length;
@@ -89,6 +92,7 @@ const Wheel: FC<WheelProps> = ({
             fontFamily={outcome.fontFamily || fontFamily}
             isFirefox={isFirefox}
             textColor={textColor}
+            textScale={textScale}
             isHighlighted={isHighlighted}
           />
         );
@@ -101,6 +105,7 @@ const Wheel: FC<WheelProps> = ({
 
       radius,
       anglePerSector,
+      textScale,
       winningOutcomeIdx,
       wheelAnimationState,
     ]
