@@ -82,11 +82,12 @@ const Sector: FC<SectorProps> = ({
 
   // Fixing Firefox text rendering:
   const dy =
-    isFirefox && fontFamily === 'arial'
-      ? '0.06em'
-      : isFirefox && ['serif', 'sans-serif'].includes(fontFamily)
-      ? '0.5rem'
-      : 0;
+    // isFirefox && fontFamily === 'arial'
+    //   ? '0.06em'
+    //   :
+    isFirefox && ['serif', 'sans-serif'].includes(fontFamily)
+      ? '0.15ch'
+      : '-0.01ch';
   const textUnderlineOffset =
     isFirefox &&
     !['sans-serif', 'serif', 'Yanone Kaffeesatz'].includes(fontFamily)

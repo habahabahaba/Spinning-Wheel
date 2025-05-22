@@ -48,7 +48,7 @@ const FirefoxWarning: FC<FirefoxWarningProps> = ({
           <p>
             Please consider disabling "<b>Zoom text only</b>" mode (
             <b>Menu: View: Zoom: Zoom text only</b>), as it will conflict with
-            how the text inside the wheel is rendered.
+            the wheel is rendering.
           </p>
         </div>
       </div>

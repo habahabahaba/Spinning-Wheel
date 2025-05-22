@@ -73,7 +73,7 @@
   transform: translateY(-100%);
   z-index: 5;
 
-  width: 90%;
+  width: 95%;
   height: 30px;
 
   background-color: transparent;
@@ -85,8 +85,8 @@
   position: relative;
   min-height: 5rem;
   max-height: 86%;
-  width: max-content;
-  min-width: 90%;
+  min-width: fit-content;
+  /* min-width: 90%; */
   padding: 0 0.5rem;
   margin-top: 0;
 
@@ -114,9 +114,10 @@
   row-gap: 0.5rem;
   grid-template:
     'label color font duplicate delete' 1fr
-    / auto min-content 30% 6.6% 6.6%;
+    / 1fr min-content 30% 6.6% 6.6%;
 
-  min-width: 85%;
+  /* min-width: 85%; */
+  /* min-width: max-content; */
   margin: 0.5rem 0;
   margin-right: 0.5rem;
   padding: 0.25rem;
@@ -139,21 +140,24 @@
 .outcome_label_input {
   grid-area: label;
   align-self: stretch;
+  /* width: auto; */
+  min-width: 0;
   padding: 0.1rem 0.5rem;
   border: 1px solid var(--color-contrast-border, black);
   border-radius: 0.1rem;
 
   font-size: 1.1rem;
 }
+
 .outcome_color_input {
   grid-area: color;
   height: 100%;
   margin: 0;
-  padding: 5%;
   border: 1px solid var(--color-contrast-border);
   border-radius: 0.1rem;
   background-color: var(--color-subtle-bg, white);
 }
+
 /* Outcomes panel */
 .add_outcomes_number_input {
   align-self: stretch;
@@ -294,15 +298,14 @@
     margin-top: 0.5rem;
   }
   .outcomes_panel::before {
-    top: -30px;
-    width: 87%;
+    width: 90%;
   }
 
   /* Individual outcomes controls */
   .outcome_inputs {
     grid-template:
       'label label delete' 1fr
-      'color font  duplicate' 1fr / min-content auto min-content;
+      'color font  duplicate' 1fr / min-content 1fr min-content;
     border-radius: 0.1rem max(12.5px, 1.1rem) max(12.5px, 1.1rem) 0.1rem;
   }
 }
