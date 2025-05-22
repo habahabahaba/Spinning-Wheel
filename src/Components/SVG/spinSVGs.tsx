@@ -13,7 +13,7 @@ const idleSVGs: SVGfn[] = [
       version='1.1'
       xmlns='http://www.w3.org/2000/svg'
       xmlnsXlink='http://www.w3.org/1999/xlink'
-      viewBox='-6 -6 75 75'
+      viewBox='-5.5 -6 75 75'
       xmlSpace='preserve'
     >
       <g transform='translate(0, 63.5) scale(1, -1)'>

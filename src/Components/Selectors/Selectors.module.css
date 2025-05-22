@@ -5,15 +5,17 @@
 
 /* SELECTORS */
 .selector {
+  align-self: center;
+  border-radius: 0.1rem;
+
   & > div {
-    min-height: 1.5rem;
+    min-height: max(1.25rem, 20px);
     border-color: var(--color-contrast-border, black);
     background-color: var(--color-input-bg);
   }
 
   &:focus {
     outline: 2px solid var(--color-accent, blue);
-    border-radius: 0.1rem;
     &:hover {
       outline: 2px solid var(--color-accent-hover, darkblue);
     }
@@ -34,8 +36,11 @@
 }
 
 .palette_preview {
-  height: 1.3rem;
-  width: 100%;
+  height: max(1rem, 16px);
+  /* height: auto; */
+  /* height: 190%; */
+  /* align-self: stretch; */
+  /* width: 100%; */
   display: flex;
   justify-content: start;
   align-items: center;
@@ -46,7 +51,7 @@
   & > .color_preview {
     height: 90%;
     aspect-ratio: 1;
-    border: 1px solid black;
+    border: 1px solid var(--color-contrast-border);
   }
 }
 
