@@ -103,6 +103,8 @@
 
   background-color: var(--color-subtle-bg, gray);
   width: fit-content;
+  min-height: 0;
+  /* height: min-content; */
   border: 1px solid var(--color-border, gray);
   border-radius: 0.1rem 9999px 9999px 0.1rem;
 }
@@ -118,6 +120,7 @@
 
   /* min-width: 85%; */
   /* min-width: max-content; */
+
   margin: 0.5rem 0;
   margin-right: 0.5rem;
   padding: 0.25rem;
@@ -140,7 +143,11 @@
 .outcome_label_input {
   grid-area: label;
   align-self: stretch;
+  /* min-height: 0; */
+  /* height: auto; */
   /* width: auto; */
+  /* margin-block: 0; */
+  /* padding-block: 0; */
   min-width: 0;
   padding: 0.1rem 0.5rem;
   border: 1px solid var(--color-contrast-border, black);
@@ -188,12 +195,15 @@
 .outcome_duplicate_button {
   grid-area: duplicate;
   align-self: stretch;
+  padding-block: 0;
 }
+
 .outcome_delete_button {
   grid-area: delete;
   align-self: stretch;
   width: 100%;
   width: auto;
+  padding-block: 0;
   & > svg {
     height: min(28px, 0.8rem);
     width: min(28px, 0.8rem);
