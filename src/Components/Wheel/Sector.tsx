@@ -84,7 +84,7 @@ const Sector: FC<SectorProps> = ({
   const dy =
     isFirefox && fontFamily === 'arial'
       ? '0.06em'
-      : ['serif', 'sans-serif'].includes(fontFamily)
+      : isFirefox && ['serif', 'sans-serif'].includes(fontFamily)
       ? '0.5rem'
       : 0;
   const textUnderlineOffset =
