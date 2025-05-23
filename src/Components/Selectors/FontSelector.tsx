@@ -3,6 +3,7 @@ import { mergeStyles } from '../../utils/css';
 // Constants:
 import { AllFontNames, FONT_FAMILIES_ALL } from '../../constants/fonts';
 // 3rd party:
+import { useShallow } from 'zustand/shallow';
 // Store:
 import useBoundStore from '../../store/boundStore';
 // React Router:
@@ -28,7 +29,7 @@ const FontSelector: FC<FontSelectorProps> = ({
 }) => {
   // Store:
   const outcomesLength = useBoundStore(
-    (state) => state.currentConfig.outcomes.length
+    useShallow((state) => state.currentConfig.outcomes.length)
   );
 
   // Actions:

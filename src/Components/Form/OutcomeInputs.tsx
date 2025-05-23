@@ -2,6 +2,8 @@
 import { isHexColor } from '../../utils/color';
 import { mergeStyles } from '../../utils/css';
 // 3rd party:
+import { useShallow } from 'zustand/shallow';
+
 // Store:
 import useBoundStore from '../../store/boundStore';
 // React Router:
@@ -25,7 +27,7 @@ const OutcomeInputs: FC<OutcomeInputsProps> = ({ index }) => {
   // Store:
   const outcome = useBoundStore((state) => state.currentConfig.outcomes[index]);
   const outcomesLength = useBoundStore(
-    (state) => state.currentConfig.outcomes.length
+    useShallow((state) => state.currentConfig.outcomes.length)
   );
   // Actions:
   const modifyOutcome = useBoundStore((state) => state.modifyOutcome);

@@ -25,7 +25,7 @@ const OutcomesPanel: FC = () => {
 
   // Store:
   const outcomesLength = useBoundStore(
-    (state) => state.currentConfig.outcomes.length
+    useShallow((state) => state.currentConfig.outcomes.length)
   );
   const outcomeIds = useBoundStore(
     useShallow((state) => state.currentConfig.outcomes.map(({ id }) => id))
