@@ -33,9 +33,9 @@ const SaveSlotPreview: FC<SaveSlotPreviewProps> = ({ saveIdx }) => {
   );
 
   return (
-    <div className={mergeStyles(styles.save_slot_preview, styles.option)}>
+    <span className={mergeStyles(styles.save_slot_preview, styles.option)}>
       <span className={styles.save_slot_index}>{saveIdx + 1}. </span> {preview}
-    </div>
+    </span>
   );
 };
 

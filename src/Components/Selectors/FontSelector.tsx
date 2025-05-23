@@ -31,6 +31,12 @@ const FontSelector: FC<FontSelectorProps> = ({
     (state) => state.currentConfig.outcomes.length
   );
 
+  // Actions:
+  const modifyOutcome = useBoundStore((state) => state.modifyOutcome);
+  const setDefaultFontFamily = useBoundStore(
+    (state) => state.setDefaultFontFamily
+  );
+
   // Derived values:
   const forOutcome = outcomeIdx >= 0 && outcomeIdx < outcomesLength;
 
@@ -39,12 +45,12 @@ const FontSelector: FC<FontSelectorProps> = ({
       ? state.currentConfig.outcomes[outcomeIdx].fontFamily
       : state.currentConfig.default_fontFamily
   );
-
-  // Actions:
-  const modifyOutcome = useBoundStore((state) => state.modifyOutcome);
-  const setDefaultFontFamily = useBoundStore(
-    (state) => state.setDefaultFontFamily
-  );
+  const selectId = forOutcome
+    ? `Outcome-${outcomeIdx}-font-select`
+    : 'wheel-main-font-select';
+  const ariaLabel = forOutcome
+    ? `Select a font for the Outcome-${outcomeIdx}`
+    : 'Select a  main font for the wheel';
 
   // Handlers:
   function outcomeFontChangeHandler(value: string | number): void {
@@ -67,9 +73,10 @@ const FontSelector: FC<FontSelectorProps> = ({
 
   return (
     <Select
-      id='font-select'
+      id={selectId}
       placeholder='Select font'
       value={currentFont}
+      aria-label={ariaLabel}
       onChange={
         forOutcome ? outcomeFontChangeHandler : defaultFontChangeHandler
       }

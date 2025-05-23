@@ -14,7 +14,6 @@ import styles from './Selectors.module.css';
 // Types, interfaces and enumns:
 import type { FC } from 'react';
 import type { Radius } from '../../constants/radii';
-// interface RadiusSelectorProps{}
 
 const RadiusSelector: FC = () => {
   // Store:
@@ -24,20 +23,24 @@ const RadiusSelector: FC = () => {
   // Actions:
   const setRadius = useBoundStore((state) => state.setRadius);
 
+  // Handlers:
+  const handleChange = (value: string | number) => {
+    setRadius({ radiusName: value as Radius });
+  };
+
   // JSX:
-  const options = Object.keys(WHEEL_RADII_MAP).map((key) => (
-    <Option value={key} key={key} className={styles.option}>
-      <span className={styles.radius_option}>{key}</span>
+  const options = Object.keys(WHEEL_RADII_MAP).map((radius) => (
+    <Option value={radius} key={radius} className={styles.option}>
+      <span className={styles.radius_option}>{radius}</span>
     </Option>
   ));
 
   return (
     <Select
-      id='palette-select'
+      id='radius-select'
+      aria-label='Wheel size selector'
       value={currentRadius}
-      onChange={(value) => {
-        setRadius({ radiusName: value as Radius });
-      }}
+      onChange={handleChange}
       className={styles.selector}
     >
       {options}

@@ -37,6 +37,7 @@ const SaveSlotSelector: FC<SaveSlotSelectorProps> = ({
       id='save-slot-select'
       placeholder='Select a save slot'
       value={value}
+      aria-label='Save slot selector'
       onChange={onChange}
       className={mergeStyles(styles.selector, className)}
     >

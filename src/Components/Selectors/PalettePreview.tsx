@@ -17,10 +17,19 @@ interface PalettePreviewProps {
 }
 
 const PalettePreview: FC<PalettePreviewProps> = ({ palette_idx }) => {
+  // Derived values:
+  const colors = PALETTES[palette_idx];
+
   // JSX:
-  const colors = PALETTES[palette_idx] ? (
-    <>
-      {PALETTES[palette_idx].map((color, idx) => (
+  if (!colors) return null;
+
+  return (
+    <div
+      aria-label={`Color palette with colors: ${colors.join(', ')}`}
+      role='list'
+      className={styles.palette_preview}
+    >
+      {colors.map((color, idx) => (
         <span
           key={idx}
           style={{
@@ -28,17 +37,10 @@ const PalettePreview: FC<PalettePreviewProps> = ({ palette_idx }) => {
             borderColor: 'var(--color-contrast-border, gray)',
           }}
           className={styles.color_preview}
+          role='listitem'
         />
       ))}
-    </>
-  ) : (
-    <></>
-  );
-
-  return (
-    <>
-      <div className={styles.palette_preview}>{colors}</div>
-    </>
+    </div>
   );
 };
 

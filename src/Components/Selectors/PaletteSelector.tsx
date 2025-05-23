@@ -40,6 +40,7 @@ const PaletteSelector: FC<PaletteSelectorProps> = ({ className = '' }) => {
   return (
     <Select
       id='palette-select'
+      aria-label='Wheel colors selector'
       value={currentPalette}
       onChange={(value) => {
         setPalette({ paletteIdx: +value });

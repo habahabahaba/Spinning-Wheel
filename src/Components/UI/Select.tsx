@@ -10,9 +10,10 @@ import type {
   ComponentProps,
   CSSProperties,
   KeyboardEvent,
+  HTMLAttributes,
 } from 'react';
 
-interface SelectProps {
+interface SelectProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> {
   children: ReactNode;
   value?: string | number;
   onChange?: (value: string | number) => void;
@@ -36,6 +37,7 @@ const Select: FC<SelectProps> = ({
   placeholder = 'Select...',
   className = '',
   id = '',
+  ...restProps
 }) => {
   // State:
   const [isOpen, setIsOpen] = useState(false);
@@ -224,6 +226,7 @@ const Select: FC<SelectProps> = ({
           : undefined
       }
       onKeyDown={handleKeyDown}
+      {...restProps}
     >
       <div className={styles.selectButton} onClick={() => setIsOpen(!isOpen)}>
         <span

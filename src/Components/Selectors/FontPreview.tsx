@@ -40,7 +40,11 @@ const FontPreview: FC<FontPreviewProps> = ({ fontFamily }) => {
 
   // JSX:
   return (
-    <span style={style} className={`${isLoaded ? '' : styles.greyed_out}`}>
+    <span
+      style={style}
+      className={`${isLoaded ? '' : styles.greyed_out}`}
+      aria-disabled={`${isLoaded ? 'false' : 'true'}`}
+    >
       {isLoaded ? `${fontFamily}` : 'Loading font...'}
     </span>
   );

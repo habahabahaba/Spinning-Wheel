@@ -52,6 +52,7 @@ const OutcomeInputs: FC<OutcomeInputsProps> = ({ index }) => {
       className={mergeStyles(styles.outcome_inputs, 'bottom-right-shadow')}
     >
       <legend className='sr-only'>Outcome {index + 1}</legend>
+
       <label htmlFor={`label-input-Outcome-${index}`} className='sr-only'>
         Label
       </label>
@@ -66,6 +67,7 @@ const OutcomeInputs: FC<OutcomeInputsProps> = ({ index }) => {
         }}
         className={styles.outcome_label_input}
       />
+
       <label htmlFor={`fillColor-input-Outcome-${index}`} className='sr-only'>
         Sector color
       </label>

@@ -68,7 +68,7 @@ const WheelDefaultsPanel: FC = () => {
           styles.font_select_label
         )}
       >
-        Default font
+        Main font
       </span>
       <legend className='sr-only'>Default font</legend>
       <FontSelector outcomeIdx={-1} className={styles.default_font_select} />
