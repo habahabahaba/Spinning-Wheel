@@ -82,7 +82,7 @@ const CheckFonts: FC = () => {
         <div
           className={mergeStyles(styles.warning_notification, styles.centered)}
         >
-          <h3>
+          <h3 id='dialog-title'>
             {missingFonts.length
               ? 'Loading missing fonts:'
               : 'All fonts for this configuration were successfully downloaded!'}

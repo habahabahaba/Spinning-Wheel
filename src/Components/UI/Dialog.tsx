@@ -92,6 +92,9 @@ const Dialog: FC<DialogProps> = ({
     <dialog
       ref={dialogRef}
       role='dialog'
+      aria-modal
+      aria-labelledby='dialog-title'
+      aria-describedby='dialog-description'
       onClick={(ev) => {
         if (ev.target === dialogRef.current) {
           handleCloseDialog(); // Triggers native close, then unmount
