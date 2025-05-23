@@ -133,7 +133,7 @@ const ResultDisplay: FC = () => {
         >
           {label}
         </h1>
-        <p id='result-display-dialog-description' className='.sr-only'>
+        <p id='result-display-dialog-description' className='sr-only'>
           This displays a result of the last spin of the wheel
         </p>
       </div>

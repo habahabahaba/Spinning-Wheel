@@ -63,6 +63,9 @@ const SpinButton: FC<SpinButtonProps> = ({
     <button
       id='spin-button'
       onClick={onClick}
+      type='button'
+      aria-label='Spin the wheel'
+      aria-describedby='spin-instructions'
       onMouseDown={onMouseDown}
       onMouseUp={onMouseUp}
       onMouseLeave={onMouseLeave}
@@ -125,6 +128,10 @@ const SpinButton: FC<SpinButtonProps> = ({
         : wheelAnimationState === 'windingUp'
         ? windUpSVG({ color0: windingUpIconColor })
         : idleSVG({ color0: idleIconColor })}
+      <span id='spin-instructions' className='sr-only'>
+        Press and hold to wind up the wheel. The longer you hold, the longer the
+        wheel spins after release.
+      </span>
     </button>
   );
 };

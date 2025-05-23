@@ -32,8 +32,13 @@ const NavBar: FC = () => {
   // Effects:
 
   // Derived values:
-
+  const isIdle = animationState === 'idle';
   // Handlers:
+  function goToLocation(newLocation: 'Main' | 'ConfigForm') {
+    if (isIdle) {
+      setCurrentLocation({ newLocation });
+    }
+  }
 
   // JSX:
   const leftButtons = (
@@ -44,10 +49,10 @@ const NavBar: FC = () => {
           id='nav-go-to-config-button'
           name='Go to the configuration'
           aria-label='Go to the configuration'
-          disabled={animationState !== 'idle'}
+          disabled={!isIdle}
+          aria-disabled={!isIdle}
           onClick={() => {
-            if (animationState !== 'idle') return;
-            setCurrentLocation({ newLocation: 'ConfigForm' });
+            goToLocation('ConfigForm');
           }}
         >
           Configure
@@ -59,9 +64,9 @@ const NavBar: FC = () => {
           name='Go to the Wheel'
           aria-label='Go to the Wheel'
           disabled={animationState !== 'idle'}
+          aria-disabled={!isIdle}
           onClick={() => {
-            if (animationState !== 'idle') return;
-            setCurrentLocation({ newLocation: 'Main' });
+            goToLocation('Main');
           }}
         >
           Back
