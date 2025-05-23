@@ -46,9 +46,9 @@ const LoadConfig: FC<LoadConfigProps> = ({ saveIdx }) => {
   return (
     <div className={mergeStyles(styles.container, styles.x_small)}>
       <div className={styles.warning_container}>
-        <div className={styles.warning_danger}>
-          <h3>Warning</h3>
-          <p>
+        <div id='load-config-warning-message' className={styles.warning_danger}>
+          <h3 id='dialog-title'>Warning</h3>
+          <p id='dialog-description'>
             This will discard your current configuration, but will not affect
             the wheel, until applied.
           </p>
@@ -68,6 +68,7 @@ const LoadConfig: FC<LoadConfigProps> = ({ saveIdx }) => {
           variant='warning'
           id='load-config-button'
           name='Load configuration'
+          aria-label='Load configuration from save-slot and close the dialog'
           onClick={handleLoadConfig}
         >
           Load

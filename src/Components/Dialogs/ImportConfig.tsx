@@ -129,7 +129,7 @@ const ImportConfig: FC = () => {
 
   // JSX:
   const introWarning = (
-    <div className={styles.warning_danger}>
+    <div id='import-config-intro' className={styles.warning_danger}>
       <h3>Warning:</h3>
       <p>
         This will discard your current configuration, but will not affect the
@@ -139,19 +139,21 @@ const ImportConfig: FC = () => {
   );
 
   const errorMessage = error ? (
-    <>
-      <div className={styles.warning_error}>
-        <h3 style={{ color: '#ef4444', marginTop: '0.5rem' }}>Error:</h3>
-        <p className=''>
-          {error}
-          <span> Please select another file.</span>
-        </p>
-      </div>
-    </>
+    <div id='import-config-error' role='alert' className={styles.warning_error}>
+      <h3 style={{ color: '#ef4444', marginTop: '0.5rem' }}>Error:</h3>
+      <p className=''>
+        {error}
+        <span> Please select another file.</span>
+      </p>
+    </div>
   ) : null;
 
   const warningsList = warnings.length ? (
-    <div className={mergeStyles(styles.warning_notification, styles.centered)}>
+    <div
+      id='import-config-warnings'
+      role='alert'
+      className={mergeStyles(styles.warning_notification, styles.centered)}
+    >
       <h3 style={{ fontWeight: 'bold' }}>
         The file contained some errors, that were automatically corrected:
       </h3>
@@ -169,6 +171,7 @@ const ImportConfig: FC = () => {
       id='import-config-dialog-continue-button'
       name='Continue with imported configuration'
       onClick={handleResetAndCancel}
+      aria-label='Continue with configuration despite warnings'
     >
       Continue
     </Button>
@@ -200,10 +203,13 @@ const ImportConfig: FC = () => {
   );
 
   return (
-    <form
-      id='import-config-dialog'
-      className={mergeStyles(styles.container, styles.large)}
-    >
+    <form className={mergeStyles(styles.container, styles.large)}>
+      <h3 id='dialog-title' className='.sr-only'>
+        Import configuration from a file.
+      </h3>
+      <p id='dialog-description' className='.sr-only'>
+        Please select (upload) a .json file to import configuration from.
+      </p>
       <div>
         <label
           htmlFor='configuration-file-input'
@@ -225,6 +231,14 @@ const ImportConfig: FC = () => {
             styles.rectangle,
             'input-text'
           )}
+          aria-describedby={
+            error
+              ? 'import-config-error'
+              : warnings.length
+              ? 'import-config-warnings'
+              : 'import-config-intro'
+          }
+          aria-invalid={!!error}
         />
       </div>
       <div className={styles.warning_container}>

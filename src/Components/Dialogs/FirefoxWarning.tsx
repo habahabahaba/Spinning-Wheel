@@ -43,9 +43,9 @@ const FirefoxWarning: FC<FirefoxWarningProps> = ({
   return (
     <div className={mergeStyles(styles.container, styles.small)}>
       <div className={styles.warning_container}>
-        <div className={styles.warning_danger}>
-          <h3>Warning</h3>
-          <p>
+        <div className={styles.warning_danger} aria-live='assertive'>
+          <h3 id='dialog-title'>Warning</h3>
+          <p id='dialog-description'>
             Please consider disabling "<b>Zoom text only</b>" mode (
             <b>Menu: View: Zoom: Zoom text only</b>), as it will conflict with
             how the wheel is being rendered.
@@ -55,7 +55,7 @@ const FirefoxWarning: FC<FirefoxWarningProps> = ({
       <div
         className={mergeStyles(styles.buttons_container, styles.buttons_wide)}
       >
-        <span>
+        <label>
           Don't show this again
           <input
             type='checkbox'
@@ -67,7 +67,7 @@ const FirefoxWarning: FC<FirefoxWarningProps> = ({
             }}
             className={styles.checkbox_input}
           />
-        </span>
+        </label>
       </div>
     </div>
   );

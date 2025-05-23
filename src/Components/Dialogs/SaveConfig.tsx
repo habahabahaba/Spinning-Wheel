@@ -60,8 +60,8 @@ const SaveConfig: FC<SaveConfigProps> = ({ saveIdx }) => {
   // JSX:
   const warning = prevConfig ? (
     <div className={styles.warning_danger}>
-      <h3>Warning</h3>
-      <p>
+      <h3 id='dialog-title'>Warning</h3>
+      <p id='dialog-description'>
         This will overwrite your older configuration:
         <span>{` ${prevConfig.configName}`}</span>
       </p>
@@ -90,7 +90,10 @@ const SaveConfig: FC<SaveConfigProps> = ({ saveIdx }) => {
           className={styles.name_input}
         />
       </div>
-      <div className={styles.warning_container}> {warning}</div>
+      <div aria-live='assertive' className={styles.warning_container}>
+        {' '}
+        {warning}
+      </div>
       <div
         className={mergeStyles(styles.buttons_container, styles.buttons_wide)}
       >

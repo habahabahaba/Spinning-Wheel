@@ -78,7 +78,7 @@ const CheckFonts: FC = () => {
 
   return (
     <div className={mergeStyles(styles.container, styles.small)}>
-      <div className={styles.warning_container}>
+      <div className={styles.warning_container} aria-live='assertive'>
         <div
           className={mergeStyles(styles.warning_notification, styles.centered)}
         >
@@ -87,6 +87,10 @@ const CheckFonts: FC = () => {
               ? 'Loading missing fonts:'
               : 'All fonts for this configuration were successfully downloaded!'}
           </h3>
+          <p id='dialog-description' className='sr-only'>
+            This dialog informs you about missing fonts and allows you to choose
+            between waiting or using default fonts.
+          </p>
           {missingFonts.length ? missingFontsList : null}
         </div>
       </div>

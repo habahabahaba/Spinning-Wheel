@@ -100,6 +100,9 @@ const ResultDisplay: FC = () => {
   return (
     <>
       <div
+        role='alert'
+        aria-live='assertive'
+        aria-atomic='true'
         className={styles.result_display}
         style={{
           backgroundColor: `${brightBGColor}`,
@@ -126,6 +129,7 @@ const ResultDisplay: FC = () => {
             padding: `${h1Padding}px`,
             lineHeight,
           }}
+          id='dialog-title'
         >
           {label}
         </h1>

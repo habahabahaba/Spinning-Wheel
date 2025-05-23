@@ -52,54 +52,62 @@ const ExportConfig: FC = () => {
 
   // JSX:
   return (
-    <form
-      id={`export-dialog`}
-      className={mergeStyles(styles.container, styles.x_small)}
-    >
-      <div
-      // className={styles.centered}
+    <>
+      <h3 id='dialog-title' className='sr-only'>
+        Please, provide a file name.
+      </h3>
+      <p id='dialog-description' className='sr-only'>
+        Enter a file name to export your current configuration.
+      </p>
+      <form
+        id='export-dialog'
+        aria-describedby='export-configuration-description'
+        className={mergeStyles(styles.container, styles.x_small)}
       >
-        <label
-          className={mergeStyles(styles.label)}
-          htmlFor='export-config-file-name'
+        <div
+        // className={styles.centered}
         >
-          File name
-        </label>
-        <input
-          id={`export-config-file-name`}
-          name={`configuration name`}
-          type='text'
-          maxLength={30}
-          placeholder={`Provide a file name`}
-          value={currentConfig.configName}
-          onChange={(ev) => {
-            setConfigName({ configName: ev.target.value });
-          }}
-          className={mergeStyles(styles.name_input)}
-        />
-      </div>
-      <div
-        className={mergeStyles(styles.buttons_container, styles.buttons_wide)}
-      >
-        <Button
-          id='cancel-export-dialog-button'
-          name={`cancel export and close dialog`}
-          onClick={handleCloseDialog}
-          type='reset'
+          <label
+            className={mergeStyles(styles.label)}
+            htmlFor='export-config-file-name'
+          >
+            File name
+          </label>
+          <input
+            id='export-config-file-name'
+            type='text'
+            maxLength={30}
+            placeholder='Provide a file name'
+            value={currentConfig.configName}
+            onChange={(ev) => {
+              setConfigName({ configName: ev.target.value });
+            }}
+            className={mergeStyles(styles.name_input)}
+          />
+        </div>
+        <div
+          className={mergeStyles(styles.buttons_container, styles.buttons_wide)}
         >
-          Cancel
-        </Button>
-        <Button
-          id='export-current-config-button'
-          name={`export configuration`}
-          variant='success'
-          onClick={handleDownload}
-          disabled={!currentConfig.configName.trim()}
-        >
-          Export
-        </Button>
-      </div>
-    </form>
+          <Button
+            id='cancel-export-dialog-button'
+            name={`cancel export and close dialog`}
+            onClick={handleCloseDialog}
+            type='reset'
+          >
+            Cancel
+          </Button>
+          <Button
+            id='export-current-config-button'
+            name={`export configuration`}
+            variant='success'
+            onClick={handleDownload}
+            disabled={!currentConfig.configName.trim()}
+          >
+            Export
+          </Button>
+        </div>
+      </form>
+    </>
   );
 };
 
