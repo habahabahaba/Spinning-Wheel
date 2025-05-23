@@ -120,7 +120,10 @@ const Wheel: FC<WheelProps> = ({
         padding: '0',
         height: `${diameter}px`,
         position: 'relative',
-        // overflow: 'hidden',
+        overflow: 'hidden',
+        pointerEvents: 'none',
+        touchAction: 'none',
+        userSelect: 'none',
       }}
     >
       <svg

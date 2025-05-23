@@ -34,6 +34,10 @@ const FontPreview: FC<FontPreviewProps> = ({ fontFamily }) => {
         fontSize: '0.8rem',
       };
 
+  // if (import.meta.env.DEV) {
+  //   console.log(`[FontPreview] fontFamily: ${fontFamily}`);
+  // }
+
   // JSX:
   return (
     <span style={style} className={`${isLoaded ? '' : styles.greyed_out}`}>

@@ -45,11 +45,16 @@ const SpinButton: FC<SpinButtonProps> = ({
   // Colors:
   const radiusName = useBoundStore((state) => state.activeConfig.radiusName);
 
+  // Derived values:
   const idleFillColor = safePaletteColor(paletteIdx, 3);
   const idleIconColor = contrastColor(idleFillColor);
   const windingUpFillColor = safePaletteColor(paletteIdx, 1);
   const windingUpIconColor = contrastColor(windingUpFillColor);
   const spinningFillColor = safePaletteColor(paletteIdx, 2);
+  const noneWhileSpinning =
+    wheelAnimationState === 'spinning' || wheelAnimationState === 'cancelling'
+      ? 'none'
+      : 'initial';
 
   const wheelRadius = WHEEL_RADII_MAP[radiusName];
 
@@ -77,6 +82,11 @@ const SpinButton: FC<SpinButtonProps> = ({
         border: '2px solid',
         padding: ' 2px',
         borderRadius: '50%',
+        overflow: 'hidden',
+
+        pointerEvents: noneWhileSpinning,
+        touchAction: noneWhileSpinning,
+        userSelect: noneWhileSpinning,
 
         backgroundColor: `${
           wheelAnimationState === 'windingUp'
