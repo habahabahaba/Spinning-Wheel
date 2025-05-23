@@ -44,8 +44,8 @@ const FirefoxWarning: FC<FirefoxWarningProps> = ({
     <div className={mergeStyles(styles.container, styles.small)}>
       <div className={styles.warning_container}>
         <div className={styles.warning_danger} aria-live='assertive'>
-          <h3 id='dialog-title'>Warning</h3>
-          <p id='dialog-description'>
+          <h3 id='firefox-warning-dialog-title'>Warning</h3>
+          <p id='firefox-warning-dialog-description'>
             Please consider disabling "<b>Zoom text only</b>" mode (
             <b>Menu: View: Zoom: Zoom text only</b>), as it will conflict with
             how the wheel is being rendered.

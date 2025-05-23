@@ -20,7 +20,12 @@ const ImportConfigDialog = forwardRef<DialogHandle>(
   (_, ref: ForwardedRef<DialogHandle>) => {
     // JSX:
     return (
-      <Dialog ref={ref} className={mergeStyles(styles.dialog, 'center-shadow')}>
+      <Dialog
+        ref={ref}
+        aria-labelledby='import-config-dialog-title'
+        aria-describedby='import-config-dialog-description'
+        className={mergeStyles(styles.dialog, 'center-shadow')}
+      >
         <ImportConfig />
       </Dialog>
     );

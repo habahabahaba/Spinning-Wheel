@@ -35,8 +35,8 @@ const ResetConfig: FC = () => {
   return (
     <div className={mergeStyles(styles.container, styles.x_small)}>
       <div className={styles.warning_danger}>
-        <h3 id='dialog-title'>Warning</h3>
-        <p id='dialog-description'>
+        <h3 id='reset-config-dialog-title'>Warning</h3>
+        <p id='reset-config-dialog-description'>
           This will discard your current configuration, but will not affect the
           wheel, until applied.
         </p>

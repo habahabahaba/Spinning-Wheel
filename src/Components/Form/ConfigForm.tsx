@@ -30,7 +30,10 @@ const ConfigForm: FC = () => {
 
   // JSX:
   return (
-    <form className={mergeStyles(styles.config_form, 'center-shadow')}>
+    <form
+      aria-label='Configuration form for editing the wheel and outcomes'
+      className={mergeStyles(styles.config_form, 'center-shadow')}
+    >
       <SaveLoadMenu />
       <WheelDefaultsMenu />
       <OutcomesMenu />

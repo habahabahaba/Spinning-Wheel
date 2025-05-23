@@ -23,6 +23,8 @@ const LoadConfigDialog = forwardRef<DialogHandle, LoadConfigProps>(
     return (
       <Dialog
         ref={ref}
+        aria-labelledby='load-config-dialog-title'
+        aria-describedby='load-config-dialog-description'
         className={mergeStyles(styles.dialog, styles.top, 'center-shadow')}
         childProps={{ saveIdx }}
       >

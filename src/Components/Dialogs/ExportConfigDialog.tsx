@@ -20,7 +20,12 @@ const ExportConfigDialog = forwardRef<DialogHandle>(
   (_, ref: ForwardedRef<DialogHandle>) => {
     // JSX:
     return (
-      <Dialog ref={ref} className={mergeStyles(styles.dialog, 'center-shadow')}>
+      <Dialog
+        ref={ref}
+        aria-labelledby='export-config-dialog-title'
+        aria-describedby='export-config-dialog-description'
+        className={mergeStyles(styles.dialog, 'center-shadow')}
+      >
         <ExportConfig />
       </Dialog>
     );

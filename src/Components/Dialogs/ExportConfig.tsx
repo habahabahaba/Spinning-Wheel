@@ -53,10 +53,10 @@ const ExportConfig: FC = () => {
   // JSX:
   return (
     <>
-      <h3 id='dialog-title' className='sr-only'>
+      <h3 id='export-config-dialog-title' className='sr-only'>
         Please, provide a file name.
       </h3>
-      <p id='dialog-description' className='sr-only'>
+      <p id='export-config-dialog-description' className='sr-only'>
         Enter a file name to export your current configuration.
       </p>
       <form

@@ -23,6 +23,8 @@ const FirefoxWarningDialog = forwardRef<DialogHandle, FirefoxWarningProps>(
     return (
       <Dialog
         ref={ref}
+        aria-labelledby='firefox-warning-dialog-title'
+        aria-describedby='firefox-warning-dialog-description'
         className={mergeStyles(styles.dialog, styles.top, 'center-shadow')}
         childProps={{ setDisableWarning }}
       >

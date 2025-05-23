@@ -26,6 +26,8 @@ const CheckFontsDialog = forwardRef<DialogHandle>(
       <Dialog
         ref={ref}
         className={mergeStyles(styles.dialog, styles.top, 'center-shadow')}
+        aria-labelledby='check-fonts-dialog-title'
+        aria-describedby='check-fonts-dialog-description'
       >
         <CheckFonts />
       </Dialog>

@@ -84,6 +84,7 @@ const ConfigActionsPanel: FC = () => {
             id='config-form-export-button'
             name='export configuration'
             onClick={handleOpenExportDialog}
+            aria-haspopup='dialog'
           >
             Export
           </Button>
@@ -92,6 +93,7 @@ const ConfigActionsPanel: FC = () => {
             id='config-form-import-button'
             name='import configuration'
             onClick={handleOpenImportDialog}
+            aria-haspopup='dialog'
           >
             Import
           </Button>
@@ -102,6 +104,7 @@ const ConfigActionsPanel: FC = () => {
             id='config-form-reset-button'
             name='reset configuration'
             onClick={handleOpenResetDialog}
+            aria-haspopup='dialog'
           >
             Reset
           </Button>
@@ -110,6 +113,7 @@ const ConfigActionsPanel: FC = () => {
             id='config-form-apply-button'
             name='apply configuration'
             onClick={handleApplyConfig}
+            aria-haspopup='dialog'
           >
             Apply
           </Button>

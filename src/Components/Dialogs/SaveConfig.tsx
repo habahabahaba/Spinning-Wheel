@@ -60,8 +60,8 @@ const SaveConfig: FC<SaveConfigProps> = ({ saveIdx }) => {
   // JSX:
   const warning = prevConfig ? (
     <div className={styles.warning_danger}>
-      <h3 id='dialog-title'>Warning</h3>
-      <p id='dialog-description'>
+      <h3 id='save-config-dialog-title'>Warning</h3>
+      <p id='save-config-dialog-description'>
         This will overwrite your older configuration:
         <span>{` ${prevConfig.configName}`}</span>
       </p>
@@ -91,7 +91,6 @@ const SaveConfig: FC<SaveConfigProps> = ({ saveIdx }) => {
         />
       </div>
       <div aria-live='assertive' className={styles.warning_container}>
-        {' '}
         {warning}
       </div>
       <div

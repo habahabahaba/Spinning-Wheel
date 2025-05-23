@@ -58,16 +58,23 @@ const OutcomesPanel: FC = () => {
 
   return (
     <div className={styles.outcomes_panel}>
-      {/* <div className={styles.top_shadow} /> */}
-      <menu className={styles.outcomes_list}>{outcomesList}</menu>
+      <fieldset className={styles.outcomes_list}>
+        <legend className='sr-only'>Outcomes controls</legend>
+        {outcomesList}
+      </fieldset>
 
-      <div
+      <fieldset
         className={mergeStyles(
           styles.buttons_container,
           styles.add_outcomes_container
         )}
       >
+        <legend className='sr-only'>Add blank outcomes</legend>
+        <label htmlFor='add-outcomes-quantity' className='sr-only'>
+          Number of outcomes to add
+        </label>
         <input
+          id='add-outcomes-quantity'
           className={styles.add_outcomes_number_input}
           type='number'
           min={1}
@@ -87,7 +94,7 @@ const OutcomesPanel: FC = () => {
         >
           Add
         </Button>
-      </div>
+      </fieldset>
     </div>
   );
 };

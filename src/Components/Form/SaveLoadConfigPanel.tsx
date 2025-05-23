@@ -49,7 +49,8 @@ const SaveLoadConfigPanel: FC = () => {
   // JSX:
   return (
     <>
-      <div className={styles.save_load_panel}>
+      <fieldset className={styles.save_load_panel}>
+        <legend className='sr-only'>Save or Load configuration</legend>
         <span className={mergeStyles(styles.label, styles.save_load_label)}>
           Save / Load configuration:
         </span>
@@ -72,6 +73,7 @@ const SaveLoadConfigPanel: FC = () => {
             name='Start loading configuration'
             disabled={!savedConfigs[saveIdx]}
             onClick={handleOpenLoadModal}
+            aria-haspopup='dialog'
           >
             Load
           </Button>
@@ -80,11 +82,12 @@ const SaveLoadConfigPanel: FC = () => {
             name='Start saving configuration'
             disabled={saveIdx < 0 || saveIdx > 9}
             onClick={handleOpenSaveModal}
+            aria-haspopup='dialog'
           >
             Save
           </Button>
         </div>
-      </div>
+      </fieldset>
       <SaveConfigDialog saveIdx={saveIdx} ref={saveConfigDialogRef} />
       <LoadConfigDialog saveIdx={saveIdx} ref={loadConfigDialogRef} />
     </>

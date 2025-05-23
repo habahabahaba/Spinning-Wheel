@@ -93,8 +93,6 @@ const Dialog: FC<DialogProps> = ({
       ref={dialogRef}
       role='dialog'
       aria-modal
-      aria-labelledby='dialog-title'
-      aria-describedby='dialog-description'
       tabIndex={-1}
       onClick={(ev) => {
         if (ev.target === dialogRef.current) {

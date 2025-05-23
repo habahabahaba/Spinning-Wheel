@@ -39,6 +39,7 @@ const WheelDefaultsPanel: FC = () => {
   // JSX:
   return (
     <menu className={styles.wheel_defaults_panel}>
+      <legend className='sr-only'>Wheel size</legend>
       <span
         className={mergeStyles(
           styles.label,
@@ -49,6 +50,7 @@ const WheelDefaultsPanel: FC = () => {
         Wheel size
       </span>
       <RadiusSelector />
+      <legend className='sr-only'>Wheel colors</legend>
       <span
         className={mergeStyles(
           styles.label,
@@ -68,6 +70,7 @@ const WheelDefaultsPanel: FC = () => {
       >
         Default font
       </span>
+      <legend className='sr-only'>Default font</legend>
       <FontSelector outcomeIdx={-1} className={styles.default_font_select} />
     </menu>
   );

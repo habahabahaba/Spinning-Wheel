@@ -129,10 +129,13 @@ const ResultDisplay: FC = () => {
             padding: `${h1Padding}px`,
             lineHeight,
           }}
-          id='dialog-title'
+          id='result-display-dialog-title'
         >
           {label}
         </h1>
+        <p id='result-display-dialog-description' className='.sr-only'>
+          This displays a result of the last spin of the wheel
+        </p>
       </div>
       <ConfettiArray delayMs={600} colors={confettiColors} />
     </>

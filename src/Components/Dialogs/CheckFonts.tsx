@@ -82,14 +82,14 @@ const CheckFonts: FC = () => {
         <div
           className={mergeStyles(styles.warning_notification, styles.centered)}
         >
-          <h3 id='dialog-title'>
+          <h3 id='check-fonts-dialog-title'>
             {missingFonts.length
               ? 'Loading missing fonts:'
               : 'All fonts for this configuration were successfully downloaded!'}
           </h3>
-          <p id='dialog-description' className='sr-only'>
+          <p id='check-fonts-dialog-description' className='sr-only'>
             This dialog informs you about missing fonts and allows you to choose
-            between waiting or using default fonts.
+            between waiting for fonts to finish loading or using default fonts.
           </p>
           {missingFonts.length ? missingFontsList : null}
         </div>

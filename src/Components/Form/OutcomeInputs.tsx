@@ -48,7 +48,13 @@ const OutcomeInputs: FC<OutcomeInputsProps> = ({ index }) => {
 
   // JSX:
   return (
-    <div className={mergeStyles(styles.outcome_inputs, 'bottom-right-shadow')}>
+    <fieldset
+      className={mergeStyles(styles.outcome_inputs, 'bottom-right-shadow')}
+    >
+      <legend className='sr-only'>Outcome {index + 1}</legend>
+      <label htmlFor={`label-input-Outcome-${index}`} className='sr-only'>
+        Label
+      </label>
       <input
         id={`label-input-Outcome-${index}`}
         type='text'
@@ -60,6 +66,9 @@ const OutcomeInputs: FC<OutcomeInputsProps> = ({ index }) => {
         }}
         className={styles.outcome_label_input}
       />
+      <label htmlFor={`fillColor-input-Outcome-${index}`} className='sr-only'>
+        Sector color
+      </label>
       <input
         type='color'
         id={`fillColor-input-Outcome-${index}`}
@@ -77,7 +86,7 @@ const OutcomeInputs: FC<OutcomeInputsProps> = ({ index }) => {
 
       <Button
         id={`duplicate-outcome-${index}-button`}
-        name='duplicate line'
+        name='duplicate outcome'
         variant='success'
         shape='rounded'
         // outlined={true}
@@ -87,6 +96,7 @@ const OutcomeInputs: FC<OutcomeInputsProps> = ({ index }) => {
         }}
         disabled={outcomesLength > 71}
         className={styles.outcome_duplicate_button}
+        aria-label={`Duplicate Outcome ${index + 1}`}
       >
         <b>x2</b>
       </Button>
@@ -102,10 +112,11 @@ const OutcomeInputs: FC<OutcomeInputsProps> = ({ index }) => {
         }}
         disabled={outcomesLength < 3}
         className={styles.outcome_delete_button}
+        aria-label={`Delete Outcome ${index + 1}`}
       >
         {deleteSVG({ color0: '#000000' })}
       </Button>
-    </div>
+    </fieldset>
   );
 };
 

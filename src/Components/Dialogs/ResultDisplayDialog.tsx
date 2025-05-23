@@ -31,6 +31,8 @@ const ResultDisplayDialog = forwardRef<DialogHandle>(
     return (
       <Dialog
         ref={ref}
+        aria-labelledby='result-display-dialog-title'
+        aria-describedby='result-display-dialog-description'
         className={mergeStyles(styles.drop_down, 'center-shadow')}
         style={{
           position: 'relative',
