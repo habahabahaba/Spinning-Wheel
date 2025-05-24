@@ -104,7 +104,6 @@ const createWheelConfigsSlice: StateCreator<
       if (length > 71 || outcomeIdx >= length || outcomeIdx < 0) return state;
 
       return {
-        ...state,
         currentConfig: {
           ...state.currentConfig,
           outcomes: [

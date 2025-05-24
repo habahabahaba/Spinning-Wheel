@@ -78,5 +78,5 @@ export function generateId(): string {
 
   // console.log('[generateId]', 'now:', now, 'rand:', rand);
 
-  return `${now}-${rand}`;
+  return `${rand}-${now}`;
 }

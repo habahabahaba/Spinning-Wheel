@@ -86,7 +86,7 @@ legend {
   min-width: 90%;
   max-width: max-content;
 
-  padding: 0 1rem; /* padding-top: 30px; */
+  padding: 0 1rem;
   color: var(--color-fg, black);
 }
 /* Shadow over outcomes list: */
@@ -120,7 +120,12 @@ legend {
   border-bottom: 1px solid var(--color-hover, gray);
 
   overflow-y: scroll;
+  overflow-x: hidden;
   scrollbar-color: var(--color-hover, gray) var(--color-subtle-bg, gray);
+
+  /* scroll-behavior: auto; */
+  /* will-change: transform; */
+  overflow-anchor: auto !important;
 }
 .buttons_container.add_outcomes_container {
   justify-content: end;
@@ -352,12 +357,5 @@ legend {
   0% {
     transform: translateX(100%);
     opacity: 0;
-  }
-}
-
-@keyframes slide-up {
-  /* FORM */
-  from {
-    transform: translateY(100%);
   }
 }

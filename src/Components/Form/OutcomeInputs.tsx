@@ -8,6 +8,7 @@ import { useShallow } from 'zustand/shallow';
 import useBoundStore from '../../store/boundStore';
 // React Router:
 // React:
+import { useEffect, useRef } from 'react';
 // Context:
 // Hooks:
 // Components:
@@ -17,22 +18,44 @@ import deleteSVG from '../SVG/deleteSVGs';
 // CSS:
 import styles from './ConfigForm.module.css';
 // Types, interfaces and enumns:
-import type { FC } from 'react';
+import type { FC, KeyboardEvent, MouseEvent } from 'react';
 import type { Outcome } from '../../store/types';
 interface OutcomeInputsProps {
   index: number;
+  isFocused: boolean;
+  focusInput: (index: number, addInput?: boolean) => void;
 }
 
-const OutcomeInputs: FC<OutcomeInputsProps> = ({ index }) => {
+const OutcomeInputs: FC<OutcomeInputsProps> = ({
+  index,
+  isFocused,
+  focusInput,
+}) => {
   // Store:
-  const outcome = useBoundStore((state) => state.currentConfig.outcomes[index]);
+  const outcome = useBoundStore(
+    useShallow((state) => state.currentConfig.outcomes[index])
+  );
   const outcomesLength = useBoundStore(
     useShallow((state) => state.currentConfig.outcomes.length)
   );
+  console.log(`[OutcomeInputs] index: ${index}`);
   // Actions:
   const modifyOutcome = useBoundStore((state) => state.modifyOutcome);
   const duplicateOutcome = useBoundStore((state) => state.duplicateOutcome);
   const removeOutcome = useBoundStore((state) => state.removeOutcome);
+
+  // Refs:
+  const labelInputRef = useRef<HTMLInputElement>(null);
+
+  // Effects:
+  useEffect(() => {
+    if (isFocused && labelInputRef.current) {
+      labelInputRef.current.focus();
+      requestAnimationFrame(() => {
+        labelInputRef.current?.select();
+      });
+    }
+  }, [isFocused]);
 
   // Derived values:
   // For color input default value:
@@ -47,6 +70,28 @@ const OutcomeInputs: FC<OutcomeInputsProps> = ({ index }) => {
   ): void {
     modifyOutcome({ outcomeIdx: index, key, value });
   }
+  function handleDuplicate(ev: MouseEvent<HTMLButtonElement>) {
+    ev.preventDefault();
+    duplicateOutcome({ outcomeIdx: index });
+    focusInput(-1);
+  }
+  function handleDelete(ev: MouseEvent<HTMLButtonElement>) {
+    ev.preventDefault();
+    removeOutcome({ outcomeIdx: index });
+    focusInput(-1);
+  }
+  function handleKeyDown(ev: KeyboardEvent) {
+    if (ev.key === 'Enter') {
+      ev.preventDefault();
+      focusInput(index + 1, true);
+    } else if (ev.key === 'ArrowDown') {
+      ev.preventDefault();
+      focusInput(index + 1, false);
+    } else if (ev.key === 'ArrowUp' && index > 0) {
+      ev.preventDefault();
+      focusInput(index - 1, false);
+    }
+  }
 
   // JSX:
   return (
@@ -56,9 +101,10 @@ const OutcomeInputs: FC<OutcomeInputsProps> = ({ index }) => {
       <legend className='sr-only'>Outcome {index + 1}</legend>
 
       <label htmlFor={`label-input-Outcome-${index}`} className='sr-only'>
-        Label
+        Sector label
       </label>
       <input
+        ref={labelInputRef}
         id={`label-input-Outcome-${index}`}
         type='text'
         maxLength={30}
@@ -67,6 +113,7 @@ const OutcomeInputs: FC<OutcomeInputsProps> = ({ index }) => {
         onChange={(ev) => {
           handleChange('label', ev.target.value);
         }}
+        onKeyDown={handleKeyDown}
         className={styles.outcome_label_input}
       />
 
@@ -94,10 +141,7 @@ const OutcomeInputs: FC<OutcomeInputsProps> = ({ index }) => {
         variant='success'
         shape='rounded'
         // outlined={true}
-        onClick={(ev) => {
-          ev.preventDefault();
-          duplicateOutcome({ outcomeIdx: index });
-        }}
+        onClick={handleDuplicate}
         disabled={outcomesLength > 71}
         className={styles.outcome_duplicate_button}
         aria-label={`Duplicate Outcome ${index + 1}`}
@@ -110,10 +154,7 @@ const OutcomeInputs: FC<OutcomeInputsProps> = ({ index }) => {
         variant='danger'
         shape='rounded'
         // outlined={true}
-        onClick={(ev) => {
-          ev.preventDefault();
-          removeOutcome({ outcomeIdx: index });
-        }}
+        onClick={handleDelete}
         disabled={outcomesLength < 3}
         className={styles.outcome_delete_button}
         aria-label={`Delete Outcome ${index + 1}`}
