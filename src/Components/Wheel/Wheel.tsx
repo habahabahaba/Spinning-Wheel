@@ -116,6 +116,7 @@ const Wheel: FC<WheelProps> = ({ radius, wheelContainerRef, wheelRef }) => {
         pointerEvents: 'none',
         touchAction: 'none',
         userSelect: 'none',
+        willChange: 'transform',
       }}
     >
       <svg
