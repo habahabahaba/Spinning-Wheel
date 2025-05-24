@@ -60,9 +60,9 @@ export function detectFirefoxTextZoomRatio({
   canvas.width = 0;
   canvas.height = 0;
 
-  console.log(
-    `[detectFirefoxTextZoomRatio] ratio: ${calibratedWidth / actualWidth}`
-  );
+  // console.log(
+  //   `[detectFirefoxTextZoomRatio] ratio: ${calibratedWidth / actualWidth}`
+  // );
 
   return calibratedWidth / actualWidth;
 }
