@@ -112,10 +112,10 @@ const Main: FC = () => {
         () => {
           // console.log(`END callback`);
           resultDialogRef.current?.handleShowDialog();
+          setWinningOutcomeIdxFromTurn({ resultingTurn });
         }
       );
       // console.log(`[Wheel] resultingTurn: ${resultingTurn}`);
-      setWinningOutcomeIdxFromTurn({ resultingTurn });
     }
     // setIsWinding(false);
   }
@@ -140,11 +140,7 @@ const Main: FC = () => {
         }}
         className={styles.wheel_arrow_container}
       >
-        <Wheel
-          radius={wheelRadius}
-          wheelAnimationState={wheelAnimationState}
-          wheelRef={wheelRef}
-        />
+        <Wheel radius={wheelRadius} wheelRef={wheelRef} />
         <Arrow size={wheelRadius / 6} />
         <SpinButton
           onClick={handleClick}

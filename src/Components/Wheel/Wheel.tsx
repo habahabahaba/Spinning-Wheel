@@ -10,7 +10,7 @@ import { useShallow } from 'zustand/shallow';
 import useBoundStore from '../../store/boundStore';
 // React Router:
 // React:
-import { useMemo } from 'react';
+import { useMemo, memo } from 'react';
 // Context:
 // Hooks:
 // Components:
@@ -18,11 +18,10 @@ import Sector from './Sector';
 // CSS:
 // Types, interfaces and enumns:
 import type { FC, Ref } from 'react';
-import type { WheelAnimationState } from '../../store/types';
+// import type { WheelAnimationState } from '../../store/types';
 
 interface WheelProps {
   radius: number;
-  wheelAnimationState: WheelAnimationState;
   wheelRef?: Ref<SVGSVGElement>;
   wheelContainerRef?: Ref<HTMLDivElement>;
 }
@@ -33,12 +32,7 @@ export interface WheelHandle {
   arrowRef: Ref<HTMLDivElement>;
 }
 
-const Wheel: FC<WheelProps> = ({
-  radius,
-  wheelAnimationState,
-  wheelContainerRef,
-  wheelRef,
-}) => {
+const Wheel: FC<WheelProps> = ({ radius, wheelContainerRef, wheelRef }) => {
   // Store:
   const outcomes = useBoundStore(
     useShallow((state) => state.activeConfig.outcomes)
@@ -51,7 +45,7 @@ const Wheel: FC<WheelProps> = ({
   );
   const winningOutcomeIdx = useBoundStore((state) => state.winningOutcomeIdx);
 
-  // const firefoxScale = 777;
+  console.log('[Wheel] : ');
   // console.log('firefoxScale: ', firefoxScale);
   const fillColors = PALETTES[default_palette_idx];
   const fontFamily = default_fontFamily;
@@ -72,8 +66,7 @@ const Wheel: FC<WheelProps> = ({
         const startAngle = i * anglePerSector + 90; // Subtract 90° to align 0° with right
         const endAngle = (i + 1) * anglePerSector + 90;
 
-        const isHighlighted =
-          wheelAnimationState === 'idle' && winningOutcomeIdx === i;
+        const isHighlighted = winningOutcomeIdx === i;
         const fillColor =
           outcome.fillColor || fillColors[i % fillColors.length];
         const textColor = contrastColor(
@@ -107,7 +100,6 @@ const Wheel: FC<WheelProps> = ({
       anglePerSector,
       textScale,
       winningOutcomeIdx,
-      wheelAnimationState,
     ]
   );
 
@@ -139,4 +131,4 @@ const Wheel: FC<WheelProps> = ({
   );
 };
 
-export default Wheel;
+export default memo(Wheel);

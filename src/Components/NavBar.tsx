@@ -25,6 +25,9 @@ const NavBar: FC = () => {
   const animationState = useBoundStore((state) => state.wheelAnimationState);
   // Actions:
   const setCurrentLocation = useBoundStore((state) => state.setCurrentLocation);
+  const resetWinningOutcomeIdx = useBoundStore(
+    (state) => state.resetWinningOutcomeIdx
+  );
   // State:
 
   // Refs:
@@ -36,6 +39,7 @@ const NavBar: FC = () => {
   // Handlers:
   function goToLocation(newLocation: 'Main' | 'ConfigForm') {
     if (isIdle) {
+      resetWinningOutcomeIdx();
       setCurrentLocation({ newLocation });
     }
   }
