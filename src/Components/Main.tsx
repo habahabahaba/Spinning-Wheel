@@ -45,6 +45,8 @@ const Main: FC = () => {
   const wheelRef = useRef<SVGSVGElement>(null);
   const resultDialogRef = useRef<DialogHandle>(null);
   const randomRef = useRef<number>(0);
+  const mouseDownTimeRef = useRef<number | null>(null);
+  const windUpTimerRef = useRef<number | null>(null);
 
   const { windUp, cancelAnimations, spin } = useSpinAnimation(
     wheelRef,
@@ -58,29 +60,43 @@ const Main: FC = () => {
     if (wheelAnimationState !== 'idle') return;
   }
 
-  const mouseDownTimeRef = useRef<number | null>(null);
-
   function handleMouseDown() {
     if (wheelAnimationState !== 'idle') return;
-    mouseDownTimeRef.current = Date.now();
-
+    resetWinningOutcomeIdx();
     // Generate random number beforehand.
     randomRef.current = Math.random();
+    // Start counting wind-up time.
+    mouseDownTimeRef.current = Date.now();
 
-    windUp();
+    if (windUpTimerRef.current) {
+      clearTimeout(windUpTimerRef.current);
+    }
+    windUpTimerRef.current = setTimeout(() => {
+      windUp();
+    }, 150);
   }
 
   function handleMouseLeave() {
     if (wheelAnimationState !== 'windingUp') return;
     cancelAnimations();
-    // setIsWinding(false);
+
+    if (windUpTimerRef.current) {
+      clearTimeout(windUpTimerRef.current);
+    }
   }
 
   function handleMouseUp() {
+    if (windUpTimerRef.current) {
+      clearTimeout(windUpTimerRef.current);
+    }
     resetWinningOutcomeIdx();
 
     const startTime = mouseDownTimeRef.current;
-    if (startTime && wheelAnimationState === 'windingUp') {
+    if (
+      wheelAnimationState !== 'spinning' &&
+      wheelAnimationState !== 'cancelling' &&
+      startTime
+    ) {
       const heldSeconds = (Date.now() - startTime) / 1000;
       const strength = Math.min(Math.ceil(heldSeconds), 5);
       mouseDownTimeRef.current = null;
