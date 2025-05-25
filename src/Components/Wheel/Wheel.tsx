@@ -45,7 +45,7 @@ const Wheel: FC<WheelProps> = ({ radius, wheelContainerRef, wheelRef }) => {
   );
   const winningOutcomeIdx = useBoundStore((state) => state.winningOutcomeIdx);
 
-  console.log('[Wheel] : ');
+  // console.log('[Wheel] : ');
   // console.log('firefoxScale: ', firefoxScale);
   const fillColors = PALETTES[default_palette_idx];
   const fontFamily = default_fontFamily;

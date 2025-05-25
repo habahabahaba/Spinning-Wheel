@@ -103,10 +103,11 @@ const OutcomeInputs: FC<OutcomeInputsProps> = ({
       <legend className='sr-only'>Outcome {index + 1}</legend>
 
       <label htmlFor={`label-input-Outcome-${index}`} className='sr-only'>
-        Sector label
+        Sector label (press ENTER to jump to the next sector)
       </label>
       <input
         ref={labelInputRef}
+        title='press ENTER to jump to the next sector'
         id={`label-input-Outcome-${index}`}
         type='text'
         maxLength={30}

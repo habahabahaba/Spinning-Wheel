@@ -105,7 +105,6 @@ const OutcomesPanel: FC = () => {
       }
       focusTimer = setTimeout(() => {
         setFocusIdx(() => index);
-        // delayedScrollDown();
       }, 195);
     }
   }
