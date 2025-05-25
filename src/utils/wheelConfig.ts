@@ -16,6 +16,7 @@ import type { AllFontNames } from '../store/types';
 // import type { Radius } from '../constants/radii';
 // import type { HexColor } from './color';
 
+export const OUTCOMES_MAX_LENGTH = 72 as const;
 // Type Guards:
 function isOutcome(obj: unknown): obj is Outcome {
   if (typeof obj !== 'object' || obj === null) return false;
@@ -154,9 +155,12 @@ export function prepareConfig(wheelConfig: WheelConfig): WheelConfig {
 
   if (preparedConfig.outcomes.length < 1) return prepareConfig(initConfig);
 
-  // If there are more than 72 outcomes, take first 72:
-  if (preparedConfig.outcomes.length > 72) {
-    preparedConfig.outcomes = preparedConfig.outcomes.slice(0, 72);
+  // If there are more than OUTCOMES_MAX_LENGTH outcomes, take first OUTCOMES_MAX_LENGTH:
+  if (preparedConfig.outcomes.length > OUTCOMES_MAX_LENGTH) {
+    preparedConfig.outcomes = preparedConfig.outcomes.slice(
+      0,
+      OUTCOMES_MAX_LENGTH
+    );
   }
 
   // Randomise outcomes sequence:
@@ -212,30 +216,7 @@ export function validateWheelConfig(raw: unknown): ValidationResult {
     };
   }
 
-  // const fallbackFont: AllFontNames = FONT_FAMILIES_LOCAL[0];
   const warnings: string[] = [];
-
-  // const safeString = (val: unknown): string =>
-  //   typeof val === 'string' ? val : '';
-
-  // const validFont = (font: unknown): AllFontNames => {
-  //   if (
-  //     typeof font === 'string' &&
-  //     FONT_FAMILIES_ALL.includes(font as AllFontNames)
-  //   ) {
-  //     return font as AllFontNames;
-  //   }
-  //   warnings.push(`Invalid font "${font}", replaced with "${fallbackFont}"`);
-  //   return fallbackFont;
-  // };
-
-  // const validRadius = (radius: unknown): Radius => {
-  //   if (typeof radius === 'string' && radius in WHEEL_RADII_MAP) {
-  //     return radius as Radius;
-  //   }
-  //   warnings.push(`Invalid radius "${radius}", defaulted to "Medium"`);
-  //   return 'Medium';
-  // };
 
   const validPaletteIndex = (index: unknown): number => {
     if (typeof index === 'number' && index >= 0 && index < PALETTES.length) {
@@ -247,44 +228,15 @@ export function validateWheelConfig(raw: unknown): ValidationResult {
     return 0;
   };
 
-  // const isValidHexColor = (value: unknown): value is HexColor =>
-  //   typeof value === 'string' && isHexColor(value);
-
-  // const parseOutcome = (data: Outcome, index: number): Outcome => {
-  //   const label = safeString(data.label).trim() || `Outcome ${index + 1}`;
-
-  //   const fillColor =
-  //     data.fillColor === '' || isValidHexColor(data.fillColor)
-  //       ? data.fillColor
-  //       : '';
-
-  //   if (
-  //     data.fillColor !== '' &&
-  //     (typeof data.fillColor !== 'string' || !isHexColor(data.fillColor))
-  //   ) {
-  //     warnings.push(
-  //       `Outcome number ${index + 1}, ${label} had an invalid fill-color "${
-  //         data.fillColor
-  //       }" that was set to default color`
-  //     );
-  //   }
-
-  //   const fontFamily = data.fontFamily !== '' ? validFont(data.fontFamily) : '';
-
-  //   return new OutcomeModel({ label, fillColor, fontFamily });
-  // };
-
   // Start validation of config properties
   const outcomesRaw = raw.outcomes;
-  const trimmedOutcomes = outcomesRaw.slice(0, 72);
+  const trimmedOutcomes = outcomesRaw.slice(0, OUTCOMES_MAX_LENGTH);
 
-  if (outcomesRaw.length > 72) {
+  if (outcomesRaw.length > OUTCOMES_MAX_LENGTH) {
     warnings.push(
-      `The maximum possible number of outcomes is 72; extra outcomes were removed.`
+      `The maximum possible number of outcomes is ${OUTCOMES_MAX_LENGTH}; extra outcomes were removed.`
     );
   }
-
-  // const parsedOutcomes: Outcome[] = trimmedOutcomes.map(parseOutcome);
 
   if (outcomesRaw.length === 0) {
     warnings.push('No outcomes were found. Added Outcome 1 and Outcome 2.');

@@ -1,5 +1,6 @@
 // Constants:
 import { PALETTES } from '../constants/palettes';
+import { OUTCOMES_MAX_LENGTH } from '../utils/wheelConfig';
 // Utils:
 import {
   blankOutcome,
@@ -82,9 +83,12 @@ const createWheelConfigsSlice: StateCreator<
   addBlankOutcomes: ({ quantity }: { quantity: number }) =>
     set((state) => {
       const length = state.currentConfig.outcomes.length;
-      if (length > 71) return state;
+      if (length >= OUTCOMES_MAX_LENGTH) return state;
 
-      const clampedQuantity = Math.max(1, Math.min(quantity, 72 - length));
+      const clampedQuantity = Math.max(
+        1,
+        Math.min(quantity, OUTCOMES_MAX_LENGTH - length)
+      );
 
       const blankOutcomes = Array.from({ length: clampedQuantity }, () => ({
         ...blankOutcome(),
@@ -101,7 +105,12 @@ const createWheelConfigsSlice: StateCreator<
   duplicateOutcome: ({ outcomeIdx }: { outcomeIdx: number }) =>
     set((state) => {
       const length = state.currentConfig.outcomes.length;
-      if (length > 71 || outcomeIdx >= length || outcomeIdx < 0) return state;
+      if (
+        length >= OUTCOMES_MAX_LENGTH ||
+        outcomeIdx >= length ||
+        outcomeIdx < 0
+      )
+        return state;
 
       return {
         currentConfig: {

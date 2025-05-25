@@ -1,5 +1,6 @@
 // Assets:
 // Constants:
+import { OUTCOMES_MAX_LENGTH } from '../../utils/wheelConfig';
 // Utils:
 // 3rd party:
 import { useShallow } from 'zustand/shallow';
@@ -78,7 +79,7 @@ const OutcomesPanel: FC = () => {
   }, [outcomesLength]);
 
   // Derived values:
-  const validQuantity = 72 - outcomesLength;
+  const validQuantity = OUTCOMES_MAX_LENGTH - outcomesLength;
 
   // Handlers:
   function handleAddOutcomes(
@@ -86,17 +87,17 @@ const OutcomesPanel: FC = () => {
     addQuantity: number
   ) {
     ev.preventDefault();
-    if (outcomesLength > 71) return;
+    if (outcomesLength >= OUTCOMES_MAX_LENGTH) return;
     const quantity = Math.max(1, Math.min(validQuantity, addQuantity));
 
     addBlankOutcomes({ quantity });
     delayedScrollDown();
   }
   function handleFocusInput(index: number, addInput = false) {
-    if (index > 71) return;
+    if (index >= OUTCOMES_MAX_LENGTH) return;
     if (index < outcomesLength) {
       setFocusIdx(() => index);
-    } else if (outcomesLength < 72) {
+    } else if (outcomesLength < OUTCOMES_MAX_LENGTH) {
       if (focusTimer) clearTimeout(focusTimer);
 
       if (addInput) {
@@ -129,7 +130,7 @@ const OutcomesPanel: FC = () => {
       </fieldset>
 
       <AddOutcomes
-        outcomesLength={outcomesLength}
+        validQuantity={validQuantity}
         handleAddOutcomes={handleAddOutcomes}
       />
     </div>

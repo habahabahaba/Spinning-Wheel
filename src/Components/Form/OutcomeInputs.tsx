@@ -1,3 +1,5 @@
+// Constants:
+import { OUTCOMES_MAX_LENGTH } from '../../utils/wheelConfig';
 // Utils:
 import { isHexColor } from '../../utils/color';
 import { mergeStyles } from '../../utils/css';
@@ -142,7 +144,7 @@ const OutcomeInputs: FC<OutcomeInputsProps> = ({
         shape='rounded'
         // outlined={true}
         onClick={handleDuplicate}
-        disabled={outcomesLength > 71}
+        disabled={outcomesLength >= OUTCOMES_MAX_LENGTH}
         className={styles.outcome_duplicate_button}
         aria-label={`Duplicate Outcome ${index + 1}`}
       >

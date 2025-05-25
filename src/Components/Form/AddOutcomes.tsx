@@ -17,7 +17,8 @@ import styles from './ConfigForm.module.css';
 // Types, interfaces and enumns:
 import type { FC, MouseEvent } from 'react';
 interface AddOutcomesProps {
-  outcomesLength: number;
+  validQuantity: number;
+
   handleAddOutcomes: (
     ev: MouseEvent<HTMLButtonElement>,
     addQuantity: number
@@ -25,7 +26,7 @@ interface AddOutcomesProps {
 }
 
 const AddOutcomes: FC<AddOutcomesProps> = ({
-  outcomesLength,
+  validQuantity,
   handleAddOutcomes,
 }) => {
   // Context:
@@ -41,7 +42,6 @@ const AddOutcomes: FC<AddOutcomesProps> = ({
   // Effects:
 
   // Derived values:
-  const validQuantity = 72 - outcomesLength;
 
   // Handlers:
 
