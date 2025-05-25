@@ -1,7 +1,6 @@
 // Assets:
 // Constants:
 // Utils:
-import { mergeStyles } from '../../utils/css';
 // 3rd party:
 import { useShallow } from 'zustand/shallow';
 // Store:
@@ -12,8 +11,8 @@ import { useState, useRef, useEffect } from 'react';
 // Context:
 // Hooks:
 // Components:
-import Button from '../UI/Button';
 import OutcomeInputs from './OutcomeInputs';
+import AddOutcomes from './AddOutcomes';
 // CSS:
 import styles from './ConfigForm.module.css';
 // Types, interfaces and enumns:
@@ -37,7 +36,6 @@ const OutcomesPanel: FC = () => {
   // Actions:
   const addBlankOutcomes = useBoundStore((state) => state.addBlankOutcomes);
   // State:
-  const [addQuantity, setAddQuantity] = useState<number>(1);
   const [focusIdx, setFocusIdx] = useState<number>(0);
   // Refs:
   const outcomesContainerRef = useRef<HTMLFieldSetElement>(null);
@@ -55,6 +53,7 @@ const OutcomesPanel: FC = () => {
       });
     }, delayMs);
   }
+
   // Effects:
   // Fixing Chrome scroll-related bug:
   useEffect(() => {
@@ -82,7 +81,10 @@ const OutcomesPanel: FC = () => {
   const validQuantity = 72 - outcomesLength;
 
   // Handlers:
-  function handleAddOutcomes(ev: MouseEvent<HTMLButtonElement>) {
+  function handleAddOutcomes(
+    ev: MouseEvent<HTMLButtonElement>,
+    addQuantity: number
+  ) {
     ev.preventDefault();
     if (outcomesLength > 71) return;
     const quantity = Math.max(1, Math.min(validQuantity, addQuantity));
@@ -121,47 +123,15 @@ const OutcomesPanel: FC = () => {
 
   return (
     <div className={styles.outcomes_panel}>
-      <fieldset
-        ref={outcomesContainerRef}
-        className={styles.outcomes_list}
-        // style={{ overflowAnchor: 'none', scrollBehavior: 'auto' }}
-      >
+      <fieldset ref={outcomesContainerRef} className={styles.outcomes_list}>
         <legend className='sr-only'>Outcomes controls</legend>
         {outcomesList}
       </fieldset>
 
-      <fieldset
-        className={mergeStyles(
-          styles.buttons_container,
-          styles.add_outcomes_container
-        )}
-      >
-        <legend className='sr-only'>Add blank outcomes</legend>
-        <label htmlFor='add-outcomes-quantity' className='sr-only'>
-          Number of outcomes to add
-        </label>
-        <input
-          id='add-outcomes-quantity'
-          className={styles.add_outcomes_number_input}
-          type='number'
-          min={1}
-          max={validQuantity}
-          step={1}
-          value={addQuantity}
-          onChange={(ev) => {
-            setAddQuantity(+ev.target.value);
-          }}
-        />
-        <Button
-          variant='success'
-          shape='rounded'
-          // outlined
-          onClick={handleAddOutcomes}
-          disabled={addQuantity > validQuantity}
-        >
-          Add
-        </Button>
-      </fieldset>
+      <AddOutcomes
+        outcomesLength={outcomesLength}
+        handleAddOutcomes={handleAddOutcomes}
+      />
     </div>
   );
 };
