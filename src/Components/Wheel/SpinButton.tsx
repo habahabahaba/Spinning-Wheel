@@ -61,6 +61,7 @@ const SpinButton: FC<SpinButtonProps> = ({
   // JSX:
   return (
     <button
+      title='Hold to wind up'
       id='spin-button'
       onClick={onClick}
       type='button'
