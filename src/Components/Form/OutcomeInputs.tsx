@@ -10,7 +10,7 @@ import { useShallow } from 'zustand/shallow';
 import useBoundStore from '../../store/boundStore';
 // React Router:
 // React:
-import { useEffect, useRef } from 'react';
+import { useRef, useImperativeHandle } from 'react';
 // Context:
 // Hooks:
 // Components:
@@ -20,19 +20,18 @@ import deleteSVG from '../SVG/deleteSVGs';
 // CSS:
 import styles from './ConfigForm.module.css';
 // Types, interfaces and enumns:
-import type { FC, KeyboardEvent, MouseEvent } from 'react';
+import type { FC, KeyboardEvent, MouseEvent, Ref } from 'react';
 import type { Outcome } from '../../store/types';
 interface OutcomeInputsProps {
   index: number;
-  isFocused: boolean;
   focusInput: (index: number, addInput?: boolean) => void;
+  ref?: Ref<OutcomeInputsHandle>;
 }
+export type OutcomeInputsHandle = {
+  handleFocusSelect: () => void;
+};
 
-const OutcomeInputs: FC<OutcomeInputsProps> = ({
-  index,
-  isFocused,
-  focusInput,
-}) => {
+const OutcomeInputs: FC<OutcomeInputsProps> = ({ index, focusInput, ref }) => {
   // Store:
   const outcome = useBoundStore(
     useShallow((state) => state.currentConfig.outcomes[index])
@@ -48,16 +47,21 @@ const OutcomeInputs: FC<OutcomeInputsProps> = ({
 
   // Refs:
   const labelInputRef = useRef<HTMLInputElement>(null);
+  function handleFocusSelect() {
+    const label = labelInputRef.current;
+    if (!label) return;
+    label.focus();
+    requestAnimationFrame(() => {
+      label?.select();
+    });
+  }
+
+  // Imperative handle:
+  useImperativeHandle(ref, () => ({
+    handleFocusSelect,
+  }));
 
   // Effects:
-  useEffect(() => {
-    if (isFocused && labelInputRef.current) {
-      labelInputRef.current.focus();
-      requestAnimationFrame(() => {
-        labelInputRef.current?.select();
-      });
-    }
-  }, [isFocused]);
 
   // Derived values:
   // For color input default value:
@@ -103,11 +107,11 @@ const OutcomeInputs: FC<OutcomeInputsProps> = ({
       <legend className='sr-only'>Outcome {index + 1}</legend>
 
       <label htmlFor={`label-input-Outcome-${index}`} className='sr-only'>
-        Sector label (press ENTER to jump to the next sector)
+        Sector label (press ENTER or DOWN to jump to the next outcome)
       </label>
       <input
         ref={labelInputRef}
-        title='press ENTER to jump to the next sector'
+        title='press ENTER or DOWN to jump to the next outcome'
         id={`label-input-Outcome-${index}`}
         type='text'
         maxLength={30}

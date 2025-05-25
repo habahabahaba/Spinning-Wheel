@@ -8,7 +8,7 @@ import { useShallow } from 'zustand/shallow';
 import useBoundStore from '../../store/boundStore';
 // Router:
 // React:
-import { useState, useRef, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 // Context:
 // Hooks:
 // Components:
@@ -18,6 +18,7 @@ import AddOutcomes from './AddOutcomes';
 import styles from './ConfigForm.module.css';
 // Types, interfaces and enumns:
 import type { FC, MouseEvent } from 'react';
+import type { OutcomeInputsHandle } from './OutcomeInputs';
 // interface OutcomesPanelProps {}
 
 let focusTimer: number;
@@ -37,23 +38,11 @@ const OutcomesPanel: FC = () => {
   // Actions:
   const addBlankOutcomes = useBoundStore((state) => state.addBlankOutcomes);
   // State:
-  const [focusIdx, setFocusIdx] = useState<number>(0);
+
   // Refs:
   const outcomesContainerRef = useRef<HTMLFieldSetElement>(null);
   const scrollTopRef = useRef<number>(0);
-  function delayedScrollDown(delayMs = 10) {
-    const container = outcomesContainerRef.current;
-    if (scrollTimer) {
-      clearTimeout(scrollTimer);
-    }
-    scrollTimer = setTimeout(() => {
-      requestAnimationFrame(() => {
-        if (container) {
-          container.scrollTop = container.scrollHeight;
-        }
-      });
-    }, delayMs);
-  }
+  const outcomeHandleRefs = useRef<(OutcomeInputsHandle | null)[]>([]);
 
   // Effects:
   // Fixing Chrome scroll-related bug:
@@ -82,6 +71,20 @@ const OutcomesPanel: FC = () => {
   const validQuantity = OUTCOMES_MAX_LENGTH - outcomesLength;
 
   // Handlers:
+  function delayedScrollDown(delayMs = 5) {
+    const container = outcomesContainerRef.current;
+    if (scrollTimer) {
+      clearTimeout(scrollTimer);
+    }
+    scrollTimer = setTimeout(() => {
+      requestAnimationFrame(() => {
+        if (container) {
+          container.scrollTop = container.scrollHeight;
+        }
+      });
+    }, delayMs);
+  }
+
   function handleAddOutcomes(
     ev: MouseEvent<HTMLButtonElement>,
     addQuantity: number
@@ -96,7 +99,7 @@ const OutcomesPanel: FC = () => {
   function handleFocusInput(index: number, addInput = false) {
     if (index >= OUTCOMES_MAX_LENGTH) return;
     if (index < outcomesLength) {
-      setFocusIdx(() => index);
+      outcomeHandleRefs.current[index]?.handleFocusSelect();
     } else if (outcomesLength < OUTCOMES_MAX_LENGTH) {
       if (focusTimer) clearTimeout(focusTimer);
 
@@ -104,7 +107,7 @@ const OutcomesPanel: FC = () => {
         addBlankOutcomes({ quantity: 1 });
       }
       focusTimer = setTimeout(() => {
-        setFocusIdx(() => index);
+        outcomeHandleRefs.current[index]?.handleFocusSelect();
       }, 195);
     }
   }
@@ -114,9 +117,11 @@ const OutcomesPanel: FC = () => {
   // JSX:
   const outcomesList = outcomeIds.map((id, idx) => (
     <OutcomeInputs
+      ref={(ref) => {
+        outcomeHandleRefs.current[idx] = ref;
+      }}
       index={idx}
       key={id}
-      isFocused={idx === focusIdx}
       focusInput={handleFocusInput}
     />
   ));
