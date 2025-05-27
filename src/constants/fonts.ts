@@ -11,33 +11,7 @@ export type AllSubsets =
   | 'latin-ext'
   | 'vietnamese';
 
-export const FONT_FAMILIES_LOCAL = ['sans-serif', 'Arial', 'serif'] as const;
-
-export const FONT_FAMILIES_REMOTE = [
-  'Archivo Narrow',
-  'DynaPuff',
-  'Eczar',
-  'Expletus Sans',
-  'Glory',
-  'Handjet',
-  'Manrope',
-  'Markazi Text',
-  'MuseoModerno',
-  'Pixelify Sans',
-  'Reddit Sans Condensed',
-  'Roboto Condensed',
-  'Shantell Sans',
-  'Sofia Sans Semi Condensed',
-  'Tektur',
-  'Tourney',
-  'Truculenta',
-  'Yanone Kaffeesatz',
-  'Winky Rough',
-] as const;
-
-export type RemoteFontNames = (typeof FONT_FAMILIES_REMOTE)[number];
-
-export const REMOTE_FONT_SUBSETS: Record<RemoteFontNames, AllSubsets[]> = {
+export const REMOTE_FONT_SUBSETS = {
   'Archivo Narrow': ['latin'],
   DynaPuff: ['latin'],
   Eczar: ['devanagari', 'greek-ext', 'greek', 'latin', 'latin-ext'],
@@ -86,44 +60,28 @@ export const REMOTE_FONT_SUBSETS: Record<RemoteFontNames, AllSubsets[]> = {
   Truculenta: ['latin', 'latin-ext'],
   'Yanone Kaffeesatz': ['latin'],
   'Winky Rough': ['latin'],
-} satisfies Record<RemoteFontNames, AllSubsets[]>;
+} as const satisfies Record<string, readonly AllSubsets[]>;
 
+export const FONT_FAMILIES_LOCAL = ['sans-serif', 'Arial', 'serif'] as const;
 export type LocalFontNames = (typeof FONT_FAMILIES_LOCAL)[number];
 
-export type AllFontNames = LocalFontNames | RemoteFontNames;
+export const FONT_FAMILIES_REMOTE = Object.keys(
+  REMOTE_FONT_SUBSETS
+) as (keyof typeof REMOTE_FONT_SUBSETS)[];
+export type RemoteFontNames = (typeof FONT_FAMILIES_REMOTE)[number];
 
+export type AllFontNames = LocalFontNames | RemoteFontNames;
 export const FONT_FAMILIES_ALL: AllFontNames[] = [
   ...FONT_FAMILIES_LOCAL,
   ...FONT_FAMILIES_REMOTE,
-] as const;
+];
 
-const initFontLoadState: Record<AllFontNames, boolean> = {
-  // System fonts:
-  Arial: true,
-  'sans-serif': true,
-  serif: true,
-
-  // Remote fonts:
-  'Archivo Narrow': false,
-  DynaPuff: false,
-  Eczar: false,
-  Glory: false,
-  'Expletus Sans': false,
-  Handjet: false,
-  Manrope: false,
-  'Markazi Text': false,
-  MuseoModerno: false,
-  'Pixelify Sans': false,
-  'Reddit Sans Condensed': false,
-  'Roboto Condensed': false,
-  'Shantell Sans': false,
-  'Sofia Sans Semi Condensed': false,
-  Tektur: false,
-  Tourney: false,
-  Truculenta: false,
-  'Yanone Kaffeesatz': false,
-  'Winky Rough': false,
-};
+export const initFontLoadState = Object.fromEntries(
+  FONT_FAMILIES_ALL.map((name) => [
+    name,
+    FONT_FAMILIES_LOCAL.includes(name as LocalFontNames),
+  ])
+) as Record<AllFontNames, boolean>;
 
 // Create URL for a font subset
 export function createFontUrl(
@@ -136,11 +94,13 @@ export function createFontUrl(
 
 export type RemoteFontURLSets = Record<RemoteFontNames, Set<string>>;
 export const initRemoteFontURLSets = Object.fromEntries(
-  (
-    Object.entries(REMOTE_FONT_SUBSETS) as [RemoteFontNames, AllSubsets[]][]
-  ).map(([fontName, subsets]) => [
+  FONT_FAMILIES_REMOTE.map((fontName) => [
     fontName,
-    new Set(subsets.map((subset) => createFontUrl(fontName, subset))),
+    new Set(
+      REMOTE_FONT_SUBSETS[fontName].map((subset) =>
+        createFontUrl(fontName, subset)
+      )
+    ),
   ])
 ) as RemoteFontURLSets;
 
