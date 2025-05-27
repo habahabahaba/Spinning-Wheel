@@ -174,11 +174,6 @@ legend {
 .outcome_label_input {
   grid-area: label;
   align-self: stretch;
-  /* min-height: 0; */
-  /* height: auto; */
-  /* width: auto; */
-  /* margin-block: 0; */
-  /* padding-block: 0; */
   min-width: 0;
   padding: 0.1rem 0.5rem;
   border: 1px solid var(--color-contrast-border, black);
@@ -229,15 +224,14 @@ legend {
   padding-block: 0;
 }
 
-.outcome_delete_button {
+button.outcome_delete_button {
   grid-area: delete;
   align-self: stretch;
-  width: 100%;
-  width: auto;
-  padding-block: 0;
+  padding: 0;
   & > svg {
-    height: min(28px, 0.8rem);
-    width: min(28px, 0.8rem);
+    height: min(36px, 0.8rem);
+    /* width: min(28px, 0.8rem); */
+    aspect-ratio: 1;
   }
 }
 
