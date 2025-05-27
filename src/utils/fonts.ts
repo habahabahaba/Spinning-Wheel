@@ -4,7 +4,7 @@ import useBoundStore from '../store/boundStore';
 // Types, interfaces and enumns:
 // import type {  RemoteFontNames } from '../constants/fonts';
 const MAX_CONCURRENT_DOWNLOADS = navigator.userAgent.includes('Firefox')
-  ? 4
+  ? 3
   : 7;
 
 async function loadFontSubsetWithRetry(

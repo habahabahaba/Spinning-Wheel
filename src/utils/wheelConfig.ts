@@ -35,7 +35,7 @@ function isOutcome(obj: unknown): obj is Outcome {
   }
 
   if (typeof o.id !== 'string') return false;
-  if (!/^\d{13}-\d{8}$/.test(o.id)) return false;
+  if (!/^\d{8}-\d{13}$/.test(o.id)) return false;
 
   if (typeof o.label !== 'string') return false;
 

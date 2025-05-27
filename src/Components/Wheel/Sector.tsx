@@ -41,9 +41,9 @@ const Sector: FC<SectorProps> = ({
   textScale = 1,
   isHighlighted = false,
 }) => {
-  if (import.meta.env.DEV && startAngle === 90) {
-    console.log(`[Sector] startAngle: ${startAngle}`);
-  }
+  // if (import.meta.env.DEV && startAngle === 90) {
+  //   console.log(`[Sector] startAngle: ${startAngle}`);
+  // }
 
   const { describeSector, midAngle, textPosition, text, fontSize } =
     useSectorLayout({
@@ -66,6 +66,8 @@ const Sector: FC<SectorProps> = ({
     //   :
     isFirefox && ['serif', 'sans-serif'].includes(fontFamily)
       ? '0.15ch'
+      : fontFamily === 'Eczar'
+      ? '0.11ch'
       : '-0.01ch';
   const textUnderlineOffset =
     isFirefox &&

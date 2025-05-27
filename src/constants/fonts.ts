@@ -3,6 +3,7 @@ export type AllSubsets =
   | 'armenian'
   | 'cyrillic'
   | 'cyrillic-ext'
+  | 'devanagari'
   | 'greek'
   | 'greek-ext'
   | 'hebrew'
@@ -15,13 +16,17 @@ export const FONT_FAMILIES_LOCAL = ['sans-serif', 'Arial', 'serif'] as const;
 export const FONT_FAMILIES_REMOTE = [
   'Archivo Narrow',
   'DynaPuff',
+  'Eczar',
   'Expletus Sans',
+  'Glory',
   'Handjet',
   'Manrope',
+  'Markazi Text',
   'MuseoModerno',
   'Pixelify Sans',
   'Reddit Sans Condensed',
   'Roboto Condensed',
+  'Shantell Sans',
   'Sofia Sans Semi Condensed',
   'Tektur',
   'Tourney',
@@ -35,7 +40,9 @@ export type RemoteFontNames = (typeof FONT_FAMILIES_REMOTE)[number];
 export const REMOTE_FONT_SUBSETS: Record<RemoteFontNames, AllSubsets[]> = {
   'Archivo Narrow': ['latin'],
   DynaPuff: ['latin'],
+  Eczar: ['devanagari', 'greek-ext', 'greek', 'latin', 'latin-ext'],
   'Expletus Sans': ['latin'],
+  Glory: ['latin', 'latin-ext', 'vietnamese'],
   Handjet: [
     'arabic',
     'armenian',
@@ -48,6 +55,7 @@ export const REMOTE_FONT_SUBSETS: Record<RemoteFontNames, AllSubsets[]> = {
     'vietnamese',
   ],
   Manrope: ['latin', 'latin-ext', 'cyrillic', 'cyrillic-ext'],
+  'Markazi Text': ['arabic', 'latin', 'latin-ext', 'vietnamese'],
   MuseoModerno: ['latin', 'latin-ext', 'vietnamese'],
   'Pixelify Sans': ['latin'],
   'Reddit Sans Condensed': ['latin'],
@@ -59,13 +67,19 @@ export const REMOTE_FONT_SUBSETS: Record<RemoteFontNames, AllSubsets[]> = {
     'greek',
     'greek-ext',
   ],
+  'Shantell Sans': [
+    'latin',
+    'latin-ext',
+    'cyrillic',
+    'cyrillic-ext',
+    'vietnamese',
+  ],
   'Sofia Sans Semi Condensed': [
     'latin',
     'latin-ext',
     'cyrillic',
     'cyrillic-ext',
     'greek',
-    // 'greek-ext',
   ],
   Tektur: ['latin'],
   Tourney: ['latin'],
@@ -92,13 +106,17 @@ const initFontLoadState: Record<AllFontNames, boolean> = {
   // Remote fonts:
   'Archivo Narrow': false,
   DynaPuff: false,
+  Eczar: false,
+  Glory: false,
   'Expletus Sans': false,
   Handjet: false,
   Manrope: false,
+  'Markazi Text': false,
   MuseoModerno: false,
   'Pixelify Sans': false,
   'Reddit Sans Condensed': false,
   'Roboto Condensed': false,
+  'Shantell Sans': false,
   'Sofia Sans Semi Condensed': false,
   Tektur: false,
   Tourney: false,
