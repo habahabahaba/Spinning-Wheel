@@ -39,7 +39,7 @@ const OutcomeInputs: FC<OutcomeInputsProps> = ({ index, focusInput, ref }) => {
   const outcomesLength = useBoundStore(
     useShallow((state) => state.currentConfig.outcomes.length)
   );
-  console.log(`[OutcomeInputs] index: ${index}`);
+  // console.log(`[OutcomeInputs] index: ${index}`);
   // Actions:
   const modifyOutcome = useBoundStore((state) => state.modifyOutcome);
   const duplicateOutcome = useBoundStore((state) => state.duplicateOutcome);

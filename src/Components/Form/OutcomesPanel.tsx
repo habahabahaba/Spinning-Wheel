@@ -111,9 +111,9 @@ const OutcomesPanel: FC = () => {
       }, 195);
     }
   }
-  if (import.meta.env.DEV) {
-    console.log(`[OutcomesPanel] focusTimer: ${focusTimer}`);
-  }
+  // if (import.meta.env.DEV) {
+  //   console.log(`[OutcomesPanel] focusTimer: ${focusTimer}`);
+  // }
   // JSX:
   const outcomesList = outcomeIds.map((id, idx) => (
     <OutcomeInputs

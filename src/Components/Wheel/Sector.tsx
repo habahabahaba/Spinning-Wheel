@@ -41,9 +41,9 @@ const Sector: FC<SectorProps> = ({
   textScale = 1,
   isHighlighted = false,
 }) => {
-  // if (import.meta.env.DEV && startAngle === 90) {
-  //   console.log(`[Sector] startAngle: ${startAngle}`);
-  // }
+  if (import.meta.env.DEV && startAngle === 90) {
+    console.log(`[Sector] startAngle: ${startAngle}`);
+  }
 
   const { describeSector, midAngle, textPosition, text, fontSize } =
     useSectorLayout({
