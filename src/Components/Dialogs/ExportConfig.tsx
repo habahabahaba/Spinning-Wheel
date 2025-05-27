@@ -53,9 +53,6 @@ const ExportConfig: FC = () => {
   // JSX:
   return (
     <>
-      <h3 id='export-config-dialog-title' className='sr-only'>
-        Please, provide a file name.
-      </h3>
       <p id='export-config-dialog-description' className='sr-only'>
         Enter a file name to export your current configuration.
       </p>
@@ -64,6 +61,9 @@ const ExportConfig: FC = () => {
         aria-describedby='export-configuration-description'
         className={mergeStyles(styles.container, styles.x_small)}
       >
+        <p id='export-config-dialog-title' className={styles.description}>
+          Please, provide a file name:
+        </p>
         <div
         // className={styles.centered}
         >

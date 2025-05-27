@@ -204,11 +204,11 @@ const ImportConfig: FC = () => {
 
   return (
     <form className={mergeStyles(styles.container, styles.large)}>
-      <h3 id='import-config-dialog-title' className='.sr-only'>
+      <h3 id='import-config-dialog-title' className='sr-only'>
         Import configuration from a file.
       </h3>
-      <p id='import-config-dialog-description' className='.sr-only'>
-        Please select (upload) a .json file to import configuration from.
+      <p id='import-config-dialog-description' className={styles.description}>
+        Please select (upload) a .json file to import configuration from:
       </p>
       <div>
         <label
