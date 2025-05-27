@@ -1,13 +1,12 @@
 // Utils:
-import { polarToCartesian } from '../../utils/geometry';
-import { calculateTextLayout } from '../../utils/text';
 // 3rd party:
 // Store:
 // React Router:
 // React:
-import { useMemo, memo } from 'react';
+import { memo } from 'react';
 // Context:
 // Hooks:
+import useSectorLayout from '../../hooks/useSectorLayout';
 // Components:
 // CSS:
 // Types, interfaces and enumns:
@@ -46,41 +45,17 @@ const Sector: FC<SectorProps> = ({
   //   console.log(`[Sector] startAngle: ${startAngle}`);
   // }
 
-  const sectorAngle = endAngle - startAngle;
-  const midAngle = (startAngle + endAngle) / 2;
-
-  // Derived values:
-  const describeSector = useMemo(() => {
-    const start = polarToCartesian(center.x, center.y, radius, endAngle);
-    const end = polarToCartesian(center.x, center.y, radius, startAngle);
-    const largeArc = sectorAngle > 180 ? 1 : 0;
-
-    return `
-        M ${center.x} ${center.y}
-        L ${start.x} ${start.y}
-        A ${radius} ${radius} 0 ${largeArc} 0 ${end.x} ${end.y}
-        Z
-      `;
-  }, [startAngle, endAngle, radius, center.x, center.y, sectorAngle]);
-
-  // Calculate sector geometry
-  const { text, fontSize, distanceFromApex } = useMemo(
-    () =>
-      calculateTextLayout(
-        label,
-        fontFamily,
-        fontWeight,
-        radius,
-        sectorAngle,
-        textScale
-      ),
-    [label, fontFamily, fontWeight, radius, sectorAngle, textScale]
-  );
-
-  const textPos = useMemo(
-    () => polarToCartesian(center.x, center.y, distanceFromApex, midAngle),
-    [center, distanceFromApex, midAngle]
-  );
+  const { describeSector, midAngle, textPosition, text, fontSize } =
+    useSectorLayout({
+      center,
+      radius,
+      startAngle,
+      endAngle,
+      label,
+      fontFamily,
+      fontWeight,
+      textScale,
+    });
 
   const textDecoration = isHighlighted ? 'underline' : '';
 
@@ -113,8 +88,8 @@ const Sector: FC<SectorProps> = ({
       />
 
       <text
-        x={textPos.x}
-        y={textPos.y}
+        x={textPosition.x}
+        y={textPosition.y}
         textAnchor='start'
         dominantBaseline='central'
         fontFamily={fontFamily}
@@ -127,7 +102,9 @@ const Sector: FC<SectorProps> = ({
           textUnderlineOffset,
           textDecoration,
         }}
-        transform={`rotate(${midAngle - 90} ${textPos.x} ${textPos.y})`}
+        transform={`rotate(${midAngle - 90} ${textPosition.x} ${
+          textPosition.y
+        })`}
       >
         {text}
       </text>
