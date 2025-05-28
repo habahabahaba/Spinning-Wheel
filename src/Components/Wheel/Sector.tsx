@@ -71,7 +71,7 @@ const Sector: FC<SectorProps> = ({
     console.log(`[Sector] textUnderlineOffset: ${textUnderlineOffset}`);
   }
 
-  const textDecoration = isHighlighted ? 'underline' : 'underline';
+  const textDecoration = isHighlighted ? 'underline' : '';
 
   return (
     <g>
