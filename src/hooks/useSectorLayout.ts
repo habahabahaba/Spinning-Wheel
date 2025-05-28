@@ -76,11 +76,11 @@ export default function useSectorLayout({
     [center.x, center.y, distanceFromApex, midAngle]
   );
 
-  if (import.meta.env.DEV) {
-    console.log(
-      `[useSectorLayout] browser: ${browser}, fontFamily: ${fontFamily}`
-    );
-  }
+  // if (import.meta.env.DEV) {
+  //   console.log(
+  //     `[useSectorLayout] browser: ${browser}, fontFamily: ${fontFamily}`
+  //   );
+  // }
 
   const textOffsetY = FONT_Y_OFFSET[browser][fontFamily];
 
