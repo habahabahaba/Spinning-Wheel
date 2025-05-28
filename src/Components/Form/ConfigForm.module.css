@@ -147,7 +147,7 @@ legend {
   row-gap: 0.5rem;
   grid-template:
     'label color font duplicate delete' 1fr
-    / 1fr min-content 30% 6.6% 6.6%;
+    / 1fr min-content 30% 6% 6%;
 
   /* min-width: 85%; */
   /* min-width: max-content; */
