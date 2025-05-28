@@ -117,7 +117,7 @@ button,
   background-color: var(--glass-color);
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(2px);
-  border-radius: 0.2rem;
+  border-radius: min(2px, 0.1rem);
   border: 1px solid var(--glass-color);
 
   box-shadow: var(--bottom-right-shadow);
