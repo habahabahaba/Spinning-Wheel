@@ -6,7 +6,7 @@
 /* SELECTORS */
 .selector {
   align-self: center;
-  border-radius: 0.1rem;
+  border-radius: min(2px, 0.1rem);
 
   & > div {
     min-height: max(1.25rem, 20px);
@@ -28,7 +28,6 @@
 
   &:focus {
     outline: 2px solid var(--color-accent, blue);
-    border-radius: 0.1rem;
     &:hover {
       outline: 2px solid var(--color-accent-hover, darkblue);
     }
@@ -37,10 +36,6 @@
 
 .palette_preview {
   height: max(1rem, 16px);
-  /* height: auto; */
-  /* height: 190%; */
-  /* align-self: stretch; */
-  /* width: 100%; */
   display: flex;
   justify-content: start;
   align-items: center;

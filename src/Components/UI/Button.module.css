@@ -52,7 +52,7 @@
 
 /* Shapes */
 .rectangle {
-  border-radius: 0.1rem;
+  border-radius: min(2px, 0.1rem);
 }
 
 .rounded {
