@@ -2,3 +2,5 @@
 /*
 !/dist/
 !/.gitignore
+!/package.json
+!/pnpm-lock.yaml
