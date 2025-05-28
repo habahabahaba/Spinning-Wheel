@@ -11,6 +11,8 @@ import useSectorLayout from '../../hooks/useSectorLayout';
 // CSS:
 // Types, interfaces and enumns:
 import type { FC } from 'react';
+import type { Browser } from '../../utils/browser';
+import type { AllFontNames } from '../../constants/fonts';
 
 interface SectorProps {
   center: { x: number; y: number };
@@ -20,9 +22,9 @@ interface SectorProps {
   fillColor: string;
   textColor?: string;
   label?: string;
-  fontFamily?: string;
+  fontFamily?: AllFontNames;
   fontWeight?: string;
-  isFirefox?: boolean;
+  browser?: Browser;
   textScale?: number;
   isHighlighted?: boolean;
 }
@@ -37,7 +39,7 @@ const Sector: FC<SectorProps> = ({
   label = '',
   fontFamily = 'Arial',
   fontWeight = '600',
-  isFirefox = false,
+  browser = 'chrome',
   textScale = 1,
   isHighlighted = false,
 }) => {
@@ -45,35 +47,31 @@ const Sector: FC<SectorProps> = ({
   //   console.log(`[Sector] startAngle: ${startAngle}`);
   // }
 
-  const { describeSector, midAngle, textPosition, text, fontSize } =
-    useSectorLayout({
-      center,
-      radius,
-      startAngle,
-      endAngle,
-      label,
-      fontFamily,
-      fontWeight,
-      textScale,
-    });
+  const {
+    describeSector,
+    midAngle,
+    textPosition,
+    textOffsetY,
+    textUnderlineOffset,
+    text,
+    fontSize,
+  } = useSectorLayout({
+    center,
+    radius,
+    startAngle,
+    endAngle,
+    browser,
+    label,
+    fontFamily,
+    fontWeight,
+    textScale,
+  });
 
-  const textDecoration = isHighlighted ? 'underline' : '';
+  if (import.meta.env.DEV) {
+    console.log(`[Sector] textUnderlineOffset: ${textUnderlineOffset}`);
+  }
 
-  // Fixing Firefox text rendering:
-  const dy =
-    // isFirefox && fontFamily === 'arial'
-    //   ? '0.06em'
-    //   :
-    isFirefox && ['serif', 'sans-serif'].includes(fontFamily)
-      ? '0.15ch'
-      : fontFamily === 'Eczar'
-      ? '0.11ch'
-      : '-0.01ch';
-  const textUnderlineOffset =
-    isFirefox &&
-    !['sans-serif', 'serif', 'Yanone Kaffeesatz'].includes(fontFamily)
-      ? '0.2em'
-      : 'initial';
+  const textDecoration = isHighlighted ? 'underline' : 'underline';
 
   return (
     <g>
@@ -97,12 +95,12 @@ const Sector: FC<SectorProps> = ({
         fontFamily={fontFamily}
         fontWeight={fontWeight}
         fontSize={fontSize}
-        dy={dy}
+        dy={textOffsetY}
         fill={textColor}
         style={{
           willChange: 'transform',
-          textUnderlineOffset,
           textDecoration,
+          textUnderlineOffset,
         }}
         transform={`rotate(${midAngle - 90} ${textPosition.x} ${
           textPosition.y

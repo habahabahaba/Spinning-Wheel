@@ -1,17 +1,22 @@
+// Constants:
+import { FONT_Y_OFFSET, FONT_UNDERLINE_OFFSET } from '../constants/fonts';
 // Utils:
 import { polarToCartesian } from '../utils/geometry';
 import { calculateTextLayout } from '../utils/text';
 // React:
 import { useMemo } from 'react';
 // Types, interfaces and enumns:
+import type { Browser } from '../utils/browser';
+import type { AllFontNames } from '../constants/fonts';
 type Point = { x: number; y: number };
 interface SectorLayoutConfig {
   center: Point;
   radius: number;
   startAngle: number;
   endAngle: number;
+  browser: Browser;
   label?: string;
-  fontFamily?: string;
+  fontFamily?: AllFontNames;
   fontWeight?: string;
   textScale?: number;
 }
@@ -21,6 +26,8 @@ interface SectorLayout {
   textPosition: Point;
   text: string;
   fontSize: number;
+  textOffsetY: string | 0;
+  textUnderlineOffset: string | 0;
 }
 
 export default function useSectorLayout({
@@ -28,6 +35,7 @@ export default function useSectorLayout({
   radius,
   startAngle,
   endAngle,
+  browser,
   label = '',
   fontFamily = 'Arial',
   fontWeight = '600',
@@ -68,5 +76,24 @@ export default function useSectorLayout({
     [center.x, center.y, distanceFromApex, midAngle]
   );
 
-  return { describeSector, midAngle, textPosition, text, fontSize };
+  if (import.meta.env.DEV) {
+    console.log(
+      `[useSectorLayout] browser: ${browser}, fontFamily: ${fontFamily}`
+    );
+  }
+
+  const textOffsetY = FONT_Y_OFFSET[browser][fontFamily];
+
+  // Firefox ONLY:
+  const textUnderlineOffset = FONT_UNDERLINE_OFFSET[browser][fontFamily];
+
+  return {
+    describeSector,
+    midAngle,
+    textPosition,
+    textOffsetY,
+    text,
+    textUnderlineOffset,
+    fontSize,
+  };
 }

@@ -17,6 +17,7 @@ import type { AllFontNames } from '../store/types';
 // import type { HexColor } from './color';
 
 export const OUTCOMES_MAX_LENGTH = 72 as const;
+
 // Type Guards:
 function isOutcome(obj: unknown): obj is Outcome {
   if (typeof obj !== 'object' || obj === null) return false;
@@ -35,7 +36,7 @@ function isOutcome(obj: unknown): obj is Outcome {
   }
 
   if (typeof o.id !== 'string') return false;
-  if (!/^\d{8}-\d{13}$/.test(o.id)) return false;
+  // if (!/^\d{8}-\d{13}$/.test(o.id)) return false;
 
   if (typeof o.label !== 'string') return false;
 
@@ -207,6 +208,10 @@ export type ValidationResult =
  */
 export function validateWheelConfig(raw: unknown): ValidationResult {
   if (!isWheelConfig(raw)) {
+    if (import.meta.env.DEV) {
+      console.log(`[validateWheelConfig] !isWheelConfig`);
+    }
+
     return {
       valid: false,
       config: null,
