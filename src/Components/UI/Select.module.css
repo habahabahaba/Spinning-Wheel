@@ -4,7 +4,7 @@
 
 .selectButton {
   border: 1px solid;
-  border-radius: 0.1rem;
+  border-radius: min(2px, 0.1rem);
   padding: 0.2rem 0.4rem;
   cursor: pointer;
   background-color: white;

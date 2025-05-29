@@ -39,10 +39,9 @@ legend {
   border: 1px solid var(--color-subtle-bg);
   border-radius: 0.25rem;
   animation: slide-up 225ms ease-out;
-}
-/* Firefox zoom fix */
-@supports (-moz-appearance: none) {
-  .config_form {
+
+  /* Firefox zoom fix */
+  @supports (-moz-appearance: none) {
     min-width: max-content;
   }
 }
@@ -123,9 +122,7 @@ legend {
   overflow-x: hidden;
   scrollbar-color: var(--color-hover, gray) var(--color-subtle-bg, gray);
 
-  /* scroll-behavior: auto; */
-  /* will-change: transform; */
-  overflow-anchor: auto !important;
+  overflow-anchor: auto;
 }
 .buttons_container.add_outcomes_container {
   justify-content: end;
@@ -148,9 +145,6 @@ legend {
   grid-template:
     'label color font duplicate delete' 1fr
     / 1fr min-content 30% 6% 6%;
-
-  /* min-width: 85%; */
-  /* min-width: max-content; */
 
   margin: 0.5rem 0;
   margin-right: 0.5rem;
@@ -300,6 +294,10 @@ button.outcome_delete_button {
   .config_form {
     min-width: 80%;
     width: 27rem;
+
+    @supports (-moz-appearance: none) {
+      min-width: min-content;
+    }
   }
 
   /* Save/Load configuration */

@@ -55,6 +55,17 @@
   --glass-color: color-mix(in srgb, var(--color-subtle-bg) 25%, transparent);
 }
 
+#root {
+  min-height: 100svh;
+  padding: 0;
+  margin: 0;
+
+  @supports (-moz-appearance: none) {
+    width: fit-content;
+    overflow-x: hidden;
+  }
+}
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -65,10 +76,11 @@ a:hover {
 }
 
 body {
-  margin: 0;
   min-width: 320px;
-  min-height: 100vh;
-
+  min-height: 100svh;
+  height: 100svh;
+  padding: 0;
+  margin: 0;
   color: var(--color-fg);
 }
 
@@ -117,8 +129,8 @@ button,
   background-color: var(--glass-color);
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(2px);
-  border-radius: min(2px, 0.1rem);
   border: 1px solid var(--glass-color);
+  /* border-radius: min(2px, 0.1rem); */
 
   box-shadow: var(--bottom-right-shadow);
   padding: 0.5rem 0 0 0;

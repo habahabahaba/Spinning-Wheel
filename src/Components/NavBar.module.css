@@ -1,11 +1,15 @@
 .navbar {
-  width: auto;
   display: grid;
   grid-template: 'left right' 1fr / calc(50svw - 0.5rem) calc(50svw - 0.5rem);
 
+  width: auto;
   padding: 0.5rem;
 
   /* background-color: blue; */
+
+  @supports (-moz-appearance: none) {
+    margin-inline: -1px;
+  }
 }
 .navbar > div {
   display: flex;
@@ -18,9 +22,7 @@
 }
 .navbar_left {
   grid-area: left;
-
   justify-content: start;
-
   /* background-color: red; */
 }
 .navbar_right {
