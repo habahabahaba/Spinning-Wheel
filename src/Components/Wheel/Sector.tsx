@@ -68,7 +68,8 @@ const Sector: FC<SectorProps> = ({
   });
 
   if (import.meta.env.DEV) {
-    console.log(`[Sector] textUnderlineOffset: ${textUnderlineOffset}`);
+    // console.log(`[Sector] textUnderlineOffset: ${textUnderlineOffset}`);
+    console.log(`[Sector] ${fontFamily} textOffsetY: ${textOffsetY}`);
   }
 
   const textDecoration = isHighlighted ? 'underline' : '';

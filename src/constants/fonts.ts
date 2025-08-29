@@ -136,7 +136,7 @@ export const FONT_Y_OFFSET: FontOffsetMap = {
 
     'Archivo Narrow': 0,
     DynaPuff: 0,
-    Eczar: '0.03ch',
+    Eczar: '0.14ch',
     'Expletus Sans': 0,
     Glory: 0,
     Handjet: 0,
@@ -186,7 +186,7 @@ export const FONT_Y_OFFSET: FontOffsetMap = {
 
     'Archivo Narrow': 0,
     DynaPuff: 0,
-    Eczar: '0.11ch',
+    Eczar: '0.14ch',
     'Expletus Sans': 0,
     Glory: 0,
     Handjet: 0,
